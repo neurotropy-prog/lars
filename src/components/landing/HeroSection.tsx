@@ -1,13 +1,20 @@
+'use client'
+
 /**
  * HeroSection — Above the fold.
  * Contiene: SVG de fondo, SHOCK, headline, subtítulo, P1 visible, micro-promesas.
  * Mobile-first 375px. Sin botón intermedio antes de P1.
+ * 'use client' necesario para recibir el callback onP1Select desde GatewayController.
  */
 
 import NervousSystemSVG from './NervousSystemSVG'
 import P1Cards from './P1Cards'
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onP1Select?: (id: string) => void
+}
+
+export default function HeroSection({ onP1Select }: HeroSectionProps) {
   return (
     <section
       aria-label="Diagnóstico del sistema nervioso"
@@ -92,7 +99,7 @@ export default function HeroSection() {
 
         {/* P1 — visible sin botón previo */}
         <div style={{ width: '100%', marginBottom: 'var(--space-6)' }}>
-          <P1Cards />
+          <P1Cards onSelect={onP1Select} />
         </div>
 
         {/* Micro-promesas */}

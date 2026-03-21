@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Inter, Inter_Tight } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, Inter_Tight, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -21,6 +21,14 @@ const interTight = Inter_Tight({
   weight: ["500"],
   display: "swap",
   variable: "--font-inter-tight",
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-cormorant",
 });
 
 export const metadata: Metadata = {
@@ -54,7 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${plusJakartaSans.variable} ${inter.variable} ${interTight.variable}`}
+      className={`${plusJakartaSans.variable} ${inter.variable} ${interTight.variable} ${cormorantGaramond.variable}`}
     >
       <body>{children}</body>
     </html>

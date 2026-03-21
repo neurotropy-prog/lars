@@ -1,8 +1,8 @@
 # PROGRESS.md — Estado del Proyecto L.A.R.S.©
 
-## Estado actual: FASE 0 COMPLETADA
+## Estado actual: FASE 2 COMPLETADA (diseño visual)
 
-Setup completo. Proyecto desplegado en staging. Listo para Fase 1.
+Gateway Bloque 1 construido y verificado. Flujo completo P2 → Primera Verdad → P3 → P4 → Micro-espejo 1 funcionando en 375px. Pendiente aprobación de Javier → Fase 2b conecta localStorage.
 
 ---
 
@@ -12,7 +12,7 @@ Setup completo. Proyecto desplegado en staging. Listo para Fase 1.
 |------|--------|-------|-------|
 | 0 — Setup | ✅ Completada | 21 Mar 2026 | Stack completo, 8 componentes, Supabase con schema, Vercel desplegado, GitHub conectado. |
 | 1 — Hero + P1 + Landing | ✅ Completada (visual) | 21 Mar 2026 | Diseño visual completo. Pendiente aprobación Javier → Fase 1b conecta funcionalidad (P2, localStorage, UTM, analytics). |
-| 2 — P2-P4 + Primera Verdad + Micro-espejo 1 | ⬜ Pendiente | — | — |
+| 2 — P2-P4 + Primera Verdad + Micro-espejo 1 | ✅ Completada (visual) | 21 Mar 2026 | Diseño visual completo. P2, P3 multiselect, P4, Primera Verdad (5 variantes P1×P2), Micro-espejo 1 (5 variantes P3×P4), transiciones ZONA 1↔2, Cormorant Garamond, barra no lineal. Pendiente aprobación → Fase 2b conecta localStorage. |
 | 3 — P5-P8 + Micro-espejo 2 | ⬜ Pendiente | — | — |
 | 4 — Bisagra + Email | ⬜ Pendiente | — | — |
 | 5 — Mapa Vivo + CTA + Stripe | ⬜ Pendiente | — | — |

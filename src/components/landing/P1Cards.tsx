@@ -36,7 +36,12 @@ const options = [
   },
 ]
 
-export default function P1Cards() {
+interface P1CardsProps {
+  /** Callback externo — activa el gateway cuando P1 está respondida */
+  onSelect?: (id: string) => void
+}
+
+export default function P1Cards({ onSelect }: P1CardsProps) {
   const [selected, setSelected] = useState<string | null>(null)
   const [isPulsing, setIsPulsing] = useState(false)
 
@@ -54,8 +59,9 @@ export default function P1Cards() {
   const handleSelect = useCallback((id: string) => {
     if (selected === id) return
     setSelected(id)
-    // Fase 2: aquí se disparará la transición a P2
-  }, [selected])
+    // Delay de 600ms — la persona ve su selección confirmada antes de que aparezca el gateway
+    setTimeout(() => onSelect?.(id), 600)
+  }, [selected, onSelect])
 
   return (
     <div
