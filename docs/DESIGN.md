@@ -30,7 +30,7 @@ Estética premium-editorial sobre fondo oscuro. La experiencia transmite autorid
 | Token | Hex | Uso |
 |-------|-----|-----|
 | `--color-bg-primary` | `#0a252c` | Fondo principal de la aplicación |
-| `--color-bg-secondary` | `#0e2885` | Fondo de cards, secciones alternadas |
+| `--color-bg-secondary` | `#0f3037` | Fondo de cards, secciones alternadas |
 | `--color-bg-tertiary` | `#0c2a48` | Fondo de inputs, elementos interactivos en reposo |
 | `--color-bg-elevated` | `#0f2e56` | Hover de cards, tooltips, dropdowns |
 | `--color-surface-subtle` | `#133364` | Bordes sutiles, separadores |
