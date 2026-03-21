@@ -11,7 +11,7 @@ Setup completo. Proyecto desplegado en staging. Listo para Fase 1.
 | Fase | Estado | Fecha | Notas |
 |------|--------|-------|-------|
 | 0 — Setup | ✅ Completada | 21 Mar 2026 | Stack completo, 8 componentes, Supabase con schema, Vercel desplegado, GitHub conectado. |
-| 1 — Hero + P1 + Landing | ⬜ Pendiente | — | — |
+| 1 — Hero + P1 + Landing | ✅ Completada (visual) | 21 Mar 2026 | Diseño visual completo. Pendiente aprobación Javier → Fase 1b conecta funcionalidad (P2, localStorage, UTM, analytics). |
 | 2 — P2-P4 + Primera Verdad + Micro-espejo 1 | ⬜ Pendiente | — | — |
 | 3 — P5-P8 + Micro-espejo 2 | ⬜ Pendiente | — | — |
 | 4 — Bisagra + Email | ⬜ Pendiente | — | — |

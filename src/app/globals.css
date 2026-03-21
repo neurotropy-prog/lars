@@ -209,3 +209,84 @@ svg {
 .text-container {
   max-width: var(--text-max-width);
 }
+
+/* ---- Hero responsive — max-width por breakpoint ---- */
+.hero-content {
+  width: 100%;
+  max-width: 540px;
+}
+
+@media (min-width: 1024px) {
+  .hero-content {
+    max-width: 720px;
+  }
+}
+
+/* ---- Grid responsive — Sección TENSIÓN ---- */
+.tension-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .tension-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---- Skip link (accesibilidad) ---- */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 0;
+  z-index: 100;
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  font-family: var(--font-inter, system-ui, sans-serif);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 0 0 var(--radius-sm) 0;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
+/* ============================================================
+   ANIMACIONES — Fase 1
+   ============================================================ */
+
+/* SVG sistema nervioso — pulso suave */
+@keyframes nervePulse {
+  0%, 100% { opacity: 0.22; }
+  50%       { opacity: 0.42; }
+}
+
+/* Secciones below-the-fold — entrada con desplazamiento */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* P1 — pulse sutil al recibir foco desde CTA */
+@keyframes p1Pulse {
+  0%   { background-color: transparent; }
+  35%  { background-color: rgba(198, 200, 238, 0.04); }
+  100% { background-color: transparent; }
+}
+
+.p1-pulse {
+  animation: p1Pulse 500ms ease-out;
+  border-radius: var(--radius-lg);
+}
