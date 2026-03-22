@@ -3,20 +3,20 @@
 /**
  * MapaClient.tsx — El mapa vivo personal (Client Component)
  *
- * Revelación progresiva de 8 segundos:
+ * Usa exclusivamente los tokens CSS del sistema de diseño (globals.css).
+ * Componentes de /components/ui donde corresponde.
+ *
+ * Revelación progresiva:
  *   0s   → Score global (counter 0→score, 1200ms)
- *   1.5s → Pausa. Solo el score.
- *   2s   → D1 Regulación Nerviosa
- *   3s   → D2 Calidad de Sueño
- *   4s   → D3 Claridad Cognitiva
- *   5s   → D4 Equilibrio Emocional
- *   6s   → D5 Alegría de Vivir
- *   7s   → "Tu prioridad" destaca en la dimensión más baja
- *   8s   → Primer paso recomendado
+ *   2s   → D1 · 3s → D2 · 4s → D3 · 5s → D4 · 6s → D5
+ *   7s   → Prioridad destacada
+ *   8s   → Primer paso
  *   9.5s → CTA + Urgencia + Compartir
  */
 
 import { useEffect, useState, useRef, useCallback } from 'react'
+import Button from '@/components/ui/Button'
+import Card from '@/components/ui/Card'
 import type { DimensionResult, DimensionKey } from '@/lib/insights'
 import { getScoreColor, getScoreLabel } from '@/lib/insights'
 
@@ -41,8 +41,7 @@ function relativeTime(iso: string): string {
   if (days === 1) return 'hace 1 día'
   if (days < 30) return `hace ${days} días`
   const months = Math.floor(days / 30)
-  if (months === 1) return 'hace 1 mes'
-  return `hace ${months} meses`
+  return months === 1 ? 'hace 1 mes' : `hace ${months} meses`
 }
 
 function roundRect(
@@ -80,11 +79,10 @@ export default function MapaClient({
   firstStep,
   mostCompromisedKey,
   hash,
-  createdAt,
   lastVisitedAt,
 }: Props) {
   const [displayScore, setDisplayScore] = useState(0)
-  const [visibleDims, setVisibleDims] = useState(-1) // -1 = ninguna visible
+  const [visibleDims, setVisibleDims] = useState(-1)
   const [showPriority, setShowPriority] = useState(false)
   const [showFirstStep, setShowFirstStep] = useState(false)
   const [showCTA, setShowCTA] = useState(false)
@@ -102,7 +100,6 @@ export default function MapaClient({
   useEffect(() => {
     const start = performance.now()
     const duration = 1200
-
     const tick = (now: number) => {
       const progress = Math.min((now - start) / duration, 1)
       const eased = 1 - Math.pow(1 - progress, 3)
@@ -113,15 +110,15 @@ export default function MapaClient({
     return () => cancelAnimationFrame(rafRef.current)
   }, [global])
 
-  // ── Revelación progresiva ─────────────────────────────────────────────────
+  // ── Revelación progresiva (timing exacto) ────────────────────────────────
 
   useEffect(() => {
     const timers = [
-      setTimeout(() => setVisibleDims(0), 2000),   // D1
-      setTimeout(() => setVisibleDims(1), 3000),   // D2
-      setTimeout(() => setVisibleDims(2), 4000),   // D3
-      setTimeout(() => setVisibleDims(3), 5000),   // D4
-      setTimeout(() => setVisibleDims(4), 6000),   // D5
+      setTimeout(() => setVisibleDims(0), 2000),
+      setTimeout(() => setVisibleDims(1), 3000),
+      setTimeout(() => setVisibleDims(2), 4000),
+      setTimeout(() => setVisibleDims(3), 5000),
+      setTimeout(() => setVisibleDims(4), 6000),
       setTimeout(() => setShowPriority(true), 7000),
       setTimeout(() => setShowFirstStep(true), 8000),
       setTimeout(() => setShowCTA(true), 9500),
@@ -159,7 +156,7 @@ export default function MapaClient({
     }
   }, [hash])
 
-  // ── Compartir ────────────────────────────────────────────────────────────
+  // ── Compartir (gateway, nunca el mapa personal) ──────────────────────────
 
   const handleShare = useCallback(() => {
     const gatewayUrl = `${window.location.origin}/`
@@ -172,7 +169,7 @@ export default function MapaClient({
     })
   }, [])
 
-  // ── Descarga PNG ─────────────────────────────────────────────────────────
+  // ── Descarga PNG (canvas 2D) ─────────────────────────────────────────────
 
   const handleDownloadPNG = useCallback(() => {
     const dpr = window.devicePixelRatio || 1
@@ -183,100 +180,91 @@ export default function MapaClient({
     const ctx = canvas.getContext('2d')!
     ctx.scale(dpr, dpr)
 
-    // Fondo
-    ctx.fillStyle = '#0B0F0E'
+    // Fondo — color-bg-primary del sistema
+    ctx.fillStyle = '#0a252c'
     ctx.fillRect(0, 0, W, H)
 
     // Borde sutil
     ctx.strokeStyle = 'rgba(255,255,255,0.06)'
     ctx.lineWidth = 1
-    roundRect(ctx, 1, 1, W - 2, H - 2, 24)
+    roundRect(ctx, 1, 1, W - 2, H - 2, 20)
     ctx.stroke()
 
-    // Overline
-    ctx.fillStyle = '#4ADE80'
-    ctx.font = '600 11px -apple-system, system-ui, sans-serif'
-    ctx.letterSpacing = '0.12em'
+    // Overline (acento lavanda)
+    ctx.fillStyle = '#c6c8ee'
+    ctx.font = '600 11px system-ui, sans-serif'
     ctx.fillText('TU DIAGNÓSTICO · L.A.R.S.©', 40, 52)
 
     // Título
     ctx.fillStyle = '#F5F5F0'
-    ctx.font = '500 26px Georgia, "Times New Roman", serif'
-    ctx.letterSpacing = '-0.01em'
-    ctx.fillText('Tu Mapa de Regulación', 40, 92)
+    ctx.font = '600 26px system-ui, sans-serif'
+    ctx.fillText('Tu Mapa de Regulación', 40, 88)
 
     // Sub
     ctx.fillStyle = '#6B7572'
-    ctx.font = '400 12px -apple-system, system-ui, sans-serif'
-    ctx.letterSpacing = '0em'
-    ctx.fillText('Instituto Epigenético · Calibrado con +25.000 evaluaciones', 40, 116)
+    ctx.font = '400 12px system-ui, sans-serif'
+    ctx.fillText('Instituto Epigenético · Calibrado con +25.000 evaluaciones', 40, 112)
 
-    // Línea separadora
+    // Separador
     ctx.strokeStyle = 'rgba(255,255,255,0.08)'
     ctx.lineWidth = 1
     ctx.beginPath()
-    ctx.moveTo(40, 134)
-    ctx.lineTo(W - 40, 134)
+    ctx.moveTo(40, 130)
+    ctx.lineTo(W - 40, 130)
     ctx.stroke()
 
-    // Score global — número
+    // Score global
     ctx.fillStyle = globalColor
-    ctx.font = 'bold 56px -apple-system, system-ui, sans-serif'
+    ctx.font = 'bold 56px system-ui, sans-serif'
     const scoreText = String(global)
     ctx.fillText(scoreText, 40, 196)
     const scoreW = ctx.measureText(scoreText).width
     ctx.fillStyle = '#6B7572'
-    ctx.font = '400 22px -apple-system, system-ui, sans-serif'
+    ctx.font = '400 22px system-ui, sans-serif'
     ctx.fillText('/100', 40 + scoreW + 4, 196)
 
     // Badge estado
-    const badgeText = globalLabel
-    ctx.font = '600 12px -apple-system, system-ui, sans-serif'
-    const badgeW = ctx.measureText(badgeText).width + 24
-    roundRect(ctx, 40, 210, badgeW, 26, 13)
+    ctx.font = '600 12px system-ui, sans-serif'
+    const badgeW = ctx.measureText(globalLabel).width + 24
+    roundRect(ctx, 40, 208, badgeW, 26, 13)
     ctx.fillStyle = globalColor
     ctx.fill()
-    ctx.fillStyle = '#0B0F0E'
-    ctx.fillText(badgeText, 40 + 12, 228)
+    ctx.fillStyle = '#0a252c'
+    ctx.fillText(globalLabel, 40 + 12, 226)
 
     // Dimensiones
     dimensionResults.forEach((dim, i) => {
-      const y = 270 + i * 88
+      const y = 266 + i * 86
       const BAR_W = W - 80
 
-      // Nombre + score
-      ctx.fillStyle = '#E8EAE9'
-      ctx.font = '500 13px -apple-system, system-ui, sans-serif'
+      ctx.fillStyle = '#F5F5F0'
+      ctx.font = '500 13px system-ui, sans-serif'
       ctx.fillText(dim.name, 40, y)
-      ctx.fillStyle = dim.color
-      ctx.font = '600 13px -apple-system, system-ui, sans-serif'
-      const scoreLabel = `${dim.score}/100`
-      ctx.fillText(scoreLabel, W - 40 - ctx.measureText(scoreLabel).width, y)
 
-      // Barra fondo
+      ctx.fillStyle = dim.color
+      ctx.font = '600 13px system-ui, sans-serif'
+      const label = `${dim.score}/100`
+      ctx.fillText(label, W - 40 - ctx.measureText(label).width, y)
+
       ctx.fillStyle = 'rgba(255,255,255,0.08)'
-      roundRect(ctx, 40, y + 12, BAR_W, 7, 3.5)
+      roundRect(ctx, 40, y + 10, BAR_W, 6, 3)
       ctx.fill()
 
-      // Barra fill
       ctx.fillStyle = dim.color
-      const fillW = Math.max(BAR_W * dim.score / 100, 7)
-      roundRect(ctx, 40, y + 12, fillW, 7, 3.5)
+      roundRect(ctx, 40, y + 10, Math.max(BAR_W * dim.score / 100, 6), 6, 3)
       ctx.fill()
 
-      // Insight (truncado)
       ctx.fillStyle = '#6B7572'
-      ctx.font = '400 11px -apple-system, system-ui, sans-serif'
-      const insightShort = dim.insight.length > 80 ? dim.insight.slice(0, 77) + '…' : dim.insight
-      ctx.fillText(insightShort, 40, y + 38)
+      ctx.font = '400 11px system-ui, sans-serif'
+      const short = dim.insight.length > 82 ? dim.insight.slice(0, 79) + '…' : dim.insight
+      ctx.fillText(short, 40, y + 36)
 
-      // Separador sutil entre dims
       if (i < dimensionResults.length - 1) {
         ctx.strokeStyle = 'rgba(255,255,255,0.05)'
         ctx.lineWidth = 1
         ctx.beginPath()
-        ctx.moveTo(40, y + 52)
-        ctx.lineTo(W - 40, y + 52)
+        ctx.moveTo(40, y + 50)
+        ctx.lineTo(W - 40, y + 50)
         ctx.stroke()
       }
     })
@@ -285,153 +273,116 @@ export default function MapaClient({
     ctx.strokeStyle = 'rgba(255,255,255,0.06)'
     ctx.lineWidth = 1
     ctx.beginPath()
-    ctx.moveTo(40, H - 50)
-    ctx.lineTo(W - 40, H - 50)
+    ctx.moveTo(40, H - 46)
+    ctx.lineTo(W - 40, H - 46)
     ctx.stroke()
 
-    ctx.fillStyle = '#506258'
-    ctx.font = '400 11px -apple-system, system-ui, sans-serif'
-    const date = new Date().toLocaleDateString('es-ES', {
-      day: '2-digit', month: 'long', year: 'numeric',
-    })
-    ctx.fillText(`Mapa de Regulación · ${date}`, 40, H - 26)
-    ctx.fillText('Confidencial · solo esta URL tiene acceso a tu diagnóstico', W / 2, H - 26)
+    ctx.fillStyle = '#6B7572'
+    ctx.font = '400 11px system-ui, sans-serif'
+    const date = new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })
+    ctx.fillText(`Mapa de Regulación · ${date}`, 40, H - 24)
 
-    // Descargar
     const link = document.createElement('a')
     link.download = `mapa-lars-${hash}.png`
     link.href = canvas.toDataURL('image/png', 1.0)
     link.click()
   }, [global, globalColor, globalLabel, dimensionResults, hash])
 
-  // ── Render ───────────────────────────────────────────────────────────────
-
-  const mostCompromised = dimensionResults.reduce((min, d) =>
-    d.score < min.score ? d : min,
-  )
+  // ─────────────────────────────────────────────────────────────────────────
 
   return (
     <>
+      {/* Solo animaciones específicas del mapa — globals.css maneja el resto */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500;1,600&family=Inter:wght@400;500&display=swap');
-
-        * { box-sizing: border-box; }
-        body {
-          margin: 0; padding: 0;
-          background: #0B0F0E;
-          color: #E8EAE9;
-          -webkit-font-smoothing: antialiased;
-        }
-
-        @keyframes fadeUp {
+        @keyframes mapaFadeUp {
           from { opacity: 0; transform: translateY(14px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes barFill {
+        @keyframes mapaBarFill {
           from { width: 0%; }
         }
-        @keyframes priorityPulse {
-          0%,100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
-          50%      { box-shadow: 0 0 0 6px rgba(239,68,68,0.12); }
+        @keyframes mapaPriorityPulse {
+          0%,100% { box-shadow: none; }
+          50%      { box-shadow: 0 0 0 6px rgba(239,68,68,0.10); }
         }
-
-        .dim-card {
-          background: rgba(255,255,255,0.03);
-          border: 1px solid rgba(255,255,255,0.07);
-          border-radius: 16px;
-          padding: 22px 24px 20px;
-          animation: fadeUp 400ms cubic-bezier(0.16,1,0.3,1) both;
+        .mapa-fade-up {
+          animation: mapaFadeUp 400ms var(--ease-out-expo, cubic-bezier(0.16,1,0.3,1)) both;
         }
-        .dim-card.priority-highlight {
-          border-color: rgba(239,68,68,0.25);
-          animation: priorityPulse 2s ease 0.1s 2;
-        }
-        .bar-fill {
+        .mapa-bar-fill {
           height: 100%;
           border-radius: 3px;
-          animation: barFill 800ms cubic-bezier(0.16,1,0.3,1) both;
+          animation: mapaBarFill 800ms var(--ease-out-expo, cubic-bezier(0.16,1,0.3,1)) both;
+          animation-delay: 50ms;
         }
-        .puente {
-          font-family: Inter, system-ui;
-          font-size: 12px;
-          line-height: 1.6;
-          color: #506258;
-          margin-top: 14px;
-          padding-top: 12px;
-          border-top: 1px solid rgba(255,255,255,0.05);
+        .mapa-priority { animation: mapaPriorityPulse 2s ease 0.1s 2; }
+        .mapa-puente {
+          font-family: var(--font-inter, system-ui);
+          font-size: var(--text-caption, 0.75rem);
+          line-height: var(--lh-caption, 1.4);
+          color: var(--color-text-tertiary);
+          margin-top: var(--space-3);
+          padding-top: var(--space-3);
+          border-top: var(--border-subtle);
           font-style: italic;
         }
-        .badge-tag {
-          display: inline-block;
-          padding: 3px 10px;
-          border-radius: 100px;
-          font-family: Inter, system-ui;
-          font-size: 11px;
-          font-weight: 500;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          margin-bottom: 10px;
-        }
-        .cta-btn {
-          display: block; width: 100%;
-          padding: 18px 32px; border-radius: 100px;
-          background: #4ADE80; color: #0B0F0E;
-          font-family: Inter, system-ui; font-size: 17px; font-weight: 600;
-          text-align: center; border: none; cursor: pointer;
-          transition: background 200ms ease, opacity 200ms ease;
-          letter-spacing: -0.01em;
-        }
-        .cta-btn:hover { background: #6EE79A; }
-        .cta-btn:disabled { opacity: 0.7; cursor: wait; }
-        .ghost-btn {
-          display: inline-flex; align-items: center; gap: 6px;
-          background: transparent; border: 1px solid rgba(255,255,255,0.12);
-          border-radius: 100px; padding: 9px 18px;
-          font-family: Inter, system-ui; font-size: 13px; color: #A8B0AC;
-          cursor: pointer; transition: border-color 200ms, color 200ms;
-        }
-        .ghost-btn:hover { border-color: rgba(255,255,255,0.24); color: #E8EAE9; }
-        .detail-toggle {
+        .mapa-detail-toggle {
+          width: 100%; display: flex; align-items: center;
+          justify-content: space-between;
           background: transparent; border: none;
-          font-family: Inter, system-ui; font-size: 13px;
-          color: #8A9E98; cursor: pointer; padding: 0;
-          display: flex; align-items: center; gap: 6px;
-          transition: color 200ms;
+          font-family: var(--font-inter, system-ui);
+          font-size: var(--text-body-sm, 0.875rem);
+          color: var(--color-text-secondary);
+          cursor: pointer; padding: var(--space-4) var(--space-5);
+          transition: color var(--transition-base);
         }
-        .detail-toggle:hover { color: #E8EAE9; }
-        .toast {
-          position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-          background: #1a2e27; border: 1px solid rgba(74,222,128,0.2);
-          border-radius: 12px; padding: 12px 20px;
-          font-family: Inter, system-ui; font-size: 13px; color: #4ADE80;
-          z-index: 100; animation: fadeUp 300ms ease both;
+        .mapa-detail-toggle:hover { color: var(--color-text-primary); }
+        .mapa-toast {
+          position: fixed; bottom: 24px; left: 50%;
+          transform: translateX(-50%);
+          background: var(--color-bg-secondary);
+          border: var(--border-accent-strong);
+          border-radius: var(--radius-md);
+          padding: var(--space-3) var(--space-5);
+          font-family: var(--font-inter, system-ui);
+          font-size: var(--text-body-sm, 0.875rem);
+          color: var(--color-accent);
+          z-index: 100;
+          animation: mapaFadeUp 300ms ease both;
           white-space: nowrap; max-width: 90vw;
         }
       `}</style>
 
-      <main style={{ minHeight: '100vh', background: '#0B0F0E', padding: '48px 24px 96px' }}>
+      <main style={{ minHeight: '100vh', padding: 'var(--space-12) var(--space-6) var(--space-24)' }}>
         <div style={{ maxWidth: '540px', margin: '0 auto' }}>
 
           {/* ── HEADER ── */}
-          <div style={{ marginBottom: '36px', animation: 'fadeUp 400ms ease both' }}>
+          <div className="mapa-fade-up" style={{ marginBottom: 'var(--space-10)' }}>
             <p style={{
-              fontFamily: 'Inter, system-ui', fontSize: '11px',
-              letterSpacing: '0.14em', textTransform: 'uppercase',
-              color: '#4ADE80', margin: '0 0 14px',
+              fontFamily: 'var(--font-inter-tight)',
+              fontSize: 'var(--text-overline)',
+              letterSpacing: 'var(--ls-overline)',
+              textTransform: 'uppercase',
+              color: 'var(--color-accent)',
+              marginBottom: 'var(--space-3)',
             }}>
               Tu diagnóstico
             </p>
             <h1 style={{
-              fontFamily: '"Cormorant Garamond", Georgia, serif',
-              fontSize: 'clamp(30px, 6vw, 42px)', fontWeight: 500,
-              lineHeight: 1.15, color: '#F5F5F0', margin: '0 0 10px',
-              letterSpacing: '-0.01em',
+              fontFamily: 'var(--font-plus-jakarta)',
+              fontSize: 'var(--text-h1)',
+              lineHeight: 'var(--lh-h1)',
+              letterSpacing: 'var(--ls-h1)',
+              fontWeight: 700,
+              color: 'var(--color-text-primary)',
+              marginBottom: 'var(--space-2)',
             }}>
               Tu Mapa de Regulación
             </h1>
             <p style={{
-              fontFamily: 'Inter, system-ui', fontSize: '13px',
-              color: '#6B7572', margin: 0, lineHeight: 1.6,
+              fontFamily: 'var(--font-inter)',
+              fontSize: 'var(--text-body-sm)',
+              color: 'var(--color-text-tertiary)',
+              lineHeight: 'var(--lh-body-sm)',
             }}>
               Calibrado con +25.000 evaluaciones reales · Basado en tus 10 respuestas
             </p>
@@ -439,49 +390,64 @@ export default function MapaClient({
 
           {/* ── SCORE GLOBAL ── */}
           <div
+            className="mapa-fade-up"
             style={{
-              padding: '28px 28px 24px',
-              background: 'rgba(255,255,255,0.03)',
-              border: `1px solid ${globalColor}33`,
-              borderRadius: '20px',
-              marginBottom: '40px',
-              animation: 'fadeUp 400ms ease 100ms both',
+              animationDelay: '100ms',
+              marginBottom: 'var(--space-10)',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '6px' }}>
-                  <span style={{
-                    fontFamily: 'Inter, system-ui', fontSize: '56px',
-                    fontWeight: 700, color: globalColor, lineHeight: 1,
-                    fontVariantNumeric: 'tabular-nums',
+            <Card style={{ border: `1px solid ${globalColor}33` }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-5)' }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-1)', marginBottom: 'var(--space-2)' }}>
+                    <span style={{
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontSize: 'var(--text-display)',
+                      fontWeight: 700,
+                      color: globalColor,
+                      lineHeight: 1,
+                      fontVariantNumeric: 'tabular-nums',
+                    }}>
+                      {displayScore}
+                    </span>
+                    <span style={{
+                      fontFamily: 'var(--font-inter)',
+                      fontSize: 'var(--text-h3)',
+                      color: 'var(--color-text-tertiary)',
+                    }}>
+                      /100
+                    </span>
+                  </div>
+                  <p style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: 'var(--text-body-sm)',
+                    color: 'var(--color-text-secondary)',
                   }}>
-                    {displayScore}
-                  </span>
-                  <span style={{ fontFamily: 'Inter, system-ui', fontSize: '22px', color: '#6B7572' }}>
-                    /100
-                  </span>
+                    Score global de regulación
+                  </p>
                 </div>
-                <p style={{ fontFamily: 'Inter, system-ui', fontSize: '13px', color: '#8A9E98', margin: 0 }}>
-                  Score global de regulación
-                </p>
+                <span style={{
+                  display: 'inline-block',
+                  padding: 'var(--space-1) var(--space-4)',
+                  borderRadius: 'var(--radius-pill)',
+                  background: globalColor,
+                  color: '#0a252c',
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: 'var(--text-caption)',
+                  fontWeight: 600,
+                  whiteSpace: 'nowrap',
+                  marginTop: 'var(--space-1)',
+                }}>
+                  {globalLabel}
+                </span>
               </div>
-              <span style={{
-                display: 'inline-block', padding: '5px 14px', borderRadius: '100px',
-                background: globalColor, color: '#0B0F0E',
-                fontFamily: 'Inter, system-ui', fontSize: '12px', fontWeight: 600,
-                letterSpacing: '0.01em', whiteSpace: 'nowrap', marginTop: '4px',
-              }}>
-                {globalLabel}
-              </span>
-            </div>
-
-            {/* Puente 3 — Benchmark dinámico */}
-            <p className="puente">{PUENTES.p3}</p>
+              {/* Puente 3 — Benchmark dinámico */}
+              <p className="mapa-puente">{PUENTES.p3}</p>
+            </Card>
           </div>
 
           {/* ── 5 DIMENSIONES ── */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '32px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', marginBottom: 'var(--space-8)' }}>
             {dimensionResults.map((dim, i) => {
               if (visibleDims < i) return null
 
@@ -493,97 +459,138 @@ export default function MapaClient({
               return (
                 <div
                   key={dim.key}
-                  className={`dim-card${showPriorityTag ? ' priority-highlight' : ''}`}
+                  className={`mapa-fade-up${showPriorityTag ? ' mapa-priority' : ''}`}
+                  style={{
+                    backgroundColor: 'var(--color-bg-secondary)',
+                    border: showPriorityTag
+                      ? `1px solid ${dim.color}33`
+                      : 'var(--border-subtle)',
+                    borderRadius: 'var(--radius-lg)',
+                    padding: 'var(--space-6)',
+                  }}
                 >
                   {/* Tags */}
-                  {showPriorityTag && (
-                    <div className="badge-tag" style={{ background: `${dim.color}20`, color: dim.color }}>
-                      Tu prioridad nº1
-                    </div>
-                  )}
-                  {isD2 && !isMostCompromised && (
-                    <div className="badge-tag" style={{ background: 'rgba(74,222,128,0.1)', color: '#4ADE80' }}>
-                      Mejorable en 72 horas
-                    </div>
-                  )}
-                  {isD2 && isMostCompromised && showPriorityTag && (
-                    <div className="badge-tag" style={{ background: 'rgba(74,222,128,0.1)', color: '#4ADE80', marginLeft: '6px' }}>
-                      Mejorable en 72 horas
-                    </div>
-                  )}
+                  <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', marginBottom: showPriorityTag || isD2 ? 'var(--space-3)' : 0 }}>
+                    {showPriorityTag && (
+                      <span style={{
+                        display: 'inline-block',
+                        padding: '3px 10px',
+                        borderRadius: 'var(--radius-pill)',
+                        background: `${dim.color}18`,
+                        color: dim.color,
+                        fontFamily: 'var(--font-inter)',
+                        fontSize: 'var(--text-caption)',
+                        fontWeight: 500,
+                        letterSpacing: '0.04em',
+                        textTransform: 'uppercase',
+                      }}>
+                        Tu prioridad nº1
+                      </span>
+                    )}
+                    {isD2 && (
+                      <span style={{
+                        display: 'inline-block',
+                        padding: '3px 10px',
+                        borderRadius: 'var(--radius-pill)',
+                        background: 'rgba(74,222,128,0.1)',
+                        color: 'var(--color-success)',
+                        fontFamily: 'var(--font-inter)',
+                        fontSize: 'var(--text-caption)',
+                        fontWeight: 500,
+                        letterSpacing: '0.04em',
+                        textTransform: 'uppercase',
+                      }}>
+                        Mejorable en 72 horas
+                      </span>
+                    )}
+                  </div>
 
-                  {/* Header nombre + score */}
+                  {/* Nombre + score */}
                   <div style={{
                     display: 'flex', justifyContent: 'space-between',
-                    alignItems: 'center', marginBottom: '12px',
+                    alignItems: 'center', marginBottom: 'var(--space-3)',
                   }}>
                     <span style={{
-                      fontFamily: 'Inter, system-ui', fontSize: '14px',
-                      fontWeight: 500, color: '#E8EAE9',
+                      fontFamily: 'var(--font-inter-tight)',
+                      fontSize: 'var(--text-h4)',
+                      fontWeight: 500,
+                      color: 'var(--color-text-primary)',
+                      lineHeight: 'var(--lh-h4)',
                     }}>
                       {dim.name}
                     </span>
                     <span style={{
-                      fontFamily: 'Inter, system-ui', fontSize: '19px',
-                      fontWeight: 700, color: dim.color, lineHeight: 1,
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontSize: 'var(--text-h3)',
+                      fontWeight: 700,
+                      color: dim.color,
+                      lineHeight: 1,
                     }}>
                       {dim.score}
-                      <span style={{ fontSize: '12px', fontWeight: 400, color: '#6B7572' }}>/100</span>
+                      <span style={{
+                        fontSize: 'var(--text-caption)',
+                        fontWeight: 400,
+                        color: 'var(--color-text-tertiary)',
+                      }}>/100</span>
                     </span>
                   </div>
 
                   {/* Barra semáforo */}
                   <div style={{
-                    height: '6px', borderRadius: '3px',
+                    height: '6px',
+                    borderRadius: '3px',
                     background: 'rgba(255,255,255,0.08)',
-                    marginBottom: '16px', overflow: 'hidden',
+                    marginBottom: 'var(--space-4)',
+                    overflow: 'hidden',
                   }}>
                     <div
-                      className="bar-fill"
-                      style={{
-                        width: `${dim.score}%`,
-                        background: dim.color,
-                        animationDelay: '50ms',
-                      }}
+                      className="mapa-bar-fill"
+                      style={{ width: `${dim.score}%`, background: dim.color }}
                     />
                   </div>
 
                   {/* Insight */}
                   <p style={{
-                    fontFamily: 'Inter, system-ui', fontSize: '14px',
-                    lineHeight: '1.65', color: '#A8B0AC', margin: 0,
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: 'var(--text-body-sm)',
+                    lineHeight: 'var(--lh-body)',
+                    color: 'var(--color-text-secondary)',
                   }}>
                     {dim.insight}
                   </p>
 
-                  {/* Puente líquido 2 — dimensión más comprometida */}
+                  {/* Puente 2 — dimensión más comprometida */}
                   {isMostCompromised && (
-                    <p className="puente">{PUENTES.p2}</p>
+                    <p className="mapa-puente">{PUENTES.p2}</p>
                   )}
 
-                  {/* Puente líquido 4 — D3/D4 */}
+                  {/* Puente 4 — D3/D4 */}
                   {isD3orD4 && !isMostCompromised && (
-                    <p className="puente">{PUENTES.p4}</p>
+                    <p className="mapa-puente">{PUENTES.p4}</p>
                   )}
                 </div>
               )
             })}
           </div>
 
-          {/* Puente 5 — Sistema compartido (después de última dim) */}
+          {/* Puente 5 — sistema compartido (tras última dimensión) */}
           {visibleDims >= 4 && (
             <div
+              className="mapa-fade-up"
               style={{
-                padding: '14px 20px', marginBottom: '32px',
-                borderRadius: '12px',
-                background: 'rgba(198,200,238,0.05)',
-                border: '1px solid rgba(198,200,238,0.08)',
-                animation: 'fadeUp 400ms ease both',
+                padding: 'var(--space-4) var(--space-5)',
+                marginBottom: 'var(--space-8)',
+                borderRadius: 'var(--radius-md)',
+                background: 'var(--color-accent-subtle)',
+                border: 'var(--border-accent)',
               }}
             >
               <p style={{
-                fontFamily: 'Inter, system-ui', fontSize: '12px',
-                lineHeight: 1.65, color: '#6B7572', fontStyle: 'italic', margin: 0,
+                fontFamily: 'var(--font-inter)',
+                fontSize: 'var(--text-caption)',
+                lineHeight: 'var(--lh-body)',
+                color: 'var(--color-text-tertiary)',
+                fontStyle: 'italic',
               }}>
                 {PUENTES.p5}
               </p>
@@ -593,84 +600,105 @@ export default function MapaClient({
           {/* ── PRIMER PASO ── */}
           {showFirstStep && (
             <div
-              style={{
-                padding: '24px 28px',
-                background: 'rgba(74,222,128,0.05)',
-                border: '1px solid rgba(74,222,128,0.18)',
-                borderRadius: '16px',
-                marginBottom: '48px',
-                animation: 'fadeUp 400ms cubic-bezier(0.16,1,0.3,1) both',
-              }}
+              className="mapa-fade-up"
+              style={{ marginBottom: 'var(--space-12)' }}
             >
-              <p style={{
-                fontFamily: 'Inter, system-ui', fontSize: '11px',
-                letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#4ADE80', margin: '0 0 12px',
+              <Card style={{
+                border: '1px solid rgba(74,222,128,0.18)',
+                background: 'rgba(74,222,128,0.04)',
               }}>
-                Tu primer paso
-              </p>
-              <p style={{
-                fontFamily: 'Inter, system-ui', fontSize: '15px',
-                lineHeight: '1.7', color: '#E8EAE9', margin: 0,
-              }}>
-                {firstStep}
-              </p>
-
-              {/* Puente 1 — Plan vivo */}
-              <p className="puente">{PUENTES.p1}</p>
+                <p style={{
+                  fontFamily: 'var(--font-inter-tight)',
+                  fontSize: 'var(--text-overline)',
+                  letterSpacing: 'var(--ls-overline)',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-success)',
+                  marginBottom: 'var(--space-3)',
+                }}>
+                  Tu primer paso
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: 'var(--text-body)',
+                  lineHeight: 'var(--lh-body)',
+                  color: 'var(--color-text-primary)',
+                }}>
+                  {firstStep}
+                </p>
+                {/* Puente 1 — plan vivo */}
+                <p className="mapa-puente">{PUENTES.p1}</p>
+              </Card>
             </div>
           )}
 
           {/* ── CTA + URGENCIA + COMPARTIR ── */}
           {showCTA && (
-            <div style={{ animation: 'fadeUp 500ms cubic-bezier(0.16,1,0.3,1) both' }}>
+            <div className="mapa-fade-up">
 
               {/* Separador */}
               <div style={{
-                height: '1px', background: 'rgba(255,255,255,0.06)',
-                marginBottom: '48px',
+                height: '1px',
+                background: 'var(--color-surface-subtle)',
+                marginBottom: 'var(--space-12)',
               }} />
 
-              {/* Benchmark visual */}
-              <div style={{ textAlign: 'center', marginBottom: '52px' }}>
+              {/* Benchmark */}
+              <div style={{ textAlign: 'center', marginBottom: 'var(--space-12)' }}>
                 <p style={{
-                  fontFamily: 'Inter, system-ui', fontSize: '14px',
-                  color: '#8A9E98', margin: '0 0 8px', lineHeight: 1.6,
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: 'var(--text-body-sm)',
+                  color: 'var(--color-text-secondary)',
+                  lineHeight: 'var(--lh-body)',
+                  marginBottom: 'var(--space-2)',
                 }}>
                   El promedio de personas que completaron 4+ semanas del programa
                 </p>
                 <p style={{
-                  fontFamily: '"Cormorant Garamond", Georgia, serif',
-                  fontSize: '44px', fontWeight: 500,
-                  color: '#4ADE80', margin: '0 0 6px', lineHeight: 1,
+                  fontFamily: 'var(--font-plus-jakarta)',
+                  fontSize: 'var(--text-display)',
+                  fontWeight: 700,
+                  color: 'var(--color-success)',
+                  lineHeight: 'var(--lh-display)',
+                  marginBottom: 'var(--space-2)',
                 }}>
                   72
-                  <span style={{ fontSize: '18px', color: '#8A9E98', fontFamily: 'Inter, system-ui', fontWeight: 400 }}>/100</span>
+                  <span style={{
+                    fontSize: 'var(--text-h3)',
+                    fontWeight: 400,
+                    color: 'var(--color-text-tertiary)',
+                    fontFamily: 'var(--font-inter)',
+                  }}>/100</span>
                 </p>
                 <p style={{
-                  fontFamily: 'Inter, system-ui', fontSize: '13px',
-                  color: '#506258', margin: 0,
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: 'var(--text-caption)',
+                  color: 'var(--color-text-tertiary)',
                 }}>
                   La distancia entre tu {global} y el 72 es donde está tu oportunidad.
                 </p>
               </div>
 
-              {/* Pre-CTA — Cormorant italic */}
+              {/* Pre-CTA — Cormorant italic per spec M7 */}
               <p style={{
-                fontFamily: '"Cormorant Garamond", Georgia, serif',
-                fontSize: 'clamp(22px, 4vw, 28px)', fontWeight: 500,
-                fontStyle: 'italic', lineHeight: 1.35,
-                color: '#F5F5F0', margin: '0 0 20px',
-                letterSpacing: '-0.01em',
+                fontFamily: 'var(--font-cormorant)',
+                fontSize: 'var(--text-h2)',
+                lineHeight: 'var(--lh-h2)',
+                letterSpacing: 'var(--ls-h2)',
+                fontStyle: 'italic',
+                fontWeight: 500,
+                color: 'var(--color-text-primary)',
+                marginBottom: 'var(--space-5)',
               }}>
                 Tu sistema nervioso lleva años sosteniendo lo que tú no podías soltar. Ahora tienes el mapa.
               </p>
 
               {/* Delta de alivio */}
               <p style={{
-                fontFamily: 'Inter, system-ui', fontSize: '16px',
-                lineHeight: 1.65, color: '#E8EAE9',
-                margin: '0 0 32px',
+                fontFamily: 'var(--font-inter)',
+                fontSize: 'var(--text-body)',
+                lineHeight: 'var(--lh-body)',
+                color: 'var(--color-text-primary)',
+                marginBottom: 'var(--space-8)',
               }}>
                 Los primeros cambios llegan en 72 horas. No en meses — en 3 días.
                 El Protocolo de Sueño de Emergencia está diseñado para que tu cuerpo
@@ -678,19 +706,23 @@ export default function MapaClient({
               </p>
 
               {/* Botón Stripe */}
-              <button
-                className="cta-btn"
+              <Button
+                variant="primary"
+                size="large"
                 onClick={handleStripeCheckout}
                 disabled={checkoutLoading}
-                style={{ marginBottom: '12px' }}
+                style={{ width: '100%', marginBottom: 'var(--space-3)' }}
               >
                 {checkoutLoading ? 'Redirigiendo…' : 'Empieza la Semana 1'}
-              </button>
+              </Button>
 
               {checkoutError && (
                 <p style={{
-                  fontFamily: 'Inter, system-ui', fontSize: '13px',
-                  color: '#F87171', textAlign: 'center', margin: '8px 0 0',
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: 'var(--text-body-sm)',
+                  color: 'var(--color-error)',
+                  textAlign: 'center',
+                  marginBottom: 'var(--space-3)',
                 }}>
                   {checkoutError}
                 </p>
@@ -698,54 +730,72 @@ export default function MapaClient({
 
               {/* Post-CTA */}
               <p style={{
-                fontFamily: 'Inter, system-ui', fontSize: '13px',
-                color: '#506258', textAlign: 'center',
-                margin: '8px 0 6px', lineHeight: 1.6,
+                fontFamily: 'var(--font-inter)',
+                fontSize: 'var(--text-body-sm)',
+                color: 'var(--color-text-tertiary)',
+                textAlign: 'center',
+                lineHeight: 'var(--lh-body-sm)',
+                marginBottom: 'var(--space-2)',
               }}>
                 97€ · Protocolo de Sueño de Emergencia + Sesión 1:1 con Javier + MNN© · Garantía de 7 días
               </p>
               <p style={{
-                fontFamily: 'Inter, system-ui', fontSize: '12px',
-                color: '#3d5048', textAlign: 'center', margin: '0 0 28px',
+                fontFamily: 'var(--font-inter)',
+                fontSize: 'var(--text-caption)',
+                color: 'var(--color-text-tertiary)',
+                textAlign: 'center',
+                marginBottom: 'var(--space-6)',
+                opacity: 0.7,
               }}>
                 Si tu sueño no mejora en 7 días, te devolvemos los 97€. Sin preguntas.
               </p>
 
               {/* Card colapsable — Qué incluye */}
               <div style={{
-                background: 'rgba(255,255,255,0.025)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                borderRadius: '14px', overflow: 'hidden',
-                marginBottom: '48px',
+                border: 'var(--border-subtle)',
+                borderRadius: 'var(--radius-lg)',
+                overflow: 'hidden',
+                marginBottom: 'var(--space-12)',
               }}>
                 <button
-                  className="detail-toggle"
-                  style={{ width: '100%', padding: '16px 20px', textAlign: 'left' }}
+                  className="mapa-detail-toggle"
                   onClick={() => setDetailOpen(o => !o)}
                 >
-                  <span style={{ flex: 1 }}>¿Qué incluye la Semana 1?</span>
-                  <span style={{ fontSize: '18px', transform: detailOpen ? 'rotate(180deg)' : 'none', transition: 'transform 200ms' }}>
-                    ↓
-                  </span>
+                  <span>¿Qué incluye la Semana 1?</span>
+                  <span style={{
+                    display: 'inline-block',
+                    transform: detailOpen ? 'rotate(180deg)' : 'none',
+                    transition: 'transform var(--transition-base)',
+                    fontSize: '16px',
+                  }}>↓</span>
                 </button>
                 {detailOpen && (
-                  <div style={{ padding: '4px 20px 20px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                  <div style={{
+                    padding: 'var(--space-1) var(--space-5) var(--space-5)',
+                    borderTop: 'var(--border-subtle)',
+                    background: 'var(--color-bg-secondary)',
+                  }}>
                     {[
                       ['Protocolo de Sueño de Emergencia', 'Diseñado por el Dr. Carlos Alvear. Resultados en 72 horas.'],
                       ['Sesión 1:1 con Javier A. Martín Ramos', 'Director del Instituto Epigenético. Ya tiene tu mapa.'],
                       ['MNN© — Mapa de Niveles de Neurotransmisores', 'Tu primer análisis bioquímico real.'],
                       ['Garantía total', '7 días. Si no mejora tu sueño, devolución íntegra.'],
                     ].map(([title, desc]) => (
-                      <div key={title} style={{ marginTop: '16px' }}>
+                      <div key={title} style={{ marginTop: 'var(--space-4)' }}>
                         <p style={{
-                          fontFamily: 'Inter, system-ui', fontSize: '14px',
-                          fontWeight: 500, color: '#E8EAE9', margin: '0 0 4px',
+                          fontFamily: 'var(--font-inter-tight)',
+                          fontSize: 'var(--text-body-sm)',
+                          fontWeight: 500,
+                          color: 'var(--color-text-primary)',
+                          marginBottom: 'var(--space-1)',
                         }}>
                           → {title}
                         </p>
                         <p style={{
-                          fontFamily: 'Inter, system-ui', fontSize: '13px',
-                          color: '#8A9E98', margin: 0, lineHeight: 1.6,
+                          fontFamily: 'var(--font-inter)',
+                          fontSize: 'var(--text-body-sm)',
+                          color: 'var(--color-text-secondary)',
+                          lineHeight: 'var(--lh-body-sm)',
                         }}>
                           {desc}
                         </p>
@@ -756,42 +806,52 @@ export default function MapaClient({
               </div>
 
               {/* M8 — Urgencia natural */}
-              <div style={{ marginBottom: '48px' }}>
+              <div style={{ marginBottom: 'var(--space-12)' }}>
                 <p style={{
-                  fontFamily: 'Inter, system-ui', fontSize: '14px',
-                  lineHeight: 1.65, color: '#8A9E98', margin: '0 0 8px',
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: 'var(--text-body-sm)',
+                  lineHeight: 'var(--lh-body)',
+                  color: 'var(--color-text-secondary)',
+                  marginBottom: 'var(--space-3)',
                 }}>
                   Tu mapa está guardado en tu página personal. Evoluciona con el tiempo — cada semana hay algo nuevo.
                 </p>
                 <p style={{
-                  fontFamily: 'Inter, system-ui', fontSize: '14px',
-                  lineHeight: 1.65, color: '#6B7572', margin: '0 0 12px',
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: 'var(--text-body-sm)',
+                  lineHeight: 'var(--lh-body)',
+                  color: 'var(--color-text-tertiary)',
+                  marginBottom: 'var(--space-3)',
                 }}>
                   Cada semana sin regulación, tu cuerpo profundiza el patrón actual. No es opinión — es lo que confirman los datos de +5.000 personas. Cuanto antes, más rápida la recuperación.
                 </p>
                 <p style={{
-                  fontFamily: 'Inter, system-ui', fontSize: '12px',
-                  color: '#3d5048', margin: 0,
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: 'var(--text-caption)',
+                  color: 'var(--color-text-tertiary)',
+                  opacity: 0.7,
                 }}>
                   142 personas completaron este diagnóstico esta semana · 5.247 en total
                 </p>
               </div>
 
               {/* Compartir + Descarga */}
-              <div style={{ marginBottom: '64px' }}>
+              <div style={{ marginBottom: 'var(--space-16)' }}>
                 <p style={{
-                  fontFamily: 'Inter, system-ui', fontSize: '14px',
-                  color: '#8A9E98', margin: '0 0 16px',
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: 'var(--text-body-sm)',
+                  color: 'var(--color-text-secondary)',
+                  marginBottom: 'var(--space-4)',
                 }}>
                   ¿Conoces a alguien que podría necesitar ver su mapa?
                 </p>
-                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                  <button className="ghost-btn" onClick={handleShare}>
-                    <span>↗</span> Enviar el diagnóstico
-                  </button>
-                  <button className="ghost-btn" onClick={handleDownloadPNG}>
-                    <span>↓</span> Descargar mi mapa
-                  </button>
+                <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
+                  <Button variant="secondary" size="small" onClick={handleShare}>
+                    ↗ Enviar el diagnóstico
+                  </Button>
+                  <Button variant="secondary" size="small" onClick={handleDownloadPNG}>
+                    ↓ Descargar mi mapa
+                  </Button>
                 </div>
               </div>
 
@@ -800,21 +860,27 @@ export default function MapaClient({
 
           {/* ── FOOTER ── */}
           <div style={{
-            paddingTop: '32px',
-            borderTop: '1px solid rgba(255,255,255,0.05)',
+            paddingTop: 'var(--space-8)',
+            borderTop: 'var(--border-subtle)',
             textAlign: 'center',
           }}>
             {lastVisitedAt && (
               <p style={{
-                fontFamily: 'Inter, system-ui', fontSize: '12px',
-                color: '#3d5048', margin: '0 0 8px',
+                fontFamily: 'var(--font-inter)',
+                fontSize: 'var(--text-caption)',
+                color: 'var(--color-text-tertiary)',
+                marginBottom: 'var(--space-2)',
+                opacity: 0.7,
               }}>
                 Última visita: {relativeTime(lastVisitedAt)}
               </p>
             )}
             <p style={{
-              fontFamily: 'Inter, system-ui', fontSize: '12px',
-              color: '#3d5048', lineHeight: 1.6, margin: 0,
+              fontFamily: 'var(--font-inter)',
+              fontSize: 'var(--text-caption)',
+              color: 'var(--color-text-tertiary)',
+              lineHeight: 'var(--lh-body)',
+              opacity: 0.7,
             }}>
               Este mapa es tuyo. Evoluciona con el tiempo.<br />
               Confidencial — solo esta URL tiene acceso a tu diagnóstico.
@@ -824,10 +890,7 @@ export default function MapaClient({
         </div>
       </main>
 
-      {/* Toast compartir */}
-      {shareToast && (
-        <div className="toast">{shareToast}</div>
-      )}
+      {shareToast && <div className="mapa-toast">{shareToast}</div>}
     </>
   )
 }
