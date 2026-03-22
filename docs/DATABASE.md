@@ -4,43 +4,83 @@ Base de datos: **Supabase (PostgreSQL)**
 
 ---
 
-## Tablas
+## Implementación actual (Fase 4)
 
-### `users`
+### Tabla `diagnosticos`
 
-Cada persona que completa el gateway y da su email.
-
-| Columna | Tipo | Descripción |
-|---------|------|-------------|
-| `id` | uuid (PK) | Identificador único |
-| `email` | text (unique) | Email de la persona |
-| `map_hash` | text (unique) | 12 caracteres aleatorios para la URL del mapa |
-| `created_at` | timestamptz | Cuándo se registró |
-| `updated_at` | timestamptz | Última actualización |
-
-### `gateway_responses`
-
-Las respuestas y resultados del diagnóstico.
+Una tabla única con columnas JSONB para todos los datos de cada persona.
+Enfoque: simplicidad + velocidad de iteración. No se normaliza hasta tener volumen que lo justifique.
 
 | Columna | Tipo | Descripción |
 |---------|------|-------------|
-| `id` | uuid (PK) | Identificador único |
-| `user_id` | uuid (FK → users) | Quién respondió |
-| `responses` | jsonb | Respuestas P1-P8 |
-| `scores` | jsonb | Score global + 5 dimensiones |
-| `profile` | jsonb | Ego, arquetipo, vergüenza, miedo, lock |
-| `meta` | jsonb | Fuente, dispositivo, tiempo, punto de abandono |
-| `completed_at` | timestamptz | Cuándo completó el gateway |
+| `id` | uuid (PK, default gen_random_uuid()) | Identificador interno |
+| `email` | text (NOT NULL) | Email de la persona |
+| `hash` | text (NOT NULL, UNIQUE) | 12 chars aleatorios — URL del mapa |
+| `created_at` | timestamptz (default NOW()) | Cuándo se registró |
+| `responses` | jsonb NOT NULL | Respuestas P1-P8 |
+| `scores` | jsonb NOT NULL | Score global + 5 dimensiones |
+| `profile` | jsonb DEFAULT '{}' | Ego, vergüenza, negación detectada |
+| `map_evolution` | jsonb DEFAULT '{}' | Estado de evoluciones del mapa (días 3/7/14/21/30) |
+| `confidence_chain` | jsonb DEFAULT '{}' | Cadena de depósitos de confianza |
+| `funnel` | jsonb DEFAULT '{}' | Estado de conversión |
+| `meta` | jsonb DEFAULT '{}' | Fuente, dispositivo |
 
-**Estructura de `responses`:**
+**Índices:** `email` y `hash` para búsqueda rápida.
+
+**RLS:** Row Level Security activo. Solo el service role puede leer/escribir. Sin acceso público directo a la tabla.
+
+---
+
+## SQL de migración — Ejecutar en Supabase
+
+Ve a **Supabase Dashboard → SQL Editor** y ejecuta este bloque completo:
+
+```sql
+-- ─── Tabla principal ──────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS diagnosticos (
+  id            UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
+  email         TEXT        NOT NULL,
+  hash          TEXT        NOT NULL UNIQUE,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  responses     JSONB       NOT NULL DEFAULT '{}',
+  scores        JSONB       NOT NULL DEFAULT '{}',
+  profile       JSONB       NOT NULL DEFAULT '{}',
+  map_evolution JSONB       NOT NULL DEFAULT '{}',
+  confidence_chain JSONB    NOT NULL DEFAULT '{}',
+  funnel        JSONB       NOT NULL DEFAULT '{}',
+  meta          JSONB       NOT NULL DEFAULT '{}'
+);
+
+-- ─── Índices ─────────────────────────────────────────────────────────────────
+CREATE INDEX IF NOT EXISTS idx_diagnosticos_email ON diagnosticos (email);
+CREATE INDEX IF NOT EXISTS idx_diagnosticos_hash  ON diagnosticos (hash);
+
+-- ─── Row Level Security ───────────────────────────────────────────────────────
+ALTER TABLE diagnosticos ENABLE ROW LEVEL SECURITY;
+
+-- Sin políticas públicas → solo el service_role_key puede acceder
+-- Las API Routes del backend usan createAdminClient() con service_role_key
+-- El frontend NUNCA tiene acceso directo a esta tabla
+```
+
+**Para revertir (si hace falta):**
+```sql
+DROP TABLE IF EXISTS diagnosticos;
+```
+
+---
+
+## Estructura de los campos JSONB
+
+### `responses`
 ```json
 {
-  "p1": "agotamiento",
-  "p2": "menos_5h",
-  "p3": ["irritabilidad", "rumiacion"],
-  "p4": "peor",
-  "p5": "anestesia",
-  "p6": "perdida_proposito",
+  "p1": "A",
+  "p2": "B",
+  "p3": ["A", "C", "E"],
+  "p4": "A",
+  "p5": "B",
+  "p6": "A",
   "p7": {
     "regulacion": 3,
     "sueno": 2,
@@ -48,11 +88,11 @@ Las respuestas y resultados del diagnóstico.
     "emocional": 3,
     "alegria": 2
   },
-  "p8": "mas_2_anos"
+  "p8": "C"
 }
 ```
 
-**Estructura de `scores`:**
+### `scores`
 ```json
 {
   "global": 34,
@@ -60,94 +100,75 @@ Las respuestas y resultados del diagnóstico.
   "d2_sueno": 22,
   "d3_claridad": 45,
   "d4_emocional": 30,
-  "d5_alegria": 25
+  "d5_alegria": 25,
+  "label": "Crítico"
 }
 ```
 
-**Estructura de `profile`:**
+### `profile`
 ```json
 {
-  "ego_primary": "productivo",
-  "archetype": "perfeccionista",
-  "shame_level": "alta",
-  "fear_core": "irrelevancia",
-  "lock_level": 2,
-  "duration": "mas_2_anos",
-  "denial_detected": false
+  "ego_primary": "Fuerte Invisible",
+  "shame_level": "high",
+  "denial_detected": true
 }
 ```
 
-### `map_evolution`
-
-Estado de las evoluciones del mapa vivo (qué se ha desbloqueado y visto).
-
-| Columna | Tipo | Descripción |
-|---------|------|-------------|
-| `id` | uuid (PK) | Identificador único |
-| `user_id` | uuid (FK → users) | Dueño del mapa |
-| `archetype_unlocked` | boolean | Día 3: arquetipo desbloqueado |
-| `archetype_viewed` | boolean | Día 3: arquetipo visto por la persona |
-| `insight_d7_unlocked` | boolean | Día 7: insights desbloqueados |
-| `insight_d7_viewed` | boolean | Día 7: insights vistos |
-| `session_unlocked` | boolean | Día 10-14: sesión disponible |
-| `session_booked` | boolean | Sesión agendada |
-| `subdimensions_unlocked` | boolean | Día 14: subdimensiones disponibles |
-| `subdimensions_completed` | boolean | Subdimensiones completadas |
-| `subdimension_responses` | jsonb | Respuestas de subdimensiones |
-| `book_excerpt_unlocked` | boolean | Día 21: extracto del libro |
-| `book_excerpt_viewed` | boolean | Extracto visto |
-| `reevaluation_unlocked` | boolean | Día 30: reevaluación disponible |
-| `reevaluation_completed` | boolean | Reevaluación completada |
-| `reevaluation_scores` | jsonb | Scores de la reevaluación |
-| `reevaluations` | jsonb | Historial de reevaluaciones trimestrales |
-
-### `confidence_chain`
-
-Cadena de depósitos de confianza — mide cuánta confianza se construyó durante el diagnóstico.
-
-| Columna | Tipo | Descripción |
-|---------|------|-------------|
-| `user_id` | uuid (PK, FK → users) | Usuario |
-| `d1_first_truth` | boolean | ¿Continuó después de la primera verdad? |
-| `d2_collective_data` | boolean | ¿Continuó después del dato colectivo? |
-| `d3_mirror_1` | boolean | ¿Completó después del micro-espejo 1? |
-| `d4_mirror_2` | boolean | ¿Completó después del micro-espejo 2? |
-| `d5_bisagra` | boolean | ¿Llegó a la bisagra? |
-| `d6_email` | boolean | ¿Dio el email? |
-| `d7_result` | boolean | ¿Visitó el mapa? |
-| `abandoned_at_deposit` | int | En qué depósito se rompió la cadena (null si completó) |
-
 ### `funnel`
-
-Estado de conversión de la persona.
-
-| Columna | Tipo | Descripción |
-|---------|------|-------------|
-| `user_id` | uuid (PK, FK → users) | Usuario |
-| `gateway_completed` | boolean | ¿Completó el gateway? |
-| `email_captured` | boolean | ¿Dio su email? |
-| `map_visits` | int | Veces que ha visitado su mapa |
-| `map_last_visit` | timestamptz | Última visita al mapa |
-| `cta_clicked` | boolean | ¿Hizo clic en el CTA? |
-| `converted_week1` | boolean | ¿Pagó la Semana 1 (97€)? |
-| `converted_program` | boolean | ¿Se unió al programa completo? |
-| `session_booked` | boolean | ¿Agendó sesión con Javier? |
+```json
+{
+  "gateway_completed": true,
+  "email_captured": true,
+  "map_visits": 0,
+  "map_last_visit": null,
+  "cta_clicked": false,
+  "converted_week1": false,
+  "converted_program": false,
+  "session_booked": false
+}
+```
 
 ---
 
-## Seguridad (Row Level Security)
+## Variables de entorno requeridas
+
+Configura estas variables en **Vercel → Project Settings → Environment Variables** y en tu **`.env.local`** local:
+
+```
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIs...
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIs...   ← NUNCA exponer al cliente
+
+# Resend
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxx
+
+# App
+NEXT_PUBLIC_BASE_URL=https://tu-dominio.com
+```
+
+Cómo obtener las keys de Supabase:
+- Ir a Supabase Dashboard → Project Settings → API
+- `NEXT_PUBLIC_SUPABASE_URL` → Project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` → anon/public key
+- `SUPABASE_SERVICE_ROLE_KEY` → service_role key (mantener PRIVADA)
+
+Cómo obtener la key de Resend:
+- Ir a resend.com → API Keys → Create API Key
+- Verificar el dominio de envío en resend.com → Domains
+- Actualizar `FROM_EMAIL` en `src/lib/email.ts` con tu dominio verificado
+
+---
+
+## Seguridad
 
 - Los mapas vivos son privados por diseño.
-- RLS activo en todas las tablas.
-- Acceso público solo por `map_hash` — nunca por `user_id` directo.
-- Las API Routes del backend usan la `service_role_key` (nunca expuesta al frontend).
+- RLS activo en `diagnosticos`. Sin acceso público.
+- La URL con hash (12 chars) es el único método de acceso al mapa.
+- No hay autenticación pero las URLs no son indexables (noindex en metadata).
+- Los scores y datos sensibles solo se muestran en la URL personal, nunca en APIs públicas.
+- Todas las operaciones de BD van por `createAdminClient()` en rutas de API (backend), nunca desde el cliente.
 
 ---
 
-## Migraciones
-
-Todas las migraciones son reversibles. Cada archivo en `supabase/migrations/` incluye los cambios hacia adelante y cómo revertirlos. Nunca se ejecuta una migración sin aprobación previa.
-
----
-
-*L.A.R.S.© · Database Schema · Fase 0 · Marzo 2026*
+*L.A.R.S.© · Database Schema · Fase 4 · Marzo 2026*
