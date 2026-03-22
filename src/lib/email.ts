@@ -377,6 +377,129 @@ export async function sendDia30Email(to: string, mapHash: string): Promise<void>
   })
 }
 
+/** Post-pago: Protocolo + Sesión + MNN© */
+export async function sendPostPagoEmail(to: string, mapHash: string): Promise<void> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL ?? '#'
+
+  const html = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body style="
+  margin: 0; padding: 0;
+  background-color: #0B0F0E;
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  color: #E8EAE9;
+">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
+    <tr><td>
+
+      <p style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #4ADE80; margin: 0 0 8px 0;">
+        SEMANA 1
+      </p>
+
+      <p style="font-size: 28px; font-weight: 600; color: #E8EAE9; margin: 0 0 8px 0; line-height: 1.2;">
+        Tu Semana 1 ha comenzado.
+      </p>
+
+      <p style="font-size: 14px; color: #8A9E98; line-height: 1.6; margin: 0 0 40px 0;">
+        Has dado el paso que el 97% no da. Lo que sigue es que tu cuerpo note la diferencia.
+      </p>
+
+      <!-- Separador -->
+      <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 32px;"></div>
+
+      <!-- Protocolo -->
+      <p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A9E98; margin: 0 0 8px 0;">
+        TU PROTOCOLO DE SUEÑO DE EMERGENCIA
+      </p>
+
+      <table cellpadding="0" cellspacing="0" style="margin: 0 0 8px 0;">
+        <tr><td style="background: #4ADE80; border-radius: 100px; padding: 14px 28px;">
+          <a href="${mapUrl}" style="color: #0B0F0E; font-size: 14px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
+            Descargar el Protocolo
+          </a>
+        </td></tr>
+      </table>
+
+      <p style="font-size: 13px; color: #506258; line-height: 1.6; margin: 0 0 40px 0;">
+        Diseñado por el Dr. Carlos Alvear López.<br>
+        Empieza esta noche. Resultados en 72 horas.
+      </p>
+
+      <!-- Separador -->
+      <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 32px;"></div>
+
+      <!-- Sesión -->
+      <p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A9E98; margin: 0 0 8px 0;">
+        TU SESIÓN CON JAVIER
+      </p>
+
+      <table cellpadding="0" cellspacing="0" style="margin: 0 0 8px 0;">
+        <tr><td style="background: #4ADE80; border-radius: 100px; padding: 14px 28px;">
+          <a href="${bookingUrl}" style="color: #0B0F0E; font-size: 14px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
+            Agendar mi sesión
+          </a>
+        </td></tr>
+      </table>
+
+      <p style="font-size: 13px; color: #506258; line-height: 1.6; margin: 0 0 40px 0;">
+        Ya tiene tu Mapa de Regulación. No empezáis de cero.<br>
+        20-30 minutos. Esta semana.
+      </p>
+
+      <!-- Separador -->
+      <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 32px;"></div>
+
+      <!-- MNN -->
+      <p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A9E98; margin: 0 0 8px 0;">
+        TU MNN© (MAPA DE NIVELES DE NEUROTRANSMISORES)
+      </p>
+
+      <p style="font-size: 14px; color: #8A9E98; line-height: 1.6; margin: 0 0 40px 0;">
+        Recibirás las instrucciones para tu primer análisis bioquímico real en las próximas 24 horas.
+      </p>
+
+      <!-- Separador -->
+      <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 32px;"></div>
+
+      <!-- Garantía -->
+      <p style="font-size: 14px; color: #8A9E98; line-height: 1.6; margin: 0 0 8px 0;">
+        Recuerda: si tu sueño no mejora en 7 días, te devolvemos los 97€. Sin preguntas.
+      </p>
+      <p style="font-size: 14px; color: #E8EAE9; font-weight: 500; margin: 0 0 40px 0;">
+        Pero no los vas a necesitar.
+      </p>
+
+      <!-- Separador -->
+      <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 32px;"></div>
+
+      <!-- Firma -->
+      <p style="font-size: 14px; color: #E8EAE9; margin: 0 0 4px 0;">
+        Javier A. Martín Ramos
+      </p>
+      <p style="font-size: 13px; color: #506258; margin: 0;">
+        Director · Instituto Epigenético
+      </p>
+
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  await getResend().emails.send({
+    from: getFromEmail(),
+    to,
+    subject: 'Tu Semana 1 empieza ahora — aquí tienes todo',
+    html,
+  })
+}
+
 /** Día 90+: Reevaluación trimestral */
 export async function sendDia90Email(to: string, mapHash: string): Promise<void> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'

@@ -13,6 +13,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createAdminClient } from '@/lib/supabase'
+import { sendPostPagoEmail } from '@/lib/email'
 
 function getStripe(): Stripe | null {
   const key = process.env.STRIPE_SECRET_KEY
@@ -80,6 +81,20 @@ export async function POST(req: NextRequest) {
           .eq('hash', hash)
 
         console.log(`[webhook] Conversión registrada — hash: ${hash}, sesión: ${stripeSessionId}, €${amountTotal / 100}`)
+
+        // Enviar email post-pago (fire-and-forget)
+        const emailTo = customerEmail ?? (await supabase
+          .from('diagnosticos')
+          .select('email')
+          .eq('hash', hash)
+          .single<{ email: string }>()
+          .then(r => r.data?.email)) ?? null
+
+        if (emailTo) {
+          void sendPostPagoEmail(emailTo, hash).catch((err) => {
+            console.error('[webhook] Error enviando email post-pago:', err)
+          })
+        }
       } catch (err) {
         console.error('[webhook] Supabase update failed:', err)
       }

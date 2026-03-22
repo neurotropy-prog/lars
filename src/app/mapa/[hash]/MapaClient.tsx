@@ -59,6 +59,7 @@ interface Props {
   reevaluationScores: ReevaluationScores | null
   worstDimensionName: string
   worstScore: number
+  hasPaid: boolean
 }
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
@@ -122,6 +123,7 @@ export default function MapaClient({
   reevaluationScores,
   worstDimensionName,
   worstScore,
+  hasPaid,
 }: Props) {
   const [displayScore, setDisplayScore] = useState(0)
   const [visibleDims, setVisibleDims] = useState(-1)
@@ -688,78 +690,124 @@ export default function MapaClient({
                 </p>
               </div>
 
-              {/* Pre-CTA */}
-              <p style={{
-                fontFamily: 'var(--font-cormorant)',
-                fontSize: 'var(--text-h2)',
-                lineHeight: 'var(--lh-h2)',
-                letterSpacing: 'var(--ls-h2)',
-                fontStyle: 'italic',
-                fontWeight: 500,
-                color: 'var(--color-text-primary)',
-                marginBottom: 'var(--space-5)',
-              }}>
-                Tu sistema nervioso lleva años sosteniendo lo que tú no podías soltar. Ahora tienes el mapa.
-              </p>
-
-              <p style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: 'var(--text-body)',
-                lineHeight: 'var(--lh-body)',
-                color: 'var(--color-text-primary)',
-                marginBottom: 'var(--space-8)',
-              }}>
-                Los primeros cambios llegan en 72 horas. No en meses — en 3 días.
-                El Protocolo de Sueño de Emergencia está diseñado para que tu cuerpo
-                note la diferencia antes de que tu mente decida si confía.
-              </p>
-
-              {/* Botón Stripe */}
-              <Button
-                variant="primary"
-                size="large"
-                onClick={handleStripeCheckout}
-                disabled={checkoutLoading}
-                style={{ width: '100%', marginBottom: 'var(--space-3)' }}
-              >
-                {checkoutLoading ? 'Redirigiendo…' : 'Empieza la Semana 1'}
-              </Button>
-
-              {checkoutError && (
-                <p style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: 'var(--text-body-sm)',
-                  color: 'var(--color-error)',
+              {hasPaid ? (
+                /* ── SEMANA 1 EN MARCHA (ya pagó) ── */
+                <div style={{
+                  padding: 'var(--space-6)',
+                  borderRadius: 'var(--radius-lg)',
+                  background: 'rgba(74,222,128,0.04)',
+                  border: '1px solid rgba(74,222,128,0.18)',
+                  marginBottom: 'var(--space-6)',
                   textAlign: 'center',
-                  marginBottom: 'var(--space-3)',
                 }}>
-                  {checkoutError}
-                </p>
+                  <span style={{
+                    display: 'inline-block',
+                    padding: 'var(--space-1) var(--space-4)',
+                    borderRadius: 'var(--radius-pill)',
+                    background: 'rgba(74,222,128,0.1)',
+                    color: 'var(--color-success)',
+                    fontFamily: 'var(--font-inter-tight)',
+                    fontSize: 'var(--text-caption)',
+                    fontWeight: 500,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    marginBottom: 'var(--space-3)',
+                  }}>
+                    Semana 1
+                  </span>
+                  <p style={{
+                    fontFamily: 'var(--font-inter-tight)',
+                    fontSize: 'var(--text-h4)',
+                    fontWeight: 500,
+                    color: 'var(--color-text-primary)',
+                    marginBottom: 'var(--space-2)',
+                  }}>
+                    Tu Semana 1 está en marcha
+                  </p>
+                  <p style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: 'var(--text-body-sm)',
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: 'var(--lh-body)',
+                  }}>
+                    Siguiente: agendar tu sesión con Javier. Revisa tu email para el Protocolo de Sueño de Emergencia.
+                  </p>
+                </div>
+              ) : (
+                /* ── CTA STRIPE (no ha pagado) ── */
+                <>
+                  <p style={{
+                    fontFamily: 'var(--font-cormorant)',
+                    fontSize: 'var(--text-h2)',
+                    lineHeight: 'var(--lh-h2)',
+                    letterSpacing: 'var(--ls-h2)',
+                    fontStyle: 'italic',
+                    fontWeight: 500,
+                    color: 'var(--color-text-primary)',
+                    marginBottom: 'var(--space-5)',
+                  }}>
+                    Tu sistema nervioso lleva años sosteniendo lo que tú no podías soltar. Ahora tienes el mapa.
+                  </p>
+
+                  <p style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: 'var(--text-body)',
+                    lineHeight: 'var(--lh-body)',
+                    color: 'var(--color-text-primary)',
+                    marginBottom: 'var(--space-8)',
+                  }}>
+                    Los primeros cambios llegan en 72 horas. No en meses — en 3 días.
+                    El Protocolo de Sueño de Emergencia está diseñado para que tu cuerpo
+                    note la diferencia antes de que tu mente decida si confía.
+                  </p>
+
+                  <Button
+                    variant="primary"
+                    size="large"
+                    onClick={handleStripeCheckout}
+                    disabled={checkoutLoading}
+                    style={{ width: '100%', marginBottom: 'var(--space-3)' }}
+                  >
+                    {checkoutLoading ? 'Redirigiendo…' : 'Empieza la Semana 1'}
+                  </Button>
+
+                  {checkoutError && (
+                    <p style={{
+                      fontFamily: 'var(--font-inter)',
+                      fontSize: 'var(--text-body-sm)',
+                      color: 'var(--color-error)',
+                      textAlign: 'center',
+                      marginBottom: 'var(--space-3)',
+                    }}>
+                      {checkoutError}
+                    </p>
+                  )}
+
+                  <p style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: 'var(--text-body-sm)',
+                    color: 'var(--color-text-tertiary)',
+                    textAlign: 'center',
+                    lineHeight: 'var(--lh-body-sm)',
+                    marginBottom: 'var(--space-2)',
+                  }}>
+                    97€ · Protocolo de Sueño de Emergencia + Sesión 1:1 con Javier + MNN© · Garantía de 7 días
+                  </p>
+                  <p style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: 'var(--text-caption)',
+                    color: 'var(--color-text-tertiary)',
+                    textAlign: 'center',
+                    marginBottom: 'var(--space-6)',
+                    opacity: 0.7,
+                  }}>
+                    Si tu sueño no mejora en 7 días, te devolvemos los 97€. Sin preguntas.
+                  </p>
+                </>
               )}
 
-              <p style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: 'var(--text-body-sm)',
-                color: 'var(--color-text-tertiary)',
-                textAlign: 'center',
-                lineHeight: 'var(--lh-body-sm)',
-                marginBottom: 'var(--space-2)',
-              }}>
-                97€ · Protocolo de Sueño de Emergencia + Sesión 1:1 con Javier + MNN© · Garantía de 7 días
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: 'var(--text-caption)',
-                color: 'var(--color-text-tertiary)',
-                textAlign: 'center',
-                marginBottom: 'var(--space-6)',
-                opacity: 0.7,
-              }}>
-                Si tu sueño no mejora en 7 días, te devolvemos los 97€. Sin preguntas.
-              </p>
-
-              {/* Card colapsable — Qué incluye */}
-              <div style={{
+              {/* Card colapsable — Qué incluye (solo si no ha pagado) */}
+              {!hasPaid && <div style={{
                 border: 'var(--border-subtle)',
                 borderRadius: 'var(--radius-lg)',
                 overflow: 'hidden',
@@ -811,7 +859,7 @@ export default function MapaClient({
                     ))}
                   </div>
                 )}
-              </div>
+              </div>}
 
               {/* M8 — Urgencia natural */}
               <div style={{ marginBottom: 'var(--space-12)' }}>
