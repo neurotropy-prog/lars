@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     }, { status: 503 })
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://lars-eight.vercel.app'
   const mapaUrl = `${baseUrl}/mapa/${hash}`
 
   try {

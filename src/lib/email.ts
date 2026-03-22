@@ -52,7 +52,7 @@ export async function sendDia0Email({
   d5,
   mapHash,
 }: SendDia0EmailParams): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars-eight.vercel.app'
   const mapUrl = `${baseUrl}/mapa/${mapHash}`
 
   const { key: worstKey, score: worstScore } = getMostCompromised(d1, d2, d3, d4, d5)
@@ -253,7 +253,7 @@ function buildEvolutionEmail(params: {
 
 /** Día 3: Arquetipo del Sistema Nervioso */
 export async function sendDia3Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars-eight.vercel.app'
   const mapUrl = `${baseUrl}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
@@ -274,7 +274,7 @@ export async function sendDia3Email(to: string, mapHash: string): Promise<void> 
 
 /** Día 7: Insight de inteligencia colectiva */
 export async function sendDia7Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars-eight.vercel.app'
   const mapUrl = `${baseUrl}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
@@ -295,7 +295,7 @@ export async function sendDia7Email(to: string, mapHash: string): Promise<void> 
 
 /** Día 10: Sesión con Javier */
 export async function sendDia10Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars-eight.vercel.app'
   const mapUrl = `${baseUrl}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
@@ -316,7 +316,7 @@ export async function sendDia10Email(to: string, mapHash: string): Promise<void>
 
 /** Día 14: Subdimensiones */
 export async function sendDia14Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars-eight.vercel.app'
   const mapUrl = `${baseUrl}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
@@ -337,7 +337,7 @@ export async function sendDia14Email(to: string, mapHash: string): Promise<void>
 
 /** Día 21: Extracto del libro */
 export async function sendDia21Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars-eight.vercel.app'
   const mapUrl = `${baseUrl}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
@@ -358,7 +358,7 @@ export async function sendDia21Email(to: string, mapHash: string): Promise<void>
 
 /** Día 30: Reevaluación */
 export async function sendDia30Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars-eight.vercel.app'
   const mapUrl = `${baseUrl}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
@@ -379,7 +379,7 @@ export async function sendDia30Email(to: string, mapHash: string): Promise<void>
 
 /** Post-pago: Protocolo + Sesión + MNN© */
 export async function sendPostPagoEmail(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars-eight.vercel.app'
   const mapUrl = `${baseUrl}/mapa/${mapHash}`
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL ?? '#'
 
@@ -502,7 +502,7 @@ export async function sendPostPagoEmail(to: string, mapHash: string): Promise<vo
 
 /** Día 90+: Reevaluación trimestral */
 export async function sendDia90Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigeinetico.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars-eight.vercel.app'
   const mapUrl = `${baseUrl}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
