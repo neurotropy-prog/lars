@@ -172,22 +172,17 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
               gap: 'var(--space-4)',
             }}>
               {/* Avatar placeholder */}
-              <div style={{
-                width: '64px',
-                height: '64px',
-                borderRadius: '50%',
-                background: 'rgba(74,222,128,0.08)',
-                border: '1px solid rgba(74,222,128,0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: 'var(--font-cormorant)',
-                fontSize: '24px',
-                fontWeight: 600,
-                color: 'var(--color-accent)',
-              }}>
-                JM
-              </div>
+              <img
+                src="/javier.jpeg"
+                alt="Javier A. Martín Ramos"
+                style={{
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '1px solid rgba(74,222,128,0.2)',
+                }}
+              />
 
               <div>
                 <p style={{
