@@ -103,6 +103,9 @@ export default function DisponibilidadPage() {
     if (saved) {
       setSecret(saved)
       setAuthenticated(true)
+    } else {
+      // Sin contraseña → redirigir al home de admin
+      window.location.href = '/admin'
     }
   }, [])
 
