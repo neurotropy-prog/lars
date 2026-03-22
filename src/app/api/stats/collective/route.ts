@@ -12,7 +12,7 @@ import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase'
 import { COLLECTIVE_BASELINE } from '@/lib/content/collective-stats'
 
-export const revalidate = 3600 // cache 1 hora
+export const dynamic = 'force-dynamic'
 
 export async function GET() {
   const supabase = createAdminClient()
