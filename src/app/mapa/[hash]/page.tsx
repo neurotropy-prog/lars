@@ -62,9 +62,17 @@ export default async function MapaPage({
       .select('scores, meta, created_at')
       .eq('hash', hash)
       .single<DiagnosticoRow>()
-    if (result.error || !result.data) notFound()
+    if (result.error) {
+      console.error('[mapa] Supabase error:', result.error.message, '— hash:', hash)
+      notFound()
+    }
+    if (!result.data) {
+      console.error('[mapa] Hash no encontrado en BD:', hash)
+      notFound()
+    }
     data = result.data
-  } catch {
+  } catch (err) {
+    console.error('[mapa] Error inesperado:', err instanceof Error ? err.message : err, '— hash:', hash)
     notFound()
   }
 
