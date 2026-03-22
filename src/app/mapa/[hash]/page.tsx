@@ -178,18 +178,24 @@ export default async function MapaPage({
   const { hash } = await params
 
   // Cargar diagnóstico desde Supabase
-  const supabase = createAdminClient()
-  const { data, error } = await supabase
-    .from('diagnosticos')
-    .select('scores, created_at')
-    .eq('hash', hash)
-    .single<DiagnosticoRow>()
-
-  if (error || !data) {
+  let data: DiagnosticoRow | null = null
+  try {
+    const supabase = createAdminClient()
+    const result = await supabase
+      .from('diagnosticos')
+      .select('scores, created_at')
+      .eq('hash', hash)
+      .single<DiagnosticoRow>()
+    if (result.error || !result.data) {
+      notFound()
+    }
+    data = result.data
+  } catch {
+    // Supabase no configurado (env vars ausentes) o hash no existe
     notFound()
   }
 
-  const { scores } = data
+  const { scores } = data!
   const d1 = scores.d1_regulacion
   const d2 = scores.d2_sueno
   const d3 = scores.d3_claridad
