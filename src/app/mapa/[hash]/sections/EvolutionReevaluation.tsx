@@ -120,64 +120,31 @@ export default function EvolutionReevaluation({
     }
   }, [submitting, hash, sliders, daysSinceCreation])
 
-  // ── Vista: Resultado recién completado (acaba de enviar sliders) ──
-  if (justCompleted) {
-    const insight = getReevaluationInsight(
-      referenceScores,
-      justCompleted,
-      daysSinceCreation,
-    )
+  // Determinar modo: sliders (pendiente), comparación (completado), o recién enviado
+  const mode: 'sliders' | 'comparison' | 'just_completed' = justCompleted
+    ? 'just_completed'
+    : isNew
+      ? 'sliders'
+      : 'comparison'
 
-    return (
-      <div
-        className="mapa-fade-up"
-        style={{
-          backgroundColor: 'var(--color-bg-secondary)',
-          border: 'var(--border-subtle)',
-          borderRadius: 'var(--radius-lg)',
-          padding: 'var(--space-6)',
-        }}
-      >
-        <ComparisonView
-          insight={insight}
-          referenceScores={referenceScores}
-          newScores={justCompleted}
-          reevaluations={reevaluations}
-        />
-      </div>
-    )
-  }
+  // Preparar datos de comparación si aplican
+  const comparisonInsight = mode === 'just_completed'
+    ? getReevaluationInsight(referenceScores, justCompleted!, daysSinceCreation)
+    : mode === 'comparison' && lastReeval
+      ? getReevaluationInsight(originalScores, lastReeval.scores, daysSinceCreation)
+      : null
 
-  // ── Vista: Sin milestone pendiente — mostrar última comparación ──
-  if (!isNew && reevaluations.length > 0) {
-    const latestScores = lastReeval!.scores
-    const insight = getReevaluationInsight(
-      originalScores,
-      latestScores,
-      daysSinceCreation,
-    )
+  const comparisonNewScores = mode === 'just_completed'
+    ? justCompleted!
+    : mode === 'comparison' && lastReeval
+      ? lastReeval.scores
+      : null
 
-    return (
-      <div
-        className="mapa-fade-up"
-        style={{
-          backgroundColor: 'var(--color-bg-secondary)',
-          border: 'var(--border-subtle)',
-          borderRadius: 'var(--radius-lg)',
-          padding: 'var(--space-6)',
-        }}
-      >
-        <ComparisonView
-          insight={insight}
-          referenceScores={originalScores}
-          newScores={latestScores}
-          reevaluations={reevaluations}
-        />
-      </div>
-    )
-  }
+  const comparisonRefScores = mode === 'just_completed'
+    ? referenceScores
+    : originalScores
 
-  // ── Vista: Sliders (milestone pendiente — isNew=true) ──
+  // Un solo return — evita hydration mismatch
   return (
     <div
       className="mapa-fade-up"
@@ -188,137 +155,148 @@ export default function EvolutionReevaluation({
         padding: 'var(--space-6)',
       }}
     >
-      {/* Badge */}
-      <div style={{ marginBottom: 'var(--space-3)' }}>
-        <Badge status="un_mes">{badgeLabel}</Badge>
-      </div>
+      {mode === 'sliders' ? (
+        <>
+          {/* Badge */}
+          <div style={{ marginBottom: 'var(--space-3)' }}>
+            <Badge status="un_mes">{badgeLabel}</Badge>
+          </div>
 
-      {/* Título */}
-      <p
-        style={{
-          fontFamily: 'var(--font-plus-jakarta)',
-          fontSize: 'var(--text-h4)',
-          fontWeight: 600,
-          color: 'var(--color-text-primary)',
-          lineHeight: 'var(--lh-h4)',
-          marginBottom: 'var(--space-2)',
-        }}
-      >
-        {isQuarterly
-          ? `${Math.floor(daysSinceCreation / 30)} meses desde tu diagnóstico`
-          : 'Un mes desde tu diagnóstico'}
-      </p>
+          {/* Título */}
+          <p
+            style={{
+              fontFamily: 'var(--font-plus-jakarta)',
+              fontSize: 'var(--text-h4)',
+              fontWeight: 600,
+              color: 'var(--color-text-primary)',
+              lineHeight: 'var(--lh-h4)',
+              marginBottom: 'var(--space-2)',
+            }}
+          >
+            {isQuarterly
+              ? `${Math.floor(daysSinceCreation / 30)} meses desde tu diagnóstico`
+              : 'Un mes desde tu diagnóstico'}
+          </p>
 
-      {/* Contexto si hay reevaluaciones previas */}
-      {lastReeval && (
-        <p
-          style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: 'var(--text-caption)',
-            color: 'var(--color-text-tertiary)',
-            marginBottom: 'var(--space-2)',
-          }}
-        >
-          Tu score original: {originalScores.global}/100 · Última reevaluación: {lastReeval.scores.global}/100
-        </p>
-      )}
-
-      <p
-        style={{
-          fontFamily: 'var(--font-inter)',
-          fontSize: 'var(--text-body-sm)',
-          lineHeight: 'var(--lh-body)',
-          color: 'var(--color-text-secondary)',
-          marginBottom: 'var(--space-6)',
-        }}
-      >
-        ¿Ha cambiado algo? Mueve los sliders para actualizar tu mapa.
-      </p>
-
-      {/* 5 Sliders con color dinámico */}
-      {SLIDER_KEYS.map((k) => {
-        const val = sliders[k]
-        const color = getSliderColor(val)
-
-        return (
-          <div key={k} style={{ marginBottom: 'var(--space-5)' }}>
-            <div
+          {/* Contexto si hay reevaluaciones previas */}
+          {lastReeval && (
+            <p
               style={{
-                display: 'flex',
-                justifyContent: 'space-between',
+                fontFamily: 'var(--font-inter)',
+                fontSize: 'var(--text-caption)',
+                color: 'var(--color-text-tertiary)',
                 marginBottom: 'var(--space-2)',
               }}
             >
-              <span
-                style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: 'var(--text-body-sm)',
-                  color: 'var(--color-text-primary)',
-                }}
-              >
-                {DIMENSION_LABELS[k]}
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-plus-jakarta)',
-                  fontSize: 'var(--text-body-sm)',
-                  fontWeight: 600,
-                  color: color,
-                }}
-              >
-                {val}/10
-              </span>
-            </div>
-            <input
-              type="range"
-              min={1}
-              max={10}
-              value={val}
-              onChange={(e) =>
-                setSliders((prev) => ({
-                  ...prev,
-                  [k]: parseInt(e.target.value, 10),
-                }))
-              }
+              Tu score original: {originalScores.global}/100 · Última reevaluación: {lastReeval.scores.global}/100
+            </p>
+          )}
+
+          <p
+            style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: 'var(--text-body-sm)',
+              lineHeight: 'var(--lh-body)',
+              color: 'var(--color-text-secondary)',
+              marginBottom: 'var(--space-6)',
+            }}
+          >
+            ¿Ha cambiado algo? Mueve los sliders para actualizar tu mapa.
+          </p>
+
+          {/* 5 Sliders con color dinámico */}
+          {SLIDER_KEYS.map((k) => {
+            const val = sliders[k]
+            const color = getSliderColor(val)
+
+            return (
+              <div key={k} style={{ marginBottom: 'var(--space-5)' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    marginBottom: 'var(--space-2)',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-inter)',
+                      fontSize: 'var(--text-body-sm)',
+                      color: 'var(--color-text-primary)',
+                    }}
+                  >
+                    {DIMENSION_LABELS[k]}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontSize: 'var(--text-body-sm)',
+                      fontWeight: 600,
+                      color: color,
+                    }}
+                  >
+                    {val}/10
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={10}
+                  value={val}
+                  onChange={(e) =>
+                    setSliders((prev) => ({
+                      ...prev,
+                      [k]: parseInt(e.target.value, 10),
+                    }))
+                  }
+                  style={{
+                    width: '100%',
+                    height: '6px',
+                    borderRadius: '3px',
+                    background: getSliderBackground(val),
+                    WebkitAppearance: 'none',
+                    appearance: 'none',
+                    outline: 'none',
+                    cursor: 'pointer',
+                  }}
+                />
+              </div>
+            )
+          })}
+
+          {/* Error */}
+          {error && (
+            <p
               style={{
-                width: '100%',
-                height: '6px',
-                borderRadius: '3px',
-                background: getSliderBackground(val),
-                WebkitAppearance: 'none',
-                appearance: 'none',
-                outline: 'none',
-                cursor: 'pointer',
+                fontFamily: 'var(--font-inter)',
+                fontSize: 'var(--text-body-sm)',
+                color: 'var(--color-error)',
+                marginBottom: 'var(--space-3)',
               }}
-            />
-          </div>
-        )
-      })}
+            >
+              {error}
+            </p>
+          )}
 
-      {/* Error */}
-      {error && (
-        <p
-          style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: 'var(--text-body-sm)',
-            color: 'var(--color-error)',
-            marginBottom: 'var(--space-3)',
-          }}
-        >
-          {error}
-        </p>
-      )}
-
-      {/* Submit */}
-      <Button
-        variant="secondary"
-        size="small"
-        onClick={handleSubmit}
-        disabled={submitting}
-        style={{ width: '100%' }}
-      >
-        {submitting ? 'Calculando...' : 'Actualizar mi mapa'}
-      </Button>
+          {/* Submit */}
+          <Button
+            variant="secondary"
+            size="small"
+            onClick={handleSubmit}
+            disabled={submitting}
+            style={{ width: '100%' }}
+          >
+            {submitting ? 'Calculando...' : 'Actualizar mi mapa'}
+          </Button>
+        </>
+      ) : comparisonInsight && comparisonNewScores ? (
+        <ComparisonView
+          insight={comparisonInsight}
+          referenceScores={comparisonRefScores}
+          newScores={comparisonNewScores}
+          reevaluations={reevaluations}
+        />
+      ) : null}
     </div>
   )
 }

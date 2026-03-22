@@ -13,7 +13,7 @@ import Stripe from 'stripe'
 function getStripe(): Stripe | null {
   const key = process.env.STRIPE_SECRET_KEY
   if (!key || key.startsWith('sk_test_xxx') || key === 'your_stripe_secret_key') return null
-  return new Stripe(key, { apiVersion: '2026-02-25.clover' })
+  return new Stripe(key)
 }
 
 export async function POST(req: NextRequest) {
@@ -47,14 +47,7 @@ export async function POST(req: NextRequest) {
       mode: 'payment',
       line_items: [
         {
-          price_data: {
-            currency: 'eur',
-            unit_amount: 9700, // 97€ en céntimos
-            product_data: {
-              name: 'L.A.R.S. — Semana 1',
-              description: 'Protocolo de Sueño de Emergencia + Sesión 1:1 con Javier + MNN© · Garantía de 7 días',
-            },
-          },
+          price: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID!,
           quantity: 1,
         },
       ],
