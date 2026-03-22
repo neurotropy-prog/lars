@@ -31,6 +31,32 @@ function getFromEmail(): string {
   return isDev ? FROM_EMAIL_DEV : FROM_EMAIL
 }
 
+function getBaseUrl(): string {
+  return process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
+}
+
+function trackingPixelHtml(mapHash: string, emailKey: string): string {
+  const url = `${getBaseUrl()}/api/email/open?h=${mapHash}&e=${emailKey}`
+  return `<img src="${url}" width="1" height="1" alt="" style="display:block;width:1px;height:1px;border:0;" />`
+}
+
+function unsubscribeUrl(mapHash: string): string {
+  return `${getBaseUrl()}/api/email/unsubscribe?h=${mapHash}`
+}
+
+function unsubscribeFooterHtml(mapHash: string): string {
+  const url = unsubscribeUrl(mapHash)
+  return `<p style="font-size: 11px; color: #3A4A42; margin: 16px 0 0 0;"><a href="${url}" style="color: #3A4A42; text-decoration: underline;">Darme de baja</a></p>`
+}
+
+function listUnsubscribeHeaders(mapHash: string): Record<string, string> {
+  const url = unsubscribeUrl(mapHash)
+  return {
+    'List-Unsubscribe': `<${url}>`,
+    'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+  }
+}
+
 interface SendDia0EmailParams {
   to: string
   globalScore: number
@@ -52,8 +78,7 @@ export async function sendDia0Email({
   d5,
   mapHash,
 }: SendDia0EmailParams): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const mapUrl = `${getBaseUrl()}/mapa/${mapHash}`
 
   const { key: worstKey, score: worstScore } = getMostCompromised(d1, d2, d3, d4, d5)
   const worstColor = getScoreColor(worstScore)
@@ -192,6 +217,9 @@ export async function sendDia0Email({
           Confidencial. Solo tú puedes verlo.
         </p>
 
+        ${unsubscribeFooterHtml(mapHash)}
+        ${trackingPixelHtml(mapHash, 'd0')}
+
       </td>
     </tr>
   </table>
@@ -204,6 +232,7 @@ export async function sendDia0Email({
     to,
     subject: 'Tu Mapa de Regulación',
     html,
+    headers: listUnsubscribeHeaders(mapHash),
   })
 }
 
@@ -217,6 +246,8 @@ function buildEvolutionEmail(params: {
   content: string
   buttonText: string
   mapUrl: string
+  mapHash: string
+  emailKey: string
 }): string {
   return `
 <!DOCTYPE html>
@@ -245,6 +276,8 @@ function buildEvolutionEmail(params: {
       <p style="font-size: 13px; color: #506258; line-height: 1.6; margin: 0;">
         Este mapa es tuyo. Confidencial. Solo tú puedes verlo.
       </p>
+      ${unsubscribeFooterHtml(params.mapHash)}
+      ${trackingPixelHtml(params.mapHash, params.emailKey)}
     </td></tr>
   </table>
 </body>
@@ -253,8 +286,7 @@ function buildEvolutionEmail(params: {
 
 /** Día 3: Arquetipo del Sistema Nervioso */
 export async function sendDia3Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const mapUrl = `${getBaseUrl()}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
     content: `
@@ -262,20 +294,19 @@ export async function sendDia3Email(to: string, mapHash: string): Promise<void> 
         Tu arquetipo del sistema nervioso está disponible. Es la pieza que faltaba para entender por qué tu cuerpo responde como responde.
       </p>`,
     buttonText: 'Ver mi mapa',
-    mapUrl,
+    mapUrl, mapHash, emailKey: 'd3',
   })
 
   await getResend().emails.send({
     from: getFromEmail(), to,
     subject: 'Hay algo nuevo en tu mapa de regulación',
-    html,
+    html, headers: listUnsubscribeHeaders(mapHash),
   })
 }
 
 /** Día 7: Insight de inteligencia colectiva */
 export async function sendDia7Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const mapUrl = `${getBaseUrl()}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
     content: `
@@ -283,20 +314,19 @@ export async function sendDia7Email(to: string, mapHash: string): Promise<void> 
         Nuevo insight sobre tu dimensión más comprometida. Un dato que no existía cuando hiciste tu diagnóstico.
       </p>`,
     buttonText: 'Ver mi mapa',
-    mapUrl,
+    mapUrl, mapHash, emailKey: 'd7',
   })
 
   await getResend().emails.send({
     from: getFromEmail(), to,
     subject: 'Tu mapa se ha actualizado',
-    html,
+    html, headers: listUnsubscribeHeaders(mapHash),
   })
 }
 
 /** Día 10: Sesión con Javier */
 export async function sendDia10Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const mapUrl = `${getBaseUrl()}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
     content: `
@@ -304,20 +334,19 @@ export async function sendDia10Email(to: string, mapHash: string): Promise<void>
         20 minutos. Sin compromiso. Ya tiene tus datos.
       </p>`,
     buttonText: 'Agendar sesión',
-    mapUrl,
+    mapUrl, mapHash, emailKey: 'd10',
   })
 
   await getResend().emails.send({
     from: getFromEmail(), to,
     subject: 'Javier puede revisar tu mapa contigo',
-    html,
+    html, headers: listUnsubscribeHeaders(mapHash),
   })
 }
 
 /** Día 14: Subdimensiones */
 export async function sendDia14Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const mapUrl = `${getBaseUrl()}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
     content: `
@@ -325,20 +354,19 @@ export async function sendDia14Email(to: string, mapHash: string): Promise<void>
         2 preguntas más para aumentar la resolución de tu diagnóstico.
       </p>`,
     buttonText: 'Ver mi mapa',
-    mapUrl,
+    mapUrl, mapHash, emailKey: 'd14',
   })
 
   await getResend().emails.send({
     from: getFromEmail(), to,
     subject: 'Hay 3 subdimensiones nuevas disponibles',
-    html,
+    html, headers: listUnsubscribeHeaders(mapHash),
   })
 }
 
 /** Día 21: Extracto del libro */
 export async function sendDia21Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const mapUrl = `${getBaseUrl()}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
     content: `
@@ -346,20 +374,19 @@ export async function sendDia21Email(to: string, mapHash: string): Promise<void>
         Basado en tu dimensión más comprometida. Del libro "Burnout: El Renacimiento del Líder Fénix."
       </p>`,
     buttonText: 'Ver mi mapa',
-    mapUrl,
+    mapUrl, mapHash, emailKey: 'd21',
   })
 
   await getResend().emails.send({
     from: getFromEmail(), to,
     subject: 'Un capítulo escrito para tu situación',
-    html,
+    html, headers: listUnsubscribeHeaders(mapHash),
   })
 }
 
 /** Día 30: Reevaluación */
 export async function sendDia30Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const mapUrl = `${getBaseUrl()}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
     content: `
@@ -367,20 +394,19 @@ export async function sendDia30Email(to: string, mapHash: string): Promise<void>
         Actualiza tu mapa en 30 segundos. Tus scores anteriores se guardan para que veas la evolución.
       </p>`,
     buttonText: 'Actualizar mi mapa',
-    mapUrl,
+    mapUrl, mapHash, emailKey: 'd30',
   })
 
   await getResend().emails.send({
     from: getFromEmail(), to,
     subject: 'Un mes desde tu diagnóstico — ¿ha cambiado algo?',
-    html,
+    html, headers: listUnsubscribeHeaders(mapHash),
   })
 }
 
 /** Post-pago: Protocolo + Sesión + MNN© */
 export async function sendPostPagoEmail(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const mapUrl = `${getBaseUrl()}/mapa/${mapHash}`
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL ?? '#'
 
   const html = `
@@ -487,6 +513,8 @@ export async function sendPostPagoEmail(to: string, mapHash: string): Promise<vo
         Director · Instituto Epigenético
       </p>
 
+      ${unsubscribeFooterHtml(mapHash)}
+
     </td></tr>
   </table>
 </body>
@@ -497,13 +525,13 @@ export async function sendPostPagoEmail(to: string, mapHash: string): Promise<vo
     to,
     subject: 'Tu Semana 1 empieza ahora — aquí tienes todo',
     html,
+    headers: listUnsubscribeHeaders(mapHash),
   })
 }
 
 /** Día 90+: Reevaluación trimestral */
 export async function sendDia90Email(to: string, mapHash: string): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-  const mapUrl = `${baseUrl}/mapa/${mapHash}`
+  const mapUrl = `${getBaseUrl()}/mapa/${mapHash}`
 
   const html = buildEvolutionEmail({
     content: `
@@ -514,12 +542,12 @@ export async function sendDia90Email(to: string, mapHash: string): Promise<void>
         Tu mapa sigue aquí. Actualízalo en 30 segundos y compara.
       </p>`,
     buttonText: 'Actualizar mi mapa',
-    mapUrl,
+    mapUrl, mapHash, emailKey: 'd90',
   })
 
   await getResend().emails.send({
     from: getFromEmail(), to,
     subject: '3 meses desde tu mapa — una pregunta',
-    html,
+    html, headers: listUnsubscribeHeaders(mapHash),
   })
 }

@@ -34,6 +34,10 @@ export interface MapEvolutionData {
   email_d21_sent?: boolean
   email_d30_sent?: boolean
   email_d90_sent?: string[] // ISO dates of sent d90 emails
+  // Open tracking & suppression
+  email_opens?: Record<string, string> // key = email key (d0, d3...), value = ISO date
+  consecutive_unopened?: number // resets to 0 on any open
+  email_unsubscribed?: boolean
 }
 
 export interface ReevaluationScores {
