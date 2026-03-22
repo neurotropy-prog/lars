@@ -145,12 +145,18 @@ export default function DisponibilidadPage() {
     setAuthenticated(true)
   }
 
+  // Normaliza "10:20:00" → "10:20" para comparar con los bloques del UI
+  function normalizeTime(t: string | null): string {
+    if (!t) return ''
+    return t.slice(0, 5)
+  }
+
   function isSlotActive(dayOfWeek: number, startTime: string, endTime: string): boolean {
     return rules.some(
       (r) =>
         r.day_of_week === dayOfWeek &&
-        r.start_time === startTime &&
-        r.end_time === endTime &&
+        normalizeTime(r.start_time) === startTime &&
+        normalizeTime(r.end_time) === endTime &&
         !r.is_blocked
     )
   }
@@ -159,8 +165,8 @@ export default function DisponibilidadPage() {
     return rules.find(
       (r) =>
         r.day_of_week === dayOfWeek &&
-        r.start_time === startTime &&
-        r.end_time === endTime &&
+        normalizeTime(r.start_time) === startTime &&
+        normalizeTime(r.end_time) === endTime &&
         !r.is_blocked
     )?.id ?? null
   }
@@ -461,16 +467,16 @@ export default function DisponibilidadPage() {
                                 height: '30px',
                                 borderRadius: 'var(--radius-sm)',
                                 border: active
-                                  ? '1px solid rgba(74,222,128,0.3)'
+                                  ? '1px solid rgba(96,165,250,0.5)'
                                   : '1px solid rgba(255,255,255,0.06)',
                                 backgroundColor: active
-                                  ? 'rgba(74,222,128,0.15)'
+                                  ? 'rgba(96,165,250,0.25)'
                                   : 'rgba(255,255,255,0.03)',
-                                color: active ? 'var(--color-success)' : 'rgba(255,255,255,0.15)',
+                                color: active ? '#93c5fd' : 'rgba(255,255,255,0.15)',
                                 cursor: loading ? 'wait' : 'pointer',
                                 fontFamily: 'var(--font-inter-tight)',
                                 fontSize: '10px',
-                                fontWeight: 500,
+                                fontWeight: 600,
                                 transition: 'all var(--transition-base)',
                               }}
                             >
