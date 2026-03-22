@@ -12,7 +12,11 @@
 import { Resend } from 'resend'
 import { getMostCompromised, getScoreColor } from './insights'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+let _resend: Resend | null = null
+function getResend(): Resend {
+  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY ?? '')
+  return _resend
+}
 
 // El dominio desde el que se envía — configura este email en Resend
 // Ver: resend.com/domains → añadir y verificar tu dominio
@@ -195,7 +199,7 @@ export async function sendDia0Email({
 </html>
 `
 
-  await resend.emails.send({
+  await getResend().emails.send({
     from: getFromEmail(),
     to,
     subject: 'Tu Mapa de Regulación',

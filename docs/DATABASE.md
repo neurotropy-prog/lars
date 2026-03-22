@@ -4,7 +4,7 @@ Base de datos: **Supabase (PostgreSQL)**
 
 ---
 
-## Implementación actual (Fase 4)
+## Implementación actual (Fase 5)
 
 ### Tabla `diagnosticos`
 
@@ -23,7 +23,7 @@ Enfoque: simplicidad + velocidad de iteración. No se normaliza hasta tener volu
 | `map_evolution` | jsonb DEFAULT '{}' | Estado de evoluciones del mapa (días 3/7/14/21/30) |
 | `confidence_chain` | jsonb DEFAULT '{}' | Cadena de depósitos de confianza |
 | `funnel` | jsonb DEFAULT '{}' | Estado de conversión |
-| `meta` | jsonb DEFAULT '{}' | Fuente, dispositivo |
+| `meta` | jsonb DEFAULT '{}' | Fuente, dispositivo, `last_visited_at` (ISO string) |
 
 **Índices:** `email` y `hash` para búsqueda rápida.
 
