@@ -20,7 +20,7 @@ function getResend(): Resend {
 
 // El dominio desde el que se envía — configura este email en Resend
 // Ver: resend.com/domains → añadir y verificar tu dominio
-const FROM_EMAIL = 'Javier · Instituto Epigenético <javier@institutoepigenetico.com>'
+const FROM_EMAIL = 'Javier · Instituto Epigenético <regulacion@institutoepigenetico.com>'
 
 // Fallback durante desarrollo/test — Resend permite enviar a cualquier email
 // con tu propio dominio verificado. En test, usa 'onboarding@resend.dev' como from.
