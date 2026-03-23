@@ -35,7 +35,7 @@ export default function TensionSection() {
           observer.disconnect()
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     )
     const el = sectionRef.current
     if (el) observer.observe(el)

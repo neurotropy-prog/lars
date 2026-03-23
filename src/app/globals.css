@@ -317,12 +317,6 @@ svg {
    ANIMACIONES — Fase 1
    ============================================================ */
 
-/* SVG sistema nervioso — pulso suave */
-@keyframes nervePulse {
-  0%, 100% { opacity: 0.22; }
-  50%       { opacity: 0.42; }
-}
-
 /* Secciones below-the-fold — entrada con desplazamiento */
 @keyframes fadeInUp {
   from {
@@ -569,6 +563,52 @@ input[type="range"]::-moz-range-track {
 .mirror-stagger-button-intensified {
   opacity: 0;
   animation: fade-in-quick 300ms var(--ease-out-expo) 3000ms forwards;
+}
+
+/* ============================================================
+   HERO ENTRANCE — Staggered reveal sequence (Sprint 3)
+   ============================================================ */
+
+/* Hero fade-in-up: 600ms for SHOCK, 500ms for headline */
+.hero-reveal {
+  opacity: 0;
+}
+
+.hero-reveal.hero-animate-fade-in-up {
+  animation: heroFadeInUp 600ms var(--ease-out-expo) forwards;
+}
+
+.hero-reveal.hero-animate-fade-in-up-fast {
+  animation: heroFadeInUp 500ms var(--ease-out-expo) forwards;
+}
+
+.hero-reveal.hero-animate-fade-in {
+  animation: heroFadeIn 400ms var(--ease-out-expo) forwards;
+}
+
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* P1 cards stagger entrance */
+.p1-card-reveal {
+  opacity: 0;
+}
+
+.p1-card-reveal.p1-card-animate {
+  animation: heroFadeInUp 400ms var(--ease-out-expo) forwards;
 }
 
 /* prefers-reduced-motion ya definido arriba en sección ACCESIBILIDAD */

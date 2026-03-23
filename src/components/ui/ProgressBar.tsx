@@ -29,7 +29,7 @@ export default function ProgressBar({ value, label }: ProgressBarProps) {
             height: "3px",
             backgroundColor: "var(--color-accent)",
             borderRadius: "var(--radius-pill)",
-            transition: "width 600ms cubic-bezier(0.16, 1, 0.3, 1)",
+            transition: "width 500ms cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         />
       </div>

@@ -10,13 +10,14 @@
  * para que GatewayController pase al Bloque 2.
  */
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import ZoneWrapper, { getZoneBg } from './ZoneWrapper'
 import AnalyzingScreen from './AnalyzingScreen'
 import SingleSelectStep from './SingleSelectStep'
 import MultiSelectStep from './MultiSelectStep'
 import MicroEspejo from '@/components/ui/MicroEspejo'
 import ProgressBar from '@/components/ui/ProgressBar'
+import { useNervousSystem } from '@/contexts/NervousSystemContext'
 import {
   P2_OPTIONS,
   P3_OPTIONS,
@@ -37,13 +38,14 @@ export interface Bloque1Answers {
 }
 
 // Progreso no lineal — pausa en revelaciones (barra no avanza)
+// Sprint 3: new values — mirrors PAUSE at same % as preceding question
 const PROGRESS: Record<Step, number> = {
-  p2: 20,
-  analyzing: 20,
-  'primera-verdad': 20,
-  p3: 35,
-  p4: 45,
-  'micro-espejo-1': 50,
+  p2: 22,
+  analyzing: 22,
+  'primera-verdad': 22,    // PAUSE — bar stays at 22% during first truth
+  p3: 38,
+  p4: 48,
+  'micro-espejo-1': 48,   // PAUSE — bar stays at 48% during micro-mirror 1
 }
 
 // ─── PROPS ────────────────────────────────────────────────────────────────────
@@ -92,6 +94,14 @@ export default function GatewayBloque1({
   const [step, setStep] = useState<Step>('p2')
   const [stepKey, setStepKey] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
+  const { setState: setNervousState } = useNervousSystem()
+
+  // Nervous system: awakening from P3 onward
+  useEffect(() => {
+    if (step === 'p3' || step === 'p4' || step === 'micro-espejo-1') {
+      setNervousState('awakening')
+    }
+  }, [step, setNervousState])
 
   // ── Zona y respuestas ──
   const [zone, setZone] = useState<Zone>('exploracion')

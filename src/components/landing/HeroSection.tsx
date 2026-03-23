@@ -4,10 +4,12 @@
  * HeroSection — Above the fold.
  * Contiene: SVG de fondo, SHOCK, headline, subtítulo, P1 visible, micro-promesas.
  * Mobile-first 375px. Sin botón intermedio antes de P1.
- * 'use client' necesario para recibir el callback onP1Select desde GatewayController.
+ *
+ * Sprint 3: Staggered reveal sequence.
+ * T+400ms SHOCK → T+200ms headline → T+200ms subtitle → T+300ms P1 → stagger cards → micro-promises
  */
 
-import NervousSystemSVG from './NervousSystemSVG'
+import { useState, useEffect } from 'react'
 import P1Cards from './P1Cards'
 
 interface HeroSectionProps {
@@ -15,6 +17,26 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onP1Select }: HeroSectionProps) {
+  // Stagger steps: 0=hidden, 1=shock, 2=headline, 3=subtitle, 4=p1, 5=micropromises
+  const [revealStep, setRevealStep] = useState(0)
+
+  useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = []
+
+    // T+400ms: SHOCK phrase
+    timers.push(setTimeout(() => setRevealStep(1), 400))
+    // T+400+600=1000ms: wait for SHOCK animation (600ms), then +200ms gap → headline
+    timers.push(setTimeout(() => setRevealStep(2), 1200))
+    // T+200ms after headline start
+    timers.push(setTimeout(() => setRevealStep(3), 1400))
+    // T+300ms after subtitle start → P1 label + cards
+    timers.push(setTimeout(() => setRevealStep(4), 1700))
+    // Micro-promises: after P1 cards stagger (5 cards × 150ms = 750ms + 200ms buffer)
+    timers.push(setTimeout(() => setRevealStep(5), 2650))
+
+    return () => timers.forEach(clearTimeout)
+  }, [])
+
   return (
     <section
       aria-label="Diagnóstico del sistema nervioso"
@@ -32,10 +54,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
         paddingRight: 'var(--container-padding-mobile)',
       }}
     >
-      {/* SVG — detrás del contenido */}
-      <NervousSystemSVG />
-
-      {/* Contenido — sobre el SVG */}
+      {/* Contenido — Canvas nervous system now rendered globally via NervousSystemCanvas */}
       <div
         className="hero-content"
         style={{
@@ -47,15 +66,17 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
           gap: 0,
         }}
       >
-        {/* SHOCK */}
+        {/* SHOCK — accent color, Cormorant Garamond italic per EXPERIENCE_STANDARDS 4.1 */}
         <p
+          className={`hero-reveal${revealStep >= 1 ? ' hero-animate-fade-in-up' : ''}`}
           style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: 'var(--text-h4)',
-            lineHeight: 'var(--lh-h4)',
+            fontFamily: 'var(--font-cormorant)',
+            fontSize: '1.125rem',
+            lineHeight: 1.6,
             fontWeight: 400,
             fontStyle: 'italic',
-            color: 'var(--color-text-secondary)',
+            letterSpacing: '0.02em',
+            color: 'var(--color-accent)',
             textAlign: 'center',
             maxWidth: '38rem',
             marginBottom: 'var(--space-6)',
@@ -67,6 +88,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
 
         {/* Headline */}
         <h1
+          className={`hero-reveal${revealStep >= 2 ? ' hero-animate-fade-in-up-fast' : ''}`}
           style={{
             fontFamily: 'var(--font-plus-jakarta)',
             fontSize: 'var(--text-display)',
@@ -83,6 +105,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
 
         {/* Subtítulo */}
         <p
+          className={`hero-reveal${revealStep >= 3 ? ' hero-animate-fade-in' : ''}`}
           style={{
             fontFamily: 'var(--font-inter)',
             fontSize: 'var(--text-body)',
@@ -99,11 +122,12 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
 
         {/* P1 — visible sin botón previo */}
         <div style={{ width: '100%', marginBottom: 'var(--space-6)' }}>
-          <P1Cards onSelect={onP1Select} />
+          <P1Cards onSelect={onP1Select} animateEntrance={revealStep >= 4} />
         </div>
 
         {/* Micro-promesas */}
         <p
+          className={`hero-reveal${revealStep >= 5 ? ' hero-animate-fade-in' : ''}`}
           style={{
             fontFamily: 'var(--font-inter)',
             fontSize: 'var(--text-caption)',

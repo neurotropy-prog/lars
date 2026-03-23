@@ -4,6 +4,8 @@
  * P1Cards — Primera pregunta del gateway, visible en el hero sin botón intermedio.
  * Fase 1: feedback visual al seleccionar. Transición a P2 se conecta en Fase 2.
  * Emite evento 'scrollToP1' para el CTA del below-the-fold.
+ *
+ * Sprint 3: animateEntrance prop — question label + cards fade in with 150ms stagger.
  */
 
 import { useState, useEffect, useCallback } from 'react'
@@ -39,11 +41,17 @@ const options = [
 interface P1CardsProps {
   /** Callback externo — activa el gateway cuando P1 está respondida */
   onSelect?: (id: string) => void
+  /** Sprint 3: when true, cards animate in with stagger */
+  animateEntrance?: boolean
 }
 
-export default function P1Cards({ onSelect }: P1CardsProps) {
+export default function P1Cards({ onSelect, animateEntrance = false }: P1CardsProps) {
   const [selected, setSelected] = useState<string | null>(null)
   const [isPulsing, setIsPulsing] = useState(false)
+  // Track which cards have been revealed (for stagger)
+  const [revealedCards, setRevealedCards] = useState<number>(-1)
+  // Track if the question label is revealed
+  const [labelRevealed, setLabelRevealed] = useState(false)
 
   // Escucha el evento del CTA de below-the-fold para hacer pulse
   useEffect(() => {
@@ -55,6 +63,22 @@ export default function P1Cards({ onSelect }: P1CardsProps) {
     window.addEventListener('scrollToP1', handler)
     return () => window.removeEventListener('scrollToP1', handler)
   }, [])
+
+  // Stagger entrance when animateEntrance becomes true
+  useEffect(() => {
+    if (!animateEntrance) return
+
+    // Label appears first
+    setLabelRevealed(true)
+
+    // Cards stagger in 150ms apart, starting 100ms after label
+    const timers: ReturnType<typeof setTimeout>[] = []
+    options.forEach((_, i) => {
+      timers.push(setTimeout(() => setRevealedCards(i), 100 + i * 150))
+    })
+
+    return () => timers.forEach(clearTimeout)
+  }, [animateEntrance])
 
   const handleSelect = useCallback((id: string) => {
     if (selected === id) return
@@ -71,6 +95,7 @@ export default function P1Cards({ onSelect }: P1CardsProps) {
     >
       {/* Pregunta */}
       <p
+        className={animateEntrance ? `hero-reveal${labelRevealed ? ' hero-animate-fade-in' : ''}` : ''}
         style={{
           fontFamily: 'var(--font-inter-tight)',
           fontSize: 'var(--text-h3)',
@@ -94,14 +119,17 @@ export default function P1Cards({ onSelect }: P1CardsProps) {
           gap: 'var(--space-3)',
         }}
       >
-        {options.map((option) => {
+        {options.map((option, index) => {
           const isSelected = selected === option.id
+          const shouldAnimate = animateEntrance
+          const isRevealed = !shouldAnimate || index <= revealedCards
           return (
             <button
               key={option.id}
               role="radio"
               aria-checked={isSelected}
               onClick={() => handleSelect(option.id)}
+              className={shouldAnimate ? `p1-card-reveal${isRevealed ? ' p1-card-animate' : ''}` : ''}
               style={{
                 width: '100%',
                 textAlign: 'left',

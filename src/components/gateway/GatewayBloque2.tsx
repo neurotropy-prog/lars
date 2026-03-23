@@ -13,12 +13,13 @@
  * Al completar P8, llama a onComplete con todas las respuestas del bloque.
  */
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import ZoneWrapper, { getZoneBg } from './ZoneWrapper'
 import SingleSelectStep from './SingleSelectStep'
 import SlidersStep from './SlidersStep'
 import MicroEspejo from '@/components/ui/MicroEspejo'
 import ProgressBar from '@/components/ui/ProgressBar'
+import { useNervousSystem } from '@/contexts/NervousSystemContext'
 import {
   P5_OPTIONS,
   P6_OPTIONS,
@@ -33,11 +34,12 @@ import {
 type Step = 'p5' | 'p6' | 'micro-espejo-2' | 'p7' | 'p8'
 type Zone = 'exploracion' | 'reflexion'
 
+// Sprint 3: non-linear progress — micro-mirror 2 PAUSES at same % as P6
 const PROGRESS: Record<Step, number> = {
   p5: 60,
-  p6: 70,
-  'micro-espejo-2': 75,
-  p7: 82,
+  p6: 72,
+  'micro-espejo-2': 72,   // PAUSE — bar stays at 72% during micro-mirror 2
+  p7: 85,
   p8: 90,
 }
 
@@ -89,6 +91,14 @@ export default function GatewayBloque2({
   const [step, setStep] = useState<Step>('p5')
   const [stepKey, setStepKey] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
+  const { setState: setNervousState } = useNervousSystem()
+
+  // Nervous system: flowing from P7 onward
+  useEffect(() => {
+    if (step === 'p7' || step === 'p8') {
+      setNervousState('flowing')
+    }
+  }, [step, setNervousState])
 
   // ── Zona y respuestas ──
   const [zone, setZone] = useState<Zone>('exploracion')

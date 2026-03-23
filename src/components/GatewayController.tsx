@@ -20,6 +20,7 @@ import GatewayBloque1 from '@/components/gateway/GatewayBloque1'
 import GatewayBloque2 from '@/components/gateway/GatewayBloque2'
 import GatewayBloque3 from '@/components/gateway/GatewayBloque3'
 import OfflineBanner from '@/components/ui/OfflineBanner'
+import { useNervousSystem } from '@/contexts/NervousSystemContext'
 import type { Bloque1Answers } from '@/components/gateway/GatewayBloque1'
 import type { Bloque2Answers } from '@/lib/gateway-bloque2-data'
 
@@ -76,6 +77,12 @@ export default function GatewayController() {
   const [bloque2Answers, setBloque2Answers] = useState<Bloque2Answers | null>(restored?.bloque2Answers ?? null)
   const [duplicateHash, setDuplicateHash] = useState<string | null>(null)
   const [duplicateEmail, setDuplicateEmail] = useState<string | null>(null)
+  const { setState: setNervousState } = useNervousSystem()
+
+  /* Nervous system: fragmented on landing */
+  useEffect(() => {
+    if (phase === 'landing') setNervousState('fragmented')
+  }, [phase, setNervousState])
 
   /* Persistir estado en localStorage cada vez que cambia */
   useEffect(() => {
@@ -180,7 +187,7 @@ export default function GatewayController() {
       <div
         aria-hidden="true"
         style={{
-          height: '80px',
+          height: '48px',
           background: `linear-gradient(to bottom, var(--color-bg-primary), var(--color-bg-secondary))`,
           marginTop: '-1px',
         }}
