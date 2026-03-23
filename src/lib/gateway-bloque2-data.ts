@@ -75,17 +75,17 @@ const MICRO_ESPEJO_2_MAP: Record<string, ReflectionContent> = {
   B: {
     text: 'Poder con todo tiene un precio que nadie ve — ni siquiera tú. Tu cuerpo lleva la cuenta aunque tu mente la ignore. No te estamos pidiendo que admitas debilidad. Te estamos mostrando datos. Y los datos dicen que tu sistema nervioso está sosteniendo un nivel de alerta que tiene fecha de caducidad.',
     collectiveData:
-      'De las personas que responden "puedo con todo", el 89% presenta señales biológicas que contradicen su percepción. No es fortaleza — es un sistema nervioso que ya no puede enviar la señal de alarma porque la alarma lleva años encendida.',
+      'El 87% de las personas que responden "puedo con todo" presentan señales biológicas que contradicen su percepción. No es fortaleza — es un sistema nervioso que ya no puede enviar la señal de alarma porque la alarma lleva años encendida.',
   },
   C: {
     text: 'Has convertido el cuidado de los demás en tu razón de existir — y tu propio cuidado en un lujo que no te permites. Pero la biología no entiende de sacrificios: tu cuerpo se desgasta igual cuides de quien cuides. Y cuando se desgasta el que sostiene todo... todo lo que sostienes se cae.',
     collectiveData:
-      'El 86% de personas con tu patrón reportan que la culpa de cuidarse es mayor que el malestar de no hacerlo. Es la trampa más silenciosa del agotamiento.',
+      'El 84% de personas con tu patrón reportan que la culpa de cuidarse es mayor que el malestar de no hacerlo. Es la trampa más silenciosa del agotamiento.',
   },
   D: {
     text: 'Entender es tu forma de sentirte seguro. Pero hay un punto donde entender más se convierte en la excusa perfecta para no actuar — porque actuar implica soltar el control. Lo que tu sistema nervioso necesita no es más análisis. Es una intervención concreta, medible y reversible.',
     collectiveData:
-      'Las personas que priorizan entender antes de actuar tardan una media de 14 meses más en resolver su situación. No por falta de información — por exceso de análisis.',
+      'El 79% de personas que priorizan entender antes de actuar tardan una media de 14 meses más en resolver su situación. No por falta de información — por exceso de análisis.',
   },
   E: {
     text: 'No es que nada funcione. Es que nadie ha mirado el cuadro completo. Un psicólogo trabaja la mente pero no tiene acceso a tu bioquímica. Un médico mira analíticas estándar que no miden lo que importa. Un coach te da herramientas que tu cerebro no puede ejecutar. Lo que falta no es otro intento — es un abordaje que integre todo.',
@@ -94,8 +94,15 @@ const MICRO_ESPEJO_2_MAP: Record<string, ReflectionContent> = {
   },
 }
 
+// Fallback calibrado (85%) para combinaciones no mapeadas
+const MICRO_ESPEJO_2_DEFAULT: ReflectionContent = {
+  text: 'Tu sistema nervioso lleva tanto tiempo en modo supervivencia que ya no distingue emergencia real de vida cotidiana. Lo que sientes no es un defecto — es la respuesta predecible de un sistema que no ha descansado de verdad en mucho tiempo.',
+  collectiveData:
+    'El 85% de personas con un patrón similar al tuyo llevan más de 2 años con su sistema nervioso en modo alarma sin saberlo. La biología no miente — y la tuya está pidiendo un cambio.',
+}
+
 export function getMicroEspejo2(p6: string): ReflectionContent {
-  return MICRO_ESPEJO_2_MAP[p6] ?? MICRO_ESPEJO_2_MAP['A']
+  return MICRO_ESPEJO_2_MAP[p6] ?? MICRO_ESPEJO_2_DEFAULT
 }
 
 // ─── P7 — SLIDERS (etiquetas de cada dimensión) ───────────────────────────────

@@ -66,6 +66,13 @@ export default function Counter({
     return () => observer.disconnect()
   }, [started, startDelay])
 
+  /* ─── Fallback: si IntersectionObserver no dispara en 2s, forzar inicio ─── */
+  useEffect(() => {
+    if (started) return
+    const fallback = setTimeout(() => setStarted(true), 2000)
+    return () => clearTimeout(fallback)
+  }, [started])
+
   /* ─── requestAnimationFrame: anima el número ─── */
   useEffect(() => {
     if (!started) return
@@ -73,17 +80,27 @@ export default function Counter({
     const startTime = performance.now()
     const range = to - from
 
+    // Garantía: si rAF no dispara (tab oculto, headless), forzar valor final
+    const safeguard = setTimeout(() => setValue(Math.round(to)), duration + 200)
+
     function update(now: number) {
       const elapsed = now - startTime
       const t = Math.min(elapsed / duration, 1)
-      setValue(Math.round(from + range * easeOutExpo(t)))
+      const current = Math.round(from + range * easeOutExpo(t))
+      setValue(current)
       if (t < 1) {
         rafRef.current = requestAnimationFrame(update)
+      } else {
+        clearTimeout(safeguard)
+        setValue(Math.round(to))
       }
     }
 
     rafRef.current = requestAnimationFrame(update)
-    return () => cancelAnimationFrame(rafRef.current)
+    return () => {
+      cancelAnimationFrame(rafRef.current)
+      clearTimeout(safeguard)
+    }
   }, [started, from, to, duration])
 
   return (

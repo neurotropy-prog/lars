@@ -127,10 +127,15 @@ export const P4_OPTIONS: SelectOption[] = [
 
 // Clave: "P1-P2". Para P1=D se usa "D-*" (independiente de P2).
 const PRIMERA_VERDAD_MAP: Record<string, ReflectionContent> = {
+  'A-A': {
+    text: 'Tu agotamiento no es cansancio normal. Tu mente no se apaga por la noche porque tu sistema nervioso no distingue descanso de amenaza.',
+    collectiveData:
+      'El 78% de los +25.000 sistemas nerviosos analizados con tu patrón de respuestas presentan niveles de la hormona del estrés crónicamente elevados. No es falta de voluntad — es bioquímica.',
+  },
   'A-B': {
     text: 'Tu agotamiento no es cansancio normal. Tu cortisol se dispara de noche porque tu sistema no distingue descanso de amenaza.',
     collectiveData:
-      'El 78% de los +25.000 sistemas nerviosos analizados con tu patrón de respuestas presentan niveles de la hormona del estrés crónicamente elevados. No es falta de voluntad — es bioquímica.',
+      'El 82% de los +25.000 sistemas nerviosos analizados con tu patrón de respuestas presentan niveles de la hormona del estrés crónicamente elevados. No es falta de voluntad — es bioquímica.',
   },
   'B-A': {
     text: 'Tu rendimiento bajó porque tu cerebro no descansa. Sin sueño profundo, el prefrontal no puede tomar decisiones con la precisión que antes tenías.',
@@ -141,6 +146,11 @@ const PRIMERA_VERDAD_MAP: Record<string, ReflectionContent> = {
     text: 'Tu cuerpo te está dando señales que tu mente ha intentado ignorar. El despertar nocturno es la más clara — y la que más información contiene.',
     collectiveData:
       'El 82% de personas con señales físicas persistentes y despertar nocturno muestran activación crónica del sistema de alerta. El cuerpo habló antes que la mente.',
+  },
+  'C-C': {
+    text: 'Tu cuerpo te está dando señales que tu mente ha intentado ignorar. El cansancio que no se va con sueño es la más clara — y la que más información contiene.',
+    collectiveData:
+      'El 85% de personas con señales físicas persistentes y sueño no reparador muestran activación crónica del sistema de alerta. El cuerpo habló antes que la mente.',
   },
   'D-*': {
     text: 'Alguien que te conoce vio algo que tú llevas tiempo normalizando. Tu sistema nervioso confirma que tenía razón.',
@@ -154,9 +164,16 @@ const PRIMERA_VERDAD_MAP: Record<string, ReflectionContent> = {
   },
 }
 
+// Fallback por defecto con porcentaje calibrado (73%)
+const PRIMERA_VERDAD_DEFAULT: ReflectionContent = {
+  text: 'Tu sistema nervioso lleva tiempo funcionando en modo de emergencia. Lo que sientes no es debilidad — es el resultado predecible de un sistema que no ha descansado de verdad.',
+  collectiveData:
+    'El 73% de los +25.000 sistemas nerviosos analizados con un patrón similar al tuyo presentan marcadores de estrés crónico. No es falta de voluntad — es bioquímica.',
+}
+
 // Fallbacks por P1 cuando no hay combinación exacta
 const PRIMERA_VERDAD_FALLBACK: Partial<Record<P1Option, ReflectionContent>> = {
-  A: PRIMERA_VERDAD_MAP['A-B'],
+  A: PRIMERA_VERDAD_MAP['A-A'],
   B: PRIMERA_VERDAD_MAP['B-A'],
   C: PRIMERA_VERDAD_MAP['C-B'],
   D: PRIMERA_VERDAD_MAP['D-*'],
@@ -169,7 +186,7 @@ export function getPrimeraVerdad(p1: string, p2: string): ReflectionContent {
   return (
     PRIMERA_VERDAD_MAP[key] ??
     PRIMERA_VERDAD_FALLBACK[p1 as P1Option] ??
-    PRIMERA_VERDAD_MAP['A-B']
+    PRIMERA_VERDAD_DEFAULT
   )
 }
 
@@ -186,7 +203,7 @@ export function getMicroEspejo1(
     return {
       text: 'Tu cerebro funciona pero por dentro hay un vacío. No es tristeza — es un sistema nervioso que se ha apagado para protegerte. Como un fusible que salta.',
       collectiveData:
-        'El 67% de personas con tu combinación no identifican esto como agotamiento. Lo viven como ausencia sin causa. Tiene causa — y tiene solución.',
+        'El 68% de personas con tu combinación no identifican esto como agotamiento. Lo viven como ausencia sin causa. Tiene causa — y tiene solución.',
     }
   }
 
@@ -202,7 +219,7 @@ export function getMicroEspejo1(
     return {
       text: 'Tu cuerpo ha encontrado la forma más radical de protegerte: apagar los circuitos. No es que no te importe — es que sentir se volvió demasiado costoso para tu sistema.',
       collectiveData:
-        'El 61% de personas con anestesia emocional tardan más de 2 años en identificar lo que les ocurre. Tú lo estás nombrando hoy.',
+        'El 74% de personas con anestesia emocional tardan más de 2 años en identificar lo que les ocurre. Tú lo estás nombrando hoy.',
     }
   }
 
@@ -214,10 +231,10 @@ export function getMicroEspejo1(
     }
   }
 
-  // Default — muchos síntomas + A (irritabilidad) o E (rumiación): caso más frecuente
+  // Default — caso más frecuente (fallback 65%)
   return {
     text: 'Tu cabeza va a mil pero tu capacidad de procesar se ha reducido. No es que seas menos capaz — es que tu cerebro está usando su energía para mantenerte en alerta en lugar de para pensar con claridad. Y eso tiene una consecuencia directa: te irritas más porque tu freno interno está agotado.',
     collectiveData:
-      'El 83% de personas con tu combinación de respuestas no saben que la irritabilidad y la niebla mental tienen la misma causa. Cuando se regula una, la otra mejora.',
+      'El 65% de personas con tu combinación de respuestas no saben que la irritabilidad y la niebla mental tienen la misma causa. Cuando se regula una, la otra mejora.',
   }
 }
