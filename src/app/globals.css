@@ -534,41 +534,95 @@ svg {
 
 /* ============================================================
    SLIDER RANGE — thumb styling cross-browser
+   Hidden by default, revealed on first interaction via .slider-touched
    ============================================================ */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
 }
 
+/* --- Thumb: HIDDEN by default --- */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--color-text-primary);
+  background: #FFFFFF;
   cursor: pointer;
-  border: 2px solid var(--color-bg-primary);
-  margin-top: 0;
+  border: none;
+  margin-top: -8px; /* center on 4px track */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 150ms ease;
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--color-text-primary);
+  background: #FFFFFF;
   cursor: pointer;
-  border: 2px solid var(--color-bg-primary);
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 150ms ease;
 }
 
+/* --- Thumb: VISIBLE when slider touched --- */
+.slider-touched input[type="range"]::-webkit-slider-thumb {
+  opacity: 1;
+  transform: scale(1);
+  animation: slider-thumb-in 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.slider-touched input[type="range"]::-moz-range-thumb {
+  opacity: 1;
+  transform: scale(1);
+  animation: slider-thumb-in 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- Thumb: ACTIVE (pressed) state --- */
+.slider-touched input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+.slider-touched input[type="range"]:active::-moz-range-thumb {
+  transform: scale(1.2);
+}
+
+/* --- Thumb: PULSE on boundary crossing --- */
+.slider-pulse input[type="range"]::-webkit-slider-thumb {
+  animation: slider-boundary-pulse 300ms ease;
+}
+
+.slider-pulse input[type="range"]::-moz-range-thumb {
+  animation: slider-boundary-pulse 300ms ease;
+}
+
+/* --- Track: 4px height --- */
 input[type="range"]::-webkit-slider-runnable-track {
   background: transparent;
-  height: 8px;
+  height: 4px;
 }
 
 input[type="range"]::-moz-range-track {
   background: transparent;
-  height: 8px;
-  border-radius: 4px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* --- Animations --- */
+@keyframes slider-thumb-in {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slider-boundary-pulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
 }
 
 /* ============================================================
