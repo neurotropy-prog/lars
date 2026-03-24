@@ -61,7 +61,7 @@ function selectFocus(props: FocusBannerProps): FocusItem {
     return {
       tag: 'NUEVO DESDE TU ÚLTIMA VISITA',
       title: `Tu Arquetipo: ${archetype.name}`,
-      description: archetype.hook,
+      description: archetype.teaser,
       ctaText: 'Descubrir tu perfil completo',
       scrollTo: 'section-archetype',
     }
