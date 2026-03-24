@@ -137,7 +137,7 @@ export default function MirrorSection() {
             ...stagger(900),
           }}
         >
-          Tu cuerpo lleva meses hablándote. Esta es la primera vez que alguien te traduce lo que dice.
+          No estás roto. Tu biología está respondiendo como sabe.
         </p>
       </div>
     </section>

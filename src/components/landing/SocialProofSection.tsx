@@ -70,7 +70,7 @@ export default function SocialProofSection() {
             transition: 'opacity 500ms var(--ease-out-expo)',
           }}
         >
-          PRUEBA SOCIAL
+          EXPERIENCIAS REALES
         </p>
 
         {/* Headline */}

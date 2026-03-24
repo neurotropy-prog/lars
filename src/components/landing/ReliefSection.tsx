@@ -47,7 +47,7 @@ export default function ReliefSection() {
   return (
     <section
       ref={sectionRef}
-      aria-label="Qué mide la evaluación"
+      aria-label="Qué mide el análisis"
       style={{
         paddingTop: 'var(--space-8)',
         paddingBottom: 'var(--space-20)',
@@ -69,7 +69,7 @@ export default function ReliefSection() {
       >
         {/* Overline */}
         <p className="overline-accent" style={stagger(0)}>
-          LA EVALUACIÓN
+          EL ANÁLISIS
         </p>
 
         {/* Headline — Lora Regular, --text-h2 */}
@@ -100,7 +100,7 @@ export default function ReliefSection() {
             ...stagger(200),
           }}
         >
-          Esta evaluación cruza tus respuestas con datos de más de 25.000 evaluaciones
+          Este análisis cruza tus respuestas con datos de más de 25.000 evaluaciones
           reales para mostrarte el estado de 5 dimensiones clave: regulación nerviosa,
           calidad de sueño, claridad cognitiva, equilibrio emocional y alegría de vivir.
           No es un test genérico&nbsp;— es un mapa calibrado para ti.
@@ -227,13 +227,13 @@ export default function ReliefSection() {
           }}
         >
           {visible ? <Counter to={142} duration={800} /> : '0'}
-          {' '}personas completaron esta evaluación esta semana.
+          {' '}personas completaron este análisis esta semana.
         </p>
 
         {/* CTA LIMA */}
         <button
           onClick={handleCTA}
-          aria-label="Volver al inicio para empezar la evaluación"
+          aria-label="Volver al inicio para empezar el análisis"
           style={{
             fontFamily: 'var(--font-inter)',
             fontSize: 'var(--text-body)',
@@ -261,7 +261,7 @@ export default function ReliefSection() {
             e.currentTarget.style.boxShadow = 'none'
           }}
         >
-          Empezar mi evaluación &rarr;
+          Empezar mi análisis &rarr;
         </button>
 
         {/* Disuelve fricción */}

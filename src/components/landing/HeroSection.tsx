@@ -23,21 +23,23 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = []
 
-    // T+300ms: headline
-    timers.push(setTimeout(() => setRevealStep(2), 300))
-    // T+200ms after headline start → subtitle
-    timers.push(setTimeout(() => setRevealStep(3), 500))
-    // T+300ms after subtitle start → P1 label + cards
-    timers.push(setTimeout(() => setRevealStep(4), 800))
-    // Micro-promises: after P1 cards stagger (5 cards × 150ms = 750ms + 200ms buffer)
-    timers.push(setTimeout(() => setRevealStep(5), 1750))
+    // T+0ms: SHOCK (inmediato)
+    timers.push(setTimeout(() => setRevealStep(1), 0))
+    // T+400ms: headline
+    timers.push(setTimeout(() => setRevealStep(2), 400))
+    // T+600ms: subtitle
+    timers.push(setTimeout(() => setRevealStep(3), 600))
+    // T+900ms: P1 label + cards
+    timers.push(setTimeout(() => setRevealStep(4), 900))
+    // T+1850ms: micro-promises
+    timers.push(setTimeout(() => setRevealStep(5), 1850))
 
     return () => timers.forEach(clearTimeout)
   }, [])
 
   return (
     <section
-      aria-label="Evaluación del sistema nervioso"
+      aria-label="Análisis del sistema nervioso"
       style={{
         position: 'relative',
         minHeight: '100dvh',
@@ -64,6 +66,21 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
           gap: 0,
         }}
       >
+        {/* SHOCK — primera revelación */}
+        <p
+          className={`hero-reveal${revealStep >= 1 ? ' hero-animate-fade-in' : ''}`}
+          style={{
+            fontFamily: 'var(--font-cormorant)',
+            fontSize: '1.125rem',
+            fontStyle: 'italic',
+            color: 'var(--color-text-secondary)',
+            textAlign: 'center',
+            marginBottom: 'var(--space-6)',
+          }}
+        >
+          Tu cuerpo lleva meses hablándote. Esta es la primera vez que alguien te traduce lo que dice.
+        </p>
+
         {/* Headline */}
         <h1
           className={`hero-reveal${revealStep >= 2 ? ' hero-animate-fade-in-up-fast' : ''}`}
@@ -94,7 +111,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
             marginBottom: 'var(--space-10)',
           }}
         >
-          Una evaluación de 3 minutos calibrada con más de 25.000 evaluaciones reales.
+          Un análisis de 3 minutos calibrado con más de 25.000 evaluaciones reales.
           Tu resultado es personal, confidencial y tuyo&nbsp;— con o sin programa.
         </p>
 

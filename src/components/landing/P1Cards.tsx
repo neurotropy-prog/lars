@@ -101,7 +101,7 @@ export default function P1Cards({ onSelect, animateEntrance = false }: P1CardsPr
           fontSize: 'var(--text-h3)',
           lineHeight: 'var(--lh-h3)',
           letterSpacing: 'var(--ls-h3)',
-          fontWeight: 700,
+          fontWeight: 500,
           color: 'var(--color-text-primary)',
           marginBottom: 'var(--space-5)',
           textAlign: 'center',
