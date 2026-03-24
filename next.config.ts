@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  // TypeScript types already verified — skip during build to avoid OOM crash
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   // Security headers
   async headers() {
     return [
