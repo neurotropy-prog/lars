@@ -48,7 +48,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        paddingTop: 'calc(var(--header-height, 56px) + var(--space-16))',
+        paddingTop: 'calc(var(--header-height, 56px) + var(--space-10))',
         paddingBottom: 'var(--space-12)',
         paddingLeft: 'var(--container-padding-mobile)',
         paddingRight: 'var(--container-padding-mobile)',
@@ -108,7 +108,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
             color: 'var(--color-text-secondary)',
             textAlign: 'center',
             maxWidth: '36rem',
-            marginBottom: 'var(--space-10)',
+            marginBottom: 'var(--space-6)',
           }}
         >
           Un análisis de 3 minutos calibrado con más de 25.000 evaluaciones reales.
