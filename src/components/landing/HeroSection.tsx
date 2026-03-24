@@ -48,7 +48,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        paddingTop: 'var(--space-16)',
+        paddingTop: 'calc(var(--header-height, 56px) + var(--space-16))',
         paddingBottom: 'var(--space-12)',
         paddingLeft: 'var(--container-padding-mobile)',
         paddingRight: 'var(--container-padding-mobile)',
@@ -90,11 +90,11 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
         <h1
           className={`hero-reveal${revealStep >= 2 ? ' hero-animate-fade-in-up-fast' : ''}`}
           style={{
-            fontFamily: 'var(--font-plus-jakarta)',
+            fontFamily: 'var(--font-lora)',
             fontSize: 'var(--text-display)',
             lineHeight: 'var(--lh-display)',
             letterSpacing: 'var(--ls-display)',
-            fontWeight: 600,
+            fontWeight: 700,
             color: 'var(--color-text-primary)',
             textAlign: 'center',
             marginBottom: 'var(--space-5)',

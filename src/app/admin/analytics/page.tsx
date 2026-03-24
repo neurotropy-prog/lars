@@ -20,7 +20,7 @@ export default function AnalyticsPage() {
       <div style={{
         minHeight: '100vh',
         backgroundColor: 'var(--color-bg-primary)',
-        padding: 'var(--space-8) var(--space-6)',
+        padding: 'calc(var(--header-height, 56px) + var(--space-8)) var(--space-6) var(--space-8)',
       }}>
         <div style={{ maxWidth: '960px', margin: '0 auto' }}>
           <AnalyticsDashboard />

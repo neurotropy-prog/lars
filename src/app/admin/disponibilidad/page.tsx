@@ -345,7 +345,7 @@ export default function DisponibilidadPage() {
     <main
       className="container"
       style={{
-        paddingTop: 'var(--space-16)',
+        paddingTop: 'calc(var(--header-height, 56px) + var(--space-16))',
         paddingBottom: 'var(--space-24)',
         maxWidth: '720px',
       }}

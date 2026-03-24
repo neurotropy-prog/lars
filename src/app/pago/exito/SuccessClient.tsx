@@ -61,8 +61,8 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
           to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes nodePulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.3); }
-          50%      { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+          0%, 100% { box-shadow: 0 0 0 0 rgba(61,154,95,0.3); }
+          50%      { box-shadow: 0 0 0 8px rgba(61,154,95,0); }
         }
         .success-fade {
           animation: successFadeUp 500ms cubic-bezier(0.16,1,0.3,1) both;
@@ -71,7 +71,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
 
       <main style={{
         minHeight: '100vh',
-        padding: 'var(--space-16) var(--space-6) var(--space-24)',
+        padding: 'calc(var(--header-height, 56px) + var(--space-16)) var(--space-6) var(--space-24)',
       }}>
         <div style={{ maxWidth: '520px', margin: '0 auto' }}>
 
@@ -106,7 +106,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
 
             {/* Headline */}
             <h1 style={{
-              fontFamily: 'var(--font-inter-tight)',
+              fontFamily: 'var(--font-inter)',
               fontSize: 'var(--text-h2)',
               fontWeight: 600,
               color: 'var(--color-text-primary)',
@@ -160,7 +160,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
               animationDelay: '700ms',
               marginBottom: 'var(--space-12)',
               backgroundColor: 'var(--color-bg-secondary)',
-              border: '1px solid rgba(74,222,128,0.12)',
+              border: '1px solid rgba(61,154,95,0.12)',
               borderRadius: '16px',
               padding: 'var(--space-6)',
             }}
@@ -180,13 +180,13 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   height: '64px',
                   borderRadius: '50%',
                   objectFit: 'cover',
-                  border: '1px solid rgba(74,222,128,0.2)',
+                  border: '1px solid rgba(61,154,95,0.2)',
                 }}
               />
 
               <div>
                 <p style={{
-                  fontFamily: 'var(--font-inter-tight)',
+                  fontFamily: 'var(--font-inter)',
                   fontSize: 'var(--text-h4)',
                   fontWeight: 600,
                   color: 'var(--color-text-primary)',
@@ -224,9 +224,9 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
             style={{ animationDelay: '1000ms', marginBottom: 'var(--space-12)' }}
           >
             <h2 style={{
-              fontFamily: 'var(--font-inter-tight)',
+              fontFamily: 'var(--font-inter)',
               fontSize: 'var(--text-h3)',
-              fontWeight: 500,
+              fontWeight: 600,
               color: 'var(--color-text-primary)',
               marginBottom: 'var(--space-6)',
             }}>
@@ -242,7 +242,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                 top: '8px',
                 bottom: '8px',
                 width: '2px',
-                background: 'rgba(74,222,128,0.15)',
+                background: 'rgba(61,154,95,0.15)',
               }} />
 
               {/* Nodo 1 — AHORA */}
@@ -258,9 +258,9 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   animation: 'nodePulse 2s ease infinite',
                 }} />
                 <p style={{
-                  fontFamily: 'var(--font-inter-tight)',
+                  fontFamily: 'var(--font-inter)',
                   fontSize: 'var(--text-body)',
-                  fontWeight: 500,
+                  fontWeight: 600,
                   color: 'var(--color-text-primary)',
                   marginBottom: 'var(--space-2)',
                 }}>
@@ -289,9 +289,9 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   border: '2px solid var(--color-accent)',
                 }} />
                 <p style={{
-                  fontFamily: 'var(--font-inter-tight)',
+                  fontFamily: 'var(--font-inter)',
                   fontSize: 'var(--text-body)',
-                  fontWeight: 500,
+                  fontWeight: 600,
                   color: 'var(--color-text-primary)',
                   marginBottom: 'var(--space-2)',
                 }}>
@@ -320,9 +320,9 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   border: '2px solid var(--color-accent)',
                 }} />
                 <p style={{
-                  fontFamily: 'var(--font-inter-tight)',
+                  fontFamily: 'var(--font-inter)',
                   fontSize: 'var(--text-body)',
-                  fontWeight: 500,
+                  fontWeight: 600,
                   color: 'var(--color-text-primary)',
                   marginBottom: 'var(--space-2)',
                 }}>
@@ -348,8 +348,8 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
             style={{
               animationDelay: '1300ms',
               marginBottom: 'var(--space-12)',
-              backgroundColor: 'rgba(74,222,128,0.04)',
-              border: '1px solid rgba(74,222,128,0.12)',
+              backgroundColor: 'rgba(61,154,95,0.04)',
+              border: '1px solid rgba(61,154,95,0.12)',
               borderRadius: '16px',
               padding: 'var(--space-6)',
               textAlign: 'center',

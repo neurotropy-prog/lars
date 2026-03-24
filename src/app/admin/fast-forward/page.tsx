@@ -86,7 +86,7 @@ export default function FastForwardPage() {
     <main
       style={{
         minHeight: '100vh',
-        padding: '48px 24px',
+        padding: 'calc(var(--header-height, 56px) + 48px) 24px 48px',
         background: '#0B0F0E',
         color: '#E8EAE9',
         fontFamily: 'system-ui, sans-serif',

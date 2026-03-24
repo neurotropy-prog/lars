@@ -19,7 +19,7 @@ function Section({
     <section style={{ marginBottom: "var(--space-16)" }}>
       <p
         style={{
-          fontFamily: "var(--font-inter-tight)",
+          fontFamily: "var(--font-inter)",
           fontSize: "var(--text-overline)",
           letterSpacing: "var(--ls-overline)",
           color: "var(--color-accent)",
@@ -39,12 +39,12 @@ export default function ShowcasePage() {
   return (
     <>
     <SiteHeader variant="default" />
-    <main className="container" style={{ paddingTop: "var(--space-16)", paddingBottom: "var(--space-24)" }}>
+    <main className="container" style={{ paddingTop: "calc(var(--header-height, 56px) + var(--space-16))", paddingBottom: "var(--space-24)" }}>
       {/* Header */}
       <div style={{ marginBottom: "var(--space-16)" }}>
         <h1
           style={{
-            fontFamily: "var(--font-plus-jakarta)",
+            fontFamily: "var(--font-lora)",
             fontSize: "var(--text-h1)",
             lineHeight: "var(--lh-h1)",
             letterSpacing: "var(--ls-h1)",
@@ -71,19 +71,19 @@ export default function ShowcasePage() {
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
           <p
             style={{
-              fontFamily: "var(--font-plus-jakarta)",
+              fontFamily: "var(--font-lora)",
               fontSize: "var(--text-display)",
               lineHeight: "var(--lh-display)",
               letterSpacing: "var(--ls-display)",
-              fontWeight: 600,
+              fontWeight: 700,
               color: "var(--color-text-primary)",
             }}
           >
-            Display — Plus Jakarta Sans 600
+            Display — Lora 700
           </p>
           <p
             style={{
-              fontFamily: "var(--font-plus-jakarta)",
+              fontFamily: "var(--font-lora)",
               fontSize: "var(--text-h1)",
               lineHeight: "var(--lh-h1)",
               letterSpacing: "var(--ls-h1)",
@@ -91,31 +91,31 @@ export default function ShowcasePage() {
               color: "var(--color-text-primary)",
             }}
           >
-            H1 — Plus Jakarta Sans 700
+            H1 — Lora 700
           </p>
           <p
             style={{
-              fontFamily: "var(--font-plus-jakarta)",
+              fontFamily: "var(--font-lora)",
               fontSize: "var(--text-h2)",
               lineHeight: "var(--lh-h2)",
               letterSpacing: "var(--ls-h2)",
+              fontWeight: 700,
+              color: "var(--color-text-primary)",
+            }}
+          >
+            H2 — Lora 700
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-inter)",
+              fontSize: "var(--text-h3)",
+              lineHeight: "var(--lh-h3)",
+              letterSpacing: "var(--ls-h3)",
               fontWeight: 600,
               color: "var(--color-text-primary)",
             }}
           >
-            H2 — Plus Jakarta Sans 600
-          </p>
-          <p
-            style={{
-              fontFamily: "var(--font-inter-tight)",
-              fontSize: "var(--text-h3)",
-              lineHeight: "var(--lh-h3)",
-              letterSpacing: "var(--ls-h3)",
-              fontWeight: 500,
-              color: "var(--color-text-primary)",
-            }}
-          >
-            H3 — Inter Tight 500
+            H3 — Inter 600
           </p>
           <p
             style={{
@@ -210,7 +210,7 @@ export default function ShowcasePage() {
           <Card>
             <p
               style={{
-                fontFamily: "var(--font-plus-jakarta)",
+                fontFamily: "var(--font-lora)",
                 fontSize: "var(--text-display)",
                 fontWeight: 700,
                 color: "var(--color-text-primary)",
@@ -232,9 +232,9 @@ export default function ShowcasePage() {
           <Card interactive>
             <p
               style={{
-                fontFamily: "var(--font-inter-tight)",
+                fontFamily: "var(--font-inter)",
                 fontSize: "var(--text-h4)",
-                fontWeight: 500,
+                fontWeight: 600,
                 color: "var(--color-text-primary)",
               }}
             >
@@ -255,7 +255,7 @@ export default function ShowcasePage() {
           <Card>
             <p
               style={{
-                fontFamily: "var(--font-plus-jakarta)",
+                fontFamily: "var(--font-lora)",
                 fontSize: "var(--text-h1)",
                 fontWeight: 700,
                 color: "var(--color-text-primary)",

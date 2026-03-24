@@ -752,10 +752,8 @@ input[type="range"]::-moz-range-track {
   transition: background 300ms ease, border-color 300ms ease;
 }
 
-/* Spacer to prevent content from hiding behind fixed header */
-.site-header + * {
-  padding-top: var(--header-height, 56px);
-}
+/* Pages with fixed header need padding-top on their main content.
+   Applied via .page-content class or inline calc(--header-height + spacing). */
 
 /* Gateway overlays start below the fixed header */
 .gateway-overlay {

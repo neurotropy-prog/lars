@@ -239,15 +239,15 @@ export default function MapaClient({
     const ctx = canvas.getContext('2d')!
     ctx.scale(dpr, dpr)
 
-    ctx.fillStyle = '#0a252c'
+    ctx.fillStyle = '#FFFBEF'
     ctx.fillRect(0, 0, W, H)
 
-    ctx.strokeStyle = 'rgba(255,255,255,0.06)'
+    ctx.strokeStyle = 'rgba(30,19,16,0.06)'
     ctx.lineWidth = 1
     roundRect(ctx, 1, 1, W - 2, H - 2, 20)
     ctx.stroke()
 
-    ctx.fillStyle = '#c6c8ee'
+    ctx.fillStyle = '#B45A32'
     ctx.font = '600 11px system-ui, sans-serif'
     ctx.fillText('TU DIAGNÓSTICO · L.A.R.S.©', 40, 52)
 
@@ -259,7 +259,7 @@ export default function MapaClient({
     ctx.font = '400 12px system-ui, sans-serif'
     ctx.fillText('Instituto Epigenético · Calibrado con +25.000 evaluaciones', 40, 112)
 
-    ctx.strokeStyle = 'rgba(255,255,255,0.08)'
+    ctx.strokeStyle = 'rgba(30,19,16,0.08)'
     ctx.lineWidth = 1
     ctx.beginPath()
     ctx.moveTo(40, 130)
@@ -280,7 +280,7 @@ export default function MapaClient({
     roundRect(ctx, 40, 208, badgeW, 26, 13)
     ctx.fillStyle = globalColor
     ctx.fill()
-    ctx.fillStyle = '#0a252c'
+    ctx.fillStyle = '#FFFBEF'
     ctx.fillText(globalLabel, 40 + 12, 226)
 
     dimensionResults.forEach((dim, i) => {
@@ -296,7 +296,7 @@ export default function MapaClient({
       const label = `${dim.score}/100`
       ctx.fillText(label, W - 40 - ctx.measureText(label).width, y)
 
-      ctx.fillStyle = 'rgba(255,255,255,0.08)'
+      ctx.fillStyle = 'rgba(30,19,16,0.08)'
       roundRect(ctx, 40, y + 10, BAR_W, 6, 3)
       ctx.fill()
 
@@ -310,7 +310,7 @@ export default function MapaClient({
       ctx.fillText(short, 40, y + 36)
 
       if (i < dimensionResults.length - 1) {
-        ctx.strokeStyle = 'rgba(255,255,255,0.05)'
+        ctx.strokeStyle = 'rgba(30,19,16,0.05)'
         ctx.lineWidth = 1
         ctx.beginPath()
         ctx.moveTo(40, y + 50)
@@ -319,7 +319,7 @@ export default function MapaClient({
       }
     })
 
-    ctx.strokeStyle = 'rgba(255,255,255,0.06)'
+    ctx.strokeStyle = 'rgba(30,19,16,0.06)'
     ctx.lineWidth = 1
     ctx.beginPath()
     ctx.moveTo(40, H - 46)
@@ -418,13 +418,13 @@ export default function MapaClient({
         .mapa-timeline-phase:nth-child(3) { animation-delay: 300ms; }
       `}</style>
 
-      <main style={{ minHeight: '100vh', padding: 'var(--space-12) var(--space-6) var(--space-24)' }}>
+      <main style={{ minHeight: '100vh', padding: 'calc(var(--header-height, 56px) + var(--space-16)) var(--space-6) var(--space-24)' }}>
         <div style={{ maxWidth: '540px', margin: '0 auto' }}>
 
           {/* ── HEADER ── */}
           <div className="mapa-fade-up" style={{ marginBottom: 'var(--space-10)' }}>
             <p style={{
-              fontFamily: 'var(--font-inter-tight)',
+              fontFamily: 'var(--font-inter)',
               fontSize: 'var(--text-overline)',
               letterSpacing: 'var(--ls-overline)',
               textTransform: 'uppercase',
@@ -434,7 +434,7 @@ export default function MapaClient({
               Tu diagnóstico
             </p>
             <h1 style={{
-              fontFamily: 'var(--font-plus-jakarta)',
+              fontFamily: 'var(--font-lora)',
               fontSize: 'var(--text-h1)',
               lineHeight: 'var(--lh-h1)',
               letterSpacing: 'var(--ls-h1)',
@@ -461,7 +461,7 @@ export default function MapaClient({
                 <div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-1)', marginBottom: 'var(--space-2)' }}>
                     <span style={{
-                      fontFamily: 'var(--font-plus-jakarta)',
+                      fontFamily: 'var(--font-lora)',
                       fontSize: 'var(--text-display)',
                       fontWeight: 700,
                       color: globalColor,
@@ -491,7 +491,7 @@ export default function MapaClient({
                   padding: 'var(--space-1) var(--space-4)',
                   borderRadius: 'var(--radius-pill)',
                   background: globalColor,
-                  color: '#0a252c',
+                  color: '#FFFBEF',
                   fontFamily: 'var(--font-inter)',
                   fontSize: 'var(--text-caption)',
                   fontWeight: 600,
@@ -645,11 +645,11 @@ export default function MapaClient({
           {showFirstStep && (
             <div className="mapa-fade-up" style={{ marginBottom: 'var(--space-12)' }}>
               <Card style={{
-                border: '1px solid rgba(74,222,128,0.18)',
-                background: 'rgba(74,222,128,0.04)',
+                border: '1px solid rgba(61,154,95,0.18)',
+                background: 'rgba(61,154,95,0.04)',
               }}>
                 <p style={{
-                  fontFamily: 'var(--font-inter-tight)',
+                  fontFamily: 'var(--font-inter)',
                   fontSize: 'var(--text-overline)',
                   letterSpacing: 'var(--ls-overline)',
                   textTransform: 'uppercase',
@@ -690,8 +690,8 @@ export default function MapaClient({
                 {/* Fase 1 — El Despertar (activa) */}
                 <div className="mapa-timeline-phase">
                   <Card style={{
-                    border: '1px solid rgba(74,222,128,0.18)',
-                    background: 'rgba(74,222,128,0.04)',
+                    border: '1px solid rgba(61,154,95,0.18)',
+                    background: 'rgba(61,154,95,0.04)',
                     display: 'flex', alignItems: 'flex-start', gap: 'var(--space-5)',
                   }}>
                     {/* Nodo + indicador */}
@@ -700,7 +700,7 @@ export default function MapaClient({
                         width: 14, height: 14, borderRadius: '50%',
                         backgroundColor: 'var(--color-success)',
                       }} />
-                      <div style={{ width: 2, height: 32, backgroundColor: 'rgba(74,222,128,0.18)', marginTop: 4 }} />
+                      <div style={{ width: 2, height: 32, backgroundColor: 'rgba(61,154,95,0.18)', marginTop: 4 }} />
                     </div>
                     {/* Contenido */}
                     <div style={{ flex: 1 }}>
@@ -742,7 +742,7 @@ export default function MapaClient({
                         width: 14, height: 14, borderRadius: '50%',
                         border: '2px solid var(--color-text-tertiary)',
                       }} />
-                      <div style={{ width: 2, height: 32, backgroundColor: 'rgba(255,255,255,0.06)', marginTop: 4 }} />
+                      <div style={{ width: 2, height: 32, backgroundColor: 'rgba(30,19,16,0.06)', marginTop: 4 }} />
                     </div>
                     <div style={{ flex: 1 }}>
                       <p style={{
@@ -851,7 +851,7 @@ export default function MapaClient({
                   El promedio de personas que completaron 4+ semanas del programa
                 </p>
                 <p style={{
-                  fontFamily: 'var(--font-plus-jakarta)',
+                  fontFamily: 'var(--font-lora)',
                   fontSize: 'var(--text-display)',
                   fontWeight: 700,
                   color: 'var(--color-success)',
@@ -880,8 +880,8 @@ export default function MapaClient({
                 <div style={{
                   padding: 'var(--space-6)',
                   borderRadius: 'var(--radius-lg)',
-                  background: 'rgba(74,222,128,0.04)',
-                  border: '1px solid rgba(74,222,128,0.18)',
+                  background: 'rgba(61,154,95,0.04)',
+                  border: '1px solid rgba(61,154,95,0.18)',
                   marginBottom: 'var(--space-6)',
                   textAlign: 'center',
                 }}>
@@ -889,11 +889,11 @@ export default function MapaClient({
                     display: 'inline-block',
                     padding: 'var(--space-1) var(--space-4)',
                     borderRadius: 'var(--radius-pill)',
-                    background: 'rgba(74,222,128,0.1)',
+                    background: 'rgba(61,154,95,0.1)',
                     color: 'var(--color-success)',
-                    fontFamily: 'var(--font-inter-tight)',
+                    fontFamily: 'var(--font-inter)',
                     fontSize: 'var(--text-caption)',
-                    fontWeight: 500,
+                    fontWeight: 600,
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
                     marginBottom: 'var(--space-3)',
@@ -901,9 +901,9 @@ export default function MapaClient({
                     Semana 1
                   </span>
                   <p style={{
-                    fontFamily: 'var(--font-inter-tight)',
+                    fontFamily: 'var(--font-inter)',
                     fontSize: 'var(--text-h4)',
-                    fontWeight: 500,
+                    fontWeight: 600,
                     color: 'var(--color-text-primary)',
                     marginBottom: 'var(--space-2)',
                   }}>
@@ -1047,9 +1047,9 @@ export default function MapaClient({
                     ].map(([title, desc]) => (
                       <div key={title} style={{ marginTop: 'var(--space-4)' }}>
                         <p style={{
-                          fontFamily: 'var(--font-inter-tight)',
+                          fontFamily: 'var(--font-inter)',
                           fontSize: 'var(--text-body-sm)',
-                          fontWeight: 500,
+                          fontWeight: 600,
                           color: 'var(--color-text-primary)',
                           marginBottom: 'var(--space-1)',
                         }}>
