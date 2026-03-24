@@ -173,7 +173,7 @@ export default function GatewayBloque1({
     <div
       className="gateway-overlay"
       role="main"
-      aria-label="Diagnóstico — Gateway L.A.R.S."
+      aria-label="Evaluación — Gateway L.A.R.S."
       style={{
         position: 'fixed',
         inset: 0,
@@ -272,7 +272,7 @@ export default function GatewayBloque1({
                 onClick={handlePrimeraVerdadContinue}
                 style={continueButtonStyle}
               >
-                Seguir con mi diagnóstico →
+                Seguir con mi evaluación →
               </button>
             </div>
           )}
@@ -312,7 +312,7 @@ export default function GatewayBloque1({
                 onClick={handleMicroEspejo1Continue}
                 style={continueButtonStyle}
               >
-                Continuar el diagnóstico →
+                Continuar la evaluación →
               </button>
             </div>
           )}

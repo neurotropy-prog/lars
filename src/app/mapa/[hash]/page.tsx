@@ -29,7 +29,7 @@ import SiteHeader from '@/components/SiteHeader'
 
 export const metadata: Metadata = {
   title: 'Tu Mapa de Regulación · L.A.R.S.',
-  description: 'Tu diagnóstico personal de regulación nerviosa.',
+  description: 'Tu evaluación personal de regulación nerviosa.',
   robots: { index: false, follow: false },
 }
 

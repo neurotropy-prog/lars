@@ -15,7 +15,7 @@ const SECTIONS = [
   {
     href: '/admin/analytics',
     title: 'Analytics',
-    description: 'Embudo completo, métricas clave y últimos diagnósticos.',
+    description: 'Embudo completo, métricas clave y últimas evaluaciones.',
     icon: '◉',
   },
   {

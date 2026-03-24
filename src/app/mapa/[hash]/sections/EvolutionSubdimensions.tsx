@@ -234,7 +234,7 @@ export default function EvolutionSubdimensions({
         disabled={!allAnswered || submitting}
         style={{ width: '100%' }}
       >
-        {submitting ? 'Calculando...' : 'Profundizar mi diagnóstico'}
+        {submitting ? 'Calculando...' : 'Profundizar mi evaluación'}
       </Button>
     </div>
   )

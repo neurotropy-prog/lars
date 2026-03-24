@@ -381,7 +381,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
           e.currentTarget.style.borderColor = 'rgba(180,90,50,0.25)'
         }}
       >
-        Ver mi diagnóstico completo →
+        Ver mi evaluación completa →
       </button>
     </div>
   )

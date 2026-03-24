@@ -23,23 +23,21 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = []
 
-    // T+400ms: SHOCK phrase
-    timers.push(setTimeout(() => setRevealStep(1), 400))
-    // T+400+600=1000ms: wait for SHOCK animation (600ms), then +200ms gap → headline
-    timers.push(setTimeout(() => setRevealStep(2), 1200))
-    // T+200ms after headline start
-    timers.push(setTimeout(() => setRevealStep(3), 1400))
+    // T+300ms: headline
+    timers.push(setTimeout(() => setRevealStep(2), 300))
+    // T+200ms after headline start → subtitle
+    timers.push(setTimeout(() => setRevealStep(3), 500))
     // T+300ms after subtitle start → P1 label + cards
-    timers.push(setTimeout(() => setRevealStep(4), 1700))
+    timers.push(setTimeout(() => setRevealStep(4), 800))
     // Micro-promises: after P1 cards stagger (5 cards × 150ms = 750ms + 200ms buffer)
-    timers.push(setTimeout(() => setRevealStep(5), 2650))
+    timers.push(setTimeout(() => setRevealStep(5), 1750))
 
     return () => timers.forEach(clearTimeout)
   }, [])
 
   return (
     <section
-      aria-label="Diagnóstico del sistema nervioso"
+      aria-label="Evaluación del sistema nervioso"
       style={{
         position: 'relative',
         minHeight: '100dvh',
@@ -66,26 +64,6 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
           gap: 0,
         }}
       >
-        {/* SHOCK — accent color, Cormorant Garamond italic per EXPERIENCE_STANDARDS 4.1 */}
-        <p
-          className={`hero-reveal${revealStep >= 1 ? ' hero-animate-fade-in-up' : ''}`}
-          style={{
-            fontFamily: 'var(--font-cormorant)',
-            fontSize: '1.125rem',
-            lineHeight: 1.6,
-            fontWeight: 400,
-            fontStyle: 'italic',
-            letterSpacing: '0.02em',
-            color: 'var(--color-accent)',
-            textAlign: 'center',
-            maxWidth: '38rem',
-            marginBottom: 'var(--space-6)',
-          }}
-        >
-          &ldquo;Tu cuerpo lleva meses hablándote. Esta es la primera vez que alguien te
-          traduce lo que dice.&rdquo;
-        </p>
-
         {/* Headline */}
         <h1
           className={`hero-reveal${revealStep >= 2 ? ' hero-animate-fade-in-up-fast' : ''}`}
@@ -116,7 +94,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
             marginBottom: 'var(--space-10)',
           }}
         >
-          Un diagnóstico de 3 minutos calibrado con más de 25.000 evaluaciones reales.
+          Una evaluación de 3 minutos calibrada con más de 25.000 evaluaciones reales.
           Tu resultado es personal, confidencial y tuyo&nbsp;— con o sin programa.
         </p>
 

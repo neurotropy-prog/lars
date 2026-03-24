@@ -82,13 +82,13 @@ export default function GatewayConvert({
     : null
 
   const progress = PROGRESS[step]
-  const progressLabel = `Diagnóstico rápido: ${progress}%`
+  const progressLabel = `Evaluación rápida: ${progress}%`
 
   return (
     <div
       className="gateway-overlay"
       role="main"
-      aria-label="Diagnóstico rápido — L.A.R.S."
+      aria-label="Evaluación rápida — L.A.R.S."
       style={{
         position: 'fixed',
         inset: 0,

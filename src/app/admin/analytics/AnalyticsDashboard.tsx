@@ -119,7 +119,7 @@ export default function AnalyticsDashboard() {
 
   const { funnel, metrics, recent } = data
   const funnelSteps = [
-    { label: 'Diagnósticos', value: funnel.diagnostics, pct: 100 },
+    { label: 'Evaluaciones', value: funnel.diagnostics, pct: 100 },
     { label: 'Empezaron P1', value: funnel.p1_started, pct: funnel.diagnostics > 0 ? Math.round((funnel.p1_started / funnel.diagnostics) * 100) : 0 },
     { label: 'Dieron email', value: funnel.email_captured, pct: funnel.p1_started > 0 ? Math.round((funnel.email_captured / funnel.p1_started) * 100) : 0 },
     { label: 'Visitaron mapa', value: funnel.map_visited, pct: funnel.email_captured > 0 ? Math.round((funnel.map_visited / funnel.email_captured) * 100) : 0 },
@@ -420,7 +420,7 @@ export default function AnalyticsDashboard() {
         </Card>
       </div>
 
-      {/* ── ÚLTIMOS DIAGNÓSTICOS ── */}
+      {/* ── ÚLTIMAS EVALUACIONES ── */}
       <Card style={{ padding: 'var(--space-6)', overflow: 'hidden' }}>
         <p style={{
           fontFamily: 'var(--font-inter)',
@@ -430,7 +430,7 @@ export default function AnalyticsDashboard() {
           color: 'var(--color-text-tertiary)',
           marginBottom: 'var(--space-4)',
         }}>
-          Últimos diagnósticos
+          Últimas evaluaciones
         </p>
 
         {recent.length === 0 ? (
@@ -441,7 +441,7 @@ export default function AnalyticsDashboard() {
             textAlign: 'center',
             padding: 'var(--space-8)',
           }}>
-            No hay diagnósticos en este periodo.
+            No hay evaluaciones en este periodo.
           </p>
         ) : (
           <div style={{ overflowX: 'auto' }}>

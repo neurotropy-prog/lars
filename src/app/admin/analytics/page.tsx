@@ -1,7 +1,7 @@
 /**
  * /admin/analytics — Panel de analytics L.A.R.S.
  *
- * Muestra el embudo completo, métricas clave y últimos diagnósticos.
+ * Muestra el embudo completo, métricas clave y últimas evaluaciones.
  * Datos reales de Supabase.
  */
 

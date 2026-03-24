@@ -98,7 +98,7 @@ export default function GatewayBloque3({
     <div
       className="gateway-overlay"
       role="main"
-      aria-label="Diagnóstico — Gateway L.A.R.S. Bloque 3"
+      aria-label="Evaluación — Gateway L.A.R.S. Bloque 3"
       style={{
         position: 'fixed',
         inset: 0,

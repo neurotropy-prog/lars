@@ -297,9 +297,9 @@ export default function ShowcasePage() {
       {/* Barra de progreso */}
       <Section title="Barra de progreso">
         <div style={{ maxWidth: 500, display: "flex", flexDirection: "column", gap: "var(--space-8)" }}>
-          <ProgressBar value={10} label="Tu diagnóstico: 10% completo" />
-          <ProgressBar value={45} label="Tu diagnóstico: 45% completo" />
-          <ProgressBar value={90} label="Tu diagnóstico: 90% completo" />
+          <ProgressBar value={10} label="Tu evaluación: 10% completo" />
+          <ProgressBar value={45} label="Tu evaluación: 45% completo" />
+          <ProgressBar value={90} label="Tu evaluación: 90% completo" />
         </div>
       </Section>
 

@@ -147,7 +147,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
             }}>
               La mayoría de personas con tu perfil de regulación esperan una media de 14 meses antes de actuar.
               Tú has necesitado 3 minutos para entender y 1 decisión para empezar.
-              Eso dice más de ti que cualquier diagnóstico.
+              Eso dice más de ti que cualquier evaluación.
             </p>
           </div>
 

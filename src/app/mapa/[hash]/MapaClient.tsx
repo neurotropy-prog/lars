@@ -99,7 +99,7 @@ const PUENTES = {
   p2: 'Esta dimensión tiene 3 subdimensiones que solo emergen con observación continua.',
   p3: 'Tu puntuación vs. 72 es la foto de hoy. El programa mide tu evolución semana a semana.',
   p4: 'Este patrón usa datos de miles de personas. El programa aprende TUS patrones — en 2 semanas sabe más de ti que tú.',
-  p5: 'Tu mapa es individual. El programa incluye 12 personas en tu misma situación — las brechas compartidas revelan lo que ningún diagnóstico individual puede ver.',
+  p5: 'Tu mapa es individual. El programa incluye 12 personas en tu misma situación — las brechas compartidas revelan lo que ninguna evaluación individual puede ver.',
 }
 
 // ─── COMPONENTE PRINCIPAL ─────────────────────────────────────────────────────
@@ -220,7 +220,7 @@ export default function MapaClient({
   const handleShare = useCallback(() => {
     const gatewayUrl = `${window.location.origin}/`
     navigator.clipboard.writeText(gatewayUrl).then(() => {
-      setShareToast('Link copiado — lleva al diagnóstico, no a tu mapa')
+      setShareToast('Link copiado — lleva a la evaluación, no a tu mapa')
       setTimeout(() => setShareToast(null), 3500)
     }).catch(() => {
       setShareToast(gatewayUrl)
@@ -249,7 +249,7 @@ export default function MapaClient({
 
     ctx.fillStyle = '#B45A32'
     ctx.font = '600 11px system-ui, sans-serif'
-    ctx.fillText('TU DIAGNÓSTICO · L.A.R.S.©', 40, 52)
+    ctx.fillText('TU EVALUACIÓN · L.A.R.S.©', 40, 52)
 
     ctx.fillStyle = '#F5F5F0'
     ctx.font = '600 26px system-ui, sans-serif'
@@ -431,7 +431,7 @@ export default function MapaClient({
               color: 'var(--color-accent)',
               marginBottom: 'var(--space-3)',
             }}>
-              Tu diagnóstico
+              Tu evaluación
             </p>
             <h1 style={{
               fontFamily: 'var(--font-lora)',
@@ -1095,7 +1095,7 @@ export default function MapaClient({
                   color: 'var(--color-text-tertiary)',
                   opacity: 0.7,
                 }}>
-                  142 personas completaron este diagnóstico esta semana · 5.247 en total
+                  142 personas completaron esta evaluación esta semana · 5.247 en total
                 </p>
               </div>
 
@@ -1111,7 +1111,7 @@ export default function MapaClient({
                 </p>
                 <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
                   <Button variant="secondary" size="small" onClick={handleShare}>
-                    ↗ Enviar el diagnóstico
+                    ↗ Enviar la evaluación
                   </Button>
                   <Button variant="secondary" size="small" onClick={handleDownloadPNG}>
                     ↓ Descargar mi mapa
@@ -1147,7 +1147,7 @@ export default function MapaClient({
               opacity: 0.7,
             }}>
               Este mapa es tuyo. Evoluciona con el tiempo.<br />
-              Confidencial — solo esta URL tiene acceso a tu diagnóstico.
+              Confidencial — solo esta URL tiene acceso a tu evaluación.
             </p>
           </div>
 

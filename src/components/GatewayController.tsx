@@ -10,7 +10,7 @@
  *   bloque3  → Calculando → Bisagra → Email
  *
  * P1 se responde en el hero (GatewayController la recibe via onP1Select).
- * Al completar email, redirige a /mapa/[hash] con el diagnóstico completo.
+ * Al completar email, redirige a /mapa/[hash] con la evaluación completa.
  */
 
 import { useState, useCallback, useEffect } from 'react'
@@ -197,19 +197,10 @@ export default function GatewayController() {
       >
         <HeroSection onP1Select={handleP1Select} />
 
-        <div
-          aria-hidden="true"
-          style={{
-            height: '48px',
-            background: `linear-gradient(to bottom, var(--color-bg-primary), var(--color-bg-secondary))`,
-            marginTop: '-1px',
-          }}
-        />
-
         <BelowTheFold />
       </div>
 
-      {/* ── Flujo diagnóstico completo ── */}
+      {/* ── Flujo evaluación completa ── */}
       {phase === 'bloque1' && p1 && (
         <GatewayBloque1
           p1={p1}

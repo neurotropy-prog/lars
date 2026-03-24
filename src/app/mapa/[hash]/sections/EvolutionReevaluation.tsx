@@ -174,8 +174,8 @@ export default function EvolutionReevaluation({
             }}
           >
             {isQuarterly
-              ? `${Math.floor(daysSinceCreation / 30)} meses desde tu diagnóstico`
-              : 'Un mes desde tu diagnóstico'}
+              ? `${Math.floor(daysSinceCreation / 30)} meses desde tu evaluación`
+              : 'Un mes desde tu evaluación'}
           </p>
 
           {/* Contexto si hay reevaluaciones previas */}

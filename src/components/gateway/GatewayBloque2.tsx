@@ -173,7 +173,7 @@ export default function GatewayBloque2({
       ? 'No hay prisa. Tómate tu tiempo para responder.'
       : p4 === 'E'
       ? 'Basado en tu combinación anterior, esta dimensión es clave.'
-      : 'El 41% de personas que hacen este diagnóstico no recuerdan cuándo fue.'
+      : 'El 41% de personas que hacen esta evaluación no recuerdan cuándo fue.'
 
   // ─── RENDER ───────────────────────────────────────────────────────────────
 
@@ -181,7 +181,7 @@ export default function GatewayBloque2({
     <div
       className="gateway-overlay"
       role="main"
-      aria-label="Diagnóstico — Gateway L.A.R.S. Bloque 2"
+      aria-label="Evaluación — Gateway L.A.R.S. Bloque 2"
       style={{
         position: 'fixed',
         inset: 0,
@@ -296,7 +296,7 @@ export default function GatewayBloque2({
                 onClick={handleMicroEspejo2Continue}
                 style={continueButtonStyle}
               >
-                Continuar el diagnóstico →
+                Continuar la evaluación →
               </button>
             </div>
           )}

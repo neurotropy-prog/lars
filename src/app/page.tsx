@@ -17,7 +17,7 @@ export default function Home() {
     <ClientShell>
       {/* Skip link para lectores de pantalla */}
       <a href="#p1-section" className="skip-link">
-        Ir al diagnóstico
+        Ir a la evaluación
       </a>
 
       <SiteHeader variant="landing" />

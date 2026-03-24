@@ -27,7 +27,7 @@ export default function EvolutionTimeline({ evolution }: Props) {
   const milestones: TimelineMilestone[] = [
     {
       day: 0,
-      label: 'Tu diagnóstico',
+      label: 'Tu evaluación',
       sublabel: '5 dimensiones · Score global',
       sectionId: 'section-dimensions',
       status: 'active',

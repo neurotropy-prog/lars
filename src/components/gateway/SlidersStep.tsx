@@ -147,7 +147,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
           marginBottom: 'var(--space-8)',
         }}
       >
-        Mueve cada indicador — el diagnóstico cruza estos valores con tus respuestas anteriores.
+        Mueve cada indicador — la evaluación cruza estos valores con tus respuestas anteriores.
       </p>
 
       {/* Sliders */}
@@ -344,7 +344,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
           pointerEvents: allTouched ? 'auto' : 'none',
         }}
       >
-        Ver mi diagnóstico completo →
+        Ver mi evaluación completa →
       </button>
     </div>
   )

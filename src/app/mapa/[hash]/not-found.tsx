@@ -54,7 +54,7 @@ export default function MapaNotFound() {
         </p>
         <a href="/">
           <Button variant="primary" size="large">
-            Hacer el diagnóstico de nuevo
+            Hacer la evaluación de nuevo
           </Button>
         </a>
       </div>

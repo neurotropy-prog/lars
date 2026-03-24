@@ -27,7 +27,7 @@ const cormorantGaramond = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Descubre el estado de tu sistema nervioso | Instituto Epigenético",
   description:
-    "Un diagnóstico de 3 minutos calibrado con más de 25.000 evaluaciones reales. Tu resultado es personal, confidencial y tuyo.",
+    "Una evaluación de 3 minutos calibrada con más de 25.000 evaluaciones reales. Tu resultado es personal, confidencial y tuyo.",
   robots: {
     index: true,
     follow: true,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Descubre el estado de tu sistema nervioso",
     description:
-      "Un diagnóstico de 3 minutos calibrado con más de 25.000 evaluaciones reales.",
+      "Una evaluación de 3 minutos calibrada con más de 25.000 evaluaciones reales.",
     type: "website",
     locale: "es_ES",
   },

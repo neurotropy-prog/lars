@@ -138,7 +138,7 @@ export default function CompressedBisagra({ scores, onContinue }: CompressedBisa
           transition: 'opacity 400ms ease',
         }}
       >
-        Ver mi diagnóstico completo
+        Ver mi evaluación completa
       </button>
     </div>
   )

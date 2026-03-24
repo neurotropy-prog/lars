@@ -46,7 +46,7 @@ export default function FastForwardPage() {
 
   async function fastForward(daysToAdd: number, label: string) {
     if (!hash.trim()) {
-      setError('Escribe el hash del diagnóstico primero')
+      setError('Escribe el hash de la evaluación primero')
       return
     }
 
@@ -123,7 +123,7 @@ export default function FastForwardPage() {
               marginBottom: '8px',
             }}
           >
-            Hash del diagnóstico (de la URL /mapa/XXXXXXXXXXXX)
+            Hash de la evaluación (de la URL /mapa/XXXXXXXXXXXX)
           </label>
           <input
             type="text"

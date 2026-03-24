@@ -210,7 +210,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
               letterSpacing: '0.01em',
             }}
           >
-            Tu diagnóstico completo está aquí
+            Tu evaluación completa está aquí
           </p>
         </div>
       </div>
@@ -229,7 +229,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
             textAlign: 'center',
           }}
         >
-          Tu diagnóstico está listo
+          Tu evaluación está lista
         </h2>
         <p
           style={{
@@ -328,7 +328,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
               if (valid) e.currentTarget.style.background = 'var(--color-accent)'
             }}
           >
-            {isSubmitting ? 'Guardando tu diagnóstico…' : 'Acceder a mi diagnóstico'}
+            {isSubmitting ? 'Guardando tu evaluación…' : 'Acceder a mi evaluación'}
           </button>
 
           {/* Disuelve fricción */}
@@ -341,7 +341,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
               textAlign: 'center',
             }}
           >
-            Solo email. Cero spam. Tu diagnóstico es confidencial.
+            Solo email. Cero spam. Tu evaluación es confidencial.
           </p>
         </form>
       </div>
