@@ -73,6 +73,8 @@ export default function AdminHome() {
   // ── Pantalla de contraseña ──
   if (!authenticated) {
     return (
+      <>
+      <SiteHeader variant="admin" />
       <div style={{
         minHeight: '100vh',
         backgroundColor: 'var(--color-bg-primary)',
@@ -152,6 +154,7 @@ export default function AdminHome() {
           )}
         </div>
       </div>
+      </>
     )
   }
 
