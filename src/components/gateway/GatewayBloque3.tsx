@@ -15,7 +15,7 @@
  * Al completar email, llama onComplete(email).
  */
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import BisagraSequence from './BisagraSequence'
 import EmailCapture from './EmailCapture'
 import ProgressBar from '@/components/ui/ProgressBar'
@@ -51,6 +51,7 @@ export default function GatewayBloque3({
   onComplete,
   onClose,
 }: GatewayBloque3Props) {
+  const overlayRef = useRef<HTMLDivElement>(null)
   const [step, setStep] = useState<Step>('bisagra')
   const [stepKey, setStepKey] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
@@ -65,7 +66,7 @@ export default function GatewayBloque3({
       setStep(newStep)
       setStepKey((k) => k + 1)
       setIsExiting(false)
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
+      setTimeout(() => overlayRef.current?.scrollTo({ top: 0, behavior: 'smooth' }), 50)
     }, 400)
   }, [])
 
@@ -85,6 +86,7 @@ export default function GatewayBloque3({
 
   return (
     <div
+      ref={overlayRef}
       className="gateway-overlay"
       role="main"
       aria-label="Evaluación — Gateway L.A.R.S. Bloque 3"

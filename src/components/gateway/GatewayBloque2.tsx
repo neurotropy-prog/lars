@@ -13,7 +13,7 @@
  * Al completar P8, llama a onComplete con todas las respuestas del bloque.
  */
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import ZoneWrapper, { getZoneBg } from './ZoneWrapper'
 import SingleSelectStep from './SingleSelectStep'
 import SlidersStep from './SlidersStep'
@@ -87,6 +87,7 @@ export default function GatewayBloque2({
   onClose,
 }: GatewayBloque2Props) {
   // ── Estado de pasos con cross-fade (A-04) ──
+  const overlayRef = useRef<HTMLDivElement>(null)
   const [step, setStep] = useState<Step>('p5')
   const [stepKey, setStepKey] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
@@ -105,7 +106,7 @@ export default function GatewayBloque2({
       setStep(newStep)
       setStepKey((k) => k + 1)
       setIsExiting(false)
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
+      setTimeout(() => overlayRef.current?.scrollTo({ top: 0, behavior: 'smooth' }), 50)
     }, 400)
   }, [])
 
@@ -171,6 +172,7 @@ export default function GatewayBloque2({
 
   return (
     <div
+      ref={overlayRef}
       className="gateway-overlay"
       role="main"
       aria-label="Evaluación — Gateway L.A.R.S. Bloque 2"

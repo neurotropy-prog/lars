@@ -10,7 +10,7 @@
  * para que GatewayController pase al Bloque 2.
  */
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import ZoneWrapper, { getZoneBg } from './ZoneWrapper'
 import AnalyzingScreen from './AnalyzingScreen'
 import SingleSelectStep from './SingleSelectStep'
@@ -90,6 +90,7 @@ export default function GatewayBloque1({
   onClose,
 }: GatewayBloque1Props) {
   // ── Estado de pasos con cross-fade (A-04) ──
+  const overlayRef = useRef<HTMLDivElement>(null)
   const [step, setStep] = useState<Step>('p2')
   const [stepKey, setStepKey] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
@@ -108,7 +109,7 @@ export default function GatewayBloque1({
       setStep(newStep)
       setStepKey((k) => k + 1)
       setIsExiting(false)
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
+      setTimeout(() => overlayRef.current?.scrollTo({ top: 0, behavior: 'smooth' }), 50)
     }, 400)
   }, [])
 
@@ -163,6 +164,7 @@ export default function GatewayBloque1({
 
   return (
     <div
+      ref={overlayRef}
       className="gateway-overlay"
       role="main"
       aria-label="Evaluación — Gateway L.A.R.S."
