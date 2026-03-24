@@ -7,6 +7,7 @@
 
 import AnalyticsDashboard from './AnalyticsDashboard'
 import SiteHeader from '@/components/SiteHeader'
+import AdminNav from '@/components/admin/AdminNav'
 
 export const metadata = {
   title: 'Panel L.A.R.S. · Analytics',
@@ -17,6 +18,7 @@ export default function AnalyticsPage() {
   return (
     <>
       <SiteHeader variant="admin" />
+      <AdminNav />
       <div style={{
         minHeight: '100vh',
         backgroundColor: 'var(--color-bg-primary)',

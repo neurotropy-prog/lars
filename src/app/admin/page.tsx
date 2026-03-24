@@ -10,6 +10,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
+import AdminNav from '@/components/admin/AdminNav'
 
 const SECTIONS = [
   {
@@ -162,6 +163,7 @@ export default function AdminHome() {
   return (
     <>
     <SiteHeader variant="admin" />
+    <AdminNav />
     <div style={{
       minHeight: '100vh',
       backgroundColor: 'var(--color-bg-primary)',

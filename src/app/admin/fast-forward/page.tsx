@@ -11,6 +11,7 @@
 
 import { useState, useEffect } from 'react'
 import SiteHeader from '@/components/SiteHeader'
+import AdminNav from '@/components/admin/AdminNav'
 
 interface EvolutionResult {
   previousCreatedAt: string
@@ -100,6 +101,7 @@ export default function FastForwardPage() {
   return (
     <>
     <SiteHeader variant="admin" />
+    <AdminNav />
     <main
       style={{
         minHeight: '100vh',

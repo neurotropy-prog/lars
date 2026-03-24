@@ -10,14 +10,13 @@
  * para que GatewayController pase al Bloque 2.
  */
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import ZoneWrapper, { getZoneBg } from './ZoneWrapper'
 import AnalyzingScreen from './AnalyzingScreen'
 import SingleSelectStep from './SingleSelectStep'
 import MultiSelectStep from './MultiSelectStep'
 import MicroEspejo from '@/components/ui/MicroEspejo'
 import ProgressBar from '@/components/ui/ProgressBar'
-import { useNervousSystem } from '@/contexts/NervousSystemContext'
 import {
   P2_OPTIONS,
   P3_OPTIONS,
@@ -94,14 +93,6 @@ export default function GatewayBloque1({
   const [step, setStep] = useState<Step>('p2')
   const [stepKey, setStepKey] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
-  const { setState: setNervousState } = useNervousSystem()
-
-  // Nervous system: awakening from P3 onward
-  useEffect(() => {
-    if (step === 'p3' || step === 'p4' || step === 'micro-espejo-1') {
-      setNervousState('awakening')
-    }
-  }, [step, setNervousState])
 
   // ── Zona y respuestas ──
   const [zone, setZone] = useState<Zone>('exploracion')
@@ -117,6 +108,7 @@ export default function GatewayBloque1({
       setStep(newStep)
       setStepKey((k) => k + 1)
       setIsExiting(false)
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
     }, 400)
   }, [])
 

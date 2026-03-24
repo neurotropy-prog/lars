@@ -69,9 +69,24 @@ export async function createCalendarEvent({
   const calendar = getCalendarClient()
   const calendarId = getCalendarId()
 
+  const JAVIER_EMAIL = 'javier@institutoepigenetico.com'
+  const attendees = [
+    { email: attendeeEmail },
+    { email: JAVIER_EMAIL },
+  ]
+
+  console.log('[Google Calendar] Creando evento:', {
+    calendarId,
+    attendees: attendees.map((a) => a.email),
+    summary,
+    start: startTime.toISOString(),
+    end: endTime.toISOString(),
+  })
+
   const event = await calendar.events.insert({
     calendarId,
     conferenceDataVersion: 1,
+    sendUpdates: 'all',
     requestBody: {
       summary,
       description,
@@ -83,7 +98,7 @@ export async function createCalendarEvent({
         dateTime: endTime.toISOString(),
         timeZone: 'Europe/Madrid',
       },
-      attendees: [{ email: attendeeEmail }],
+      attendees,
       conferenceData: {
         createRequest: {
           requestId: `lars-${Date.now()}`,
@@ -98,6 +113,15 @@ export async function createCalendarEvent({
         ],
       },
     },
+  })
+
+  console.log('[Google Calendar] Evento creado:', {
+    eventId: event.data.id,
+    status: event.data.status,
+    htmlLink: event.data.htmlLink,
+    meetUrl: event.data.conferenceData?.entryPoints?.find(
+      (ep) => ep.entryPointType === 'video'
+    )?.uri,
   })
 
   const meetUrl =

@@ -20,7 +20,6 @@ import GatewayBloque1 from '@/components/gateway/GatewayBloque1'
 import GatewayBloque2 from '@/components/gateway/GatewayBloque2'
 import GatewayBloque3 from '@/components/gateway/GatewayBloque3'
 import OfflineBanner from '@/components/ui/OfflineBanner'
-import { useNervousSystem } from '@/contexts/NervousSystemContext'
 import type { Bloque1Answers } from '@/components/gateway/GatewayBloque1'
 import type { Bloque2Answers } from '@/lib/gateway-bloque2-data'
 
@@ -78,12 +77,6 @@ export default function GatewayController() {
   const [duplicateHash, setDuplicateHash] = useState<string | null>(null)
   const [duplicateEmail, setDuplicateEmail] = useState<string | null>(null)
   const [landingExiting, setLandingExiting] = useState(false)
-  const { setState: setNervousState } = useNervousSystem()
-
-  /* Nervous system: fragmented on landing */
-  useEffect(() => {
-    if (phase === 'landing') setNervousState('fragmented')
-  }, [phase, setNervousState])
 
   /* Persistir estado en localStorage cada vez que cambia */
   useEffect(() => {
@@ -99,6 +92,7 @@ export default function GatewayController() {
     setLandingExiting(true)
     setTimeout(() => {
       setPhase('bloque1')
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
     }, 400) // 400ms = landing fade-out duration
   }, [])
 
@@ -106,12 +100,14 @@ export default function GatewayController() {
   const handleBloque1Complete = useCallback((answers: Bloque1Answers) => {
     setBloque1Answers(answers)
     setPhase('bloque2')
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
   }, [])
 
   /* Bloque2 completo → pasa a bloque3 */
   const handleBloque2Complete = useCallback((answers: Bloque2Answers) => {
     setBloque2Answers(answers)
     setPhase('bloque3')
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
   }, [])
 
   /* Email enviado → redirigir al mapa */
@@ -180,6 +176,7 @@ export default function GatewayController() {
   const handleClose = useCallback(() => {
     clearSavedState()
     setPhase('landing')
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
   }, [])
 
   return (

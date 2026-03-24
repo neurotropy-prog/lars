@@ -28,7 +28,7 @@ function getBaseUrl(): string {
   return process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
 }
 
-const JAVIER_EMAIL = 'regulacion@institutoepigenetico.com'
+const JAVIER_EMAIL = 'javier@institutoepigenetico.com'
 
 // ─── Template base ──────────────────────────────────────────────────────────
 

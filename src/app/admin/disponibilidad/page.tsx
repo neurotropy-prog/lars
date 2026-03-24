@@ -17,6 +17,7 @@ import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import SiteHeader from '@/components/SiteHeader'
+import AdminNav from '@/components/admin/AdminNav'
 import Badge from '@/components/ui/Badge'
 import Separator from '@/components/ui/Separator'
 
@@ -342,6 +343,7 @@ export default function DisponibilidadPage() {
   return (
     <>
     <SiteHeader variant="admin" />
+    <AdminNav />
     <main
       className="container"
       style={{

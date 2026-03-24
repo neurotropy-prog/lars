@@ -15,11 +15,10 @@
  * Al completar email, llama onComplete(email).
  */
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import BisagraSequence from './BisagraSequence'
 import EmailCapture from './EmailCapture'
 import ProgressBar from '@/components/ui/ProgressBar'
-import { useNervousSystem } from '@/contexts/NervousSystemContext'
 import { computeScores } from '@/lib/scoring'
 import type { Bloque1Answers } from './GatewayBloque1'
 import type { Bloque2Answers } from '@/lib/gateway-bloque2-data'
@@ -55,20 +54,9 @@ export default function GatewayBloque3({
   const [step, setStep] = useState<Step>('bisagra')
   const [stepKey, setStepKey] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
-  const { setState: setNervousState, setScore: setNervousScore } = useNervousSystem()
 
   /* Score calculado una sola vez al montar — antes del typing */
   const [scores] = useState(() => computeScores(p1, bloque1, bloque2))
-
-  /* Nervous system: frozen during bisagra (includes calc phase), resolved on email */
-  useEffect(() => {
-    if (step === 'bisagra') {
-      setNervousState('frozen')
-    } else if (step === 'email') {
-      setNervousScore(scores.global)
-      setNervousState('resolved')
-    }
-  }, [step, scores.global, setNervousState, setNervousScore])
 
   /* cross-fade A-04 */
   const changeStep = useCallback((newStep: Step) => {
@@ -77,6 +65,7 @@ export default function GatewayBloque3({
       setStep(newStep)
       setStepKey((k) => k + 1)
       setIsExiting(false)
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
     }, 400)
   }, [])
 

@@ -13,13 +13,12 @@
  * Al completar P8, llama a onComplete con todas las respuestas del bloque.
  */
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import ZoneWrapper, { getZoneBg } from './ZoneWrapper'
 import SingleSelectStep from './SingleSelectStep'
 import SlidersStep from './SlidersStep'
 import MicroEspejo from '@/components/ui/MicroEspejo'
 import ProgressBar from '@/components/ui/ProgressBar'
-import { useNervousSystem } from '@/contexts/NervousSystemContext'
 import {
   P5_OPTIONS,
   P6_OPTIONS,
@@ -91,14 +90,6 @@ export default function GatewayBloque2({
   const [step, setStep] = useState<Step>('p5')
   const [stepKey, setStepKey] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
-  const { setState: setNervousState } = useNervousSystem()
-
-  // Nervous system: flowing from P7 onward
-  useEffect(() => {
-    if (step === 'p7' || step === 'p8') {
-      setNervousState('flowing')
-    }
-  }, [step, setNervousState])
 
   // ── Zona y respuestas ──
   const [zone, setZone] = useState<Zone>('exploracion')
@@ -114,6 +105,7 @@ export default function GatewayBloque2({
       setStep(newStep)
       setStepKey((k) => k + 1)
       setIsExiting(false)
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
     }, 400)
   }, [])
 
