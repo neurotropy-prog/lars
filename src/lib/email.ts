@@ -123,6 +123,9 @@ export async function sendDia0Email({
     <tr>
       <td>
 
+        <!-- Header: logo -->
+        <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
+
         <!-- Score global -->
         <p style="
           font-size: 13px;
@@ -264,6 +267,7 @@ function buildEvolutionEmail(params: {
 ">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <tr><td>
+      <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
       ${params.content}
       <table cellpadding="0" cellspacing="0" style="margin: 32px 0;">
         <tr><td style="background: #F5F564; border-radius: 100px; padding: 16px 32px;">
@@ -424,6 +428,8 @@ export async function sendPostPagoEmail(to: string, mapHash: string): Promise<vo
 ">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <tr><td>
+
+      <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
 
       <p style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #B45A32; margin: 0 0 8px 0;">
         SEMANA 1

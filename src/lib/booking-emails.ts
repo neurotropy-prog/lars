@@ -62,11 +62,8 @@ function buildBookingEmail(params: {
 ">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <tr><td>
-      <!-- Header: overline + linea decorativa -->
-      <p style="font-family: Lora, system-ui, sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #B45A32; margin: 0 0 12px 0; font-weight: 600;">
-        INSTITUTO EPIGENETICO
-      </p>
-      <div style="width: 40px; height: 2px; background: linear-gradient(90deg, #B45A32, transparent); margin: 0 0 32px 0;"></div>
+      <!-- Header: logo -->
+      <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
 
       ${params.content}
       ${button}
