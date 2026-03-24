@@ -18,7 +18,7 @@ import type { BookExcerptData } from '@/lib/content/book-excerpts'
 
 // ─── TIPOS ────────────────────────────────────────────────────────────────────
 
-interface FocusBannerProps {
+export interface FocusBannerProps {
   evolution: EvolutionState
   lastVisitedAt: string
   archetype: ArchetypeData | null
@@ -53,7 +53,7 @@ const UNLOCK_DAYS: Record<string, number> = {
 
 // ─── FOCUS SELECTION ─────────────────────────────────────────────────────────
 
-function selectFocus(props: FocusBannerProps): FocusItem {
+export function selectFocus(props: FocusBannerProps): FocusItem {
   const { evolution, archetype, d7Insight, subdimensionConfig, bookExcerpt, worstDimensionName, worstScore, hasPaid, daysSinceCreation } = props
 
   // 1. NEW content (isNew = unlocked && !viewed)

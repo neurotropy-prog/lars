@@ -21,17 +21,14 @@ export default function MapaNotFound() {
       padding: 'var(--space-12) var(--space-6)',
     }}>
       <div style={{ maxWidth: '400px', textAlign: 'center' }}>
-        <p style={{
-          fontFamily: 'var(--font-inter)',
-          fontWeight: 600,
-          fontSize: 'var(--text-overline)',
-          letterSpacing: 'var(--ls-overline)',
-          textTransform: 'uppercase',
-          color: 'var(--color-accent)',
-          marginBottom: 'var(--space-4)',
-        }}>
-          L.A.R.S.©
-        </p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/img/logo-instituto-epigenetico.png"
+          alt="Instituto Epigenético"
+          width={156}
+          height={28}
+          style={{ display: 'block', margin: '0 auto var(--space-10)' }}
+        />
         <h1 style={{
           fontFamily: 'var(--font-lora)',
           fontSize: 'var(--text-h2)',

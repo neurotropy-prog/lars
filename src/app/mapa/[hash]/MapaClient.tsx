@@ -29,14 +29,14 @@ import type { BookExcerptData } from '@/lib/content/book-excerpts'
 
 // Secciones de evolución
 import DimensionCard from './sections/DimensionCard'
-import EvolutionTimeline from './sections/EvolutionTimeline'
 import EvolutionChart from './sections/EvolutionChart'
 import EvolutionArchetype from './sections/EvolutionArchetype'
 import EvolutionSession from './sections/EvolutionSession'
 import EvolutionSubdimensions from './sections/EvolutionSubdimensions'
 import EvolutionBookExcerpt from './sections/EvolutionBookExcerpt'
 import EvolutionReevaluation from './sections/EvolutionReevaluation'
-import FocusBanner from './sections/FocusBanner'
+import FocusBanner, { selectFocus } from './sections/FocusBanner'
+import MapaAccordion, { type AccordionSection } from './sections/MapaAccordion'
 
 // ─── TIPOS ────────────────────────────────────────────────────────────────────
 
@@ -356,6 +356,202 @@ export default function MapaClient({
       }))
     : null
 
+  // ── Accordion sections (return visits only) ─────────────────────────────
+
+  const accordionSections: AccordionSection[] = []
+
+  if (!isFirstVisit) {
+    // "Tu Evaluación" — always present
+    accordionSections.push({
+      id: 'evaluacion',
+      title: 'Tu Evaluación',
+      summary: `5 dimensiones · ${global}/100`,
+      children: (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+          {dimensionResults.map((dim) => {
+            const isMostCompromised = dim.key === mostCompromisedKey
+            const dimD7Insight = isMostCompromised && evolution.insightD7.unlocked ? d7Insight : null
+            const dimD7IsNew = isMostCompromised && evolution.insightD7.isNew
+            const dimSubScores = isMostCompromised ? subdimScoresForCard : null
+            return (
+              <DimensionCard
+                key={dim.key}
+                dim={dim}
+                isMostCompromised={isMostCompromised}
+                showPriorityTag={isMostCompromised}
+                d7Insight={dimD7Insight}
+                d7IsNew={dimD7IsNew}
+                subdimensionScores={dimSubScores}
+                puente={null}
+              />
+            )
+          })}
+        </div>
+      ),
+    })
+
+    // Day 3+ — "Tu Identidad"
+    if (evolution.archetype.unlocked && archetype) {
+      accordionSections.push({
+        id: 'identidad',
+        title: 'Tu Identidad',
+        summary: archetype.name,
+        badge: evolution.archetype.isNew ? 'nuevo' : null,
+        children: (
+          <EvolutionArchetype
+            archetype={archetype}
+            isNew={evolution.archetype.isNew}
+          />
+        ),
+      })
+    }
+
+    // Day 10+ — "Sesión con Javier"
+    if (evolution.session.unlocked) {
+      accordionSections.push({
+        id: 'sesion',
+        title: 'Sesión con Javier',
+        summary: evolution.session.booked ? '✓ Agendada' : '20 min gratuitos',
+        badge: !evolution.session.booked ? 'pendiente' : 'completado',
+        children: (
+          <EvolutionSession
+            isNew={evolution.session.isNew}
+            booked={evolution.session.booked}
+            mapHash={hash}
+          />
+        ),
+      })
+    }
+
+    // Day 14+ — "Tu Profundidad"
+    if (evolution.subdimensions.unlocked && subdimensionConfig) {
+      accordionSections.push({
+        id: 'profundidad',
+        title: 'Tu Profundidad',
+        summary: evolution.subdimensions.completed
+          ? `${subdimensionConfig.subdimensions.length} subdimensiones`
+          : '2 preguntas pendientes',
+        badge: !evolution.subdimensions.completed ? 'pendiente' : null,
+        children: (
+          <EvolutionSubdimensions
+            config={subdimensionConfig}
+            completed={evolution.subdimensions.completed}
+            isNew={evolution.subdimensions.isNew}
+            hash={hash}
+          />
+        ),
+      })
+    }
+
+    // Day 21+ — "Extracto del libro"
+    if (evolution.bookExcerpt.unlocked && bookExcerpt) {
+      accordionSections.push({
+        id: 'libro',
+        title: 'Extracto del libro',
+        summary: 'Capítulo personalizado',
+        badge: evolution.bookExcerpt.isNew ? 'nuevo' : null,
+        children: (
+          <EvolutionBookExcerpt
+            excerpt={bookExcerpt}
+            isNew={evolution.bookExcerpt.isNew}
+            worstDimensionName={worstDimensionName}
+            worstScore={worstScore}
+          />
+        ),
+      })
+    }
+
+    // Day 30+ — "Tu Evolución"
+    if (evolution.reevaluation.unlocked || evolution.nextQuarterlyUnlocked) {
+      const delta = reevaluationScores
+        ? reevaluationScores.global - originalScores.global
+        : 0
+      accordionSections.push({
+        id: 'evolucion',
+        title: 'Tu Evolución',
+        summary: reevaluations.length > 0
+          ? `${reevaluations.length} reevaluación · +${delta} pts`
+          : 'Reevaluación disponible',
+        badge: (evolution.reevaluation.isNew || evolution.nextQuarterlyUnlocked)
+          ? 'nuevo'
+          : (!evolution.reevaluation.completed ? 'pendiente' : null),
+        children: (
+          <>
+            <EvolutionChart
+              globalScore={global}
+              reevaluations={reevaluations}
+            />
+            <EvolutionReevaluation
+              originalSliders={originalSliders}
+              originalScores={originalScores}
+              completed={evolution.reevaluation.completed}
+              isNew={evolution.reevaluation.isNew || evolution.nextQuarterlyUnlocked}
+              completedScores={reevaluationScores}
+              reevaluations={reevaluations}
+              hash={hash}
+              daysSinceCreation={evolution.daysSinceCreation}
+            />
+          </>
+        ),
+      })
+    }
+
+    // Disabled teaser rows for upcoming unlocks
+    const UNLOCK_SCHEDULE = [
+      { key: 'archetype', id: 'identidad', title: 'Tu Identidad', day: 3 },
+      { key: 'session', id: 'sesion', title: 'Sesión con Javier', day: 10 },
+      { key: 'subdimensions', id: 'profundidad', title: 'Tu Profundidad', day: 14 },
+      { key: 'bookExcerpt', id: 'libro', title: 'Extracto del libro', day: 21 },
+      { key: 'reevaluation', id: 'evolucion', title: 'Tu Evolución', day: 30 },
+    ]
+    const daysSince = evolution.daysSinceCreation
+    const upcoming = UNLOCK_SCHEDULE
+      .filter((u) => u.day > daysSince)
+      .slice(0, 2)
+
+    for (const u of upcoming) {
+      const daysLeft = u.day - daysSince
+      accordionSections.push({
+        id: `teaser-${u.id}`,
+        title: u.title,
+        summary: '',
+        disabled: true,
+        disabledText: `Disponible en ${daysLeft} día${daysLeft === 1 ? '' : 's'}`,
+        children: null,
+      })
+    }
+  }
+
+  // ── Accordion defaultOpenId (from focus logic) ─────────────────────────
+
+  const SCROLL_TO_ACCORDION: Record<string, string> = {
+    'section-archetype': 'identidad',
+    'section-session': 'sesion',
+    'section-subdimensions': 'profundidad',
+    'section-book': 'libro',
+    'section-reevaluation': 'evolucion',
+    'section-dimensions': 'evaluacion',
+    'mapa-completo': 'evaluacion',
+  }
+
+  let accordionDefaultOpenId = 'evaluacion'
+  if (!isFirstVisit && lastVisitedAt) {
+    const focus = selectFocus({
+      evolution,
+      lastVisitedAt,
+      archetype,
+      d7Insight,
+      subdimensionConfig,
+      bookExcerpt,
+      worstDimensionName,
+      worstScore,
+      hasPaid,
+      hash,
+      daysSinceCreation: evolution.daysSinceCreation,
+    })
+    accordionDefaultOpenId = SCROLL_TO_ACCORDION[focus.scrollTo] ?? 'evaluacion'
+  }
+
   // ─────────────────────────────────────────────────────────────────────────
 
   return (
@@ -586,138 +782,71 @@ export default function MapaClient({
              ══════════════════════════════════════════════════════════════════ */}
           <section id="mapa-completo" style={{ marginBottom: 'var(--space-12)' }}>
 
-            {/* Timeline (solo si hay al menos 1 evolución desbloqueada) */}
-            {evolution.archetype.unlocked && (
-              <EvolutionTimeline evolution={evolution} />
+            {/* First visit: dimensions with progressive reveal (outside accordion) */}
+            {isFirstVisit && (
+              <>
+                <div id="section-dimensions" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', marginBottom: 'var(--space-8)' }}>
+                  {dimensionResults.map((dim, i) => {
+                    if (visibleDims < i) return null
+
+                    const isMostCompromised = dim.key === mostCompromisedKey
+                    const isD3orD4 = dim.key === 'd3' || dim.key === 'd4'
+                    const showPriorityTag = isMostCompromised && showPriority
+
+                    const dimD7Insight = isMostCompromised && evolution.insightD7.unlocked ? d7Insight : null
+                    const dimD7IsNew = isMostCompromised && evolution.insightD7.isNew
+                    const dimSubScores = isMostCompromised ? subdimScoresForCard : null
+
+                    let puente: string | null = null
+                    if (isMostCompromised) puente = PUENTES.p2
+                    else if (isD3orD4) puente = PUENTES.p4
+
+                    return (
+                      <DimensionCard
+                        key={dim.key}
+                        dim={dim}
+                        isMostCompromised={isMostCompromised}
+                        showPriorityTag={showPriorityTag}
+                        d7Insight={dimD7Insight}
+                        d7IsNew={dimD7IsNew}
+                        subdimensionScores={dimSubScores}
+                        puente={puente}
+                      />
+                    )
+                  })}
+                </div>
+
+                {visibleDims >= 4 && (
+                  <div
+                    className="mapa-fade-up"
+                    style={{
+                      padding: 'var(--space-4) var(--space-5)',
+                      marginBottom: 'var(--space-8)',
+                      borderRadius: 'var(--radius-md)',
+                      background: 'var(--color-accent-subtle)',
+                      border: 'var(--border-accent)',
+                    }}
+                  >
+                    <p style={{
+                      fontFamily: 'var(--font-inter)',
+                      fontSize: 'var(--text-caption)',
+                      lineHeight: 'var(--lh-body)',
+                      color: 'var(--color-text-tertiary)',
+                      fontStyle: 'italic',
+                    }}>
+                      {PUENTES.p5}
+                    </p>
+                  </div>
+                )}
+              </>
             )}
 
-            {/* Gráfica de evolución (solo si hay reevaluaciones) */}
-            <EvolutionChart
-              globalScore={global}
-              reevaluations={reevaluations}
-            />
-
-            {/* 5 DIMENSIONES */}
-            <div id="section-dimensions" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', marginBottom: 'var(--space-8)' }}>
-              {dimensionResults.map((dim, i) => {
-                if (visibleDims < i) return null
-
-                const isMostCompromised = dim.key === mostCompromisedKey
-                const isD3orD4 = dim.key === 'd3' || dim.key === 'd4'
-                const showPriorityTag = isMostCompromised && showPriority
-
-                // D7 insight only on worst dimension
-                const dimD7Insight = isMostCompromised && evolution.insightD7.unlocked ? d7Insight : null
-                const dimD7IsNew = isMostCompromised && evolution.insightD7.isNew
-
-                // Subdimension scores only on worst dimension
-                const dimSubScores = isMostCompromised ? subdimScoresForCard : null
-
-                // Puentes (only on first visit)
-                let puente: string | null = null
-                if (isFirstVisit) {
-                  if (isMostCompromised) puente = PUENTES.p2
-                  else if (isD3orD4) puente = PUENTES.p4
-                }
-
-                return (
-                  <DimensionCard
-                    key={dim.key}
-                    dim={dim}
-                    isMostCompromised={isMostCompromised}
-                    showPriorityTag={showPriorityTag}
-                    d7Insight={dimD7Insight}
-                    d7IsNew={dimD7IsNew}
-                    subdimensionScores={dimSubScores}
-                    puente={puente}
-                  />
-                )
-              })}
-            </div>
-
-            {/* Puente 5 — sistema compartido (solo primera visita, tras última dimensión) */}
-            {isFirstVisit && visibleDims >= 4 && (
-              <div
-                className="mapa-fade-up"
-                style={{
-                  padding: 'var(--space-4) var(--space-5)',
-                  marginBottom: 'var(--space-8)',
-                  borderRadius: 'var(--radius-md)',
-                  background: 'var(--color-accent-subtle)',
-                  border: 'var(--border-accent)',
-                }}
-              >
-                <p style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: 'var(--text-caption)',
-                  lineHeight: 'var(--lh-body)',
-                  color: 'var(--color-text-tertiary)',
-                  fontStyle: 'italic',
-                }}>
-                  {PUENTES.p5}
-                </p>
-              </div>
-            )}
-
-            {/* Día 3 — Arquetipo del Sistema Nervioso */}
-            {evolution.archetype.unlocked && archetype && (
-              <div id="section-archetype" style={{ marginBottom: 'var(--space-6)' }}>
-                <EvolutionArchetype
-                  archetype={archetype}
-                  isNew={evolution.archetype.isNew}
-                />
-              </div>
-            )}
-
-            {/* Día 10-14 — Sesión con Javier */}
-            {evolution.session.unlocked && (
-              <div id="section-session" style={{ marginBottom: 'var(--space-6)' }}>
-                <EvolutionSession
-                  isNew={evolution.session.isNew}
-                  booked={evolution.session.booked}
-                  mapHash={hash}
-                />
-              </div>
-            )}
-
-            {/* Día 14 — Subdimensiones */}
-            {evolution.subdimensions.unlocked && subdimensionConfig && (
-              <div id="section-subdimensions" style={{ marginBottom: 'var(--space-6)' }}>
-                <EvolutionSubdimensions
-                  config={subdimensionConfig}
-                  completed={evolution.subdimensions.completed}
-                  isNew={evolution.subdimensions.isNew}
-                  hash={hash}
-                />
-              </div>
-            )}
-
-            {/* Día 21 — Extracto del libro */}
-            {evolution.bookExcerpt.unlocked && bookExcerpt && (
-              <div id="section-book" style={{ marginBottom: 'var(--space-6)' }}>
-                <EvolutionBookExcerpt
-                  excerpt={bookExcerpt}
-                  isNew={evolution.bookExcerpt.isNew}
-                  worstDimensionName={worstDimensionName}
-                  worstScore={worstScore}
-                />
-              </div>
-            )}
-
-            {/* Día 30/90 — Reevaluación */}
-            {(evolution.reevaluation.unlocked || evolution.nextQuarterlyUnlocked) && (
-              <div id="section-reevaluation" style={{ marginBottom: 'var(--space-6)' }}>
-                <EvolutionReevaluation
-                  originalSliders={originalSliders}
-                  originalScores={originalScores}
-                  completed={evolution.reevaluation.completed}
-                  isNew={evolution.reevaluation.isNew || evolution.nextQuarterlyUnlocked}
-                  completedScores={reevaluationScores}
-                  reevaluations={reevaluations}
-                  hash={hash}
-                  daysSinceCreation={evolution.daysSinceCreation}
-                />
-              </div>
+            {/* Return visits: accordion with all sections */}
+            {!isFirstVisit && (
+              <MapaAccordion
+                sections={accordionSections}
+                defaultOpenId={accordionDefaultOpenId}
+              />
             )}
 
           </section>
