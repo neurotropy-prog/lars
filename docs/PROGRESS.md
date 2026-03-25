@@ -47,6 +47,28 @@ Evoluciones del mapa (día 3-90), emails automáticos, analytics custom en Supab
   - Todos los estados de evolución verificados (Day 0→3→7→10→14→21→30→90)
   - Sin cambios a map-evolution.ts, fast-forward API, ni schema de BD
 
+- ✅ **Admin v2 — Sprint 0: Foundation** (24 Mar 2026):
+  - Profile intelligence engine, geo capture, new API routes
+- ✅ **Admin v2 — Sprint 1: Sidebar + Layout** (24 Mar 2026):
+  - Collapsible sidebar, AdminLayout wrapper, mobile bottom bar
+- ✅ **Admin v2 — Sprint 2: Hub** (24 Mar 2026):
+  - Centro de Comando with intelligent alerts
+- ✅ **Admin v2 — Sprint 3: LAM** (24 Mar 2026):
+  - Lead Acquisition Manager with heat score + detail panel
+- ✅ **Admin v2 — Sprint 4: LAM Actions** (24 Mar 2026):
+  - Note, video, unlock, express session, email actions
+- ✅ **Admin v2 — Sprint 5: Automations** (24 Mar 2026):
+  - Email flow visualization dashboard
+- ✅ **Admin v2 — Sprint 6: Analytics Enhanced** (25 Mar 2026):
+  - API extended: daily_counts, worst_dimension_distribution, 90d period
+  - AnalyticsFunnel: 4-bar proportional funnel with staggered animation
+  - AnalyticsTrends: SVG line/area chart (diagnostics + conversions overlay)
+  - AnalyticsProfiles: 4 profile distribution bars (PC/FI/CE/CP colors)
+  - AnalyticsDimensions: 5 dimension bars + auto-insight ("X% tienen D[n] como peor")
+  - AnalyticsGeo: Top 5 countries + cities with flag emojis, period-filtered
+  - Period selector: 7d / 30d / 90d / Todo — reloads all components
+  - Responsive: 2-col grid → 1-col on mobile
+
 ### Pendiente (no bloquea lanzamiento)
 - Testimonios: siguen siendo placeholder — pendiente de testimonios reales de Javier
 - Stripe: en modo test — pasar a LIVE cuando esté listo

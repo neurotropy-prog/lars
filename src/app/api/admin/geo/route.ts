@@ -59,6 +59,14 @@ const COUNTRY_NAMES: Record<string, string> = {
   KR: 'Corea del Sur',
 }
 
+function getPeriodDate(period: string): string | null {
+  const now = new Date()
+  if (period === '7d') { now.setDate(now.getDate() - 7); return now.toISOString() }
+  if (period === '30d') { now.setDate(now.getDate() - 30); return now.toISOString() }
+  if (period === '90d') { now.setDate(now.getDate() - 90); return now.toISOString() }
+  return null // 'all'
+}
+
 export async function GET(req: NextRequest) {
   // Auth
   const isDev = process.env.NODE_ENV === 'development'
@@ -68,11 +76,20 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
   }
 
+  const period = req.nextUrl.searchParams.get('period') ?? 'all'
+  const since = getPeriodDate(period)
+
   const supabase = createAdminClient()
 
-  const { data: rows, error } = await supabase
+  let query = supabase
     .from('diagnosticos')
-    .select('meta')
+    .select('meta, created_at')
+
+  if (since) {
+    query = query.gte('created_at', since)
+  }
+
+  const { data: rows, error } = await query
 
   if (error) {
     console.error('[admin/geo] Supabase error:', error)

@@ -1,15 +1,20 @@
 'use client'
 
 /**
- * AnalyticsDashboard — Panel visual del embudo L.A.R.S.
+ * AnalyticsDashboard — Panel completo de analytics L.A.R.S.
  *
- * Diseño con tokens de DESIGN.md. Mismo nivel que el gateway.
- * Counter animados, embudo degradado, tabla con semáforo.
+ * Orquesta todos los componentes de Sprint 6:
+ * Embudo, Tendencias, Perfiles, Dimensiones, Geo, Métricas, Tabla reciente.
  */
 
 import { useState, useEffect, useCallback } from 'react'
 import Card from '@/components/ui/Card'
 import Counter from '@/components/ui/Counter'
+import AnalyticsFunnel from '@/components/admin/AnalyticsFunnel'
+import AnalyticsTrends from '@/components/admin/AnalyticsTrends'
+import AnalyticsProfiles from '@/components/admin/AnalyticsProfiles'
+import AnalyticsDimensions from '@/components/admin/AnalyticsDimensions'
+import AnalyticsGeo from '@/components/admin/AnalyticsGeo'
 
 // ─── TIPOS ──────────────────────────────────────────────────────────────────
 
@@ -33,6 +38,8 @@ interface DashboardData {
   }
   profiles: Record<string, number>
   dimensions: Record<string, number>
+  daily_counts: Array<{ date: string; diagnostics: number; conversions: number }>
+  worst_dimension_distribution: Record<string, number>
   recent: Array<{
     created_at: string
     hash: string
@@ -46,7 +53,7 @@ interface DashboardData {
   }>
 }
 
-type Period = '1d' | '7d' | '30d' | 'all'
+type Period = '7d' | '30d' | '90d' | 'all'
 
 // ─── HELPERS ────────────────────────────────────────────────────────────────
 
@@ -57,21 +64,15 @@ function scoreColor(score: number): string {
   return 'var(--color-success)'
 }
 
-function conversionColor(pct: number): string {
-  if (pct >= 70) return 'var(--color-success)'
-  if (pct >= 40) return 'var(--color-warning)'
-  return 'var(--color-error)'
-}
-
 function formatDate(iso: string): string {
   const d = new Date(iso)
   return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
 }
 
 const PERIOD_LABELS: Record<Period, string> = {
-  '1d': 'Hoy',
   '7d': '7 días',
   '30d': '30 días',
+  '90d': '90 días',
   all: 'Todo',
 }
 
@@ -118,17 +119,10 @@ export default function AnalyticsDashboard() {
   if (!data) return null
 
   const { funnel, metrics, recent } = data
-  const funnelSteps = [
-    { label: 'Evaluaciones', value: funnel.diagnostics, pct: 100 },
-    { label: 'Empezaron P1', value: funnel.p1_started, pct: funnel.diagnostics > 0 ? Math.round((funnel.p1_started / funnel.diagnostics) * 100) : 0 },
-    { label: 'Dieron email', value: funnel.email_captured, pct: funnel.p1_started > 0 ? Math.round((funnel.email_captured / funnel.p1_started) * 100) : 0 },
-    { label: 'Visitaron mapa', value: funnel.map_visited, pct: funnel.email_captured > 0 ? Math.round((funnel.map_visited / funnel.email_captured) * 100) : 0 },
-    { label: 'Pagaron', value: funnel.paid, pct: funnel.map_visited > 0 ? Math.round((funnel.paid / funnel.map_visited) * 100) : 0 },
-  ]
 
   return (
     <div>
-      {/* ── Header + filtros ── */}
+      {/* ── Header + Period Selector ── */}
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -145,7 +139,7 @@ export default function AnalyticsDashboard() {
             color: 'var(--color-text-primary)',
             margin: 0,
           }}>
-            Panel L.A.R.S.
+            Analytics
           </h1>
           <p style={{
             fontFamily: 'var(--font-inter)',
@@ -153,11 +147,10 @@ export default function AnalyticsDashboard() {
             color: 'var(--color-text-tertiary)',
             marginTop: 'var(--space-1)',
           }}>
-            Embudo completo en tiempo real
+            Visión completa del embudo L.A.R.S.
           </p>
         </div>
 
-        {/* Filtros temporales */}
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
           {(Object.keys(PERIOD_LABELS) as Period[]).map((p) => (
             <button
@@ -182,122 +175,10 @@ export default function AnalyticsDashboard() {
         </div>
       </div>
 
-      {/* ── EMBUDO VISUAL — tarjetas horizontales apiladas ── */}
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--space-3)',
-        marginBottom: 'var(--space-6)',
-      }}>
-        {funnelSteps.map((step, i) => {
-          const barPct = funnel.diagnostics > 0
-            ? Math.max(8, (step.value / funnel.diagnostics) * 100)
-            : 100
-          const isFirst = i === 0
-          const isLast = i === funnelSteps.length - 1
-          const barColor = isLast
-            ? 'var(--color-success)'
-            : `rgba(180,90,50,${1 - i * 0.18})`
+      {/* ── Embudo ── */}
+      <AnalyticsFunnel funnel={funnel} counterKey={counterKey} />
 
-          return (
-            <div
-              key={step.label}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--space-4)',
-                padding: 'var(--space-4) var(--space-5)',
-                borderRadius: 'var(--radius-lg)',
-                background: 'var(--color-bg-secondary)',
-                border: 'var(--border-subtle)',
-              }}
-            >
-              {/* Número */}
-              <div style={{
-                fontFamily: 'var(--font-lora)',
-                fontSize: 'var(--text-h2)',
-                fontWeight: 700,
-                color: 'var(--color-text-primary)',
-                lineHeight: 1,
-                minWidth: '56px',
-              }}>
-                <Counter key={`${counterKey}-${i}`} to={step.value} duration={800} startDelay={i * 100} />
-              </div>
-
-              {/* Label + barra */}
-              <div style={{ flex: 1 }}>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginBottom: 'var(--space-2)',
-                }}>
-                  <span style={{
-                    fontFamily: 'var(--font-inter)',
-                    fontSize: 'var(--text-body-sm)',
-                    color: 'var(--color-text-secondary)',
-                  }}>
-                    {step.label}
-                  </span>
-                  {!isFirst && (
-                    <span style={{
-                      fontFamily: 'var(--font-inter)',
-                      fontSize: 'var(--text-caption)',
-                      fontWeight: 600,
-                      color: conversionColor(step.pct),
-                    }}>
-                      {step.pct}%
-                    </span>
-                  )}
-                </div>
-                <div style={{
-                  height: '6px',
-                  borderRadius: '3px',
-                  background: 'rgba(30,19,16,0.06)',
-                  overflow: 'hidden',
-                }}>
-                  <div style={{
-                    height: '100%',
-                    width: `${barPct}%`,
-                    borderRadius: '3px',
-                    background: barColor,
-                    transition: 'width 800ms ease',
-                  }} />
-                </div>
-              </div>
-            </div>
-          )
-        })}
-
-        {/* Conversión total */}
-        {funnel.diagnostics > 0 && (
-          <div style={{
-            textAlign: 'center',
-            padding: 'var(--space-4)',
-            borderRadius: 'var(--radius-lg)',
-            background: 'rgba(61,154,95,0.06)',
-            border: '1px solid rgba(61,154,95,0.15)',
-          }}>
-            <span style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: 'var(--text-body-sm)',
-              color: 'var(--color-text-secondary)',
-            }}>
-              Conversión total:{' '}
-            </span>
-            <span style={{
-              fontFamily: 'var(--font-lora)',
-              fontSize: 'var(--text-h3)',
-              fontWeight: 700,
-              color: 'var(--color-success)',
-            }}>
-              {Math.round((funnel.paid / funnel.diagnostics) * 100)}%
-            </span>
-          </div>
-        )}
-      </div>
-
-      {/* ── MÉTRICAS CLAVE (4 cards) ── */}
+      {/* ── Métricas Clave (4 cards) ── */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -324,7 +205,7 @@ export default function AnalyticsDashboard() {
               color: scoreColor(metrics.avg_score),
               lineHeight: 1,
             }}>
-              <Counter key={`score-${counterKey}`} to={metrics.avg_score} duration={1000} />
+              <Counter key={`score-${counterKey}`} to={metrics.avg_score} duration={1000} autoStart />
             </span>
             <span style={{
               fontFamily: 'var(--font-inter)',
@@ -355,7 +236,7 @@ export default function AnalyticsDashboard() {
             color: 'var(--color-accent)',
             lineHeight: 1,
           }}>
-            <Counter key={`sessions-${counterKey}`} to={metrics.sessions_booked} duration={800} />
+            <Counter key={`sessions-${counterKey}`} to={metrics.sessions_booked} duration={800} autoStart />
           </span>
         </Card>
 
@@ -378,7 +259,7 @@ export default function AnalyticsDashboard() {
             color: metrics.return_rate > 30 ? 'var(--color-success)' : 'var(--color-warning)',
             lineHeight: 1,
           }}>
-            <Counter key={`return-${counterKey}`} to={metrics.return_rate} duration={800} suffix="%" />
+            <Counter key={`return-${counterKey}`} to={metrics.return_rate} duration={800} suffix="%" autoStart />
           </span>
         </Card>
 
@@ -403,7 +284,7 @@ export default function AnalyticsDashboard() {
                 color: scoreColor(metrics.worst_dimension.avg),
                 lineHeight: 1,
               }}>
-                <Counter key={`worst-${counterKey}`} to={metrics.worst_dimension.avg} duration={800} />
+                <Counter key={`worst-${counterKey}`} to={metrics.worst_dimension.avg} duration={800} autoStart />
               </span>
               <p style={{
                 fontFamily: 'var(--font-inter)',
@@ -420,7 +301,28 @@ export default function AnalyticsDashboard() {
         </Card>
       </div>
 
-      {/* ── ÚLTIMAS EVALUACIONES ── */}
+      {/* ── Tendencias ── */}
+      <AnalyticsTrends dailyCounts={data.daily_counts} />
+
+      {/* ── Perfiles + Dimensiones (2 columnas) ── */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: 'var(--space-4)',
+        marginBottom: 'var(--space-6)',
+      }}>
+        <AnalyticsProfiles profiles={data.profiles} total={data.total} />
+        <AnalyticsDimensions
+          dimensions={data.dimensions}
+          worstDimensionDist={data.worst_dimension_distribution}
+          total={data.total}
+        />
+      </div>
+
+      {/* ── Geografía ── */}
+      <AnalyticsGeo period={period} />
+
+      {/* ── Últimas Evaluaciones ── */}
       <Card style={{ padding: 'var(--space-6)', overflow: 'hidden' }}>
         <p style={{
           fontFamily: 'var(--font-inter)',

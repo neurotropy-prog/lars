@@ -32,6 +32,10 @@ function getPeriodDate(period: string): string | null {
     now.setDate(now.getDate() - 30)
     return now.toISOString()
   }
+  if (period === '90d') {
+    now.setDate(now.getDate() - 90)
+    return now.toISOString()
+  }
   return null // 'all'
 }
 
@@ -116,6 +120,34 @@ export async function GET(req: NextRequest) {
     profileCounts[p] = (profileCounts[p] ?? 0) + 1
   }
 
+  // ── Conteos diarios (para gráfico de tendencias) ────────────────────────
+  const dayCounts: Record<string, { diagnostics: number; conversions: number }> = {}
+  for (const r of all) {
+    const day = r.created_at?.slice(0, 10) ?? 'unknown'
+    if (!dayCounts[day]) dayCounts[day] = { diagnostics: 0, conversions: 0 }
+    dayCounts[day].diagnostics++
+    if (r.funnel?.converted_week1) dayCounts[day].conversions++
+  }
+  const daily_counts = Object.entries(dayCounts)
+    .map(([date, counts]) => ({ date, ...counts }))
+    .sort((a, b) => a.date.localeCompare(b.date))
+
+  // ── Distribución de peor dimensión ─────────────────────────────────────
+  const worstDimDist: Record<string, number> = {}
+  for (const key of dimKeys) worstDimDist[key] = 0
+  for (const r of all) {
+    let worstKey: string = dimKeys[0]
+    let worstVal = Infinity
+    for (const key of dimKeys) {
+      const v = r.scores?.[key]
+      if (typeof v === 'number' && v < worstVal) {
+        worstVal = v
+        worstKey = key
+      }
+    }
+    if (worstVal < Infinity) worstDimDist[worstKey]++
+  }
+
   return NextResponse.json({
     period,
     total,
@@ -134,6 +166,8 @@ export async function GET(req: NextRequest) {
     },
     profiles: profileCounts,
     dimensions: dimAvgs,
+    daily_counts,
+    worst_dimension_distribution: worstDimDist,
     recent,
   })
 }
