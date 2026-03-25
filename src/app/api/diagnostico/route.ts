@@ -56,6 +56,26 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   const { email, p1, bloque1, bloque2, update, mode } = payload
 
+  // ── Geo capture via IP (nice-to-have, no bloquea el flujo) ────────────────
+  const forwarded = req.headers.get('x-forwarded-for')
+  const ip = forwarded?.split(',')[0]?.trim() || 'unknown'
+  let geo = { country: '', city: '', region: '' }
+  try {
+    if (ip !== 'unknown' && ip !== '127.0.0.1' && ip !== '::1') {
+      const geoRes = await fetch(`https://ipapi.co/${ip}/json/`, {
+        signal: AbortSignal.timeout(2000),
+      })
+      if (geoRes.ok) {
+        const geoData = await geoRes.json()
+        geo = {
+          country: geoData.country_code || '',
+          city: geoData.city || '',
+          region: geoData.region || '',
+        }
+      }
+    }
+  } catch { /* silencioso — geo es nice-to-have */ }
+
   // Validación básica — modo convert solo requiere p1, p2 y sliders
   if (mode === 'convert') {
     if (!email || !p1 || !payload.sliders) {
@@ -271,6 +291,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       source: req.headers.get('referer') ?? 'direct',
       device: req.headers.get('user-agent') ?? 'unknown',
       ...(mode === 'convert' ? { mode: 'convert' } : {}),
+      ...geo,
     },
   })
 

@@ -29,7 +29,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 
     const { data } = await supabase
       .from('diagnosticos')
-      .select('map_evolution')
+      .select('map_evolution, funnel')
       .eq('hash', hash)
       .single()
 
@@ -38,6 +38,13 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       const opens = mapEvolution.email_opens ?? {}
       opens[emailKey] = new Date().toISOString()
 
+      // También actualizar funnel.emails_opened para alimentar el LAM
+      const funnel = (data.funnel ?? {}) as Record<string, unknown>
+      const emailsOpened = Array.isArray(funnel.emails_opened) ? funnel.emails_opened as string[] : []
+      if (!emailsOpened.includes(emailKey)) {
+        emailsOpened.push(emailKey)
+      }
+
       await supabase
         .from('diagnosticos')
         .update({
@@ -45,6 +52,10 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
             ...mapEvolution,
             email_opens: opens,
             consecutive_unopened: 0,
+          },
+          funnel: {
+            ...funnel,
+            emails_opened: emailsOpened,
           },
         })
         .eq('hash', hash)
