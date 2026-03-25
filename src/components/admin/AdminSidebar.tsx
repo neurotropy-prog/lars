@@ -11,6 +11,7 @@
  * Badges: red dot on Leads (hot), green dot on Agenda (session today).
  */
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useCallback } from 'react'
 import {
@@ -117,31 +118,35 @@ export default function AdminSidebar({
           flexShrink: 0,
         }}
       >
-        {/* Logo */}
+        {/* Isotipo */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
+            justifyContent: collapsed ? 'center' : 'flex-start',
+            paddingLeft: collapsed ? 0 : '8px',
           }}
         >
-          <span
+          <div
             style={{
-              fontFamily: 'var(--font-lora)',
-              fontWeight: 700,
-              fontSize: collapsed ? '18px' : '16px',
-              color: ACTIVE_TEXT,
+              width: 36,
+              height: 36,
+              borderRadius: 10,
+              backgroundColor: 'rgba(249, 241, 222, 0.06)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: collapsed ? '40px' : 'auto',
-              paddingLeft: collapsed ? 0 : '8px',
-              transition: `font-size ${TRANSITION}`,
+              flexShrink: 0,
             }}
           >
-            {collapsed ? 'IE' : 'Instituto Epigenético'}
-          </span>
+            <Image
+              src="/isotipo-ie-white.svg"
+              alt="Instituto Epigenético"
+              width={24}
+              height={16}
+              style={{ display: 'block' }}
+            />
+          </div>
         </div>
 
         {/* Toggle chevron */}
