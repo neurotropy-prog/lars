@@ -1,50 +1,250 @@
 'use client'
 
+/**
+ * /admin/leads — LAM (Lead Acquisition Manager)
+ *
+ * Orchestrator page: fetches data, manages state, renders table + detail panel.
+ * Follows the same pattern as the Hub page (src/app/admin/page.tsx).
+ */
+
+import { useState, useEffect, useCallback, Suspense } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import AdminLayout from '@/components/admin/AdminLayout'
-import { IconUsers } from '@/components/admin/AdminIcons'
+import LeadsTable, { type LeadRow } from '@/components/admin/LeadsTable'
+import LeadDetailPanel, { type LeadDetail } from '@/components/admin/LeadDetailPanel'
+
+// ── Inner component (needs Suspense boundary for useSearchParams) ──
+
+function LeadsPageInner() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
+  // Read URL params for initial state
+  const initialDetail = searchParams.get('detail')
+  const initialFilter = searchParams.get('filter') ?? 'all'
+
+  // ── State ──
+  const [leads, setLeads] = useState<LeadRow[] | null>(null)
+  const [totalFromApi, setTotalFromApi] = useState(0)
+  const [hotCount, setHotCount] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  // Filters
+  const [activeFilter, setActiveFilter] = useState(initialFilter)
+  const [activePeriod, setActivePeriod] = useState('30d')
+  const [activeSort, setActiveSort] = useState('heat')
+
+  // Detail panel
+  const [selectedHash, setSelectedHash] = useState<string | null>(initialDetail)
+  const [detailData, setDetailData] = useState<LeadDetail | null>(null)
+  const [detailLoading, setDetailLoading] = useState(false)
+
+  // ── Fetch leads list ──
+  const fetchLeads = useCallback(async () => {
+    const secret = sessionStorage.getItem('admin_secret')
+    if (!secret) return
+
+    setLoading(true)
+    setError(null)
+
+    try {
+      const params = new URLSearchParams({
+        period: activePeriod,
+        filter: activeFilter,
+        sort: activeSort,
+      })
+
+      const res = await fetch(`/api/admin/leads?${params}`, {
+        headers: { 'x-admin-secret': secret },
+      })
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
+      const data = await res.json()
+      setLeads(data.leads ?? [])
+      setTotalFromApi(data.total ?? 0)
+
+      // Count hot leads for the badge (from unfiltered data if filter isn't 'hot')
+      if (activeFilter === 'hot') {
+        setHotCount(data.total ?? 0)
+      }
+    } catch (err) {
+      console.error('[LAM] fetch error:', err)
+      setError('Error al cargar los leads')
+    } finally {
+      setLoading(false)
+    }
+  }, [activePeriod, activeFilter, activeSort])
+
+  // Also fetch hot count separately if we're not on the hot filter
+  const fetchHotCount = useCallback(async () => {
+    if (activeFilter === 'hot') return // already have it
+    const secret = sessionStorage.getItem('admin_secret')
+    if (!secret) return
+
+    try {
+      const res = await fetch(`/api/admin/leads?period=${activePeriod}&filter=hot`, {
+        headers: { 'x-admin-secret': secret },
+      })
+      if (res.ok) {
+        const data = await res.json()
+        setHotCount(data.total ?? 0)
+      }
+    } catch {
+      // Non-blocking
+    }
+  }, [activePeriod, activeFilter])
+
+  // ── Fetch lead detail ──
+  const fetchDetail = useCallback(async (hash: string) => {
+    const secret = sessionStorage.getItem('admin_secret')
+    if (!secret) return
+
+    setDetailLoading(true)
+    setDetailData(null)
+
+    try {
+      const res = await fetch(`/api/admin/leads/${hash}`, {
+        headers: { 'x-admin-secret': secret },
+      })
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
+      const data = await res.json()
+      setDetailData(data)
+    } catch (err) {
+      console.error('[LAM] detail fetch error:', err)
+    } finally {
+      setDetailLoading(false)
+    }
+  }, [])
+
+  // ── Effects ──
+
+  // Initial fetch with 100ms delay (auth settle)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchLeads()
+      fetchHotCount()
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [fetchLeads, fetchHotCount])
+
+  // Auto-open detail panel from URL
+  useEffect(() => {
+    if (initialDetail) {
+      setSelectedHash(initialDetail)
+      setTimeout(() => fetchDetail(initialDetail), 150)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // ── Handlers ──
+
+  const handleSelectLead = useCallback(
+    (hash: string) => {
+      setSelectedHash(hash)
+      router.replace(`/admin/leads?detail=${hash}`, { scroll: false })
+      fetchDetail(hash)
+    },
+    [router, fetchDetail]
+  )
+
+  const handleClosePanel = useCallback(() => {
+    setSelectedHash(null)
+    setDetailData(null)
+    router.replace('/admin/leads', { scroll: false })
+  }, [router])
+
+  const handleFilterChange = useCallback((filter: string) => {
+    setActiveFilter(filter)
+  }, [])
+
+  const handlePeriodChange = useCallback((period: string) => {
+    setActivePeriod(period)
+  }, [])
+
+  const handleSortChange = useCallback((sort: string) => {
+    setActiveSort(sort)
+  }, [])
+
+  return (
+    <AdminLayout>
+      <style>{`@keyframes hubPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }`}</style>
+
+      {error && (
+        <div
+          style={{
+            background: 'rgba(196, 64, 64, 0.06)',
+            border: '1px solid rgba(196, 64, 64, 0.15)',
+            borderRadius: 'var(--radius-md)',
+            padding: 'var(--space-4) var(--space-5)',
+            marginBottom: 'var(--space-5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <span
+            style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: 'var(--text-body-sm)',
+              color: 'var(--color-error)',
+            }}
+          >
+            {error}
+          </span>
+          <button
+            onClick={fetchLeads}
+            style={{
+              padding: '6px 14px',
+              borderRadius: 'var(--radius-pill)',
+              border: '1px solid var(--color-error)',
+              background: 'transparent',
+              color: 'var(--color-error)',
+              fontFamily: 'var(--font-inter)',
+              fontSize: '13px',
+              fontWeight: 500,
+              cursor: 'pointer',
+            }}
+          >
+            Reintentar
+          </button>
+        </div>
+      )}
+
+      <LeadsTable
+        leads={leads}
+        loading={loading}
+        totalFromApi={totalFromApi}
+        hotCount={hotCount}
+        selectedHash={selectedHash}
+        onSelectLead={handleSelectLead}
+        activeFilter={activeFilter}
+        onFilterChange={handleFilterChange}
+        activePeriod={activePeriod}
+        onPeriodChange={handlePeriodChange}
+        activeSort={activeSort}
+        onSortChange={handleSortChange}
+      />
+
+      <LeadDetailPanel
+        hash={selectedHash}
+        data={detailData}
+        loading={detailLoading}
+        onClose={handleClosePanel}
+      />
+    </AdminLayout>
+  )
+}
+
+// ── Page export with Suspense boundary ──
 
 export default function LeadsPage() {
   return (
-    <AdminLayout>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '60vh',
-        textAlign: 'center',
-      }}>
-        <div style={{
-          width: 64,
-          height: 64,
-          borderRadius: 16,
-          backgroundColor: 'rgba(180, 90, 50, 0.08)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginBottom: 'var(--space-5)',
-          color: 'var(--color-accent)',
-        }}>
-          <IconUsers size={28} />
-        </div>
-        <h1 style={{
-          fontFamily: 'var(--font-lora)',
-          fontSize: 'var(--text-h2)',
-          fontWeight: 700,
-          color: 'var(--color-text-primary)',
-          marginBottom: 'var(--space-2)',
-        }}>
-          Leads
-        </h1>
-        <p style={{
-          fontFamily: 'var(--font-inter)',
-          fontSize: 'var(--text-body)',
-          color: 'var(--color-text-tertiary)',
-          maxWidth: '400px',
-        }}>
-          Próximamente — Sprint 3
-        </p>
-      </div>
-    </AdminLayout>
+    <Suspense fallback={null}>
+      <LeadsPageInner />
+    </Suspense>
   )
 }

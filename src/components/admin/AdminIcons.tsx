@@ -97,3 +97,65 @@ export function IconChevronRight({ size = defaults.size!, style }: IconProps) {
     </svg>
   )
 }
+
+export function IconChevronDown({ size = defaults.size!, style }: IconProps) {
+  return (
+    <svg {...svgProps(size)} style={style}>
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  )
+}
+
+export function IconChevronUp({ size = defaults.size!, style }: IconProps) {
+  return (
+    <svg {...svgProps(size)} style={style}>
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  )
+}
+
+export function IconSearch({ size = defaults.size!, style }: IconProps) {
+  return (
+    <svg {...svgProps(size)} style={style}>
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  )
+}
+
+export function IconX({ size = defaults.size!, style }: IconProps) {
+  return (
+    <svg {...svgProps(size)} style={style}>
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  )
+}
+
+export function IconExternalLink({ size = defaults.size!, style }: IconProps) {
+  return (
+    <svg {...svgProps(size)} style={style}>
+      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  )
+}
+
+export function IconMail({ size = defaults.size!, style }: IconProps) {
+  return (
+    <svg {...svgProps(size)} style={style}>
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+      <polyline points="22 6 12 13 2 6" />
+    </svg>
+  )
+}
+
+export function IconArrowLeft({ size = defaults.size!, style }: IconProps) {
+  return (
+    <svg {...svgProps(size)} style={style}>
+      <line x1="19" y1="12" x2="5" y2="12" />
+      <polyline points="12 19 5 12 12 5" />
+    </svg>
+  )
+}
