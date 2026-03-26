@@ -395,19 +395,22 @@ export default function LeadsTable({
                 <div style={{ height: 1, background: 'var(--color-bg-secondary)', margin: '0 0 12px' }} />
 
                 {/* Cómo se calcula */}
-                <div style={{ color: 'var(--color-text-tertiary)', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
-                  Cómo suma puntos
+                <div style={{ color: 'var(--color-text-tertiary)', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 4 }}>
+                  Prioridad de seguimiento
+                </div>
+                <div style={{ color: 'var(--color-text-tertiary)', fontSize: '11px', marginBottom: 8, lineHeight: 1.4 }}>
+                  Mide quién necesita más atención ahora, no cuánto interés tiene.
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   {[
-                    { signal: 'Score global ≤ 39', pts: '+2' },
+                    { signal: 'Score global ≤ 39 (más urgente)', pts: '+2' },
                     { signal: 'Score global 40-59', pts: '+1' },
                     { signal: '3+ visitas al mapa', pts: '+2' },
                     { signal: '1+ visita al mapa', pts: '+1' },
                     { signal: 'Abrió último email', pts: '+1' },
-                    { signal: 'Menos de 7 días', pts: '+2' },
-                    { signal: 'Menos de 14 días', pts: '+1' },
-                    { signal: 'Ya agendó sesión', pts: '-1', negative: true },
+                    { signal: 'Activo hace menos de 7 días', pts: '+2' },
+                    { signal: 'Activo hace menos de 14 días', pts: '+1' },
+                    { signal: 'Ya agendó sesión (no necesita empujón)', pts: '-1', negative: true },
                   ].map((item) => (
                     <div key={item.signal} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span>{item.signal}</span>
