@@ -22,6 +22,7 @@ import {
   IconZap,
   IconBarChart3,
   IconCalendar,
+  IconFileText,
   IconSettings,
   IconChevronLeft,
   IconChevronRight,
@@ -57,6 +58,7 @@ const MAIN_ITEMS: NavItem[] = [
   { href: '/admin/automations', label: 'Automations', icon: IconZap },
   { href: '/admin/analytics', label: 'Analytics', icon: IconBarChart3 },
   { href: '/admin/agenda', label: 'Agenda', icon: IconCalendar, badge: 'agenda' },
+  { href: '/admin/copy', label: 'Copy', icon: IconFileText },
 ]
 
 const BOTTOM_ITEMS: NavItem[] = [
