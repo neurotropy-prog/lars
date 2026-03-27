@@ -6,8 +6,8 @@
  * 2. useCopy() — React hook for client components (fetches /api/copy)
  * 3. getCopySync(key, overrides?) — pure sync, for data files
  *
- * IMPORTANT: Do NOT modify public components yet.
- * This file provides the helpers for the next session.
+ * Public components use useCopy() for dynamic overrides.
+ * Gateway data files use getCopySync() for backward-compatible overrides.
  */
 
 'use client'

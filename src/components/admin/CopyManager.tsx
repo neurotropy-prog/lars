@@ -1,85 +1,53 @@
 'use client'
 
 /**
- * CopyManager — Admin page for viewing/managing all editable copy.
+ * CopyManager — Admin page for editing all copy.
  *
- * Structure only (no inline editing in this phase):
- * - Horizontal tabs: Landing | Gateway | Mapa
- * - Entries grouped by subsection
- * - Badge showing customized count per section
- * - Loading skeleton, error state, empty state
+ * Layout: tabs (Landing|Gateway|Mapa) + search + accordion editor + live preview.
+ * Auto-save with debounce. Preview updates in real-time.
  */
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import type { CopySectionName } from '@/lib/copy-defaults'
-
-// ─── Types ───────────────────────────────────────────────────────────────────
-
-interface CopyEntry {
-  id: string
-  subsection: string
-  label: string
-  defaultValue: string
-  currentValue: string
-  isCustomized: boolean
-  fieldType: 'short' | 'medium' | 'long'
-  hint: string | null
-}
-
-interface CopyData {
-  sections: Record<string, CopyEntry[]>
-  stats: Record<string, number>
-}
-
-// ─── Subsection labels (human-readable) ──────────────────────────────────────
-
-const SUBSECTION_LABELS: Record<string, string> = {
-  hero: 'Hero',
-  mirror: 'Espejo',
-  tension: 'Tensión',
-  socialproof: 'Prueba Social',
-  relief: 'Alivio',
-  footer: 'Footer',
-  p1: 'P1 — ¿Qué te trajo aquí?',
-  p2: 'P2 — Sueño',
-  p3: 'P3 — Síntomas cognitivos',
-  p4: 'P4 — Síntomas emocionales',
-  primeraverdad: 'Primera Verdad',
-  microespejo1: 'Micro-espejo 1',
-  p5: 'P5 — Alegría de vivir',
-  p6: 'P6 — Frase identitaria',
-  microespejo2: 'Micro-espejo 2',
-  p7: 'P7 — Sliders',
-  p8: 'P8 — Duración',
-  focus: 'Focus Banner',
-  evolution: 'Timeline de evolución',
-  session: 'Sesión con Javier',
-  dimensions: 'Dimensiones',
-  aspiracional: 'Tu Camino (Aspiracional)',
-}
-
-// ─── Component ───────────────────────────────────────────────────────────────
-
-const TABS: { key: CopySectionName; label: string }[] = [
-  { key: 'landing', label: 'Landing' },
-  { key: 'gateway', label: 'Gateway' },
-  { key: 'mapa', label: 'Mapa' },
-]
+import type { CopyData, CopyEntry } from './copy-editor/types'
+import { TABS, groupBySubsection } from './copy-editor/types'
+import { CopyEditorSearch } from './copy-editor/CopyEditorSearch'
+import { CopyEditorSubsection } from './copy-editor/CopyEditorSubsection'
+import { CopyEditorSectionRestore } from './copy-editor/CopyEditorSectionRestore'
+import { CopyEditorSkeleton, CopyEditorError, CopyEditorEmpty } from './copy-editor/CopyEditorStates'
+import { CopyPreviewLanding } from './copy-editor/CopyPreviewLanding'
+import { CopyPreviewGateway } from './copy-editor/CopyPreviewGateway'
+import { CopyPreviewMapa } from './copy-editor/CopyPreviewMapa'
 
 export default function CopyManager() {
   const [activeTab, setActiveTab] = useState<CopySectionName>('landing')
   const [data, setData] = useState<CopyData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [localValues, setLocalValues] = useState<Record<string, string>>({})
+  const [activeSubsection, setActiveSubsection] = useState<string | undefined>()
+  const [isMobile, setIsMobile] = useState(false)
+  const [showMobilePreview, setShowMobilePreview] = useState(false)
 
+  // ── Fetch data ──
   const fetchData = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
       const res = await fetch('/api/admin/copy')
       if (!res.ok) throw new Error(`Error ${res.status}`)
-      const json = await res.json()
+      const json: CopyData = await res.json()
       setData(json)
+
+      // Initialize local values from current values
+      const vals: Record<string, string> = {}
+      for (const section of Object.values(json.sections)) {
+        for (const entry of section) {
+          vals[entry.id] = entry.currentValue
+        }
+      }
+      setLocalValues(vals)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error desconocido')
     } finally {
@@ -87,12 +55,62 @@ export default function CopyManager() {
     }
   }, [])
 
+  useEffect(() => { fetchData() }, [fetchData])
+
+  // ── Mobile detection ──
   useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1024px)')
+    setIsMobile(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
+  // ── Filter entries by search ──
+  const entries = data?.sections[activeTab] ?? []
+  const filteredEntries = useMemo(() => {
+    if (!searchQuery) return entries
+    const q = searchQuery.toLowerCase()
+    return entries.filter((e) =>
+      e.label.toLowerCase().includes(q) ||
+      e.currentValue.toLowerCase().includes(q) ||
+      e.defaultValue.toLowerCase().includes(q)
+    )
+  }, [entries, searchQuery])
+
+  const grouped = useMemo(() => groupBySubsection(filteredEntries), [filteredEntries])
+  const totalCustomized = data?.stats[activeTab] ?? 0
+  const totalFields = entries.length
+
+  // ── Callbacks ──
+  const handleValueChange = useCallback((key: string, value: string) => {
+    setLocalValues((prev) => ({ ...prev, [key]: value }))
+  }, [])
+
+  const handleSaved = useCallback(() => {
+    // Refetch to sync stats and isCustomized flags
     fetchData()
   }, [fetchData])
 
-  const entries = data?.sections[activeTab] ?? []
-  const grouped = groupBySubsection(entries)
+  const handleSearch = useCallback((q: string) => {
+    setSearchQuery(q)
+  }, [])
+
+  const handleSectionRestore = useCallback(() => {
+    fetchData()
+  }, [fetchData])
+
+  // Track which subsection the user is working in (for preview)
+  const handleSubsectionFocus = useCallback((sub: string) => {
+    setActiveSubsection(sub)
+  }, [])
+
+  // ── Preview component ──
+  const PreviewComponent = activeTab === 'landing'
+    ? CopyPreviewLanding
+    : activeTab === 'gateway'
+      ? CopyPreviewGateway
+      : CopyPreviewMapa
 
   return (
     <div>
@@ -112,7 +130,7 @@ export default function CopyManager() {
         display: 'flex',
         gap: 'var(--space-1)',
         borderBottom: '1px solid rgba(30, 19, 16, 0.08)',
-        marginBottom: 'var(--space-6)',
+        marginBottom: 'var(--space-4)',
       }}>
         {TABS.map((tab) => {
           const isActive = activeTab === tab.key
@@ -120,7 +138,7 @@ export default function CopyManager() {
           return (
             <button
               key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => { setActiveTab(tab.key); setSearchQuery(''); setActiveSubsection(undefined) }}
               style={{
                 fontFamily: 'var(--font-inter)',
                 fontSize: 'var(--text-body-sm)',
@@ -138,226 +156,195 @@ export default function CopyManager() {
               }}
             >
               {tab.label}
-              {count > 0 && (
-                <span style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: 'var(--text-caption)',
-                  fontWeight: 600,
-                  color: 'var(--color-text-inverse)',
-                  background: '#B45A32',
-                  borderRadius: '9999px',
-                  padding: '1px 8px',
-                  lineHeight: 1.6,
-                }}>
-                  {count}
-                </span>
-              )}
+              {count > 0 && <TabBadge count={count} />}
             </button>
           )
         })}
       </div>
 
+      {/* Search + Stats row */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 'var(--space-4)',
+        marginBottom: 'var(--space-4)',
+        flexWrap: 'wrap',
+      }}>
+        <div style={{ flex: 1, minWidth: 200 }}>
+          <CopyEditorSearch onSearch={handleSearch} />
+        </div>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--space-4)',
+          flexShrink: 0,
+        }}>
+          <span style={{
+            fontFamily: 'var(--font-inter)',
+            fontSize: 'var(--text-caption)',
+            color: 'var(--color-text-tertiary)',
+          }}>
+            {totalCustomized} de {totalFields} personalizado{totalFields !== 1 ? 's' : ''}
+          </span>
+          <CopyEditorSectionRestore
+            section={activeTab}
+            sectionLabel={TABS.find((t) => t.key === activeTab)?.label ?? activeTab}
+            customizedCount={totalCustomized}
+            onRestore={handleSectionRestore}
+          />
+        </div>
+      </div>
+
       {/* Content */}
-      {loading && <Skeleton />}
-      {error && <ErrorState message={error} onRetry={fetchData} />}
-      {!loading && !error && entries.length === 0 && <EmptyState />}
-      {!loading && !error && entries.length > 0 && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-          {Object.entries(grouped).map(([subsection, items]) => (
-            <SubsectionGroup
-              key={subsection}
-              subsection={subsection}
-              entries={items}
+      {loading && <CopyEditorSkeleton />}
+      {error && <CopyEditorError message={error} onRetry={fetchData} />}
+      {!loading && !error && filteredEntries.length === 0 && searchQuery && (
+        <NoResults query={searchQuery} />
+      )}
+      {!loading && !error && entries.length === 0 && !searchQuery && <CopyEditorEmpty />}
+
+      {!loading && !error && filteredEntries.length > 0 && (
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 380px',
+          gap: 'var(--space-6)',
+          alignItems: 'start',
+        }}>
+          {/* Left: editor */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+            {Object.entries(grouped).map(([subsection, items], idx) => (
+              <div key={subsection} onFocus={() => handleSubsectionFocus(subsection)}>
+                <CopyEditorSubsection
+                  subsection={subsection}
+                  entries={items}
+                  defaultOpen={idx === 0}
+                  searchQuery={searchQuery}
+                  onValueChange={handleValueChange}
+                  onSaved={handleSaved}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Right: preview (desktop) */}
+          {!isMobile && (
+            <div style={{ position: 'sticky', top: 24 }}>
+              <p style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: 'var(--text-caption)',
+                fontWeight: 600,
+                color: 'var(--color-text-tertiary)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                marginBottom: 'var(--space-3)',
+              }}>
+                Vista previa
+              </p>
+              <PreviewComponent
+                localValues={localValues}
+                activeSubsection={activeSubsection}
+              />
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Mobile preview button */}
+      {isMobile && !loading && !error && filteredEntries.length > 0 && (
+        <button
+          onClick={() => setShowMobilePreview(true)}
+          style={{
+            position: 'fixed',
+            bottom: 80,
+            right: 16,
+            fontFamily: 'var(--font-inter)',
+            fontSize: 'var(--text-body-sm)',
+            fontWeight: 600,
+            color: '#1E1310',
+            background: '#F5F564',
+            border: 'none',
+            borderRadius: 'var(--radius-pill)',
+            padding: 'var(--space-3) var(--space-5)',
+            cursor: 'pointer',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+            zIndex: 100,
+          }}
+        >
+          Vista previa
+        </button>
+      )}
+
+      {/* Mobile preview modal */}
+      {showMobilePreview && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.6)',
+          zIndex: 300,
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: 'var(--space-4)',
+            background: '#0B0F0E',
+          }}>
+            <span style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: 'var(--text-body-sm)',
+              fontWeight: 600,
+              color: '#FFFBEF',
+            }}>
+              Vista previa
+            </span>
+            <button
+              onClick={() => setShowMobilePreview(false)}
+              style={{
+                color: '#FFFBEF',
+                background: 'none',
+                border: 'none',
+                fontSize: 20,
+                cursor: 'pointer',
+                padding: 4,
+              }}
+            >
+              ✕
+            </button>
+          </div>
+          <div style={{ flex: 1, overflow: 'auto', background: '#0B0F0E' }}>
+            <PreviewComponent
+              localValues={localValues}
+              activeSubsection={activeSubsection}
             />
-          ))}
+          </div>
         </div>
       )}
     </div>
   )
 }
 
-// ─── Subsection Group ────────────────────────────────────────────────────────
+// ─── Small sub-components ────────────────────────────────────────────────────
 
-function SubsectionGroup({ subsection, entries }: {
-  subsection: string
-  entries: CopyEntry[]
-}) {
-  const customizedCount = entries.filter((e) => e.isCustomized).length
+function TabBadge({ count }: { count: number }) {
   return (
-    <div>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 'var(--space-3)',
-        marginBottom: 'var(--space-3)',
-      }}>
-        <h3 style={{
-          fontFamily: 'var(--font-inter)',
-          fontSize: 'var(--text-body)',
-          fontWeight: 600,
-          color: 'var(--color-text-primary)',
-          margin: 0,
-        }}>
-          {SUBSECTION_LABELS[subsection] ?? subsection}
-        </h3>
-        {customizedCount > 0 && (
-          <span style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: 'var(--text-caption)',
-            color: '#B45A32',
-            fontWeight: 500,
-          }}>
-            {customizedCount} personalizado{customizedCount !== 1 ? 's' : ''}
-          </span>
-        )}
-      </div>
-
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--space-2)',
-      }}>
-        {entries.map((entry) => (
-          <CopyEntryRow key={entry.id} entry={entry} />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-// ─── Copy Entry Row ──────────────────────────────────────────────────────────
-
-function CopyEntryRow({ entry }: { entry: CopyEntry }) {
-  const preview = entry.currentValue.length > 100
-    ? entry.currentValue.slice(0, 100) + '…'
-    : entry.currentValue
-
-  return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      gap: 'var(--space-3)',
-      padding: 'var(--space-3) var(--space-4)',
-      background: entry.isCustomized
-        ? 'rgba(180, 90, 50, 0.04)'
-        : 'var(--color-bg-tertiary)',
-      border: entry.isCustomized
-        ? '1px solid rgba(180, 90, 50, 0.15)'
-        : '1px solid rgba(30, 19, 16, 0.04)',
-      borderRadius: 'var(--radius-md)',
+    <span style={{
+      fontFamily: 'var(--font-inter)',
+      fontSize: 'var(--text-caption)',
+      fontWeight: 600,
+      color: 'var(--color-text-inverse)',
+      background: '#B45A32',
+      borderRadius: '9999px',
+      padding: '1px 8px',
+      lineHeight: 1.6,
     }}>
-      {/* Indicator dot */}
-      {entry.isCustomized && (
-        <div style={{
-          width: '6px',
-          height: '6px',
-          borderRadius: '50%',
-          background: '#B45A32',
-          flexShrink: 0,
-          marginTop: '7px',
-        }} />
-      )}
-
-      <div style={{ flex: 1, minWidth: 0 }}>
-        {/* Label */}
-        <p style={{
-          fontFamily: 'var(--font-inter)',
-          fontSize: 'var(--text-body-sm)',
-          fontWeight: 500,
-          color: 'var(--color-text-primary)',
-          margin: 0,
-          marginBottom: '2px',
-        }}>
-          {entry.label}
-        </p>
-
-        {/* Preview */}
-        <p style={{
-          fontFamily: 'var(--font-inter)',
-          fontSize: 'var(--text-caption)',
-          color: 'var(--color-text-tertiary)',
-          margin: 0,
-          lineHeight: 'var(--lh-body-sm)',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: entry.fieldType === 'short' ? 'nowrap' : 'normal',
-        }}>
-          {preview}
-        </p>
-      </div>
-
-      {/* Field type pill */}
-      <span style={{
-        fontFamily: 'var(--font-inter)',
-        fontSize: '10px',
-        color: 'var(--color-text-tertiary)',
-        background: 'rgba(30, 19, 16, 0.04)',
-        borderRadius: '4px',
-        padding: '2px 6px',
-        flexShrink: 0,
-        textTransform: 'uppercase',
-        letterSpacing: '0.05em',
-      }}>
-        {entry.fieldType === 'short' ? 'corto' : entry.fieldType === 'medium' ? 'medio' : 'largo'}
-      </span>
-    </div>
+      {count}
+    </span>
   )
 }
 
-// ─── States ──────────────────────────────────────────────────────────────────
-
-function Skeleton() {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-      {Array.from({ length: 6 }).map((_, i) => (
-        <div
-          key={i}
-          className="skeleton-pulse"
-          style={{
-            height: '56px',
-            borderRadius: 'var(--radius-md)',
-            background: 'rgba(30, 19, 16, 0.04)',
-          }}
-        />
-      ))}
-    </div>
-  )
-}
-
-function ErrorState({ message, onRetry }: { message: string; onRetry: () => void }) {
-  return (
-    <div style={{
-      textAlign: 'center',
-      padding: 'var(--space-10)',
-    }}>
-      <p style={{
-        fontFamily: 'var(--font-inter)',
-        fontSize: 'var(--text-body)',
-        color: 'var(--color-text-secondary)',
-        marginBottom: 'var(--space-4)',
-      }}>
-        Error al cargar el copy: {message}
-      </p>
-      <button
-        onClick={onRetry}
-        style={{
-          fontFamily: 'var(--font-inter)',
-          fontSize: 'var(--text-body-sm)',
-          color: '#B45A32',
-          background: 'none',
-          border: '1px solid rgba(180, 90, 50, 0.3)',
-          borderRadius: 'var(--radius-pill)',
-          padding: 'var(--space-2) var(--space-4)',
-          cursor: 'pointer',
-        }}
-      >
-        Reintentar
-      </button>
-    </div>
-  )
-}
-
-function EmptyState() {
+function NoResults({ query }: { query: string }) {
   return (
     <div style={{
       textAlign: 'center',
@@ -368,19 +355,8 @@ function EmptyState() {
         fontSize: 'var(--text-body)',
         color: 'var(--color-text-tertiary)',
       }}>
-        Todo el copy está usando los textos originales.
+        No se encontraron resultados para &ldquo;{query}&rdquo;
       </p>
     </div>
   )
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function groupBySubsection(entries: CopyEntry[]): Record<string, CopyEntry[]> {
-  const groups: Record<string, CopyEntry[]> = {}
-  for (const entry of entries) {
-    if (!groups[entry.subsection]) groups[entry.subsection] = []
-    groups[entry.subsection].push(entry)
-  }
-  return groups
 }

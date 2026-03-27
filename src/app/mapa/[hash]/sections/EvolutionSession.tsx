@@ -8,6 +8,7 @@
  */
 
 import { useState } from 'react'
+import { useCopy } from '@/lib/copy'
 import Badge from '@/components/ui/Badge'
 import BookingWidget from '@/components/booking/BookingWidget'
 import BookingConfirmed from '@/components/booking/BookingConfirmed'
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export default function EvolutionSession({ isNew, booked: initialBooked, mapHash, bookingDetails }: Props) {
+  const { getCopy } = useCopy()
   const [booked, setBooked] = useState(initialBooked)
   const [currentBooking, setCurrentBooking] = useState(bookingDetails ?? null)
 
@@ -49,7 +51,7 @@ export default function EvolutionSession({ isNew, booked: initialBooked, mapHash
       {/* Badge */}
       {isNew && !booked && (
         <div style={{ marginBottom: 'var(--space-3)' }}>
-          <Badge status="disponible">DISPONIBLE</Badge>
+          <Badge status="disponible">{getCopy('mapa.focus.new.session.tag')}</Badge>
         </div>
       )}
 
@@ -64,7 +66,7 @@ export default function EvolutionSession({ isNew, booked: initialBooked, mapHash
           marginBottom: 'var(--space-3)',
         }}
       >
-        ¿Quieres que Javier revise tu mapa contigo?
+        {getCopy('mapa.session.title')}
       </p>
 
       {/* Descripción */}
@@ -77,7 +79,7 @@ export default function EvolutionSession({ isNew, booked: initialBooked, mapHash
           marginBottom: booked ? 0 : 'var(--space-2)',
         }}
       >
-        20 minutos. Sin compromiso. Ya tiene tus datos — no repites nada.
+        {getCopy('mapa.session.description')}
       </p>
 
       {booked && currentBooking ? (

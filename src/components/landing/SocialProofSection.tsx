@@ -7,28 +7,23 @@
  * IMPORTANTE: Textos son PLANTILLA — pendiente de testimonios reales de Javier.
  */
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useMemo } from 'react'
+import { useCopy } from '@/lib/copy'
 
-const testimonials: { quote: string; author: string; bg: string; border?: string }[] = [
-  {
-    quote: 'Creía que necesitaba más disciplina. En 3 minutos descubrí que necesitaba regulación.',
-    author: 'Director de operaciones, 47',
-    bg: 'var(--color-surface-lavender)',
-  },
-  {
-    quote: 'No le conté a nadie que lo hice. Los datos me explicaron lo que yo no quería ver.',
-    author: 'CEO, 52',
-    bg: 'var(--color-surface-cream)',
-    border: '1px solid rgba(30, 19, 16, 0.08)',
-  },
-  {
-    quote: 'Lo hice por curiosidad científica. Los resultados me desarmaron.',
-    author: 'Socia fundadora, 39',
-    bg: 'var(--color-surface-lime)',
-  },
+const TESTIMONIAL_STYLES: { bg: string; border?: string }[] = [
+  { bg: 'var(--color-surface-lavender)' },
+  { bg: 'var(--color-surface-cream)', border: '1px solid rgba(30, 19, 16, 0.08)' },
+  { bg: 'var(--color-surface-lime)' },
 ]
 
 export default function SocialProofSection() {
+  const { getCopy } = useCopy()
+
+  const testimonials = useMemo(() => TESTIMONIAL_STYLES.map((style, i) => ({
+    quote: getCopy(`socialproof.t${i + 1}.quote`),
+    author: getCopy(`socialproof.t${i + 1}.author`),
+    ...style,
+  })), [getCopy])
   const sectionRef = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -70,7 +65,7 @@ export default function SocialProofSection() {
             transition: 'opacity 500ms var(--ease-out-expo)',
           }}
         >
-          EXPERIENCIAS REALES
+          {getCopy('socialproof.overline')}
         </p>
 
         {/* Headline */}
@@ -89,7 +84,7 @@ export default function SocialProofSection() {
             transition: 'opacity 500ms var(--ease-out-expo) 100ms, transform 500ms var(--ease-out-expo) 100ms',
           }}
         >
-          Lo que dicen quienes ya pasaron por aquí.
+          {getCopy('socialproof.headline')}
         </h2>
 
         {/* Testimonial cards */}

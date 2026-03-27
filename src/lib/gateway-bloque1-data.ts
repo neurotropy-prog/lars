@@ -3,7 +3,12 @@
  * Fuente de verdad de todo el copy del Bloque 1 del gateway.
  * P2 → Primera Verdad → P3 → P4 → Micro-espejo 1
  * Texto exacto de docs/features/FEATURE_GATEWAY_DESIGN.md — no inventado.
+ *
+ * Copy override support: functions accept optional overrides map.
+ * Static exports remain for backward compatibility.
  */
+
+import { getCopySync } from '@/lib/copy'
 
 // ─── TIPOS ───────────────────────────────────────────────────────────────────
 
@@ -237,4 +242,33 @@ export function getMicroEspejo1(
     collectiveData:
       'El 65% de personas con tu combinación de respuestas no saben que la irritabilidad y la niebla mental tienen la misma causa. Cuando se regula una, la otra mejora.',
   }
+}
+
+// ─── OVERRIDE HELPERS ────────────────────────────────────────────────────────
+
+/** Returns P2 options with copy overrides applied. */
+export function getP2Options(overrides?: Record<string, string>): SelectOption[] {
+  if (!overrides) return P2_OPTIONS
+  return P2_OPTIONS.map((opt) => ({
+    ...opt,
+    title: getCopySync(`gateway.p2.option${opt.id}`, overrides) || opt.title,
+  }))
+}
+
+/** Returns P3 options with copy overrides applied. */
+export function getP3Options(overrides?: Record<string, string>): MultiOption[] {
+  if (!overrides) return P3_OPTIONS
+  return P3_OPTIONS.map((opt) => ({
+    ...opt,
+    title: getCopySync(`gateway.p3.${opt.id}`, overrides) || opt.title,
+  }))
+}
+
+/** Returns P4 options with copy overrides applied. */
+export function getP4Options(overrides?: Record<string, string>): SelectOption[] {
+  if (!overrides) return P4_OPTIONS
+  return P4_OPTIONS.map((opt) => ({
+    ...opt,
+    title: getCopySync(`gateway.p4.option${opt.id}.title`, overrides) || opt.title,
+  }))
 }

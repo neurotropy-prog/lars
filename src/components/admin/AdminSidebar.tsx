@@ -49,7 +49,7 @@ interface NavItem {
   href: string
   label: string
   icon: typeof IconHome
-  badge?: 'leads' | 'agenda'
+  badge?: 'leads' | 'agenda' | 'copy'
 }
 
 const MAIN_ITEMS: NavItem[] = [
@@ -58,7 +58,7 @@ const MAIN_ITEMS: NavItem[] = [
   { href: '/admin/automations', label: 'Automations', icon: IconZap },
   { href: '/admin/analytics', label: 'Analytics', icon: IconBarChart3 },
   { href: '/admin/agenda', label: 'Agenda', icon: IconCalendar, badge: 'agenda' },
-  { href: '/admin/copy', label: 'Copy', icon: IconFileText },
+  { href: '/admin/copy', label: 'Copy', icon: IconFileText, badge: 'copy' },
 ]
 
 const BOTTOM_ITEMS: NavItem[] = [
@@ -71,7 +71,7 @@ interface AdminSidebarProps {
   collapsed: boolean
   onToggle: () => void
   activePath: string
-  badges: { leads: number; agenda: boolean }
+  badges: { leads: number; agenda: boolean; copy: number }
 }
 
 export default function AdminSidebar({
@@ -222,6 +222,7 @@ export default function AdminSidebar({
                   ? 'green'
                   : undefined
             }
+            badgeCount={item.badge === 'copy' ? badges.copy : undefined}
           />
         ))}
       </div>
@@ -305,9 +306,10 @@ interface SidebarItemProps {
   active: boolean
   collapsed: boolean
   badge?: 'red' | 'green'
+  badgeCount?: number
 }
 
-function SidebarItem({ item, active, collapsed, badge }: SidebarItemProps) {
+function SidebarItem({ item, active, collapsed, badge, badgeCount }: SidebarItemProps) {
   const Icon = item.icon
 
   return (
@@ -362,8 +364,45 @@ function SidebarItem({ item, active, collapsed, badge }: SidebarItemProps) {
             }}
           />
         )}
+        {badgeCount != null && badgeCount > 0 && (
+          <span
+            style={{
+              position: 'absolute',
+              top: -4,
+              right: -8,
+              fontFamily: 'var(--font-inter)',
+              fontSize: '9px',
+              fontWeight: 700,
+              color: '#FFFBEF',
+              backgroundColor: ACTIVE_TEXT,
+              borderRadius: '9999px',
+              padding: '1px 5px',
+              lineHeight: 1.4,
+              border: `2px solid ${SIDEBAR_BG}`,
+              boxSizing: 'content-box',
+            }}
+          />
+        )}
       </span>
-      {!collapsed && <span>{item.label}</span>}
+      {!collapsed && (
+        <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          {item.label}
+          {badgeCount != null && badgeCount > 0 && (
+            <span style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: '10px',
+              fontWeight: 600,
+              color: '#FFFBEF',
+              backgroundColor: ACTIVE_TEXT,
+              borderRadius: '9999px',
+              padding: '0px 6px',
+              lineHeight: 1.6,
+            }}>
+              {badgeCount}
+            </span>
+          )}
+        </span>
+      )}
     </Link>
   )
 }

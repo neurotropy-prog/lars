@@ -7,6 +7,7 @@
  * y opcionalmente: badge D7 actualizado, subdimensiones completadas.
  */
 
+import { useCopy } from '@/lib/copy'
 import Badge from '@/components/ui/Badge'
 import type { DimensionResult, DimensionKey } from '@/lib/insights'
 
@@ -35,6 +36,7 @@ export default function DimensionCard({
   d7IsNew,
   subdimensionScores,
 }: Props) {
+  const { getCopy } = useCopy()
   const isD2 = dim.key === 'd2'
 
   return (

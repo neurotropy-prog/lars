@@ -7,8 +7,10 @@
  */
 
 import { useRef, useEffect, useState } from 'react'
+import { useCopy } from '@/lib/copy'
 
 export default function MirrorSection() {
+  const { getCopy } = useCopy()
   const sectionRef = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -47,7 +49,7 @@ export default function MirrorSection() {
       <div style={{ maxWidth: '680px', margin: '0 auto' }}>
         {/* Overline */}
         <p className="overline-accent" style={stagger(0)}>
-          LO QUE SIENTES
+          {getCopy('mirror.overline')}
         </p>
 
         {/* Headline — Lora Bold, --text-h2 */}
@@ -63,7 +65,7 @@ export default function MirrorSection() {
             ...stagger(150),
           }}
         >
-          Lo que sientes tiene nombre. Y tiene solución.
+          {getCopy('mirror.headline')}
         </h2>
 
         {/* Separador sutil — 60px centrado */}
@@ -91,7 +93,7 @@ export default function MirrorSection() {
             ...stagger(450),
           }}
         >
-          No es falta de voluntad.
+          {getCopy('mirror.impact')}
         </p>
 
         {/* Párrafo 1 — explicación concreta */}
@@ -106,7 +108,7 @@ export default function MirrorSection() {
             ...stagger(600),
           }}
         >
-          Es un sistema nervioso que lleva meses&nbsp;— quizá años&nbsp;— operando en modo alarma. Cuando eso pasa, no importa cuánto descanses: tu sueño se fragmenta, tus decisiones pierden claridad, tu paciencia desaparece antes de llegar a casa.
+          {getCopy('mirror.body1')}
         </p>
 
         {/* Párrafo 2 — reframe biológico */}
@@ -120,7 +122,7 @@ export default function MirrorSection() {
             ...stagger(750),
           }}
         >
-          No estás roto. Tu biología está haciendo exactamente lo que sabe hacer cuando la carga supera el diseño.
+          {getCopy('mirror.body2')}
         </p>
 
         {/* Pull-quote — cierre emocional */}
@@ -137,7 +139,7 @@ export default function MirrorSection() {
             ...stagger(900),
           }}
         >
-          No estás roto. Tu biología está respondiendo como sabe.
+          {getCopy('mirror.pullquote')}
         </p>
       </div>
     </section>

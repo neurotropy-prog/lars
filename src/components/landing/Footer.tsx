@@ -7,6 +7,8 @@
  * Links placeholder (#) para dar presencia institucional.
  */
 
+import { useCopy } from '@/lib/copy'
+
 const columns = [
   {
     heading: 'INSTITUTO',
@@ -35,6 +37,8 @@ const columns = [
 ]
 
 export default function Footer() {
+  const { getCopy } = useCopy()
+
   return (
     <footer
       style={{
@@ -129,7 +133,7 @@ export default function Footer() {
             textAlign: 'center',
           }}
         >
-          &copy; 2026 Instituto Epigenético. Todos los derechos reservados.
+          {getCopy('footer.copyright')}
         </p>
       </div>
     </footer>

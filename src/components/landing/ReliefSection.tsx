@@ -7,9 +7,11 @@
  */
 
 import { useRef, useEffect, useState } from 'react'
+import { useCopy } from '@/lib/copy'
 import Counter from '@/components/ui/Counter'
 
 export default function ReliefSection() {
+  const { getCopy } = useCopy()
   const sectionRef = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -69,7 +71,7 @@ export default function ReliefSection() {
       >
         {/* Overline */}
         <p className="overline-accent" style={stagger(0)}>
-          EL ANÁLISIS
+          {getCopy('relief.overline')}
         </p>
 
         {/* Headline — Lora Regular, --text-h2 */}
@@ -85,7 +87,7 @@ export default function ReliefSection() {
             ...stagger(100),
           }}
         >
-          3 minutos para entender lo que tu cuerpo lleva meses intentando decirte.
+          {getCopy('relief.headline')}
         </h2>
 
         {/* Descripción */}
@@ -100,10 +102,7 @@ export default function ReliefSection() {
             ...stagger(200),
           }}
         >
-          Este análisis cruza tus respuestas con datos de más de 25.000 evaluaciones
-          reales para mostrarte el estado de 5 dimensiones clave: regulación nerviosa,
-          calidad de sueño, claridad cognitiva, equilibrio emocional y alegría de vivir.
-          No es un test genérico&nbsp;— es un mapa calibrado para ti.
+          {getCopy('relief.description')}
         </p>
 
         {/* Card de credenciales */}
@@ -146,7 +145,7 @@ export default function ReliefSection() {
                     marginBottom: 'var(--space-1)',
                   }}
                 >
-                  Harvard
+                  {getCopy('relief.credential.harvard')}
                 </p>
                 <p
                   style={{
@@ -156,7 +155,7 @@ export default function ReliefSection() {
                     color: 'var(--color-text-secondary)',
                   }}
                 >
-                  Dr. Carlos Alvear López
+                  {getCopy('relief.credential.doctor')}
                 </p>
               </div>
             </div>
@@ -183,7 +182,7 @@ export default function ReliefSection() {
                   color: 'var(--color-text-secondary)',
                 }}
               >
-                sistemas nerviosos analizados
+                {getCopy('relief.credential.analyzed')}
               </p>
             </div>
 
@@ -209,7 +208,7 @@ export default function ReliefSection() {
                   color: 'var(--color-text-secondary)',
                 }}
               >
-                años de práctica clínica
+                {getCopy('relief.credential.years')}
               </p>
             </div>
           </div>
@@ -227,7 +226,7 @@ export default function ReliefSection() {
           }}
         >
           {visible ? <Counter to={142} duration={800} /> : '0'}
-          {' '}personas completaron este análisis esta semana.
+          {' '}{getCopy('relief.collective').replace('{{count}}', '')}
         </p>
 
         {/* CTA LIMA */}
@@ -261,7 +260,7 @@ export default function ReliefSection() {
             e.currentTarget.style.boxShadow = 'none'
           }}
         >
-          Empezar mi análisis &rarr;
+          {getCopy('relief.cta')}
         </button>
 
         {/* Disuelve fricción */}
@@ -274,7 +273,7 @@ export default function ReliefSection() {
             ...stagger(600),
           }}
         >
-          Tu resultado es confidencial. No compartimos datos con terceros.
+          {getCopy('relief.friction')}
         </p>
       </div>
     </section>

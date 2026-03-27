@@ -3,8 +3,11 @@
  * Fuente de verdad del copy del Bloque 2 del gateway.
  * P5 → P6 → Micro-espejo 2 → P7 → P8
  * Texto exacto de docs/features/FEATURE_GATEWAY_DESIGN.md y PHASE_3.
+ *
+ * Copy override support: helper functions accept optional overrides map.
  */
 
+import { getCopySync } from '@/lib/copy'
 import type { ReflectionContent, SelectOption } from './gateway-bloque1-data'
 
 // ─── P5 — ALEGRÍA DE VIVIR (D5) ──────────────────────────────────────────────
@@ -137,4 +140,36 @@ export interface Bloque2Answers {
   /** Valores 1-10 por dimensión (undefined = no movido) */
   sliders: Record<string, number | undefined>
   p8: string
+}
+
+// ─── OVERRIDE HELPERS ────────────────────────────────────────────────────────
+
+/** Returns P5 options with copy overrides applied. */
+export function getP5Options(overrides?: Record<string, string>): SelectOption[] {
+  if (!overrides) return P5_OPTIONS
+  return P5_OPTIONS.map((opt) => ({
+    ...opt,
+    title: getCopySync(`gateway.p5.option${opt.id}`, overrides) || opt.title,
+  }))
+}
+
+/** Returns P6 options with copy overrides applied. */
+export function getP6Options(overrides?: Record<string, string>): SelectOption[] {
+  if (!overrides) return P6_OPTIONS
+  return P6_OPTIONS.map((opt) => ({
+    ...opt,
+    title: getCopySync(`gateway.p6.option${opt.id}.title`, overrides) || opt.title,
+    subtitle: opt.subtitle
+      ? getCopySync(`gateway.p6.option${opt.id}.subtitle`, overrides) || opt.subtitle
+      : opt.subtitle,
+  }))
+}
+
+/** Returns P8 options with copy overrides applied. */
+export function getP8Options(overrides?: Record<string, string>): SelectOption[] {
+  if (!overrides) return P8_OPTIONS
+  return P8_OPTIONS.map((opt) => ({
+    ...opt,
+    title: getCopySync(`gateway.p8.option${opt.id}`, overrides) || opt.title,
+  }))
 }

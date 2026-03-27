@@ -10,6 +10,7 @@
  */
 
 import { useState, useEffect } from 'react'
+import { useCopy } from '@/lib/copy'
 import P1Cards from './P1Cards'
 
 interface HeroSectionProps {
@@ -17,6 +18,7 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onP1Select }: HeroSectionProps) {
+  const { getCopy } = useCopy()
   // Stagger steps: 0=hidden, 1=shock, 2=headline, 3=subtitle, 4=p1, 5=micropromises
   const [revealStep, setRevealStep] = useState(0)
 
@@ -78,7 +80,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
             marginBottom: 'var(--space-6)',
           }}
         >
-          Tu cuerpo lleva meses hablándote. Esta es la primera vez que alguien te traduce lo que dice.
+          {getCopy('hero.shock')}
         </p>
 
         {/* Headline */}
@@ -95,7 +97,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
             marginBottom: 'var(--space-5)',
           }}
         >
-          Descubre en qué estado está tu sistema nervioso
+          {getCopy('hero.headline')}
         </h1>
 
         {/* Subtítulo */}
@@ -111,8 +113,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
             marginBottom: 'var(--space-6)',
           }}
         >
-          Un análisis de 3 minutos calibrado con más de 25.000 evaluaciones reales.
-          Tu resultado es personal, confidencial y tuyo&nbsp;— con o sin programa.
+          {getCopy('hero.subtitle')}
         </p>
 
         {/* P1 — visible sin botón previo */}
@@ -132,7 +133,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
             textAlign: 'center',
           }}
         >
-          10 preguntas&nbsp;·&nbsp;3 minutos&nbsp;·&nbsp;Sin registro previo
+          {getCopy('hero.micropromises')}
         </p>
       </div>
     </section>

@@ -24,7 +24,7 @@ const TRANSITION = '200ms cubic-bezier(0.16, 1, 0.3, 1)'
 
 // ── Badge cache ──
 
-let badgeCache: { leads: number; agenda: boolean; ts: number } | null = null
+let badgeCache: { leads: number; agenda: boolean; copy: number; ts: number } | null = null
 const BADGE_CACHE_MS = 60_000
 
 // ── Component ──
@@ -46,9 +46,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const [isMobile, setIsMobile] = useState(false)
 
   // Badge state
-  const [badges, setBadges] = useState<{ leads: number; agenda: boolean }>({
+  const [badges, setBadges] = useState<{ leads: number; agenda: boolean; copy: number }>({
     leads: 0,
     agenda: false,
+    copy: 0,
   })
 
   // ── Check auth on mount ──
@@ -92,14 +93,15 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const fetchBadges = useCallback(async () => {
     // Use cache if fresh
     if (badgeCache && Date.now() - badgeCache.ts < BADGE_CACHE_MS) {
-      setBadges({ leads: badgeCache.leads, agenda: badgeCache.agenda })
+      setBadges({ leads: badgeCache.leads, agenda: badgeCache.agenda, copy: badgeCache.copy })
       return
     }
 
     try {
-      const [leadsRes, disponibilidadRes] = await Promise.all([
+      const [leadsRes, disponibilidadRes, copyRes] = await Promise.all([
         fetch('/api/admin/leads?filter=hot&period=7d').catch(() => null),
         fetch('/api/admin/disponibilidad').catch(() => null),
+        fetch('/api/admin/copy').catch(() => null),
       ])
 
       let hotLeads = 0
@@ -117,7 +119,14 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         )
       }
 
-      const newBadges = { leads: hotLeads, agenda: hasSessionToday }
+      let copyCustomized = 0
+      if (copyRes?.ok) {
+        const copyData = await copyRes.json()
+        const stats = copyData.stats ?? {}
+        copyCustomized = Object.values(stats).reduce((a: number, b) => a + (b as number), 0)
+      }
+
+      const newBadges = { leads: hotLeads, agenda: hasSessionToday, copy: copyCustomized }
       badgeCache = { ...newBadges, ts: Date.now() }
       setBadges(newBadges)
     } catch {

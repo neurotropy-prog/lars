@@ -82,6 +82,13 @@ Evoluciones del mapa (día 3-90), emails automáticos, analytics custom en Supab
   - npx tsc --noEmit sin errores
   - **Admin v2 COMPLETADO** — 7 sprints, Centro de Comando Clínico funcional
 
+- ✅ **Admin v2 — Sprint 8: Copy Editor** (27 Mar 2026):
+  - Editor de copy completo con auto-save (1.5s debounce), acordeones por subsección, búsqueda instantánea, restaurar individual/sección
+  - Preview en vivo (Landing/Gateway/Mapa) con fuentes y colores reales, actualización en tiempo real
+  - Badge de personalización en sidebar (count de overrides)
+  - Integración de useCopy() en 6 componentes de landing, 2 data files del gateway, y componentes del mapa
+  - Los componentes públicos funcionan idénticos sin overrides (fallback transparente a defaults)
+
 ### Pendiente (no bloquea lanzamiento)
 - Testimonios: siguen siendo placeholder — pendiente de testimonios reales de Javier
 - Stripe: en modo test — pasar a LIVE cuando esté listo

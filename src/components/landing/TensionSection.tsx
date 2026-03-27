@@ -8,9 +8,11 @@
  */
 
 import { useRef, useEffect, useState } from 'react'
+import { useCopy } from '@/lib/copy'
 import Counter from '@/components/ui/Counter'
 
 export default function TensionSection() {
+  const { getCopy } = useCopy()
   const sectionRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
@@ -60,7 +62,7 @@ export default function TensionSection() {
             transition: 'opacity 500ms var(--ease-out-expo)',
           }}
         >
-          EL COSTE DE NO SABER
+          {getCopy('tension.overline')}
         </p>
 
         <div className="tension-grid">
@@ -97,7 +99,7 @@ export default function TensionSection() {
                 marginBottom: 'var(--space-2)',
               }}
             >
-              de ejecutivos con burnout no lo saben.
+              {getCopy('tension.card1.title')}
             </p>
             <p
               style={{
@@ -107,7 +109,7 @@ export default function TensionSection() {
                 color: 'rgba(255, 251, 239, 0.6)',
               }}
             >
-              Confunden el agotamiento con &ldquo;una mala racha&rdquo; y pierden meses — a veces años — mientras su biología se deteriora.
+              {getCopy('tension.card1.body')}
             </p>
           </div>
 
@@ -151,7 +153,7 @@ export default function TensionSection() {
                 marginBottom: 'var(--space-2)',
               }}
             >
-              semanales de rendimiento real perdidas.
+              {getCopy('tension.card2.title')}
             </p>
             <p
               style={{
@@ -161,7 +163,7 @@ export default function TensionSection() {
                 color: 'rgba(255, 251, 239, 0.6)',
               }}
             >
-              No en tiempo — en calidad de decisiones, en paciencia, en energía para lo que importa.
+              {getCopy('tension.card2.body')}
             </p>
           </div>
 
@@ -207,7 +209,7 @@ export default function TensionSection() {
                 marginBottom: 'var(--space-3)',
               }}
             >
-              El burnout no se arregla con vacaciones.
+              {getCopy('tension.card3.title')}
             </p>
             <p
               style={{
@@ -217,7 +219,7 @@ export default function TensionSection() {
                 color: 'var(--color-text-secondary)',
               }}
             >
-              Si tu cortisol no baja, tu sueño no se repara y tu sistema no se regula, dos semanas en la playa son un parche. Vuelves y en 72 horas estás igual.
+              {getCopy('tension.card3.body')}
             </p>
           </div>
         </div>
