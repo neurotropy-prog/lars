@@ -143,11 +143,16 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   // ── Loading ──
   if (checking) return null
 
+  // ── Login page: render children only, no sidebar/chrome ──
+  if (pathname === '/admin/login') {
+    return <>{children}</>
+  }
+
   // ── Authenticated layout ──
   const sidebarWidth = isMobile ? 0 : collapsed ? WIDTH_COLLAPSED : WIDTH_EXPANDED
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: 'var(--color-bg-primary)' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#0B0F0E' }}>
       {/* Desktop sidebar */}
       {!isMobile && (
         <AdminSidebar
