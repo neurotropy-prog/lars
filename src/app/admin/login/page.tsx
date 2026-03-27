@@ -15,7 +15,6 @@ export default function AdminLoginPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Check for error from redirect
   useEffect(() => {
     const errorParam = searchParams.get('error')
     if (errorParam === 'unauthorized') {
@@ -37,11 +36,9 @@ export default function AdminLoginPage() {
 
       if (authError) {
         setError('Error al iniciar sesión con Google. Por favor intenta de nuevo.')
-        console.error('OAuth error:', authError)
       }
-    } catch (err) {
+    } catch {
       setError('Error inesperado. Por favor intenta de nuevo.')
-      console.error('Login error:', err)
     } finally {
       setLoading(false)
     }
@@ -51,12 +48,11 @@ export default function AdminLoginPage() {
     <div
       style={{
         minHeight: '100vh',
-        backgroundColor: '#0B0F0E',
+        backgroundColor: 'var(--color-bg-primary)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         padding: '20px',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif',
       }}
     >
       <div
@@ -66,13 +62,13 @@ export default function AdminLoginPage() {
           textAlign: 'center',
         }}
       >
-        {/* Logo/Title */}
+        {/* Title */}
         <div style={{ marginBottom: '40px' }}>
           <h1
             style={{
               fontSize: '32px',
               fontWeight: 700,
-              color: '#F0F1F1',
+              color: 'var(--color-text-primary)',
               marginBottom: '8px',
               letterSpacing: '-0.5px',
               fontFamily: 'Cormorant Garamond, serif',
@@ -83,7 +79,7 @@ export default function AdminLoginPage() {
           <p
             style={{
               fontSize: '14px',
-              color: '#9CA3A2',
+              color: 'var(--color-text-tertiary)',
               marginTop: '12px',
             }}
           >
@@ -95,9 +91,9 @@ export default function AdminLoginPage() {
         {error && (
           <div
             style={{
-              backgroundColor: '#4C2626',
-              border: '1px solid #EF4444',
-              color: '#F0F1F1',
+              backgroundColor: 'rgba(196, 64, 64, 0.08)',
+              border: '1px solid var(--color-error)',
+              color: 'var(--color-error)',
               padding: '12px 16px',
               borderRadius: '6px',
               marginBottom: '24px',
@@ -116,9 +112,9 @@ export default function AdminLoginPage() {
           style={{
             width: '100%',
             padding: '12px 16px',
-            backgroundColor: '#1A1F1E',
-            border: '1px solid #2D3433',
-            color: '#F0F1F1',
+            backgroundColor: 'var(--color-bg-dark)',
+            border: '1px solid var(--color-bg-dark)',
+            color: 'var(--color-text-inverse)',
             borderRadius: '6px',
             fontSize: '15px',
             fontWeight: 600,
@@ -132,25 +128,20 @@ export default function AdminLoginPage() {
           }}
           onMouseEnter={(e) => {
             if (!loading) {
-              e.currentTarget.style.backgroundColor = '#2D3433'
-              e.currentTarget.style.borderColor = '#4ADE80'
+              e.currentTarget.style.backgroundColor = 'var(--color-accent)'
+              e.currentTarget.style.borderColor = 'var(--color-accent)'
             }
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = '#1A1F1E'
-            e.currentTarget.style.borderColor = '#2D3433'
+            e.currentTarget.style.backgroundColor = 'var(--color-bg-dark)'
+            e.currentTarget.style.borderColor = 'var(--color-bg-dark)'
           }}
         >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 7v5l3 3" />
+          <svg width="18" height="18" viewBox="0 0 48 48">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
           </svg>
           {loading ? 'Abriendo Google...' : 'Entrar con Google'}
         </button>
@@ -161,7 +152,7 @@ export default function AdminLoginPage() {
             style={{
               marginTop: '16px',
               fontSize: '13px',
-              color: '#9CA3A2',
+              color: 'var(--color-text-tertiary)',
             }}
           >
             Redirigiendo...
