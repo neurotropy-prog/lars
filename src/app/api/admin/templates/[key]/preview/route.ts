@@ -7,6 +7,8 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
+import { verifyAdmin } from '@/lib/admin-auth'
 import { EMAIL_DEFAULTS, escapeHtml, textToHtmlParagraphs } from '@/lib/email-defaults'
 import { VALID_EMAIL_KEYS } from '@/lib/email-defaults'
 import { createAdminClient } from '@/lib/supabase'
@@ -157,11 +159,10 @@ export async function GET(
 ) {
   const { key } = await params
 
-  const isDev = process.env.NODE_ENV === 'development'
-  const adminSecret = req.headers.get('x-admin-secret')
-  const validSecret = process.env.ADMIN_SECRET
-  if (!isDev && (!validSecret || adminSecret !== validSecret)) {
-    return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  const cookieStore = await cookies()
+  const { authorized, status } = await verifyAdmin(cookieStore)
+  if (!authorized) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status })
   }
 
   if (!VALID_EMAIL_KEYS.includes(key)) {

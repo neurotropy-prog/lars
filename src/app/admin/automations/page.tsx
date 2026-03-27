@@ -59,14 +59,11 @@ export default function AutomationsPage() {
   useEffect(() => { setMounted(true) }, [])
 
   const fetchAutomations = useCallback(async () => {
-    const secret = sessionStorage.getItem('admin_secret')
-    if (!secret) return
-
     try {
       setLoading(true)
       const [automRes, tplRes] = await Promise.all([
-        fetch('/api/admin/automations', { headers: { 'x-admin-secret': secret } }),
-        fetch('/api/admin/templates', { headers: { 'x-admin-secret': secret } }),
+        fetch('/api/admin/automations'),
+        fetch('/api/admin/templates'),
       ])
 
       if (!automRes.ok) {

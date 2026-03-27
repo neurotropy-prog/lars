@@ -6,6 +6,8 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
+import { verifyAdmin } from '@/lib/admin-auth'
 import { createAdminClient } from '@/lib/supabase'
 
 interface EmailDef {
@@ -31,11 +33,10 @@ const EMAIL_DEFINITIONS: EmailDef[] = [
 
 export async function GET(req: NextRequest) {
   // Auth
-  const isDev = process.env.NODE_ENV === 'development'
-  const adminSecret = req.headers.get('x-admin-secret')
-  const validSecret = process.env.ADMIN_SECRET
-  if (!isDev && (!validSecret || adminSecret !== validSecret)) {
-    return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  const cookieStore = await cookies()
+  const { authorized, status } = await verifyAdmin(cookieStore)
+  if (!authorized) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status })
   }
 
   const supabase = createAdminClient()

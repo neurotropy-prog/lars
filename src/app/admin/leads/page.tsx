@@ -46,9 +46,6 @@ function LeadsPageInner() {
 
   // ── Fetch leads list ──
   const fetchLeads = useCallback(async () => {
-    const secret = sessionStorage.getItem('admin_secret')
-    if (!secret) return
-
     setLoading(true)
     setError(null)
 
@@ -59,9 +56,7 @@ function LeadsPageInner() {
         sort: activeSort,
       })
 
-      const res = await fetch(`/api/admin/leads?${params}`, {
-        headers: { 'x-admin-secret': secret },
-      })
+      const res = await fetch(`/api/admin/leads?${params}`)
 
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
 
@@ -84,13 +79,9 @@ function LeadsPageInner() {
   // Also fetch hot count separately if we're not on the hot filter
   const fetchHotCount = useCallback(async () => {
     if (activeFilter === 'hot') return // already have it
-    const secret = sessionStorage.getItem('admin_secret')
-    if (!secret) return
 
     try {
-      const res = await fetch(`/api/admin/leads?period=${activePeriod}&filter=hot`, {
-        headers: { 'x-admin-secret': secret },
-      })
+      const res = await fetch(`/api/admin/leads?period=${activePeriod}&filter=hot`)
       if (res.ok) {
         const data = await res.json()
         setHotCount(data.total ?? 0)
@@ -102,16 +93,11 @@ function LeadsPageInner() {
 
   // ── Fetch lead detail ──
   const fetchDetail = useCallback(async (hash: string) => {
-    const secret = sessionStorage.getItem('admin_secret')
-    if (!secret) return
-
     setDetailLoading(true)
     setDetailData(null)
 
     try {
-      const res = await fetch(`/api/admin/leads/${hash}`, {
-        headers: { 'x-admin-secret': secret },
-      })
+      const res = await fetch(`/api/admin/leads/${hash}`)
 
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
 

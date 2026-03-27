@@ -2,18 +2,21 @@
  * /api/admin/templates — GET
  *
  * Devuelve todos los templates fusionando defaults + overrides de Supabase.
+ * Protegido con Supabase Auth.
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase'
 import { EMAIL_DEFAULTS, VALID_EMAIL_KEYS } from '@/lib/email-defaults'
+import { verifyAdmin } from '@/lib/admin-auth'
 
 export async function GET(req: NextRequest) {
-  const isDev = process.env.NODE_ENV === 'development'
-  const adminSecret = req.headers.get('x-admin-secret')
-  const validSecret = process.env.ADMIN_SECRET
-  if (!isDev && (!validSecret || adminSecret !== validSecret)) {
-    return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  const cookieStore = await cookies()
+  const { authorized, status } = await verifyAdmin(cookieStore)
+
+  if (!authorized) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status })
   }
 
   const supabase = createAdminClient()

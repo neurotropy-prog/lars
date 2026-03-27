@@ -2,7 +2,7 @@
  * /api/admin/disponibilidad — GET / POST / DELETE
  *
  * CRUD para la configuracion de disponibilidad de Javier.
- * Protegido con ADMIN_SECRET (mismo patron que fast-forward).
+ * Protegido con Supabase Auth (verifyAdmin).
  *
  * GET: devuelve todas las reglas de disponibilidad + proximos bookings
  * POST: crea/actualiza una regla (recurring o bloqueo de fecha)
@@ -10,21 +10,20 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
+import { verifyAdmin } from '@/lib/admin-auth'
 import { createAdminClient } from '@/lib/supabase'
 import { deleteCalendarEvent } from '@/lib/google-calendar'
 
-function isAuthorized(req: NextRequest): boolean {
-  const isDev = process.env.NODE_ENV === 'development'
-  const adminSecret = req.headers.get('x-admin-secret')
-  const validSecret = process.env.ADMIN_SECRET
-  return isDev || (!!validSecret && adminSecret === validSecret)
-}
 
 // ─── GET: leer configuracion + proximas sesiones ────────────────────────────
 
 export async function GET(req: NextRequest): Promise<NextResponse> {
-  if (!isAuthorized(req)) {
-    return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  const cookieStore = await cookies()
+  const { authorized, status } = await verifyAdmin(cookieStore)
+
+  if (!authorized) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status })
   }
 
   const supabase = createAdminClient()
@@ -124,8 +123,11 @@ interface CreateRuleBody {
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  if (!isAuthorized(req)) {
-    return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  const cookieStore = await cookies()
+  const { authorized, status } = await verifyAdmin(cookieStore)
+
+  if (!authorized) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status })
   }
 
   let body: CreateRuleBody
@@ -206,8 +208,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 // ─── DELETE: eliminar regla ─────────────────────────────────────────────────
 
 export async function DELETE(req: NextRequest): Promise<NextResponse> {
-  if (!isAuthorized(req)) {
-    return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  const cookieStore = await cookies()
+  const { authorized, status } = await verifyAdmin(cookieStore)
+
+  if (!authorized) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status })
   }
 
   const ruleId = req.nextUrl.searchParams.get('id')
@@ -237,8 +242,11 @@ interface PatchBody {
 }
 
 export async function PATCH(req: NextRequest): Promise<NextResponse> {
-  if (!isAuthorized(req)) {
-    return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  const cookieStore = await cookies()
+  const { authorized, status } = await verifyAdmin(cookieStore)
+
+  if (!authorized) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status })
   }
 
   let body: PatchBody

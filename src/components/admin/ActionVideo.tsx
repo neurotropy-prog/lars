@@ -38,14 +38,12 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
     setError(null)
 
     try {
-      const secret = sessionStorage.getItem('admin_secret') ?? ''
       const formData = new FormData()
       formData.append('file', file)
       formData.append('hash', lead.hash)
 
       const res = await fetch('/api/admin/upload', {
         method: 'POST',
-        headers: { 'x-admin-secret': secret },
         body: formData,
       })
 

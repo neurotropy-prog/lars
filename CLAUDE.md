@@ -96,6 +96,12 @@ Fase 5: A-12 (momento WOW 8s), A-13 (CTA calma), A-14 (descarga PNG)
 - Lee la fase correspondiente en docs/phases/ + los feature docs referenciados.
 - Al completar una funcionalidad, SIEMPRE actualiza:
   docs/PROGRESS.md, docs/DATABASE.md (si cambió), docs/DECISIONS.md (si decidiste algo nuevo).
+- **Formato OBLIGATORIO en PROGRESS.md** al completar un sprint/sesión (el sync automático usa regex):
+  ```
+  - ✅ **Admin v2 — Sprint {N}: {Nombre}** ({DD Mon YYYY}):
+    - {resumen breve de lo que se construyó}
+  ```
+  Sin esta entrada en el formato exacto, el dashboard de Project Ops no se actualiza.
 - Antes de decirme que algo está terminado:
   1. Revisión técnica: estados vacíos, loading, error, datos inválidos,
      doble clic, responsive, seguridad.

@@ -67,10 +67,7 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
   const fetchGeo = useCallback(async () => {
     setLoading(true)
     try {
-      const secret = typeof window !== 'undefined' ? sessionStorage.getItem('admin_secret') : null
-      const res = await fetch(`/api/admin/geo?period=${period}`, {
-        headers: secret ? { 'x-admin-secret': secret } : {},
-      })
+      const res = await fetch(`/api/admin/geo?period=${period}`)
       if (res.ok) {
         setData(await res.json())
       }

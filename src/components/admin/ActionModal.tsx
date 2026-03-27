@@ -98,12 +98,10 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
     setError(null)
 
     try {
-      const secret = sessionStorage.getItem('admin_secret') ?? ''
       const res = await fetch(`/api/admin/leads/${lead.hash}/action`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-admin-secret': secret,
         },
         body: JSON.stringify({ type, content, notify_lead: notifyLead }),
       })

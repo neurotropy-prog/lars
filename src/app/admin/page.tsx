@@ -91,14 +91,9 @@ export default function AdminHub() {
   useEffect(() => { setMounted(true) }, [])
 
   const fetchHub = useCallback(async () => {
-    const secret = sessionStorage.getItem('admin_secret')
-    if (!secret) return
-
     try {
       setLoading(true)
-      const res = await fetch('/api/admin/hub', {
-        headers: { 'x-admin-secret': secret },
-      })
+      const res = await fetch('/api/admin/hub')
 
       if (!res.ok) {
         setError('Error cargando datos del Hub')
@@ -116,19 +111,7 @@ export default function AdminHub() {
   }, [])
 
   useEffect(() => {
-    // Retry until sessionStorage has the admin secret (AdminLayout sets it)
-    const attempt = () => {
-      const s = sessionStorage.getItem('admin_secret')
-      if (s) { fetchHub(); return true }
-      return false
-    }
-
-    if (!attempt()) {
-      const interval = setInterval(() => {
-        if (attempt()) clearInterval(interval)
-      }, 200)
-      return () => clearInterval(interval)
-    }
+    fetchHub()
   }, [fetchHub])
 
   return (

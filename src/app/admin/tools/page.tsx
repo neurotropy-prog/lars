@@ -44,15 +44,9 @@ export default function ToolsPage() {
   const [result, setResult] = useState<EvolutionResult | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [log, setLog] = useState<string[]>([])
-  const [secret, setSecret] = useState('')
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => { setMounted(true) }, [])
-
-  useEffect(() => {
-    const saved = sessionStorage.getItem('admin_secret')
-    if (saved) setSecret(saved)
-  }, [])
 
   async function fastForward(daysToAdd: number, label: string) {
     if (!hash.trim()) {
@@ -66,7 +60,7 @@ export default function ToolsPage() {
     try {
       const res = await fetch('/api/admin/fast-forward', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-admin-secret': secret },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ hash: hash.trim(), daysToAdd }),
       })
 

@@ -13,7 +13,9 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { createClient } from '@supabase/supabase-js'
 import {
   IconHome,
   IconUsers,
@@ -23,6 +25,7 @@ import {
   IconSettings,
   IconChevronLeft,
   IconChevronRight,
+  IconLogOut,
 } from './AdminIcons'
 
 // ── Design tokens ──
@@ -75,6 +78,9 @@ export default function AdminSidebar({
   activePath,
   badges,
 }: AdminSidebarProps) {
+  const router = useRouter()
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
+
   const isActive = useCallback(
     (href: string) => {
       if (href === '/admin') return activePath === '/admin'
@@ -82,6 +88,21 @@ export default function AdminSidebar({
     },
     [activePath]
   )
+
+  const handleLogout = useCallback(async () => {
+    setIsLoggingOut(true)
+    try {
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+      )
+      await supabase.auth.signOut()
+      router.push('/admin/login')
+    } catch (error) {
+      console.error('Logout error:', error)
+      setIsLoggingOut(false)
+    }
+  }, [router])
 
   return (
     <nav
@@ -203,7 +224,7 @@ export default function AdminSidebar({
         ))}
       </div>
 
-      {/* Bottom section: Tools */}
+      {/* Bottom section: Tools + Logout */}
       <div
         style={{
           borderTop: '1px solid rgba(249, 241, 222, 0.08)',
@@ -219,6 +240,57 @@ export default function AdminSidebar({
             collapsed={collapsed}
           />
         ))}
+
+        {/* Logout button */}
+        <button
+          onClick={handleLogout}
+          disabled={isLoggingOut}
+          title={collapsed ? 'Logout' : undefined}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: collapsed ? 'center' : 'flex-start',
+            gap: 12,
+            height: 44,
+            padding: collapsed ? '0' : '0 20px',
+            margin: '2px 8px',
+            borderRadius: 10,
+            backgroundColor: isLoggingOut ? 'rgba(249, 241, 222, 0.03)' : 'transparent',
+            color: SIDEBAR_TEXT_MUTED,
+            border: 'none',
+            fontFamily: 'var(--font-inter)',
+            fontSize: '14px',
+            fontWeight: 400,
+            cursor: isLoggingOut ? 'not-allowed' : 'pointer',
+            transition: 'background-color 150ms ease, color 150ms ease',
+            position: 'relative',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            opacity: isLoggingOut ? 0.5 : 1,
+          }}
+          onMouseEnter={(e) => {
+            if (!isLoggingOut) {
+              e.currentTarget.style.backgroundColor = HOVER_BG
+              e.currentTarget.style.color = SIDEBAR_TEXT
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'transparent'
+            e.currentTarget.style.color = SIDEBAR_TEXT_MUTED
+          }}
+        >
+          <span
+            style={{
+              flexShrink: 0,
+              display: 'flex',
+              width: 20,
+              justifyContent: 'center',
+            }}
+          >
+            <IconLogOut size={20} />
+          </span>
+          {!collapsed && <span>{isLoggingOut ? 'Cerrando...' : 'Logout'}</span>}
+        </button>
       </div>
     </nav>
   )

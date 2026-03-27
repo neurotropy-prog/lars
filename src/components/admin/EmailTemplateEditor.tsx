@@ -57,15 +57,11 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
   const [previewLoading, setPreviewLoading] = useState(false)
   const [confirmRevert, setConfirmRevert] = useState(false)
 
-  const getSecret = () => sessionStorage.getItem('admin_secret') ?? ''
-
   // Fetch template data
   const fetchTemplate = useCallback(async () => {
     setLoading(true)
     try {
-      const res = await fetch('/api/admin/templates', {
-        headers: { 'x-admin-secret': getSecret() },
-      })
+      const res = await fetch('/api/admin/templates')
       if (!res.ok) return
       const data = await res.json()
       const t = data.templates?.find((t: TemplateData) => t.email_key === emailKey)
@@ -98,9 +94,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
       params.set('body', bodyContent)
       params.set('cta', ctaText)
 
-      const res = await fetch(`/api/admin/templates/${emailKey}/preview?${params.toString()}`, {
-        headers: { 'x-admin-secret': getSecret() },
-      })
+      const res = await fetch(`/api/admin/templates/${emailKey}/preview?${params.toString()}`)
       if (res.ok) {
         const html = await res.text()
         setPreviewHtml(html)
@@ -118,7 +112,6 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'x-admin-secret': getSecret(),
         },
         body: JSON.stringify({
           subject,
@@ -141,7 +134,6 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
     try {
       const res = await fetch(`/api/admin/templates/${emailKey}`, {
         method: 'DELETE',
-        headers: { 'x-admin-secret': getSecret() },
       })
       if (res.ok) {
         onSave()

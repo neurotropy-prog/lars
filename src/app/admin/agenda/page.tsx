@@ -277,16 +277,10 @@ export default function AgendaPage() {
 
   useEffect(() => { setMounted(true) }, [])
 
-  const getSecret = () => sessionStorage.getItem('admin_secret') ?? ''
-
   const fetchData = useCallback(async () => {
-    const secret = getSecret()
-    if (!secret) return
     setLoading(true)
     try {
-      const res = await fetch('/api/admin/disponibilidad', {
-        headers: { 'x-admin-secret': secret },
-      })
+      const res = await fetch('/api/admin/disponibilidad')
       if (!res.ok) throw new Error('Error cargando datos')
       const data = await res.json()
       setRules(data.config ?? [])
@@ -329,20 +323,18 @@ export default function AgendaPage() {
   }
 
   async function toggleSlot(dayOfWeek: number, startTime: string, endTime: string) {
-    const secret = getSecret()
     const existingId = getRuleId(dayOfWeek, startTime, endTime)
     try {
       const dayLabel = DAYS_OF_WEEK.find(d => d.value === dayOfWeek)?.label ?? ''
       if (existingId) {
         await fetch(`/api/admin/disponibilidad?id=${existingId}`, {
           method: 'DELETE',
-          headers: { 'x-admin-secret': secret },
         })
         showSuccess(`${dayLabel} ${startTime}–${endTime} desactivado`)
       } else {
         await fetch('/api/admin/disponibilidad', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'x-admin-secret': secret },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ dayOfWeek, startTime, endTime }),
         })
         showSuccess(`${dayLabel} ${startTime}–${endTime} activado`)
@@ -355,7 +347,6 @@ export default function AgendaPage() {
 
   async function addBlockedDate() {
     if (!blockDate) return
-    const secret = getSecret()
     try {
       const payload: Record<string, string | boolean> = { specificDate: blockDate }
       if (blockMode === 'time_range') {
@@ -364,7 +355,7 @@ export default function AgendaPage() {
       }
       await fetch('/api/admin/disponibilidad', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-admin-secret': secret },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       })
       setBlockDate('')
@@ -385,11 +376,10 @@ export default function AgendaPage() {
     }
     if (!confirm(`¿Seguro que quieres ${labels[action]}?`)) return
 
-    const secret = getSecret()
     try {
       const res = await fetch('/api/admin/disponibilidad', {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', 'x-admin-secret': secret },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action, bookingId }),
       })
       if (!res.ok) throw new Error('Error')
@@ -406,11 +396,9 @@ export default function AgendaPage() {
   }
 
   async function removeBlockedDate(ruleId: string) {
-    const secret = getSecret()
     try {
       await fetch(`/api/admin/disponibilidad?id=${ruleId}`, {
         method: 'DELETE',
-        headers: { 'x-admin-secret': secret },
       })
       showSuccess('Fecha desbloqueada')
       await fetchData()
