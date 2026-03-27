@@ -18,6 +18,7 @@ import { CopyEditorSkeleton, CopyEditorError, CopyEditorEmpty } from './copy-edi
 import { CopyPreviewLanding } from './copy-editor/CopyPreviewLanding'
 import { CopyPreviewGateway } from './copy-editor/CopyPreviewGateway'
 import { CopyPreviewMapa } from './copy-editor/CopyPreviewMapa'
+import CopyEditorHistory from './copy-editor/CopyEditorHistory'
 
 export default function CopyManager() {
   const [activeTab, setActiveTab] = useState<CopySectionName>('landing')
@@ -29,6 +30,7 @@ export default function CopyManager() {
   const [activeSubsection, setActiveSubsection] = useState<string | undefined>()
   const [isMobile, setIsMobile] = useState(false)
   const [showMobilePreview, setShowMobilePreview] = useState(false)
+  const [showHistory, setShowHistory] = useState(false)
 
   // ── Fetch data ──
   const fetchData = useCallback(async () => {
@@ -114,17 +116,51 @@ export default function CopyManager() {
 
   return (
     <div>
-      {/* Title */}
-      <h1 style={{
-        fontFamily: 'var(--font-lora)',
-        fontSize: 'var(--text-h2)',
-        fontWeight: 700,
-        color: 'var(--color-text-primary)',
+      {/* Title + History toggle */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         marginBottom: 'var(--space-6)',
       }}>
-        Copy
-      </h1>
+        <h1 style={{
+          fontFamily: 'var(--font-lora)',
+          fontSize: 'var(--text-h2)',
+          fontWeight: 700,
+          color: 'var(--color-text-primary)',
+        }}>
+          Copy
+        </h1>
+        <button
+          onClick={() => setShowHistory(!showHistory)}
+          style={{
+            fontFamily: 'var(--font-inter)',
+            fontSize: 'var(--text-body-sm)',
+            fontWeight: 500,
+            color: showHistory ? 'var(--color-accent)' : 'var(--color-text-tertiary)',
+            background: showHistory ? 'rgba(180,90,50,0.08)' : 'none',
+            border: showHistory ? '1px solid rgba(180,90,50,0.2)' : '1px solid rgba(30,19,16,0.10)',
+            borderRadius: 'var(--radius-pill)',
+            padding: 'var(--space-2) var(--space-4)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 'var(--space-2)',
+            transition: 'all 150ms ease',
+          }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Historial
+        </button>
+      </div>
 
+      {/* History view */}
+      {showHistory && <CopyEditorHistory />}
+
+      {/* Editor view */}
+      {!showHistory && <>
       {/* Tabs */}
       <div style={{
         display: 'flex',
@@ -321,6 +357,7 @@ export default function CopyManager() {
           </div>
         </div>
       )}
+      </>}
     </div>
   )
 }
