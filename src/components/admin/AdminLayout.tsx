@@ -183,9 +183,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       >
         <div
           style={{
-            maxWidth: '1120px',
-            margin: '0 auto',
-            padding: 'var(--space-8)',
+            maxWidth: '1200px',
+            padding: 'var(--space-8) var(--space-8)',
           }}
         >
           {children}
