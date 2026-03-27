@@ -30,7 +30,7 @@ export default function AdminLoginPage() {
       const { error: authError } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/admin`,
+          redirectTo: `${window.location.origin}/auth/callback?next=/admin`,
         },
       })
 
