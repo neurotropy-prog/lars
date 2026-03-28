@@ -220,6 +220,64 @@ export async function GET(
     }
   }
 
+  // ── AMPLIFY timeline events ──────────────────────────────────────────────
+  try {
+    // Invitaciones ENVIADAS por este lead
+    const { data: sentInvites } = await supabase
+      .from('amplify_invites')
+      .select('created_at, status, accepted_at, compare_hash, invitee_id')
+      .eq('inviter_id', row.id)
+      .order('created_at', { ascending: true })
+
+    if (sentInvites) {
+      for (const inv of sentInvites) {
+        timeline.push({
+          type: 'amplify_invite_sent',
+          at: inv.created_at,
+        })
+        if (inv.status === 'accepted' && inv.accepted_at) {
+          timeline.push({
+            type: 'amplify_comparison_ready',
+            at: inv.accepted_at,
+            details: { compare_hash: inv.compare_hash },
+          })
+          // El email de comparación se envía en el momento de accepted_at
+          timeline.push({
+            type: 'amplify_comparison_email',
+            at: inv.accepted_at,
+            details: { role: 'inviter' },
+          })
+        }
+      }
+    }
+
+    // Invitaciones RECIBIDAS por este lead (es invitee)
+    const { data: receivedInvites } = await supabase
+      .from('amplify_invites')
+      .select('created_at, status, accepted_at, compare_hash, inviter_id')
+      .eq('invitee_id', row.id)
+      .order('created_at', { ascending: true })
+
+    if (receivedInvites) {
+      for (const inv of receivedInvites) {
+        if (inv.status === 'accepted' && inv.accepted_at) {
+          timeline.push({
+            type: 'amplify_comparison_ready',
+            at: inv.accepted_at,
+            details: { compare_hash: inv.compare_hash },
+          })
+          timeline.push({
+            type: 'amplify_comparison_email',
+            at: inv.accepted_at,
+            details: { role: 'invitee' },
+          })
+        }
+      }
+    }
+  } catch {
+    // Non-critical — don't break timeline if amplify query fails
+  }
+
   // Ordenar timeline cronológicamente
   timeline.sort((a, b) => new Date(a.at).getTime() - new Date(b.at).getTime())
 

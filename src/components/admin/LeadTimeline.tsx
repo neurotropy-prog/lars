@@ -88,6 +88,21 @@ const EVENT_CONFIG: Record<string, { icon: string; color: string; label: (d?: Re
     color: 'var(--color-success)',
     label: () => 'Sesión completada',
   },
+  amplify_invite_sent: {
+    icon: '🔗',
+    color: '#8B5CF6',
+    label: () => 'Invitación AMPLIFY enviada',
+  },
+  amplify_comparison_ready: {
+    icon: '🤝',
+    color: '#8B5CF6',
+    label: () => 'Comparación AMPLIFY activa',
+  },
+  amplify_comparison_email: {
+    icon: '📨',
+    color: '#8B5CF6',
+    label: (d) => `Email comparación enviado${d?.role === 'inviter' ? ' (como invitador)' : ' (como invitado)'}`,
+  },
 }
 
 // ── Component ──────────────────────────────────────────────────────────────
