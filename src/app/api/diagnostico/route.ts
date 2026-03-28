@@ -13,7 +13,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase'
 import { computeScores, computeConvertScores } from '@/lib/scoring'
 import { generateHash } from '@/lib/hash'
-import { sendDia0Email } from '@/lib/email'
+import { sendDia0Email, sendAmplifyComparisonReadyEmail } from '@/lib/email'
 import { getMostCompromised } from '@/lib/insights'
 import type { Bloque1Answers } from '@/components/gateway/GatewayBloque1'
 import type { Bloque2Answers } from '@/lib/gateway-bloque2-data'
@@ -302,7 +302,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: 'Error guardando diagnóstico' }, { status: 500 })
   }
 
-  // ── AMPLIFY: vincular invitación si viene por ?ref= ─────────────────────
+  // ── AMPLIFY: auto-aceptar comparación si viene por ?ref= ────────────────
   if (payload.ref && typeof payload.ref === 'string') {
     void (async () => {
       try {
@@ -318,22 +318,98 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         // Buscar invitación pending con este invite_hash
         const { data: invite } = await supabase
           .from('amplify_invites')
-          .select('id, status')
+          .select('id, status, inviter_id')
           .eq('invite_hash', payload.ref)
           .eq('status', 'pending')
           .single()
 
         if (!invite) return
 
-        // Actualizar invitación: vincular invitee y marcar como completed
+        // Generar compare_hash único
+        let compareHash = generateHash(12)
+        const { data: hashCollision } = await supabase
+          .from('amplify_invites')
+          .select('id')
+          .eq('compare_hash', compareHash)
+          .single()
+        if (hashCollision) compareHash = generateHash(12)
+
+        // Detectar perfil del invitado para guardar en la invitación
+        const profileInvitee = mode !== 'convert'
+          ? detectProfile(bloque2.p6, bloque1.p2, bloque1.p4).ego_primary as string
+          : null
+
+        // Auto-aceptar: vincular invitee, generar compare_hash, marcar accepted
         await supabase
           .from('amplify_invites')
           .update({
             invitee_id: newDiag.id,
-            status: 'completed',
+            status: 'accepted',
             completed_at: new Date().toISOString(),
+            accepted_at: new Date().toISOString(),
+            compare_hash: compareHash,
+            profile_invitee: profileInvitee,
           })
           .eq('id', invite.id)
+
+        // Obtener datos del invitador para emails
+        const { data: inviter } = await supabase
+          .from('diagnosticos')
+          .select('email, hash, meta')
+          .eq('id', invite.inviter_id)
+          .single()
+
+        if (!inviter) return
+
+        // Actualizar meta del invitador (comparaciones activas)
+        const currentMeta = (inviter.meta as Record<string, unknown>) ?? {}
+        const activeCount = ((currentMeta.amplify_comparisons_active as number) ?? 0) + 1
+        void supabase
+          .from('diagnosticos')
+          .update({ meta: { ...currentMeta, amplify_comparisons_active: activeCount } })
+          .eq('id', invite.inviter_id)
+          .then(({ error: metaErr }) => {
+            if (metaErr) console.error('[diagnostico] Error updating inviter meta:', metaErr)
+          })
+
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
+
+        // Extraer iniciales del invitado (para el email al invitador)
+        const inviteeLocalPart = email.trim().toLowerCase().split('@')[0] ?? ''
+        const inviteeParts = inviteeLocalPart.split(/[.\-_]/).filter(Boolean)
+        const inviteeInitials = inviteeParts.length >= 2
+          ? (inviteeParts[0][0] + inviteeParts[1][0]).toUpperCase()
+          : inviteeLocalPart.substring(0, 2).toUpperCase()
+
+        // Extraer iniciales del invitador (para el email al invitado)
+        const inviterEmail = inviter.email as string
+        const inviterLocalPart = inviterEmail.split('@')[0] ?? ''
+        const inviterParts = inviterLocalPart.split(/[.\-_]/).filter(Boolean)
+        const inviterInitials = inviterParts.length >= 2
+          ? (inviterParts[0][0] + inviterParts[1][0]).toUpperCase()
+          : inviterLocalPart.substring(0, 2).toUpperCase()
+
+        // Email al INVITADOR: "XX ha completado su diagnóstico"
+        const inviterCompareUrl = `${baseUrl}/mapa/${inviter.hash as string}/comparar/${compareHash}`
+        void sendAmplifyComparisonReadyEmail({
+          to: inviterEmail,
+          inviteeInitials,
+          compareUrl: inviterCompareUrl,
+          inviterMapHash: inviter.hash as string,
+        }).catch((err) => {
+          console.error('[diagnostico] Error sending comparison email to inviter:', err)
+        })
+
+        // Email al INVITADO: "XX te ha comparado — mira la comparación"
+        const inviteeCompareUrl = `${baseUrl}/mapa/${hash}/comparar/${compareHash}`
+        void sendAmplifyComparisonReadyEmail({
+          to: email.trim().toLowerCase(),
+          inviteeInitials: inviterInitials, // en este caso el "invitee" del email es el invitador
+          compareUrl: inviteeCompareUrl,
+          inviterMapHash: hash, // hash del invitado para unsubscribe
+        }).catch((err) => {
+          console.error('[diagnostico] Error sending comparison email to invitee:', err)
+        })
       } catch (err) {
         console.error('[diagnostico] Error linking AMPLIFY invite:', err)
       }

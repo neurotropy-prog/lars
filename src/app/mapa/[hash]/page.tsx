@@ -233,38 +233,10 @@ export default async function MapaPage({
     // Silent — AMPLIFY is non-critical
   }
 
-  // Check for pending invite acceptance (invitee came via ?ref=)
-  let pendingAmplifyInvite: { invite_hash: string; inviter_initials: string } | null = null
-  const referredBy = (meta as Record<string, unknown>)?.referred_by as string | undefined
-  if (referredBy) {
-    try {
-      const amplifySb = createAdminClient()
-      const inviteResult = await amplifySb
-        .from('amplify_invites')
-        .select('invite_hash, inviter_id')
-        .eq('invite_hash', referredBy)
-        .eq('status', 'completed')
-        .single()
-      if (inviteResult.data) {
-        // Get inviter email for initials
-        const inviterResult = await amplifySb
-          .from('diagnosticos')
-          .select('email')
-          .eq('id', inviteResult.data.inviter_id)
-          .single()
-        const inviterEmail = (inviterResult.data as Record<string, unknown>)?.email as string ?? ''
-        const initials = inviterEmail
-          ? inviterEmail.split('@')[0].slice(0, 2).toUpperCase()
-          : '??'
-        pendingAmplifyInvite = {
-          invite_hash: inviteResult.data.invite_hash,
-          inviter_initials: initials,
-        }
-      }
-    } catch {
-      // Silent — AMPLIFY is non-critical
-    }
-  }
+  // Note: pendingAmplifyInvite ya no es necesario porque la comparación se
+  // auto-acepta al completar el gateway. Las comparaciones activas se muestran
+  // en activeComparisons (acordeón del mapa).
+  const pendingAmplifyInvite = null
 
   return (
     <>

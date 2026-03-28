@@ -46,7 +46,7 @@ import ExpressSessionOffer from '@/components/mapa/ExpressSessionOffer'
 
 // AMPLIFY
 import AmplifyInviteModal from '@/components/amplify/AmplifyInviteModal'
-import AmplifyAcceptBanner from '@/components/amplify/AmplifyAcceptBanner'
+// AmplifyAcceptBanner removed — comparisons are now auto-accepted at gateway completion
 
 // ─── TIPOS ────────────────────────────────────────────────────────────────────
 
@@ -159,7 +159,7 @@ export default function MapaClient({
   const [showPriority, setShowPriority] = useState(!isFirstVisit)
   const [showZona4, setShowZona4] = useState(!isFirstVisit)
   const [shareToast, setShareToast] = useState<string | null>(null)
-  const [amplifyBannerDismissed, setAmplifyBannerDismissed] = useState(false)
+  // amplifyBannerDismissed state removed — no longer needed (auto-accept)
   const [showAmplifyModal, setShowAmplifyModal] = useState(false)
 
   // AMPLIFY visibility conditions
@@ -902,18 +902,8 @@ export default function MapaClient({
 
           </section>
 
-          {/* ══════════════════════════════════════════════════════════════════
-               AMPLIFY — Banner de aceptación (invitados con ?ref=)
-             ══════════════════════════════════════════════════════════════════ */}
-          {pendingAmplifyInvite && !amplifyBannerDismissed && showZona4 && (
-            <AmplifyAcceptBanner
-              inviteHash={pendingAmplifyInvite.invite_hash}
-              inviterInitials={pendingAmplifyInvite.inviter_initials}
-              inviteeHash={hash}
-              onAccepted={() => {}}
-              onDeclined={() => setAmplifyBannerDismissed(true)}
-            />
-          )}
+          {/* AMPLIFY accept banner removed — comparisons are now auto-accepted
+             at gateway completion. Active comparisons show in the accordion. */}
 
           {/* ══════════════════════════════════════════════════════════════════
                ZONA 2 — TU FOCO (return visits only)
