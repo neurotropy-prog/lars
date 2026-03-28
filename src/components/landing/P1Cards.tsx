@@ -8,35 +8,10 @@
  * Sprint 3: animateEntrance prop — question label + cards fade in with 150ms stagger.
  */
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useCopy } from '@/lib/copy'
 
-const options = [
-  {
-    id: 'A',
-    title: '"Agotamiento que no se va"',
-    subtitle: 'Llevas tiempo sintiéndote agotado y nada de lo que haces lo resuelve',
-  },
-  {
-    id: 'B',
-    title: '"Rendimiento en caída"',
-    subtitle: 'Tu capacidad ha bajado y no entiendes por qué',
-  },
-  {
-    id: 'C',
-    title: '"El cuerpo habla"',
-    subtitle: 'Duermes mal, estás irritable, y tu cuerpo da señales que no puedes ignorar',
-  },
-  {
-    id: 'D',
-    title: '"Alguien me lo sugirió"',
-    subtitle: 'Un médico, terapeuta o alguien de confianza te recomendó explorar esto',
-  },
-  {
-    id: 'E',
-    title: '"Curiosidad"',
-    subtitle: 'Quieres saber cómo está tu sistema nervioso',
-  },
-]
+const OPTION_IDS = ['A', 'B', 'C', 'D', 'E'] as const
 
 interface P1CardsProps {
   /** Callback externo — activa el gateway cuando P1 está respondida */
@@ -46,12 +21,20 @@ interface P1CardsProps {
 }
 
 export default function P1Cards({ onSelect, animateEntrance = false }: P1CardsProps) {
+  const { getCopy } = useCopy()
   const [selected, setSelected] = useState<string | null>(null)
   const [isPulsing, setIsPulsing] = useState(false)
   // Track which cards have been revealed (for stagger)
   const [revealedCards, setRevealedCards] = useState<number>(-1)
   // Track if the question label is revealed
   const [labelRevealed, setLabelRevealed] = useState(false)
+
+  const questionText = getCopy('gateway.p1.question')
+  const options = useMemo(() => OPTION_IDS.map(id => ({
+    id,
+    title: getCopy(`gateway.p1.option${id}.title`),
+    subtitle: getCopy(`gateway.p1.option${id}.subtitle`),
+  })), [getCopy])
 
   // Escucha el evento del CTA de below-the-fold para hacer pulse
   useEffect(() => {
@@ -107,13 +90,13 @@ export default function P1Cards({ onSelect, animateEntrance = false }: P1CardsPr
           textAlign: 'center',
         }}
       >
-        ¿Qué te trajo hasta aquí?
+        {questionText}
       </p>
 
       {/* Cards — centradas con max-width */}
       <div
         role="radiogroup"
-        aria-label="¿Qué te trajo hasta aquí?"
+        aria-label={questionText}
         style={{
           display: 'flex',
           flexDirection: 'column',
