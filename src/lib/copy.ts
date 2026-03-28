@@ -39,22 +39,28 @@ interface UseCopyReturn {
 // Module-level cache so multiple components share the same fetch
 let cachedOverrides: Record<string, string> | null = null
 let fetchPromise: Promise<void> | null = null
+let lastFetchTime = 0
+const CACHE_TTL = 10_000 // Re-fetch if older than 10 seconds
 
-function fetchOverrides(): Promise<void> {
-  if (fetchPromise) return fetchPromise
-  fetchPromise = fetch('/api/copy')
+function fetchOverrides(force = false): Promise<void> {
+  const now = Date.now()
+  if (!force && fetchPromise && cachedOverrides && (now - lastFetchTime) < CACHE_TTL) {
+    return fetchPromise
+  }
+  fetchPromise = fetch('/api/copy', { cache: 'no-store' })
     .then((res) => (res.ok ? res.json() : {}))
     .then((data: Record<string, string>) => {
       cachedOverrides = data
+      lastFetchTime = Date.now()
     })
     .catch(() => {
-      cachedOverrides = {}
+      cachedOverrides = cachedOverrides ?? {}
     })
   return fetchPromise
 }
 
 /**
- * Hook for client components. Fetches overrides once, then returns sync getter.
+ * Hook for client components. Fetches overrides on mount, refreshes if stale.
  *
  * Usage:
  *   const { getCopy, loading } = useCopy()
@@ -62,10 +68,16 @@ function fetchOverrides(): Promise<void> {
  */
 export function useCopy(): UseCopyReturn {
   const [loading, setLoading] = useState(cachedOverrides === null)
+  const [, setTick] = useState(0)
 
   useEffect(() => {
-    if (cachedOverrides !== null) return
-    fetchOverrides().then(() => setLoading(false))
+    const stale = !cachedOverrides || (Date.now() - lastFetchTime) >= CACHE_TTL
+    if (stale) {
+      fetchOverrides(true).then(() => {
+        setLoading(false)
+        setTick((t) => t + 1) // force re-render with fresh data
+      })
+    }
   }, [])
 
   const getCopy = useCallback((key: string): string => {

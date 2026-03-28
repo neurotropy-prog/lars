@@ -13,17 +13,21 @@
  * Al completar P8, llama a onComplete con todas las respuestas del bloque.
  */
 
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useMemo } from 'react'
 import ZoneWrapper, { getZoneBg } from './ZoneWrapper'
 import SingleSelectStep from './SingleSelectStep'
 import SlidersStep from './SlidersStep'
 import MicroEspejo from '@/components/ui/MicroEspejo'
 import ProgressBar from '@/components/ui/ProgressBar'
+import { useCopy } from '@/lib/copy'
 import {
   P5_OPTIONS,
   P6_OPTIONS,
   P7_SLIDERS,
   P8_OPTIONS,
+  getP5Options,
+  getP6Options,
+  getP8Options,
   getMicroEspejo2,
   type Bloque2Answers,
 } from '@/lib/gateway-bloque2-data'
@@ -86,6 +90,35 @@ export default function GatewayBloque2({
   onComplete,
   onClose,
 }: GatewayBloque2Props) {
+  // ── Copy overrides (admin-editable copy) ──
+  const { getCopy } = useCopy()
+  // Build overrides map from fetched copy for data file getters
+  const copyOverrides = useMemo(() => {
+    const keys = [
+      'gateway.p5.optionA', 'gateway.p5.optionB',
+      'gateway.p5.optionC', 'gateway.p5.optionD', 'gateway.p5.optionE',
+      'gateway.p6.optionA.title', 'gateway.p6.optionA.subtitle',
+      'gateway.p6.optionB.title', 'gateway.p6.optionB.subtitle',
+      'gateway.p6.optionC.title', 'gateway.p6.optionC.subtitle',
+      'gateway.p6.optionD.title', 'gateway.p6.optionD.subtitle',
+      'gateway.p6.optionE.title', 'gateway.p6.optionE.subtitle',
+      'gateway.p8.optionA', 'gateway.p8.optionB',
+      'gateway.p8.optionC', 'gateway.p8.optionD',
+      'gateway.microespejo2.A.text', 'gateway.microespejo2.A.collective',
+      'gateway.microespejo2.B.text', 'gateway.microespejo2.B.collective',
+      'gateway.microespejo2.C.text', 'gateway.microespejo2.C.collective',
+      'gateway.microespejo2.D.text', 'gateway.microespejo2.D.collective',
+      'gateway.microespejo2.E.text', 'gateway.microespejo2.E.collective',
+      'gateway.microespejo2.default.text', 'gateway.microespejo2.default.collective',
+    ]
+    const map: Record<string, string> = {}
+    for (const k of keys) {
+      const val = getCopy(k)
+      if (val !== k) map[k] = val // Only include actual overrides
+    }
+    return Object.keys(map).length > 0 ? map : undefined
+  }, [getCopy])
+
   // ── Estado de pasos con cross-fade (A-04) ──
   const overlayRef = useRef<HTMLDivElement>(null)
   const [step, setStep] = useState<Step>('p5')
@@ -150,7 +183,7 @@ export default function GatewayBloque2({
   )
 
   // ── Contenido calculado ──
-  const microEspejo2Content = getMicroEspejo2(p6 || 'A')
+  const microEspejo2Content = getMicroEspejo2(p6 || 'A', copyOverrides)
 
   const progress = PROGRESS[step]
   const progressLabel = `Tu regulación: ${progress}% completo`
@@ -244,7 +277,7 @@ export default function GatewayBloque2({
             <SingleSelectStep
               question="¿Cuándo fue la última vez que disfrutaste algo de verdad — sin culpa, sin prisa, sin pensar en lo siguiente?"
               collectiveData={p5Context}
-              options={P5_OPTIONS}
+              options={copyOverrides ? getP5Options(copyOverrides) : P5_OPTIONS}
               onSelect={handleP5Select}
             />
           )}
@@ -268,7 +301,7 @@ export default function GatewayBloque2({
               <SingleSelectStep
                 question="¿Cuál de estas frases sientes más verdadera ahora mismo?"
                 collectiveData="Cada una de estas frases la ha elegido más de 1.000 personas antes que tú."
-                options={P6_OPTIONS}
+                options={copyOverrides ? getP6Options(copyOverrides) : P6_OPTIONS}
                 reinforced
                 onSelect={handleP6Select}
               />
@@ -309,7 +342,7 @@ export default function GatewayBloque2({
             <SingleSelectStep
               question="¿Cuánto tiempo llevas sintiéndote así?"
               context="La duración importa: determina cómo responde tu cuerpo a la intervención."
-              options={P8_OPTIONS}
+              options={copyOverrides ? getP8Options(copyOverrides) : P8_OPTIONS}
               onSelect={handleP8Select}
             />
           )}

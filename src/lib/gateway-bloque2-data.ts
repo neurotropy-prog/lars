@@ -104,8 +104,16 @@ const MICRO_ESPEJO_2_DEFAULT: ReflectionContent = {
     'El 85% de personas con un patrón similar al tuyo llevan más de 2 años con su sistema nervioso en modo alarma sin saberlo. La biología no miente — y la tuya está pidiendo un cambio.',
 }
 
-export function getMicroEspejo2(p6: string): ReflectionContent {
-  return MICRO_ESPEJO_2_MAP[p6] ?? MICRO_ESPEJO_2_DEFAULT
+export function getMicroEspejo2(p6: string, overrides?: Record<string, string>): ReflectionContent {
+  const base = MICRO_ESPEJO_2_MAP[p6] ?? MICRO_ESPEJO_2_DEFAULT
+  if (!overrides) return base
+  const key = MICRO_ESPEJO_2_MAP[p6] ? p6 : 'default'
+  const textKey = `gateway.microespejo2.${key}.text`
+  const collectiveKey = `gateway.microespejo2.${key}.collective`
+  return {
+    text: (textKey in overrides) ? overrides[textKey] : base.text,
+    collectiveData: (collectiveKey in overrides) ? overrides[collectiveKey] : base.collectiveData,
+  }
 }
 
 // ─── P7 — SLIDERS (etiquetas de cada dimensión) ───────────────────────────────
