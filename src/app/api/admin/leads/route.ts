@@ -120,6 +120,7 @@ export async function GET(req: NextRequest) {
       heat,
       suggested_action: suggestedAction,
       personal_actions: row.personal_actions ?? [],
+      is_referred: !!(row.meta as Record<string, unknown>)?.referred_by,
     }
   })
 

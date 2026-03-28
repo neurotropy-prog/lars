@@ -190,6 +190,49 @@ export default async function MapaPage({
   const amplifyInviteCount = (meta as Record<string, unknown>)?.amplify_invites_sent as number ?? 0
   const profileCode = (profile as Record<string, unknown>)?.ego_primary as string ?? null
 
+  // ── Active comparisons (for links in mapa) ──────────────────────────────
+  let activeComparisons: { compare_hash: string; initials: string }[] = []
+  try {
+    const compSb = createAdminClient()
+    // Get this person's diagnostico ID first
+    const { data: myDiag } = await compSb
+      .from('diagnosticos')
+      .select('id')
+      .eq('hash', hash)
+      .single()
+
+    if (myDiag) {
+      const { data: comparisons } = await compSb
+        .from('amplify_invites')
+        .select('compare_hash, inviter_id, invitee_id')
+        .eq('status', 'accepted')
+        .or(`inviter_id.eq.${myDiag.id},invitee_id.eq.${myDiag.id}`)
+        .limit(5)
+
+      if (comparisons && comparisons.length > 0) {
+        // Get the other person's initials for each comparison
+        for (const comp of comparisons) {
+          const otherId = comp.inviter_id === myDiag.id ? comp.invitee_id : comp.inviter_id
+          const { data: otherDiag } = await compSb
+            .from('diagnosticos')
+            .select('email')
+            .eq('id', otherId)
+            .single()
+          const otherEmail = (otherDiag as Record<string, unknown>)?.email as string ?? ''
+          const initials = otherEmail
+            ? otherEmail.split('@')[0].slice(0, 2).toUpperCase()
+            : '??'
+          activeComparisons.push({
+            compare_hash: comp.compare_hash as string,
+            initials,
+          })
+        }
+      }
+    }
+  } catch {
+    // Silent — AMPLIFY is non-critical
+  }
+
   // Check for pending invite acceptance (invitee came via ?ref=)
   let pendingAmplifyInvite: { invite_hash: string; inviter_initials: string } | null = null
   const referredBy = (meta as Record<string, unknown>)?.referred_by as string | undefined
@@ -253,6 +296,7 @@ export default async function MapaPage({
       amplifyInviteCount={amplifyInviteCount}
       profileCode={profileCode}
       pendingAmplifyInvite={pendingAmplifyInvite}
+      activeComparisons={activeComparisons}
     />
     </>
   )

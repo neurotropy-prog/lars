@@ -66,6 +66,14 @@ export interface LeadDetail {
   timeline: TimelineEvent[]
   email_status: EmailStatusItem[]
   personal_actions: PersonalActionItem[]
+  amplify?: {
+    is_referred: boolean
+    referred_by_email?: string | null
+    comparison_status?: 'accepted' | 'pending' | 'declined' | null
+    compare_hash?: string | null
+    invites_sent?: number
+    invites_completed?: number
+  } | null
 }
 
 interface LeadDetailPanelProps {
@@ -603,6 +611,55 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                   >
                     Tomar acción →
                   </button>
+                </div>
+              </section>
+            )}
+
+            {/* ── AMPLIFY ── */}
+            {data.amplify && (data.amplify.is_referred || (data.amplify.invites_sent ?? 0) > 0) && (
+              <section style={{ marginBottom: 'var(--space-6)' }}>
+                <SectionHeader title="AMPLIFY" />
+                <div
+                  style={{
+                    background: 'var(--color-bg-tertiary)',
+                    borderRadius: 'var(--radius-md)',
+                    padding: 'var(--space-5)',
+                    borderLeft: '3px solid #4A6FA5',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 'var(--space-3)',
+                  }}
+                >
+                  {data.amplify.is_referred && data.amplify.referred_by_email && (
+                    <div>
+                      <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                        Invitado por
+                      </span>
+                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--color-text-primary)', margin: '4px 0 0' }}>
+                        {data.amplify.referred_by_email}
+                      </p>
+                    </div>
+                  )}
+                  {data.amplify.comparison_status && (
+                    <div>
+                      <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                        Comparación
+                      </span>
+                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--color-text-primary)', margin: '4px 0 0' }}>
+                        {data.amplify.comparison_status === 'accepted' ? '✓ Activa' : data.amplify.comparison_status === 'pending' ? '⏳ Pendiente de aceptación' : '✗ Declinada'}
+                      </p>
+                    </div>
+                  )}
+                  {(data.amplify.invites_sent ?? 0) > 0 && (
+                    <div>
+                      <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                        Invitaciones enviadas
+                      </span>
+                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--color-text-primary)', margin: '4px 0 0' }}>
+                        {data.amplify.invites_sent} enviadas · {data.amplify.invites_completed ?? 0} completadas
+                      </p>
+                    </div>
+                  )}
                 </div>
               </section>
             )}

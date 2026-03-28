@@ -10,6 +10,7 @@
 import { useState, useEffect } from 'react'
 import { IconSearch, IconChevronDown, IconChevronUp, IconUsers } from './AdminIcons'
 import HeatIndicator from './HeatIndicator'
+import AmplifyBadge from './AmplifyBadge'
 import type { HeatLevel } from '@/lib/profile-intelligence'
 
 // ── Types ──────────────────────────────────────────────────────────────────
@@ -33,6 +34,7 @@ export interface LeadRow {
   heat: { score: number; level: HeatLevel }
   suggested_action: { type: string; reason: string; urgency: string } | null
   personal_actions: unknown[]
+  is_referred?: boolean
 }
 
 interface LeadsTableProps {
@@ -650,6 +652,7 @@ export default function LeadsTable({
                   <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)' }}>
                     {funnelStatus(lead)}
                   </span>
+                  {lead.is_referred && <AmplifyBadge />}
                   {lead.suggested_action && !lead.funnel.converted_week1 && !lead.funnel.unsubscribed && (
                     <span
                       style={{
@@ -743,7 +746,10 @@ export default function LeadsTable({
                     onMouseLeave={(e) => { if (!isSelected) e.currentTarget.style.background = 'transparent' }}
                   >
                     <td style={{ padding: '10px 8px' }}>
-                      <HeatIndicator level={lead.heat.level as HeatLevel} score={lead.heat.score} size="sm" />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <HeatIndicator level={lead.heat.level as HeatLevel} score={lead.heat.score} size="sm" />
+                        {lead.is_referred && <AmplifyBadge />}
+                      </div>
                     </td>
                     <td
                       style={{

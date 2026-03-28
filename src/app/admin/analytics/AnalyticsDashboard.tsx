@@ -15,6 +15,7 @@ import AnalyticsTrends from '@/components/admin/AnalyticsTrends'
 import AnalyticsProfiles from '@/components/admin/AnalyticsProfiles'
 import AnalyticsDimensions from '@/components/admin/AnalyticsDimensions'
 import AnalyticsGeo from '@/components/admin/AnalyticsGeo'
+import AnalyticsAmplify from '@/components/admin/AnalyticsAmplify'
 
 // ─── TIPOS ──────────────────────────────────────────────────────────────────
 
@@ -78,8 +79,18 @@ const PERIOD_LABELS: Record<Period, string> = {
 
 // ─── COMPONENTE ─────────────────────────────────────────────────────────────
 
+interface AmplifyStatsData {
+  invites_sent: number
+  invites_completed: number
+  completion_rate: number
+  comparisons_accepted: number
+  conversions_from_amplify: number
+  k_factor: number
+}
+
 export default function AnalyticsDashboard() {
   const [data, setData] = useState<DashboardData | null>(null)
+  const [amplifyStats, setAmplifyStats] = useState<AmplifyStatsData | null>(null)
   const [period, setPeriod] = useState<Period>('30d')
   const [loading, setLoading] = useState(true)
   const [counterKey, setCounterKey] = useState(0)
@@ -90,11 +101,18 @@ export default function AnalyticsDashboard() {
   const fetchData = useCallback(async (p: Period) => {
     setLoading(true)
     try {
-      const res = await fetch(`/api/admin/analytics?period=${p}`)
-      if (res.ok) {
-        const json = await res.json()
+      const [analyticsRes, amplifyRes] = await Promise.all([
+        fetch(`/api/admin/analytics?period=${p}`),
+        fetch('/api/admin/amplify-stats'),
+      ])
+      if (analyticsRes.ok) {
+        const json = await analyticsRes.json()
         setData(json)
         setCounterKey((k) => k + 1)
+      }
+      if (amplifyRes.ok) {
+        const ampJson = await amplifyRes.json()
+        setAmplifyStats(ampJson)
       }
     } catch (err) {
       console.error('[analytics] Error:', err)
@@ -356,6 +374,12 @@ export default function AnalyticsDashboard() {
 
       {/* ── Geografía ── */}
       <AnalyticsGeo period={period} />
+
+      {/* ── AMPLIFY ── */}
+      <AnalyticsAmplify
+        data={amplifyStats}
+        loading={loading}
+      />
 
       {/* ── Últimas Evaluaciones ── */}
       <Card style={{ padding: 'var(--space-6)', overflow: 'hidden' }}>

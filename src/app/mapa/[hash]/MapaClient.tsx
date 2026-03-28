@@ -84,6 +84,7 @@ interface Props {
   amplifyInviteCount: number
   profileCode: string | null
   pendingAmplifyInvite: { invite_hash: string; inviter_initials: string } | null
+  activeComparisons?: { compare_hash: string; initials: string }[]
 }
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
@@ -145,6 +146,7 @@ export default function MapaClient({
   amplifyInviteCount,
   profileCode,
   pendingAmplifyInvite,
+  activeComparisons = [],
 }: Props) {
   const isFirstVisit = !lastVisitedAt
   const searchParams = useSearchParams()
@@ -527,6 +529,56 @@ export default function MapaClient({
               daysSinceCreation={evolution.daysSinceCreation}
             />
           </>
+        ),
+      })
+    }
+
+    // AMPLIFY — Active comparisons links
+    if (activeComparisons.length > 0) {
+      accordionSections.push({
+        id: 'comparaciones',
+        title: activeComparisons.length === 1
+          ? 'Tu Comparación'
+          : 'Tus Comparaciones',
+        summary: activeComparisons.length === 1
+          ? `Con ${activeComparisons[0].initials}`
+          : `${activeComparisons.length} activas`,
+        children: (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+            {activeComparisons.map((comp) => (
+              <a
+                key={comp.compare_hash}
+                href={`/mapa/${hash}/comparar/${comp.compare_hash}`}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: 'var(--space-4)',
+                  background: 'var(--color-bg-secondary)',
+                  borderRadius: 'var(--radius-md)',
+                  textDecoration: 'none',
+                  transition: 'all var(--transition-base)',
+                }}
+              >
+                <span style={{
+                  fontFamily: 'var(--font-inter, system-ui)',
+                  fontSize: 'var(--text-body, 1rem)',
+                  color: 'var(--color-text-primary)',
+                  fontWeight: 500,
+                }}>
+                  Comparación con {comp.initials}
+                </span>
+                <span style={{
+                  fontFamily: 'var(--font-inter, system-ui)',
+                  fontSize: 'var(--text-body-sm, 0.875rem)',
+                  color: 'var(--color-accent)',
+                  fontWeight: 500,
+                }}>
+                  Ver →
+                </span>
+              </a>
+            ))}
+          </div>
         ),
       })
     }

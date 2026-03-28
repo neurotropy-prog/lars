@@ -248,6 +248,49 @@ export async function GET(
     }
   })
 
+  // ── AMPLIFY data ──────────────────────────────────────────────────────────
+  let amplifyData: Record<string, unknown> | null = null
+  try {
+    const referredBy = (row.meta as Record<string, unknown>)?.referred_by as string | undefined
+    if (referredBy) {
+      // Lead was referred — find inviter
+      const { data: inviteRow } = await supabase
+        .from('amplify_invites')
+        .select('status, compare_hash, inviter_id')
+        .eq('invite_hash', referredBy)
+        .single()
+
+      if (inviteRow) {
+        const { data: inviterRow } = await supabase
+          .from('diagnosticos')
+          .select('email')
+          .eq('id', inviteRow.inviter_id)
+          .single()
+
+        amplifyData = {
+          is_referred: true,
+          referred_by_email: (inviterRow as Record<string, unknown>)?.email ?? null,
+          comparison_status: inviteRow.status,
+          compare_hash: inviteRow.compare_hash,
+        }
+      }
+    }
+
+    // Check if lead is an inviter
+    const { data: sentInvites } = await supabase
+      .from('amplify_invites')
+      .select('id, invitee_id')
+      .eq('inviter_id', row.id)
+
+    if (sentInvites && sentInvites.length > 0) {
+      amplifyData = amplifyData ?? { is_referred: false }
+      amplifyData.invites_sent = sentInvites.length
+      amplifyData.invites_completed = sentInvites.filter((i: Record<string, unknown>) => i.invitee_id !== null).length
+    }
+  } catch {
+    // Non-critical
+  }
+
   return NextResponse.json({
     hash: row.hash,
     email: row.email,
@@ -280,5 +323,6 @@ export async function GET(
     timeline,
     email_status: emailStatus,
     personal_actions: personalActions,
+    amplify: amplifyData,
   })
 }

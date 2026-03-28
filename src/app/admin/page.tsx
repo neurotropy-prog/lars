@@ -13,6 +13,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import AdminLayout from '@/components/admin/AdminLayout'
 import HubStatCards from '@/components/admin/HubStatCards'
+import HubAmplifyCard from '@/components/admin/HubAmplifyCard'
 import HubAlerts from '@/components/admin/HubAlerts'
 import HubFunnel from '@/components/admin/HubFunnel'
 import HubPendingActions from '@/components/admin/HubPendingActions'
@@ -82,8 +83,17 @@ function getFormattedDate(): string {
 
 // ── Component ───────────────────────────────────────────────────────────────
 
+interface AmplifyStats {
+  invites_sent: number
+  invites_completed: number
+  completion_rate: number
+  comparisons_active: number
+  k_factor: number
+}
+
 export default function AdminHub() {
   const [data, setData] = useState<HubData | null>(null)
+  const [amplifyData, setAmplifyData] = useState<AmplifyStats | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
@@ -93,16 +103,30 @@ export default function AdminHub() {
   const fetchHub = useCallback(async () => {
     try {
       setLoading(true)
-      const res = await fetch('/api/admin/hub')
+      const [hubRes, amplifyRes] = await Promise.all([
+        fetch('/api/admin/hub'),
+        fetch('/api/admin/amplify-stats'),
+      ])
 
-      if (!res.ok) {
+      if (!hubRes.ok) {
         setError('Error cargando datos del Hub')
         return
       }
 
-      const json = await res.json()
+      const json = await hubRes.json()
       setData(json)
       setError(null)
+
+      if (amplifyRes.ok) {
+        const ampJson = await amplifyRes.json()
+        setAmplifyData({
+          invites_sent: ampJson.invites_sent ?? 0,
+          invites_completed: ampJson.invites_completed ?? 0,
+          completion_rate: ampJson.completion_rate ?? 0,
+          comparisons_active: ampJson.comparisons_accepted ?? 0,
+          k_factor: ampJson.k_factor ?? 0,
+        })
+      }
     } catch {
       setError('Error de conexión')
     } finally {
@@ -193,8 +217,16 @@ export default function AdminHub() {
 
       {/* Hub content */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-10)' }}>
-        {/* Stat Cards */}
-        <HubStatCards data={data?.stats ?? null} loading={loading} />
+        {/* Stat Cards + AMPLIFY */}
+        <div>
+          <HubStatCards data={data?.stats ?? null} loading={loading} />
+          <div style={{ marginTop: 'var(--space-5)' }}>
+            <HubAmplifyCard
+              data={amplifyData}
+              loading={loading}
+            />
+          </div>
+        </div>
 
         {/* Alerts */}
         <HubAlerts alerts={data?.alerts ?? null} loading={loading} />
