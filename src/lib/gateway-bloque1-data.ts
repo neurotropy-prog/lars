@@ -8,7 +8,6 @@
  * Static exports remain for backward compatibility.
  */
 
-import { getCopySync } from '@/lib/copy'
 
 // ─── TIPOS ───────────────────────────────────────────────────────────────────
 
@@ -246,29 +245,30 @@ export function getMicroEspejo1(
 
 // ─── OVERRIDE HELPERS ────────────────────────────────────────────────────────
 
+type CopyGetter = (key: string) => string
+
 /** Returns P2 options with copy overrides applied. */
-export function getP2Options(overrides?: Record<string, string>): SelectOption[] {
-  if (!overrides) return P2_OPTIONS
+export function getP2Options(getCopy: CopyGetter): SelectOption[] {
   return P2_OPTIONS.map((opt) => ({
     ...opt,
-    title: getCopySync(`gateway.p2.option${opt.id}`, overrides) || opt.title,
+    title: getCopy(`gateway.p2.option${opt.id}`),
   }))
 }
 
 /** Returns P3 options with copy overrides applied. */
-export function getP3Options(overrides?: Record<string, string>): MultiOption[] {
-  if (!overrides) return P3_OPTIONS
+export function getP3Options(getCopy: CopyGetter): MultiOption[] {
   return P3_OPTIONS.map((opt) => ({
     ...opt,
-    title: getCopySync(`gateway.p3.${opt.id}`, overrides) || opt.title,
+    title: getCopy(`gateway.p3.${opt.id}.title`),
+    subtitle: getCopy(`gateway.p3.${opt.id}.subtitle`),
   }))
 }
 
 /** Returns P4 options with copy overrides applied. */
-export function getP4Options(overrides?: Record<string, string>): SelectOption[] {
-  if (!overrides) return P4_OPTIONS
+export function getP4Options(getCopy: CopyGetter): SelectOption[] {
   return P4_OPTIONS.map((opt) => ({
     ...opt,
-    title: getCopySync(`gateway.p4.option${opt.id}.title`, overrides) || opt.title,
+    title: getCopy(`gateway.p4.option${opt.id}.title`),
+    subtitle: getCopy(`gateway.p4.option${opt.id}.subtitle`),
   }))
 }

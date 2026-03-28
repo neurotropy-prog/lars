@@ -7,7 +7,6 @@
  * Copy override support: helper functions accept optional overrides map.
  */
 
-import { getCopySync } from '@/lib/copy'
 import type { ReflectionContent, SelectOption } from './gateway-bloque1-data'
 
 // ─── P5 — ALEGRÍA DE VIVIR (D5) ──────────────────────────────────────────────
@@ -104,15 +103,17 @@ const MICRO_ESPEJO_2_DEFAULT: ReflectionContent = {
     'El 85% de personas con un patrón similar al tuyo llevan más de 2 años con su sistema nervioso en modo alarma sin saberlo. La biología no miente — y la tuya está pidiendo un cambio.',
 }
 
-export function getMicroEspejo2(p6: string, overrides?: Record<string, string>): ReflectionContent {
+type CopyGetter = (key: string) => string
+
+export function getMicroEspejo2(p6: string, getCopy?: CopyGetter): ReflectionContent {
   const base = MICRO_ESPEJO_2_MAP[p6] ?? MICRO_ESPEJO_2_DEFAULT
-  if (!overrides) return base
+  if (!getCopy) return base
   const key = MICRO_ESPEJO_2_MAP[p6] ? p6 : 'default'
-  const textKey = `gateway.microespejo2.${key}.text`
-  const collectiveKey = `gateway.microespejo2.${key}.collective`
+  const textVal = getCopy(`gateway.microespejo2.${key}.text`)
+  const collectiveVal = getCopy(`gateway.microespejo2.${key}.collective`)
   return {
-    text: (textKey in overrides) ? overrides[textKey] : base.text,
-    collectiveData: (collectiveKey in overrides) ? overrides[collectiveKey] : base.collectiveData,
+    text: textVal !== `gateway.microespejo2.${key}.text` ? textVal : base.text,
+    collectiveData: collectiveVal !== `gateway.microespejo2.${key}.collective` ? collectiveVal : base.collectiveData,
   }
 }
 
@@ -153,31 +154,28 @@ export interface Bloque2Answers {
 // ─── OVERRIDE HELPERS ────────────────────────────────────────────────────────
 
 /** Returns P5 options with copy overrides applied. */
-export function getP5Options(overrides?: Record<string, string>): SelectOption[] {
-  if (!overrides) return P5_OPTIONS
+export function getP5Options(getCopy: CopyGetter): SelectOption[] {
   return P5_OPTIONS.map((opt) => ({
     ...opt,
-    title: getCopySync(`gateway.p5.option${opt.id}`, overrides) || opt.title,
+    title: getCopy(`gateway.p5.option${opt.id}`),
   }))
 }
 
 /** Returns P6 options with copy overrides applied. */
-export function getP6Options(overrides?: Record<string, string>): SelectOption[] {
-  if (!overrides) return P6_OPTIONS
+export function getP6Options(getCopy: CopyGetter): SelectOption[] {
   return P6_OPTIONS.map((opt) => ({
     ...opt,
-    title: getCopySync(`gateway.p6.option${opt.id}.title`, overrides) || opt.title,
+    title: getCopy(`gateway.p6.option${opt.id}.title`),
     subtitle: opt.subtitle
-      ? getCopySync(`gateway.p6.option${opt.id}.subtitle`, overrides) || opt.subtitle
+      ? getCopy(`gateway.p6.option${opt.id}.subtitle`)
       : opt.subtitle,
   }))
 }
 
 /** Returns P8 options with copy overrides applied. */
-export function getP8Options(overrides?: Record<string, string>): SelectOption[] {
-  if (!overrides) return P8_OPTIONS
+export function getP8Options(getCopy: CopyGetter): SelectOption[] {
   return P8_OPTIONS.map((opt) => ({
     ...opt,
-    title: getCopySync(`gateway.p8.option${opt.id}`, overrides) || opt.title,
+    title: getCopy(`gateway.p8.option${opt.id}`),
   }))
 }

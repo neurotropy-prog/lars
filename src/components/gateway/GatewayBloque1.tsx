@@ -10,7 +10,7 @@
  * para que GatewayController pase al Bloque 2.
  */
 
-import { useState, useCallback, useRef, useMemo } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import ZoneWrapper, { getZoneBg } from './ZoneWrapper'
 import AnalyzingScreen from './AnalyzingScreen'
 import SingleSelectStep from './SingleSelectStep'
@@ -19,9 +19,6 @@ import MicroEspejo from '@/components/ui/MicroEspejo'
 import ProgressBar from '@/components/ui/ProgressBar'
 import { useCopy } from '@/lib/copy'
 import {
-  P2_OPTIONS,
-  P3_OPTIONS,
-  P4_OPTIONS,
   getP2Options,
   getP3Options,
   getP4Options,
@@ -94,27 +91,7 @@ export default function GatewayBloque1({
   onClose,
 }: GatewayBloque1Props) {
   // ── Copy overrides (admin-editable copy) ──
-  const { getCopy, loading: copyLoading } = useCopy()
-  const copyOverrides = useMemo(() => {
-    if (copyLoading) return undefined
-    const keys = [
-      'gateway.p2.optionA', 'gateway.p2.optionB',
-      'gateway.p2.optionC', 'gateway.p2.optionD', 'gateway.p2.optionE',
-      'gateway.p3.brain_fog', 'gateway.p3.decisions', 'gateway.p3.memory',
-      'gateway.p3.planning', 'gateway.p3.focus', 'gateway.p3.creativity',
-      'gateway.p4.optionA.title', 'gateway.p4.optionA.subtitle',
-      'gateway.p4.optionB.title', 'gateway.p4.optionB.subtitle',
-      'gateway.p4.optionC.title', 'gateway.p4.optionC.subtitle',
-      'gateway.p4.optionD.title', 'gateway.p4.optionD.subtitle',
-      'gateway.p4.optionE.title', 'gateway.p4.optionE.subtitle',
-    ]
-    const map: Record<string, string> = {}
-    for (const k of keys) {
-      const val = getCopy(k)
-      if (val !== k) map[k] = val
-    }
-    return Object.keys(map).length > 0 ? map : undefined
-  }, [getCopy, copyLoading])
+  const { getCopy } = useCopy()
 
   // ── Estado de pasos con cross-fade (A-04) ──
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -270,7 +247,7 @@ export default function GatewayBloque1({
             <SingleSelectStep
               question="¿Cómo son tus noches últimamente?"
               context="Tu sueño es el indicador más fiable de cómo está tu sistema nervioso."
-              options={copyOverrides ? getP2Options(copyOverrides) : P2_OPTIONS}
+              options={getP2Options(getCopy)}
               onSelect={handleP2Select}
             />
           )}
@@ -304,7 +281,7 @@ export default function GatewayBloque1({
               question="¿Reconoces alguna de estas señales en tu día a día?"
               context="Tu cerebro consume el 20% de tu energía total. Cuando el sistema nervioso está en alerta, desvía esos recursos a la supervivencia."
               collectiveData="El 68% de ejecutivos con tu perfil reportan 3 o más de estos síntomas."
-              options={copyOverrides ? getP3Options(copyOverrides) : P3_OPTIONS}
+              options={getP3Options(getCopy)}
               onContinue={handleP3Continue}
             />
           )}
@@ -315,7 +292,7 @@ export default function GatewayBloque1({
               question="¿Cuál de estas frases podrías haber dicho tú esta semana?"
               context="La reactividad emocional no es un defecto de carácter. Es la respuesta de un cerebro que ha agotado los recursos para regular."
               collectiveData="Esta es la pregunta que más tarda en responderse. Tómate tu tiempo."
-              options={copyOverrides ? getP4Options(copyOverrides) : P4_OPTIONS}
+              options={getP4Options(getCopy)}
               onSelect={handleP4Select}
             />
           )}
