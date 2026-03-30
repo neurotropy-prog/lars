@@ -85,7 +85,7 @@ export default function CopyEditorHistory() {
             style={{
               height: 56,
               borderRadius: 'var(--radius-md)',
-              background: 'rgba(30,19,16,0.04)',
+              background: 'rgba(38,66,51,0.04)',
               marginBottom: 'var(--space-3)',
             }}
           />
@@ -222,7 +222,7 @@ export default function CopyEditorHistory() {
                   style={{
                     marginTop: 'var(--space-3)',
                     paddingTop: 'var(--space-3)',
-                    borderTop: '1px solid rgba(30,19,16,0.06)',
+                    borderTop: '1px solid rgba(38,66,51,0.06)',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 'var(--space-2)',

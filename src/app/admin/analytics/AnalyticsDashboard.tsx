@@ -60,7 +60,7 @@ type Period = '7d' | '30d' | '90d' | 'all'
 
 function scoreColor(score: number): string {
   if (score <= 39) return 'var(--color-error)'
-  if (score <= 59) return '#D4895C'
+  if (score <= 59) return '#CC796C'
   if (score <= 79) return 'var(--color-warning)'
   return 'var(--color-success)'
 }
@@ -134,7 +134,7 @@ export default function AnalyticsDashboard() {
       width: w,
       height: h,
       borderRadius: 'var(--radius-md)',
-      background: 'rgba(30,19,16,0.06)',
+      background: 'rgba(38,66,51,0.06)',
       animation: 'hubPulse 1.5s ease-in-out infinite',
       animationDelay: delay,
     })
@@ -161,7 +161,7 @@ export default function AnalyticsDashboard() {
         fontSize: 'var(--text-body-sm)',
         color: 'var(--color-text-tertiary)',
         padding: 'var(--space-8)',
-        background: 'rgba(30,19,16,0.02)',
+        background: 'rgba(38,66,51,0.02)',
         borderRadius: 'var(--radius-md)',
         textAlign: 'center',
         lineHeight: 'var(--lh-body)',

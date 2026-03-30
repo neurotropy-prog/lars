@@ -113,7 +113,7 @@ export default function AnalyticsTrends({ dailyCounts }: AnalyticsTrendsProps) {
         color: 'var(--color-text-secondary)',
       }}>
         <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <span style={{ display: 'inline-block', width: 12, height: 3, borderRadius: 2, background: '#B45A32' }} />
+          <span style={{ display: 'inline-block', width: 12, height: 3, borderRadius: 2, background: '#CD796C' }} />
           Análisis
         </span>
         <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -162,7 +162,7 @@ export default function AnalyticsTrends({ dailyCounts }: AnalyticsTrendsProps) {
           <polyline
             points={diagPoints}
             fill="none"
-            stroke="#B45A32"
+            stroke="#CD796C"
             strokeWidth={2.5}
             strokeLinejoin="round"
             strokeLinecap="round"
@@ -198,8 +198,8 @@ export default function AnalyticsTrends({ dailyCounts }: AnalyticsTrendsProps) {
                 cx={xPos(i)}
                 cy={yPos(d.diagnostics)}
                 r={hoverIndex === i ? 5 : 3}
-                fill={hoverIndex === i ? '#B45A32' : 'var(--color-bg-tertiary)'}
-                stroke="#B45A32"
+                fill={hoverIndex === i ? '#CD796C' : 'var(--color-bg-tertiary)'}
+                stroke="#CD796C"
                 strokeWidth={2}
                 style={{ transition: 'r 150ms ease' }}
               >
@@ -270,7 +270,7 @@ export default function AnalyticsTrends({ dailyCounts }: AnalyticsTrendsProps) {
             zIndex: 10,
           }}>
             <div style={{ fontWeight: 600 }}>{formatShortDate(data[hoverIndex].date)}</div>
-            <div style={{ color: '#D4895C' }}>{data[hoverIndex].diagnostics} análisis</div>
+            <div style={{ color: '#CC796C' }}>{data[hoverIndex].diagnostics} análisis</div>
             <div style={{ color: 'var(--color-success)' }}>{data[hoverIndex].conversions} conversiones</div>
           </div>
         )}

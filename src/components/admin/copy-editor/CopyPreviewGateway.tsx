@@ -106,7 +106,7 @@ function QuestionPreview({ subsection, v }: {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 10 }}>
           {options.map((opt, i) => (
             <div key={i} style={optionCardStyle}>
-              <span style={{ color: '#FFFBEF', fontSize: 11, fontWeight: 500 }}>
+              <span style={{ color: '#FFFFFF', fontSize: 11, fontWeight: 500 }}>
                 {opt.title}
               </span>
               {opt.subtitle && opt.subtitle !== `${prefix}.option${optionKeys[i]}.subtitle` && (
@@ -133,9 +133,9 @@ function ReflectionPreview({ title, text, collective }: {
       <div style={{
         marginTop: 8,
         padding: '12px 14px',
-        background: 'rgba(180, 90, 50, 0.08)',
+        background: 'rgba(205, 121, 108, 0.08)',
         borderRadius: 12,
-        borderLeft: '3px solid rgba(180, 90, 50, 0.4)',
+        borderLeft: '3px solid rgba(205, 121, 108, 0.4)',
       }}>
         <p style={reflectionText}>{text}</p>
         {collective && (
@@ -165,7 +165,7 @@ const labelStyle: React.CSSProperties = {
   fontFamily: 'var(--font-host-grotesk)',
   fontSize: 9,
   fontWeight: 600,
-  color: '#B45A32',
+  color: '#CD796C',
   textTransform: 'uppercase',
   letterSpacing: '0.12em',
   margin: 0,
@@ -175,7 +175,7 @@ const questionStyle: React.CSSProperties = {
   fontFamily: 'var(--font-cormorant, Georgia, serif)',
   fontSize: 16,
   fontWeight: 600,
-  color: '#FFFBEF',
+  color: '#FFFFFF',
   margin: '8px 0 0',
   lineHeight: 1.3,
 }

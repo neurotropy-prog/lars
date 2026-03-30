@@ -18,8 +18,8 @@ import {
 
 // ── Design tokens ──
 
-const BAR_BG = '#1E130F'
-const ACTIVE_COLOR = '#B45A32'
+const BAR_BG = '#264233'
+const ACTIVE_COLOR = '#CD796C'
 const INACTIVE_COLOR = 'rgba(249, 241, 222, 0.5)'
 const BADGE_RED = '#E74C3C'
 const BADGE_GREEN = '#3D9A5F'

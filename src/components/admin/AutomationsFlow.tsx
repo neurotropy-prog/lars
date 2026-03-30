@@ -149,17 +149,17 @@ function FlowSkeleton() {
               alignItems: 'center',
             }}
           >
-            <div style={{ width: '2px', height: '24px', background: 'rgba(180,90,50,0.15)' }} />
+            <div style={{ width: '2px', height: '24px', background: 'rgba(205,121,108,0.15)' }} />
             <div
               style={{
                 width: '12px',
                 height: '12px',
                 borderRadius: '50%',
-                background: 'rgba(180,90,50,0.15)',
+                background: 'rgba(205,121,108,0.15)',
               }}
             />
             {i < 4 && (
-              <div style={{ width: '2px', height: '80px', background: 'rgba(180,90,50,0.15)' }} />
+              <div style={{ width: '2px', height: '80px', background: 'rgba(205,121,108,0.15)' }} />
             )}
           </div>
           <div

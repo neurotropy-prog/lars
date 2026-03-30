@@ -55,7 +55,7 @@ interface LeadsTableProps {
 // ── Constants ──────────────────────────────────────────────────────────────
 
 const PROFILE_COLORS: Record<string, string> = {
-  'Productivo Colapsado': '#B45A32',
+  'Productivo Colapsado': '#CD796C',
   'Fuerte Invisible': '#4A6FA5',
   'Cuidador Exhausto': '#7B8F6A',
   'Controlador Paralizado': '#8B7355',
@@ -368,8 +368,8 @@ export default function LeadsTable({
                     { color: '#D97706', label: 'Tibio', pts: '3-4 pts', desc: 'Muestra interés, necesita un empujón' },
                     { color: 'var(--color-text-tertiary)', label: 'Frío', pts: '<3 pts', desc: 'Poca actividad o mucho tiempo sin interacción' },
                     { color: 'var(--color-success)', label: 'Convertido', pts: null, desc: 'Ha pagado la Semana 1' },
-                    { color: '#8A7E75', label: 'Pausado', pts: null, desc: 'Email de despedida enviado (3+ sin abrir)' },
-                    { color: '#8A7E75', label: 'Perdido', pts: null, desc: 'Se dio de baja' },
+                    { color: '#878E92', label: 'Pausado', pts: null, desc: 'Email de despedida enviado (3+ sin abrir)' },
+                    { color: '#878E92', label: 'Perdido', pts: null, desc: 'Se dio de baja' },
                   ].map((item) => (
                     <div key={item.label} style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
                       <span
@@ -529,7 +529,7 @@ export default function LeadsTable({
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-tertiary)',
                 padding: 'var(--space-8)',
-                background: 'rgba(30,19,16,0.02)',
+                background: 'rgba(38,66,51,0.02)',
                 borderRadius: 'var(--radius-md)',
                 textAlign: 'center',
                 lineHeight: 'var(--lh-body)',
@@ -596,7 +596,7 @@ export default function LeadsTable({
               <button
                 key={lead.hash}
                 onClick={() => onSelectLead(lead.hash)}
-                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(180,90,50,0.03)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(205,121,108,0.03)' }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-bg-tertiary)' }}
                 style={{
                   background: 'var(--color-bg-tertiary)',
@@ -742,7 +742,7 @@ export default function LeadsTable({
                       background: isSelected ? 'rgba(180, 90, 50, 0.04)' : 'transparent',
                       borderLeft: isSelected ? '3px solid var(--color-accent)' : '3px solid transparent',
                     }}
-                    onMouseEnter={(e) => { if (!isSelected) e.currentTarget.style.background = 'rgba(180,90,50,0.03)' }}
+                    onMouseEnter={(e) => { if (!isSelected) e.currentTarget.style.background = 'rgba(205,121,108,0.03)' }}
                     onMouseLeave={(e) => { if (!isSelected) e.currentTarget.style.background = 'transparent' }}
                   >
                     <td style={{ padding: '10px 8px' }}>

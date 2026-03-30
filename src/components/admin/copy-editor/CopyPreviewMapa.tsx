@@ -34,13 +34,13 @@ export function CopyPreviewMapa({ localValues, activeSubsection }: CopyPreviewMa
           <div style={{
             marginTop: 8,
             padding: '12px 14px',
-            background: 'rgba(180, 90, 50, 0.06)',
+            background: 'rgba(205, 121, 108, 0.06)',
             borderRadius: 12,
-            border: '1px solid rgba(180, 90, 50, 0.12)',
+            border: '1px solid rgba(205, 121, 108, 0.12)',
           }}>
             <span style={{
               ...labelStyle,
-              background: 'rgba(180, 90, 50, 0.15)',
+              background: 'rgba(205, 121, 108, 0.15)',
               padding: '2px 8px',
               borderRadius: 4,
               fontSize: 8,
@@ -78,7 +78,7 @@ export function CopyPreviewMapa({ localValues, activeSubsection }: CopyPreviewMa
                   <span style={{ color: '#4ADE80', fontSize: 10, fontWeight: 600, minWidth: 24 }}>
                     {d.toUpperCase()}
                   </span>
-                  <span style={{ color: '#FFFBEF', fontSize: 11, fontWeight: 500 }}>
+                  <span style={{ color: '#FFFFFF', fontSize: 11, fontWeight: 500 }}>
                     {label}
                   </span>
                   {sublabel && sublabel !== `mapa.evolution.${d}.sublabel` && (
@@ -152,7 +152,7 @@ const labelStyle: React.CSSProperties = {
   fontFamily: 'var(--font-host-grotesk)',
   fontSize: 9,
   fontWeight: 600,
-  color: '#B45A32',
+  color: '#CD796C',
   textTransform: 'uppercase',
   letterSpacing: '0.12em',
   margin: 0,
@@ -162,7 +162,7 @@ const titleStyle: React.CSSProperties = {
   fontFamily: 'var(--font-cormorant, Georgia, serif)',
   fontSize: 15,
   fontWeight: 600,
-  color: '#FFFBEF',
+  color: '#FFFFFF',
   margin: '6px 0 0',
   lineHeight: 1.3,
 }
@@ -181,8 +181,8 @@ const ctaStyle: React.CSSProperties = {
   fontFamily: 'var(--font-host-grotesk)',
   fontSize: 10,
   fontWeight: 600,
-  color: '#1E1310',
-  background: '#F5F564',
+  color: '#FFFFFF',
+  background: '#264233',
   borderRadius: 9999,
   padding: '4px 12px',
 }

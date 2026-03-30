@@ -247,7 +247,7 @@ export default function GatewayController() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'rgba(30,19,16,0.80)',
+            background: 'rgba(38,66,51,0.80)',
             padding: 'var(--space-6)',
           }}
         >

@@ -47,7 +47,7 @@ const SLIDER_KEYS = ['d1', 'd2', 'd3', 'd4', 'd5'] as const
 /** Color dinámico del slider según valor (1-10) — misma lógica que gateway */
 function getSliderColor(value: number): string {
   if (value <= 2) return '#EF4444'       // rojo
-  if (value <= 4) return '#D4895C'       // naranja
+  if (value <= 4) return '#CC796C'       // naranja
   if (value <= 6) return '#D4A017'       // amarillo
   if (value <= 8) return '#3D9A5F'       // verde claro
   return '#22C55E'                        // verde
@@ -57,7 +57,7 @@ function getSliderColor(value: number): string {
 function getSliderBackground(value: number): string {
   const color = getSliderColor(value)
   const pct = ((value - 1) / 9) * 100
-  return `linear-gradient(to right, ${color} ${pct}%, rgba(30,19,16,0.08) ${pct}%)`
+  return `linear-gradient(to right, ${color} ${pct}%, rgba(38,66,51,0.08) ${pct}%)`
 }
 
 export default function EvolutionReevaluation({

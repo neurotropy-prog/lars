@@ -56,7 +56,7 @@ export default function PersonalVideo({ videoUrl, createdAt, autoPlay, id }: Pro
         fontSize: 'var(--text-overline)',
         letterSpacing: 'var(--ls-overline)',
         textTransform: 'uppercase',
-        color: '#B45A32',
+        color: '#CD796C',
         marginBottom: 'var(--space-2)',
       }}>
         Mensaje personal
@@ -88,7 +88,7 @@ export default function PersonalVideo({ videoUrl, createdAt, autoPlay, id }: Pro
             display: 'block',
             aspectRatio: '16 / 9',
             objectFit: 'cover',
-            background: '#1E1310',
+            background: '#212426',
           }}
         />
 
@@ -122,7 +122,7 @@ export default function PersonalVideo({ videoUrl, createdAt, autoPlay, id }: Pro
             }}>
               {/* Play triangle */}
               <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
-                <path d="M2 2L22 14L2 26V2Z" fill="#1E1310" stroke="#1E1310" strokeWidth="2" strokeLinejoin="round" />
+                <path d="M2 2L22 14L2 26V2Z" fill="#212426" stroke="#212426" strokeWidth="2" strokeLinejoin="round" />
               </svg>
             </div>
           </button>

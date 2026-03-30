@@ -189,7 +189,7 @@ export default function AutomationsPage() {
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-tertiary)',
             padding: 'var(--space-8)',
-            background: 'rgba(30,19,16,0.02)',
+            background: 'rgba(38,66,51,0.02)',
             borderRadius: 'var(--radius-md)',
             textAlign: 'center',
             lineHeight: 'var(--lh-body)',

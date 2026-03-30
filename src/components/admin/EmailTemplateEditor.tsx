@@ -549,7 +549,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                     fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     fontWeight: 600,
-                    color: '#1E1310',
+                    color: '#212426',
                     background: 'var(--color-accent)',
                     border: 'none',
                     borderRadius: 'var(--radius-lg)',

@@ -58,9 +58,9 @@ function confirmationPage(message: string, success: boolean): NextResponse {
 </head>
 <body style="
   margin: 0; padding: 0;
-  background-color: #FFFBEF;
+  background-color: #FFFFFF;
   font-family: Lora, Inter, system-ui, sans-serif;
-  color: #1E1310;
+  color: #212426;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,11 +77,11 @@ function confirmationPage(message: string, success: boolean): NextResponse {
     ">${success ? '\u2713' : '\u2717'}</p>
     <p style="
       font-size: 16px;
-      color: ${success ? '#1E1310' : '#C44040'};
+      color: ${success ? '#212426' : '#C44040'};
       line-height: 1.6;
       margin: 0;
     ">${message}</p>
-    ${success ? `<p style="font-size: 13px; color: #8A7E75; margin-top: 24px;">Tu mapa sigue disponible en su URL original.</p>` : ''}
+    ${success ? `<p style="font-size: 13px; color: #878E92; margin-top: 24px;">Tu mapa sigue disponible en su URL original.</p>` : ''}
   </div>
 </body>
 </html>`

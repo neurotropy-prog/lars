@@ -335,7 +335,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                         gap: 12,
                         padding: '12px 14px',
                         background: 'var(--color-bg-secondary)',
-                        border: isRecommended ? '1.5px solid #B45A32' : 'var(--border-subtle)',
+                        border: isRecommended ? '1.5px solid #CD796C' : 'var(--border-subtle)',
                         borderRadius: 'var(--radius-md)',
                         cursor: 'pointer',
                         textAlign: 'left',
@@ -358,8 +358,8 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                               fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '10px',
                               fontWeight: 600,
-                              color: '#B45A32',
-                              background: 'rgba(180, 90, 50, 0.08)',
+                              color: '#CD796C',
+                              background: 'rgba(205, 121, 108, 0.08)',
                               padding: '1px 6px',
                               borderRadius: 'var(--radius-pill)',
                               textTransform: 'uppercase',
@@ -384,7 +384,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                 {/* Recommendation reason */}
                 {lead.suggested_action && (
                   <div style={{
-                    background: 'rgba(180, 90, 50, 0.04)',
+                    background: 'rgba(205, 121, 108, 0.04)',
                     borderRadius: 'var(--radius-sm)',
                     padding: '8px 12px',
                     marginTop: 'var(--space-2)',
@@ -392,7 +392,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                     <p style={{
                       fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '12px',
-                      color: '#B45A32',
+                      color: '#CD796C',
                       margin: 0,
                       lineHeight: 1.5,
                     }}>

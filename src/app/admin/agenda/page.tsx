@@ -157,7 +157,7 @@ function scoreColor(score: number | null): string {
   if (score === null) return 'var(--color-text-tertiary)'
   if (score <= 39) return '#C44040'
   if (score <= 59) return '#D4A017'
-  if (score <= 79) return '#B45A32'
+  if (score <= 79) return '#CD796C'
   return '#3D9A5F'
 }
 
@@ -210,7 +210,7 @@ function AgendaSkeleton() {
     width: w,
     height: h,
     borderRadius: 'var(--radius-sm)',
-    background: 'rgba(30,19,16,0.06)',
+    background: 'rgba(38,66,51,0.06)',
     animation: 'hubPulse 1.5s ease-in-out infinite',
     animationDelay: delay,
   })
@@ -528,7 +528,7 @@ export default function AgendaPage() {
                       <Card key={session.id} style={{
                         padding: 'var(--space-5)',
                         border: '1px solid var(--color-accent)',
-                        background: 'rgba(180,90,50,0.03)',
+                        background: 'rgba(205,121,108,0.03)',
                       }}>
                         {/* Time + badges */}
                         <div style={{
@@ -618,15 +618,15 @@ export default function AgendaPage() {
                           gap: 'var(--space-2)',
                           flexWrap: 'wrap',
                           paddingTop: 'var(--space-3)',
-                          borderTop: '1px solid rgba(30,19,16,0.06)',
+                          borderTop: '1px solid rgba(38,66,51,0.06)',
                         }}>
                           <a
                             href={`/admin/leads?detail=${session.map_hash}`}
                             style={{
                               padding: 'var(--space-2) var(--space-3)',
                               borderRadius: 'var(--radius-sm)',
-                              border: '1px solid rgba(180,90,50,0.3)',
-                              backgroundColor: 'rgba(180,90,50,0.06)',
+                              border: '1px solid rgba(205,121,108,0.3)',
+                              backgroundColor: 'rgba(205,121,108,0.06)',
                               color: 'var(--color-accent)',
                               cursor: 'pointer',
                               fontFamily: 'var(--font-host-grotesk)',
@@ -671,7 +671,7 @@ export default function AgendaPage() {
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-tertiary)',
                   padding: 'var(--space-4)',
-                  background: 'rgba(30,19,16,0.02)',
+                  background: 'rgba(38,66,51,0.02)',
                   borderRadius: 'var(--radius-md)',
                   textAlign: 'center',
                 }}>
@@ -716,8 +716,8 @@ export default function AgendaPage() {
                         borderRadius: 'var(--radius-md)',
                         border: day.isToday
                           ? '2px solid var(--color-accent)'
-                          : '1px solid rgba(30,19,16,0.06)',
-                        background: day.isToday ? 'rgba(180,90,50,0.04)' : 'transparent',
+                          : '1px solid rgba(38,66,51,0.06)',
+                        background: day.isToday ? 'rgba(205,121,108,0.04)' : 'transparent',
                         textAlign: 'center',
                         cursor: hasSession ? 'pointer' : 'default',
                         transition: 'all var(--transition-base)',
@@ -840,7 +840,7 @@ export default function AgendaPage() {
                                 }}
                               >
                                 <div style={{
-                                  borderTop: '1px dashed rgba(30,19,16,0.08)',
+                                  borderTop: '1px dashed rgba(38,66,51,0.08)',
                                   fontSize: '10px',
                                   fontFamily: 'var(--font-host-grotesk)',
                                   color: 'var(--color-text-tertiary)',
@@ -876,11 +876,11 @@ export default function AgendaPage() {
                                       borderRadius: 'var(--radius-sm)',
                                       border: active
                                         ? '1px solid rgba(61,154,95,0.4)'
-                                        : '1px solid rgba(30,19,16,0.06)',
+                                        : '1px solid rgba(38,66,51,0.06)',
                                       backgroundColor: active
                                         ? 'rgba(61,154,95,0.15)'
-                                        : 'rgba(30,19,16,0.03)',
-                                      color: active ? 'var(--color-success)' : 'rgba(30,19,16,0.15)',
+                                        : 'rgba(38,66,51,0.03)',
+                                      color: active ? 'var(--color-success)' : 'rgba(38,66,51,0.15)',
                                       cursor: loading ? 'wait' : 'pointer',
                                       fontFamily: 'var(--font-host-grotesk)',
                                       fontSize: '10px',
@@ -1214,7 +1214,7 @@ export default function AgendaPage() {
                           gap: 'var(--space-2)',
                           marginTop: 'var(--space-3)',
                           paddingTop: 'var(--space-3)',
-                          borderTop: '1px solid rgba(30,19,16,0.06)',
+                          borderTop: '1px solid rgba(38,66,51,0.06)',
                           flexWrap: 'wrap',
                         }}>
                           {!isPast && (
@@ -1288,7 +1288,7 @@ export default function AgendaPage() {
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-tertiary)',
                   padding: 'var(--space-4)',
-                  background: 'rgba(30,19,16,0.02)',
+                  background: 'rgba(38,66,51,0.02)',
                   borderRadius: 'var(--radius-md)',
                   textAlign: 'center',
                 }}>

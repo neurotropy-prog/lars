@@ -25,7 +25,7 @@ export default function OfflineBanner() {
         right: 0,
         zIndex: 60,
         padding: 'var(--space-3) var(--space-4)',
-        background: 'rgba(30,19,16,0.95)',
+        background: 'rgba(38,66,51,0.95)',
         borderBottom: '1px solid rgba(196,64,64,0.3)',
         textAlign: 'center',
         fontFamily: 'var(--font-host-grotesk)',

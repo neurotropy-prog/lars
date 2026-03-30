@@ -71,7 +71,7 @@ export function CopyEditorError({ message, onRetry }: CopyEditorErrorProps) {
         style={{
           fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
-          color: '#B45A32',
+          color: '#CD796C',
           background: 'none',
           border: '1px solid rgba(180, 90, 50, 0.3)',
           borderRadius: 'var(--radius-pill)',

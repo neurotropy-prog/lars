@@ -99,7 +99,7 @@ export default function ComparisonDimensionBar({
               flex: 1,
               height: '8px',
               borderRadius: '4px',
-              background: 'rgba(30,19,16,0.08)',
+              background: 'rgba(38,66,51,0.08)',
               overflow: 'hidden',
             }}
           >
@@ -153,7 +153,7 @@ export default function ComparisonDimensionBar({
               flex: 1,
               height: '8px',
               borderRadius: '4px',
-              background: 'rgba(30,19,16,0.08)',
+              background: 'rgba(38,66,51,0.08)',
               overflow: 'hidden',
             }}
           >
@@ -192,7 +192,7 @@ export default function ComparisonDimensionBar({
             gap: 'var(--space-2)',
             padding: '4px 12px',
             borderRadius: 'var(--radius-pill)',
-            background: 'rgba(180, 90, 50, 0.08)',
+            background: 'rgba(205, 121, 108, 0.08)',
             color: 'var(--color-accent)',
             fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',

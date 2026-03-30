@@ -469,7 +469,7 @@ export async function GET(req: NextRequest) {
       hash: row.hash,
       email: shortEmail(row.email),
       profile: profile?.shortLabel ?? '—',
-      profileColor: profile?.color ?? '#8A7E75',
+      profileColor: profile?.color ?? '#878E92',
       heat: heat.level,
       actionType: action.type,
       actionReason: action.reason,

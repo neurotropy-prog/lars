@@ -3,7 +3,7 @@
 /**
  * AnalyticsProfiles — Distribución de los 4 perfiles con barras horizontales.
  *
- * PC=#B45A32, FI=#4A6FA5, CE=#7B8F6A, CP=#8B7355
+ * PC=#CD796C, FI=#4A6FA5, CE=#7B8F6A, CP=#8B7355
  *
  * Al pulsar en un perfil se abre ProfileInfoPanel con toda la información.
  */
@@ -18,7 +18,7 @@ interface AnalyticsProfilesProps {
 }
 
 const PROFILE_CONFIG: Record<string, { label: string; short: string; color: string }> = {
-  'Productivo Colapsado': { label: 'Productivo Colapsado', short: 'PC', color: '#B45A32' },
+  'Productivo Colapsado': { label: 'Productivo Colapsado', short: 'PC', color: '#CD796C' },
   'Fuerte Invisible': { label: 'Fuerte Invisible', short: 'FI', color: '#4A6FA5' },
   'Cuidador Exhausto': { label: 'Cuidador Exhausto', short: 'CE', color: '#7B8F6A' },
   'Controlador Paralizado': { label: 'Controlador Paralizado', short: 'CP', color: '#8B7355' },

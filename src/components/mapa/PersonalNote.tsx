@@ -22,7 +22,7 @@ export default function PersonalNote({ content, createdAt }: Props) {
       style={{
         background: 'var(--color-bg-secondary)',
         border: 'var(--border-subtle)',
-        borderLeft: '3px solid #B45A32',
+        borderLeft: '3px solid #CD796C',
         borderRadius: 'var(--radius-lg)',
         padding: 'var(--space-6)',
       }}
@@ -32,7 +32,7 @@ export default function PersonalNote({ content, createdAt }: Props) {
         fontSize: 'var(--text-overline)',
         letterSpacing: 'var(--ls-overline)',
         textTransform: 'uppercase',
-        color: '#B45A32',
+        color: '#CD796C',
         marginBottom: 'var(--space-3)',
       }}>
         Mensaje de Javier

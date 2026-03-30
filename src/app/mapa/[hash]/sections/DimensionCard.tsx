@@ -147,7 +147,7 @@ export default function DimensionCard({
         style={{
           height: '6px',
           borderRadius: '3px',
-          background: 'rgba(30,19,16,0.08)',
+          background: 'rgba(38,66,51,0.08)',
           marginBottom: 'var(--space-4)',
           overflow: 'hidden',
         }}
@@ -177,8 +177,8 @@ export default function DimensionCard({
             marginTop: 'var(--space-4)',
             padding: 'var(--space-4)',
             borderRadius: 'var(--radius-md)',
-            background: 'rgba(180,90,50,0.06)',
-            border: '1px solid rgba(180,90,50,0.12)',
+            background: 'rgba(205,121,108,0.06)',
+            border: '1px solid rgba(205,121,108,0.12)',
           }}
         >
           <p
@@ -231,7 +231,7 @@ export default function DimensionCard({
                 style={{
                   height: '3px',
                   borderRadius: '2px',
-                  background: 'rgba(30,19,16,0.06)',
+                  background: 'rgba(38,66,51,0.06)',
                   overflow: 'hidden',
                 }}
               >

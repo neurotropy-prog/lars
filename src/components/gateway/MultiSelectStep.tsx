@@ -181,7 +181,7 @@ export default function MultiSelectStep({
                   borderRadius: 'var(--radius-sm)',
                   border: isSelected
                     ? '1.5px solid var(--color-accent)'
-                    : '1.5px solid rgba(30,19,16,0.15)',
+                    : '1.5px solid rgba(38,66,51,0.15)',
                   background: isSelected
                     ? 'var(--color-accent-subtle)'
                     : 'transparent',

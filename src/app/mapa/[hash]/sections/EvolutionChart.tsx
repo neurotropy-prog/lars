@@ -56,9 +56,9 @@ export default function EvolutionChart({
 
     // Resolve CSS custom properties for canvas
     const styles = getComputedStyle(canvas)
-    const accentColor = styles.getPropertyValue('--color-accent').trim() || '#B45A32'
+    const accentColor = styles.getPropertyValue('--color-accent').trim() || '#CD796C'
     const successColor = styles.getPropertyValue('--color-success').trim() || '#3D9A5F'
-    const textColor = styles.getPropertyValue('--color-text-primary').trim() || '#1E1310'
+    const textColor = styles.getPropertyValue('--color-text-primary').trim() || '#212426'
 
     // Clear
     ctx.clearRect(0, 0, W, H)
@@ -77,7 +77,7 @@ export default function EvolutionChart({
       pad.top + plotH - ((score - minScore) / (maxScore - minScore)) * plotH
 
     // Grid lines (horizontal)
-    ctx.strokeStyle = 'rgba(30,19,16,0.06)'
+    ctx.strokeStyle = 'rgba(38,66,51,0.06)'
     ctx.lineWidth = 1
     for (let s = Math.ceil(minScore / 20) * 20; s <= maxScore; s += 20) {
       const y = yScale(s)
@@ -87,7 +87,7 @@ export default function EvolutionChart({
       ctx.stroke()
 
       // Label
-      ctx.fillStyle = 'rgba(30,19,16,0.25)'
+      ctx.fillStyle = 'rgba(38,66,51,0.25)'
       ctx.font = '10px system-ui, sans-serif'
       ctx.textAlign = 'right'
       ctx.fillText(String(s), pad.left - 6, y + 3)
@@ -108,8 +108,8 @@ export default function EvolutionChart({
 
     // Gradient fill under line
     const gradient = ctx.createLinearGradient(0, pad.top, 0, H - pad.bottom)
-    gradient.addColorStop(0, 'rgba(180,90,50,0.15)')
-    gradient.addColorStop(1, 'rgba(180,90,50,0.0)')
+    gradient.addColorStop(0, 'rgba(205,121,108,0.15)')
+    gradient.addColorStop(1, 'rgba(205,121,108,0.0)')
     ctx.fillStyle = gradient
     ctx.beginPath()
     points.forEach((p, i) => {
@@ -135,7 +135,7 @@ export default function EvolutionChart({
       ctx.fill()
 
       // Outer ring
-      ctx.strokeStyle = i === 0 ? 'rgba(180,90,50,0.3)' : 'rgba(61,154,95,0.3)'
+      ctx.strokeStyle = i === 0 ? 'rgba(205,121,108,0.3)' : 'rgba(61,154,95,0.3)'
       ctx.lineWidth = 2
       ctx.beginPath()
       ctx.arc(x, y, 7, 0, Math.PI * 2)
@@ -148,7 +148,7 @@ export default function EvolutionChart({
       ctx.fillText(String(p.score), x, y - 14)
 
       // Day label below
-      ctx.fillStyle = 'rgba(30,19,16,0.4)'
+      ctx.fillStyle = 'rgba(38,66,51,0.4)'
       ctx.font = '10px system-ui, sans-serif'
       ctx.fillText(p.label, x, H - pad.bottom + 16)
     })

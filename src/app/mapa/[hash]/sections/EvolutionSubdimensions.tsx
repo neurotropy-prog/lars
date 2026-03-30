@@ -191,7 +191,7 @@ export default function EvolutionSubdimensions({
                       ? '1px solid var(--color-accent)'
                       : 'var(--border-subtle)',
                     background: selected
-                      ? 'rgba(180,90,50,0.08)'
+                      ? 'rgba(205,121,108,0.08)'
                       : 'transparent',
                     fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',

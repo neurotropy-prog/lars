@@ -33,7 +33,7 @@ const DIMENSION_SHORT: Record<string, string> = {
 
 function scoreColor(score: number): string {
   if (score < 40) return 'var(--color-error)'
-  if (score <= 60) return '#D4895C'
+  if (score <= 60) return '#CC796C'
   return 'var(--color-success)'
 }
 

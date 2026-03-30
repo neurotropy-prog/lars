@@ -121,8 +121,8 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
       <div
         className={`bisagra-box${calcPhase ? ' bisagra-glow-active' : ''}`}
         style={{
-          background: 'linear-gradient(135deg, #F3EDD8 0%, #FFFBEF 100%)',
-          border: '1px solid rgba(180,90,50,0.1)',
+          background: 'linear-gradient(135deg, #D6E8DD 0%, #FFFFFF 100%)',
+          border: '1px solid rgba(205,121,108,0.1)',
           borderRadius: '16px',
           padding: '48px 32px',
           maxWidth: '520px',
@@ -163,7 +163,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
                   width: '64px',
                   height: '64px',
                   borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(180,90,50,0.18) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(205,121,108,0.18) 0%, transparent 70%)',
                   animation: 'pulse-glow 2.5s ease-in-out infinite',
                 }}
               />
@@ -268,7 +268,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
               style={{
                 ...fadeStyle(showBenchmark),
                 height: '1px',
-                background: 'rgba(30,19,16,0.06)',
+                background: 'rgba(38,66,51,0.06)',
                 margin: '0 0 var(--space-5)',
                 display: fadeTyping ? 'block' : 'none',
               }}
@@ -362,7 +362,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
           maxWidth: '520px',
           padding: 'var(--space-4) var(--space-6)',
           borderRadius: 'var(--radius-lg)',
-          border: '1px solid rgba(180,90,50,0.25)',
+          border: '1px solid rgba(205,121,108,0.25)',
           background: 'transparent',
           color: 'var(--color-text-secondary)',
           fontFamily: 'var(--font-host-grotesk)',
@@ -374,11 +374,11 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.color = 'var(--color-text-primary)'
-          e.currentTarget.style.borderColor = 'rgba(180,90,50,0.5)'
+          e.currentTarget.style.borderColor = 'rgba(205,121,108,0.5)'
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.color = 'var(--color-text-secondary)'
-          e.currentTarget.style.borderColor = 'rgba(180,90,50,0.25)'
+          e.currentTarget.style.borderColor = 'rgba(205,121,108,0.25)'
         }}
       >
         Ver mi evaluación completa →

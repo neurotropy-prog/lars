@@ -21,7 +21,7 @@ export default function ExpressSessionOffer({ content, createdAt }: Props) {
       className="mapa-fade-up"
       style={{
         background: 'var(--color-bg-secondary)',
-        border: '1.5px solid #B45A32',
+        border: '1.5px solid #CD796C',
         borderRadius: 'var(--radius-lg)',
         padding: 'var(--space-6)',
       }}
@@ -31,7 +31,7 @@ export default function ExpressSessionOffer({ content, createdAt }: Props) {
         fontSize: 'var(--text-overline)',
         letterSpacing: 'var(--ls-overline)',
         textTransform: 'uppercase',
-        color: '#B45A32',
+        color: '#CD796C',
         marginBottom: 'var(--space-2)',
       }}>
         Invitación personal

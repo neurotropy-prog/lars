@@ -33,7 +33,7 @@ const PRESETS = [
 ]
 
 const COLOR_HEX: Record<string, string> = {
-  'var(--color-accent)': '#B45A32',
+  'var(--color-accent)': '#CD796C',
   'var(--color-success)': '#3D9A5F',
   'var(--color-warning)': '#D4A017',
 }
@@ -167,7 +167,7 @@ export default function ToolsPage() {
             }}
           >
             {PRESETS.map((preset) => {
-              const hex = COLOR_HEX[preset.color] ?? '#B45A32'
+              const hex = COLOR_HEX[preset.color] ?? '#CD796C'
               return (
                 <button
                   key={preset.label}
@@ -268,7 +268,7 @@ export default function ToolsPage() {
                       width: '8px',
                       height: '8px',
                       borderRadius: '50%',
-                      backgroundColor: unlocked ? 'var(--color-success)' : 'rgba(30,19,16,0.15)',
+                      backgroundColor: unlocked ? 'var(--color-success)' : 'rgba(38,66,51,0.15)',
                       flexShrink: 0,
                     }}
                   />

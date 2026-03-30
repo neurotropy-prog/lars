@@ -87,7 +87,7 @@ interface LeadDetailPanelProps {
 // ── Constants ──────────────────────────────────────────────────────────────
 
 const PROFILE_COLORS: Record<string, string> = {
-  'Productivo Colapsado': '#B45A32',
+  'Productivo Colapsado': '#CD796C',
   'Fuerte Invisible': '#4A6FA5',
   'Cuidador Exhausto': '#7B8F6A',
   'Controlador Paralizado': '#8B7355',

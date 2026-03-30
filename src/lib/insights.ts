@@ -73,7 +73,7 @@ export interface DimensionResult extends DimensionMeta {
 
 export function getScoreColor(score: number): string {
   if (score <= 39) return '#EF4444' // rojo
-  if (score <= 59) return '#D4895C' // naranja
+  if (score <= 59) return '#CC796C' // naranja
   if (score <= 79) return '#EAB308' // amarillo
   return '#3D9A5F'                  // verde
 }

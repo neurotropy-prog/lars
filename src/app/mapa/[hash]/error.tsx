@@ -33,7 +33,7 @@ export default function MapaError({
             width: '120px',
             height: '60px',
             borderRadius: 'var(--radius-md)',
-            background: 'rgba(30,19,16,0.06)',
+            background: 'rgba(38,66,51,0.06)',
             margin: '0 auto var(--space-6)',
             animation: 'skeleton-pulse 1.5s ease-in-out infinite',
           }}
@@ -47,7 +47,7 @@ export default function MapaError({
                 width: `${60 + i * 8}%`,
                 height: '12px',
                 borderRadius: '6px',
-                background: 'rgba(30,19,16,0.06)',
+                background: 'rgba(38,66,51,0.06)',
                 animation: `skeleton-pulse 1.5s ease-in-out ${i * 200}ms infinite`,
               }}
             />
@@ -56,7 +56,7 @@ export default function MapaError({
                 width: '100%',
                 height: '6px',
                 borderRadius: '3px',
-                background: 'rgba(30,19,16,0.04)',
+                background: 'rgba(38,66,51,0.04)',
                 marginTop: 'var(--space-2)',
               }}
             />

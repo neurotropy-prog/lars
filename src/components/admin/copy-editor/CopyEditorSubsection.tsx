@@ -92,7 +92,7 @@ function CopyEditorSubsectionInner({
         <span style={{
           fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
-          color: customizedCount > 0 ? '#B45A32' : 'var(--color-text-tertiary)',
+          color: customizedCount > 0 ? '#CD796C' : 'var(--color-text-tertiary)',
           fontWeight: customizedCount > 0 ? 500 : 400,
           flexShrink: 0,
         }}>

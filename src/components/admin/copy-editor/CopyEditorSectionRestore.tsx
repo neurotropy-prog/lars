@@ -103,7 +103,7 @@ export function CopyEditorSectionRestore({
           style={{
             fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
-            color: '#B45A32',
+            color: '#CD796C',
             background: 'none',
             border: 'none',
             cursor: 'pointer',

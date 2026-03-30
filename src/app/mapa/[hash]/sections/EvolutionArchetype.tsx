@@ -267,7 +267,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
       {/* Herida + Armadura + Estado SN */}
       <div
         style={{
-          backgroundColor: 'rgba(30,19,16,0.03)',
+          backgroundColor: 'rgba(38,66,51,0.03)',
           borderRadius: 'var(--radius-md)',
           padding: 'var(--space-4)',
           marginBottom: 'var(--space-4)',

@@ -28,7 +28,7 @@ const DIMENSION_LABELS = [
 /** Color semáforo según score 0-100 */
 function barColor(score: number): string {
   if (score <= 39) return 'var(--color-error)'
-  if (score <= 59) return '#D4895C' // naranja para Comprometido
+  if (score <= 59) return '#CC796C' // naranja para Comprometido
   if (score <= 79) return 'var(--color-warning)'
   return 'var(--color-success)'
 }
@@ -117,7 +117,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
           position: 'relative',
           borderRadius: 'var(--radius-xl)',
           overflow: 'hidden',
-          border: '1px solid rgba(30,19,16,0.06)',
+          border: '1px solid rgba(38,66,51,0.06)',
           padding: 'var(--space-5) var(--space-6)',
           background: 'rgba(249,241,222,0.95)',
         }}
@@ -171,7 +171,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
                   style={{
                     height: '6px',
                     borderRadius: '3px',
-                    background: 'rgba(30,19,16,0.08)',
+                    background: 'rgba(38,66,51,0.08)',
                     overflow: 'hidden',
                   }}
                 >
@@ -263,8 +263,8 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
               borderRadius: 'var(--radius-pill)',
               border: showError
                 ? '1px solid var(--color-error)'
-                : '1px solid rgba(30,19,16,0.12)',
-              background: 'rgba(30,19,16,0.05)',
+                : '1px solid rgba(38,66,51,0.12)',
+              background: 'rgba(38,66,51,0.05)',
               color: 'var(--color-text-primary)',
               fontFamily: 'var(--font-host-grotesk)',
               fontSize: '16px', /* 16px: evita zoom en iOS */
@@ -282,7 +282,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
             onBlurCapture={(e) => {
               e.currentTarget.style.boxShadow = 'none'
               if (!showError) {
-                e.currentTarget.style.borderColor = 'rgba(30,19,16,0.12)'
+                e.currentTarget.style.borderColor = 'rgba(38,66,51,0.12)'
               }
             }}
           />
@@ -311,7 +311,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
               padding: '16px var(--space-6)',
               borderRadius: 'var(--radius-pill)',
               border: 'none',
-              background: valid ? 'var(--color-accent)' : 'rgba(180,90,50,0.2)',
+              background: valid ? 'var(--color-accent)' : 'rgba(205,121,108,0.2)',
               color: valid ? 'var(--color-text-inverse)' : 'var(--color-text-tertiary)',
               fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',

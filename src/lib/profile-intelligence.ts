@@ -103,7 +103,7 @@ const PROFILES: ProfileIntelligence[] = [
     key: 'productivo-colapsado',
     label: 'Productivo Colapsado',
     shortLabel: 'PC',
-    color: '#B45A32', // terracota — acento principal
+    color: '#CD796C', // salmon — acento principal
     icon: '⚡',
 
     core_fear: 'Que el problema sea real y no pueda resolverlo con más esfuerzo',

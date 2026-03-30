@@ -31,11 +31,11 @@ import {
 
 // ── Design tokens ──
 
-const SIDEBAR_BG = '#1E130F'
-const SIDEBAR_TEXT = '#F9F1DE'
+const SIDEBAR_BG = '#264233'
+const SIDEBAR_TEXT = '#EAF2EE'
 const SIDEBAR_TEXT_MUTED = 'rgba(249, 241, 222, 0.5)'
 const ACTIVE_BG = 'rgba(180, 90, 50, 0.15)'
-const ACTIVE_TEXT = '#B45A32'
+const ACTIVE_TEXT = '#CD796C'
 const HOVER_BG = 'rgba(249, 241, 222, 0.06)'
 const BADGE_RED = '#E74C3C'
 const BADGE_GREEN = '#3D9A5F'
@@ -373,7 +373,7 @@ function SidebarItem({ item, active, collapsed, badge, badgeCount }: SidebarItem
               fontFamily: 'var(--font-host-grotesk)',
               fontSize: '9px',
               fontWeight: 700,
-              color: '#FFFBEF',
+              color: '#FFFFFF',
               backgroundColor: ACTIVE_TEXT,
               borderRadius: '9999px',
               padding: '1px 5px',
@@ -392,7 +392,7 @@ function SidebarItem({ item, active, collapsed, badge, badgeCount }: SidebarItem
               fontFamily: 'var(--font-host-grotesk)',
               fontSize: '10px',
               fontWeight: 600,
-              color: '#FFFBEF',
+              color: '#FFFFFF',
               backgroundColor: ACTIVE_TEXT,
               borderRadius: '9999px',
               padding: '0px 6px',

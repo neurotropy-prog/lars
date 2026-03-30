@@ -162,7 +162,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
         {sliders.map((slider) => {
           const val = values[slider.id]
           const isTouched = touched.has(slider.id)
-          const color = isTouched ? getSliderColor(val!) : 'rgba(30,19,16,0.1)'
+          const color = isTouched ? getSliderColor(val!) : 'rgba(38,66,51,0.1)'
           const percent = isTouched ? fillPercent(val!) : 0
           const isPulsing = pulsingSlider === slider.id
 
@@ -239,8 +239,8 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
                     background: `linear-gradient(to right,
                       ${color} 0%,
                       ${color} ${percent}%,
-                      rgba(30,19,16,0.1) ${percent}%,
-                      rgba(30,19,16,0.1) 100%)`,
+                      rgba(38,66,51,0.1) ${percent}%,
+                      rgba(38,66,51,0.1) 100%)`,
                     transition: 'background 200ms ease',
                     pointerEvents: 'none',
                   }}

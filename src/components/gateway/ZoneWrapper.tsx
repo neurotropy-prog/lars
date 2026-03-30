@@ -3,9 +3,9 @@
 /**
  * ZoneWrapper — Contenedor que gestiona la transición visual entre 3 zonas emocionales.
  *
- * ZONA 1 (exploración): fondo bg-primary (#FFFBEF crema), Inter, sensación aireada.
- * ZONA 2 (reflexión):   fondo bg-secondary (#F9F1DE crema cálido), Cormorant Garamond italic, intimidad.
- * ZONA 3 (revelación):  gradiente #F9F1DE → #FFFFFF, máxima intensidad.
+ * ZONA 1 (exploración): fondo bg-primary (#FFFFFF blanco), Host Grotesk, sensación aireada.
+ * ZONA 2 (reflexión):   fondo bg-secondary (#EAF2EE verde suave), Host Grotesk, intimidad.
+ * ZONA 3 (revelación):  gradiente #EAF2EE → #FFFFFF, máxima intensidad.
  *
  * El cambio NO es solo de fondo: hay una respiración sutil (scale 1.0→1.008→1.0)
  * que hace que el espacio se sienta diferente al cambiar de zona.

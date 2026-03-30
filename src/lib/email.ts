@@ -343,7 +343,7 @@ export async function sendDia7Email(to: string, mapHash: string): Promise<void> 
   const bodyText = override?.body_content ?? defaults.bodyContent
   const amplifyBlock = `
       <tr>
-        <td style="padding: 24px 0 0 0; border-top: 1px solid rgba(30,19,16,0.08);">
+        <td style="padding: 24px 0 0 0; border-top: 1px solid rgba(38,66,51,0.08);">
           <p style="font-size: 13px; color: #878E92; line-height: 1.5; margin: 0 0 12px 0;">
             ¿Conoces a alguien que podría necesitar ver su mapa?
             Si ambos hacéis el diagnóstico, podréis comparar vuestras dimensiones.
