@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-03-27T22:00:00Z",
+  "projects": [
+    {
+      "slug": "lars",
+      "name": "L.A.R.S.©",
+      "description": "Sistema de adquisición del Programa LARS para ejecutivos con burnout",
+      "status": "active",
+      "current_sprint": 0,
+      "total_sprints": 16,
+      "total_tasks": 16,
+      "completed_tasks": 0,
+      "progress_percent": 0,
+      "created_at": "2026-03-21T00:00:00Z",
+      "updated_at": "2026-03-27T22:00:00Z",
+      "repo_path": "/sessions/intelligent-stoic-hypatia/mnt/lars-project",
+      "deploy_url": "https://lars.institutoepigenetico.com",
+      "tech_stack": "Next.js 15 + Supabase + TypeScript + Vercel",
+      "alerts": []
+    }
+  ]
+}

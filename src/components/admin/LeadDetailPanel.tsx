@@ -147,7 +147,7 @@ function MapUrlCopy({ hash }: { hash: string }) {
       border: '1px solid rgba(30, 19, 16, 0.06)',
     }}>
       <span style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: '11px',
         color: 'var(--color-text-tertiary)',
         whiteSpace: 'nowrap',
@@ -285,7 +285,7 @@ function SectionHeader({ title }: { title: string }) {
     >
       <h3
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '12px',
           fontWeight: 600,
           color: 'var(--color-text-tertiary)',
@@ -390,7 +390,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                   border: 'none',
                   cursor: 'pointer',
                   color: 'var(--color-text-tertiary)',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '13px',
                   padding: 4,
                 }}
@@ -416,7 +416,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                     border: 'none',
                     cursor: 'pointer',
                     color: 'var(--color-text-tertiary)',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '13px',
                     padding: 4,
                   }}
@@ -431,7 +431,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: 4,
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '12px',
                     fontWeight: 500,
                     color: 'var(--color-accent)',
@@ -451,7 +451,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                     borderRadius: 'var(--radius-pill)',
                     background: `${profileColor}14`,
                     color: profileColor,
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '12px',
                     fontWeight: 600,
                   }}
@@ -463,7 +463,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
               {/* Email */}
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '17px',
                   fontWeight: 600,
                   color: 'var(--color-text-primary)',
@@ -478,7 +478,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '14px',
                     fontWeight: 600,
                     color: scoreColor(data.scores?.global ?? 0),
@@ -488,7 +488,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                 </span>
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '13px',
                     color: 'var(--color-text-tertiary)',
                   }}
@@ -498,7 +498,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                 {data.meta?.city && (
                   <span
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '13px',
                       color: 'var(--color-text-tertiary)',
                     }}
@@ -526,7 +526,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                 >
                   <p
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '14px',
                       lineHeight: 1.65,
                       color: 'var(--color-text-secondary)',
@@ -562,7 +562,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                             borderRadius: 'var(--radius-pill)',
                             background: urg.bg,
                             color: urg.color,
-                            fontFamily: 'var(--font-inter)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: '11px',
                             fontWeight: 600,
                           }}
@@ -574,7 +574,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                     {/* Action type */}
                     <span
                       style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '13px',
                         fontWeight: 600,
                         color: 'var(--color-text-primary)',
@@ -586,7 +586,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                   </div>
                   <p
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '13px',
                       lineHeight: 1.55,
                       color: 'var(--color-text-secondary)',
@@ -603,7 +603,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                       border: 'none',
                       background: 'var(--color-accent)',
                       color: 'var(--color-text-inverse)',
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '13px',
                       fontWeight: 500,
                       cursor: 'pointer',
@@ -632,30 +632,30 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                 >
                   {data.amplify.is_referred && data.amplify.referred_by_email && (
                     <div>
-                      <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                      <span style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '12px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                         Invitado por
                       </span>
-                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--color-text-primary)', margin: '4px 0 0' }}>
+                      <p style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '14px', color: 'var(--color-text-primary)', margin: '4px 0 0' }}>
                         {data.amplify.referred_by_email}
                       </p>
                     </div>
                   )}
                   {data.amplify.comparison_status && (
                     <div>
-                      <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                      <span style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '12px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                         Comparación
                       </span>
-                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--color-text-primary)', margin: '4px 0 0' }}>
+                      <p style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '14px', color: 'var(--color-text-primary)', margin: '4px 0 0' }}>
                         {data.amplify.comparison_status === 'accepted' ? '✓ Activa' : data.amplify.comparison_status === 'pending' ? '⏳ Pendiente de aceptación' : '✗ Declinada'}
                       </p>
                     </div>
                   )}
                   {(data.amplify.invites_sent ?? 0) > 0 && (
                     <div>
-                      <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                      <span style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '12px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                         Invitaciones enviadas
                       </span>
-                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--color-text-primary)', margin: '4px 0 0' }}>
+                      <p style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '14px', color: 'var(--color-text-primary)', margin: '4px 0 0' }}>
                         {data.amplify.invites_sent} enviadas · {data.amplify.invites_completed ?? 0} completadas
                       </p>
                     </div>
@@ -688,7 +688,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
               {!data.personal_actions || data.personal_actions.length === 0 ? (
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     color: 'var(--color-text-tertiary)',
                     fontStyle: 'italic',
@@ -714,7 +714,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
                           <span
                             style={{
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '12px',
                               fontWeight: 600,
                               color: 'var(--color-text-primary)',
@@ -724,7 +724,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                           </span>
                           <span
                             style={{
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '11px',
                               color: 'var(--color-text-tertiary)',
                             }}
@@ -734,7 +734,7 @@ export default function LeadDetailPanel({ hash, data, loading, onClose, onRefres
                         </div>
                         <p
                           style={{
-                            fontFamily: 'var(--font-inter)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: '13px',
                             color: 'var(--color-text-secondary)',
                             margin: 0,

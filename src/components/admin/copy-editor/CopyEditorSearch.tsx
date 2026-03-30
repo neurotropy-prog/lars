@@ -49,7 +49,7 @@ export function CopyEditorSearch({ onSearch }: CopyEditorSearchProps) {
         placeholder="Buscar por texto o etiqueta..."
         style={{
           width: '100%',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-primary)',
           background: 'var(--color-bg-secondary)',
@@ -84,7 +84,7 @@ export function CopyEditorSearch({ onSearch }: CopyEditorSearchProps) {
             cursor: 'pointer',
             color: 'var(--color-text-secondary)',
             fontSize: '12px',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             lineHeight: 1,
           }}
           aria-label="Limpiar búsqueda"

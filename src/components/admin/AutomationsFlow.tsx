@@ -215,7 +215,7 @@ function SectionHeader({ title }: { title: string }) {
     >
       <span
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '12px',
           fontWeight: 600,
           textTransform: 'uppercase',

@@ -23,7 +23,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
       {/* Header */}
       <div>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '15px',
           fontWeight: 600,
           color: 'var(--color-text-primary)',
@@ -32,7 +32,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
           ✍️ Nota personal para {lead.email ?? 'este lead'}
         </p>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '13px',
           color: 'var(--color-text-tertiary)',
           margin: 0,
@@ -50,7 +50,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
           borderLeft: `3px solid ${profile.color}`,
         }}>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '12px',
             fontWeight: 600,
             color: 'var(--color-text-secondary)',
@@ -59,7 +59,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
             💡 Tono para {profile.shortLabel}:
           </p>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '12px',
             color: 'var(--color-text-tertiary)',
             margin: 0,
@@ -77,7 +77,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
         rows={8}
         style={{
           width: '100%',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '14px',
           lineHeight: 1.6,
           color: 'var(--color-text-primary)',
@@ -98,7 +98,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
           padding: '8px 12px',
         }}>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '11px',
             fontWeight: 600,
             color: 'var(--color-error)',
@@ -107,7 +107,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
             ⚠️ NUNCA usar con este perfil:
           </p>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '11px',
             color: 'var(--color-text-tertiary)',
             margin: 0,
@@ -123,7 +123,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
         display: 'flex',
         alignItems: 'center',
         gap: 8,
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: '13px',
         color: 'var(--color-text-secondary)',
         cursor: 'pointer',
@@ -148,7 +148,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
             border: 'var(--border-subtle)',
             background: 'transparent',
             color: 'var(--color-text-secondary)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             cursor: submitting ? 'not-allowed' : 'pointer',
           }}
@@ -164,7 +164,7 @@ export default function ActionNote({ lead, defaultTemplate, onSubmit, onCancel, 
             border: 'none',
             background: canSubmit ? 'var(--color-accent)' : 'var(--color-bg-tertiary)',
             color: canSubmit ? 'var(--color-text-inverse)' : 'var(--color-text-tertiary)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             fontWeight: 500,
             cursor: canSubmit ? 'pointer' : 'not-allowed',

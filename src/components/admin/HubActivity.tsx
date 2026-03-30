@@ -105,7 +105,7 @@ export default function HubActivity({ items, loading }: HubActivityProps) {
       >
         <h2
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -140,7 +140,7 @@ export default function HubActivity({ items, loading }: HubActivityProps) {
         ) : items.length === 0 ? (
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-text-tertiary)',
               textAlign: 'center',
@@ -167,7 +167,7 @@ export default function HubActivity({ items, loading }: HubActivityProps) {
                 {/* Timestamp */}
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     color: 'var(--color-text-tertiary)',
                     width: '52px',
@@ -192,7 +192,7 @@ export default function HubActivity({ items, loading }: HubActivityProps) {
                 {/* Description */}
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     color: 'var(--color-text-secondary)',
                     lineHeight: 1.5,

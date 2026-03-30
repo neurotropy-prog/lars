@@ -106,7 +106,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
 
             {/* Headline */}
             <h1 style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-h2)',
               fontWeight: 600,
               color: 'var(--color-text-primary)',
@@ -118,7 +118,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
 
             {/* Subtítulo */}
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body)',
               color: 'var(--color-text-secondary)',
               lineHeight: 'var(--lh-body)',
@@ -139,7 +139,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
             }}
           >
             <p style={{
-              fontFamily: 'var(--font-cormorant)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-h3)',
               fontStyle: 'italic',
               lineHeight: '1.5',
@@ -186,7 +186,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
 
               <div>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-h4)',
                   fontWeight: 600,
                   color: 'var(--color-text-primary)',
@@ -195,7 +195,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   Javier A. Martín Ramos
                 </p>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-tertiary)',
                   marginBottom: 'var(--space-4)',
@@ -203,7 +203,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   Director del Instituto Epigenético
                 </p>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body)',
                   lineHeight: 'var(--lh-body)',
                   color: 'var(--color-text-primary)',
@@ -224,7 +224,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
             style={{ animationDelay: '1000ms', marginBottom: 'var(--space-12)' }}
           >
             <h2 style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-h3)',
               fontWeight: 600,
               color: 'var(--color-text-primary)',
@@ -258,7 +258,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   animation: 'nodePulse 2s ease infinite',
                 }} />
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body)',
                   fontWeight: 600,
                   color: 'var(--color-text-primary)',
@@ -267,7 +267,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   Revisa tu email
                 </p>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   lineHeight: 'var(--lh-body)',
                   color: 'var(--color-text-secondary)',
@@ -289,7 +289,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   border: '2px solid var(--color-accent)',
                 }} />
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body)',
                   fontWeight: 600,
                   color: 'var(--color-text-primary)',
@@ -298,7 +298,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   Tu sesión con Javier
                 </p>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   lineHeight: 'var(--lh-body)',
                   color: 'var(--color-text-secondary)',
@@ -320,7 +320,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   border: '2px solid var(--color-accent)',
                 }} />
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body)',
                   fontWeight: 600,
                   color: 'var(--color-text-primary)',
@@ -329,7 +329,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
                   Los primeros cambios
                 </p>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   lineHeight: 'var(--lh-body)',
                   color: 'var(--color-text-secondary)',
@@ -365,7 +365,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
             </div>
 
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body)',
               lineHeight: 'var(--lh-body)',
               color: 'var(--color-text-primary)',
@@ -390,7 +390,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
             </a>
 
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               marginTop: 'var(--space-3)',
@@ -407,7 +407,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
             style={{ animationDelay: '1600ms', textAlign: 'center' }}
           >
             <p style={{
-              fontFamily: 'var(--font-cormorant)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-h3)',
               fontStyle: 'italic',
               lineHeight: '1.5',
@@ -419,7 +419,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
             </p>
 
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               marginBottom: 'var(--space-3)',
@@ -431,7 +431,7 @@ export default function SuccessClient({ hash, email, sessionId }: Props) {
               <a
                 href={`/mapa/${hash}`}
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-accent)',
                   textDecoration: 'underline',

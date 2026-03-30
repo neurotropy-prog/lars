@@ -162,7 +162,7 @@ const SUBSECTION_SHORT: Record<string, string> = {
 }
 
 const labelStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 9,
   fontWeight: 600,
   color: '#B45A32',
@@ -187,11 +187,11 @@ const optionCardStyle: React.CSSProperties = {
   background: 'rgba(255,255,255,0.04)',
   borderRadius: 10,
   border: '1px solid rgba(255,255,255,0.06)',
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
 }
 
 const reflectionText: React.CSSProperties = {
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 11,
   color: 'rgba(255, 251, 239, 0.85)',
   margin: 0,

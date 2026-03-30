@@ -57,7 +57,7 @@ export default function LeadEmailStatus({ emailStatus }: LeadEmailStatusProps) {
             <span style={{ fontSize: 12, lineHeight: 1 }}>{config.icon}</span>
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '11px',
                 fontWeight: 500,
                 color: config.color,

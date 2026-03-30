@@ -62,7 +62,7 @@ const continueButtonStyle: React.CSSProperties = {
   border: 'var(--border-subtle)',
   background: 'transparent',
   color: 'var(--color-text-secondary)',
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 'var(--text-body-sm)',
   cursor: 'pointer',
   transition: 'color var(--transition-fast), border-color var(--transition-fast)',
@@ -71,7 +71,7 @@ const continueButtonStyle: React.CSSProperties = {
 }
 
 const overlineStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 'var(--text-body-sm)',
   lineHeight: 'var(--lh-body-sm)',
   color: 'var(--color-text-tertiary)',
@@ -224,7 +224,7 @@ export default function GatewayBloque2({
                   cursor: 'pointer',
                   padding: 'var(--space-1)',
                   fontSize: 'var(--text-body-sm)',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   transition: 'color var(--transition-fast)',
                 }}
               >
@@ -259,7 +259,7 @@ export default function GatewayBloque2({
               {/* Overline que marca importancia */}
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-caption)',
                   color: 'var(--color-accent)',
                   letterSpacing: 'var(--ls-overline)',

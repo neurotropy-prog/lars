@@ -80,7 +80,7 @@ export default function TensionSection() {
           >
             <p
               style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-display)',
                 lineHeight: 1.1,
                 fontWeight: 700,
@@ -92,7 +92,7 @@ export default function TensionSection() {
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body)',
                 lineHeight: 'var(--lh-body)',
                 color: 'rgba(255, 251, 239, 0.85)',
@@ -103,7 +103,7 @@ export default function TensionSection() {
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 lineHeight: 'var(--lh-body-sm)',
                 color: 'rgba(255, 251, 239, 0.6)',
@@ -127,7 +127,7 @@ export default function TensionSection() {
           >
             <p
               style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-display)',
                 lineHeight: 1.1,
                 fontWeight: 700,
@@ -146,7 +146,7 @@ export default function TensionSection() {
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body)',
                 lineHeight: 'var(--lh-body)',
                 color: 'rgba(255, 251, 239, 0.85)',
@@ -157,7 +157,7 @@ export default function TensionSection() {
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 lineHeight: 'var(--lh-body-sm)',
                 color: 'rgba(255, 251, 239, 0.6)',
@@ -188,7 +188,7 @@ export default function TensionSection() {
                 color: 'var(--color-accent)',
                 borderRadius: 'var(--radius-pill)',
                 padding: '4px 12px',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 fontWeight: 600,
                 textTransform: 'uppercase',
@@ -201,7 +201,7 @@ export default function TensionSection() {
 
             <p
               style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-h3)',
                 lineHeight: 'var(--lh-h3)',
                 fontWeight: 700,
@@ -213,7 +213,7 @@ export default function TensionSection() {
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 lineHeight: 'var(--lh-body-sm)',
                 color: 'var(--color-text-secondary)',

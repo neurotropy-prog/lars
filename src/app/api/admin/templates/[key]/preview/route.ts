@@ -14,32 +14,32 @@ import { VALID_EMAIL_KEYS } from '@/lib/email-defaults'
 import { createAdminClient } from '@/lib/supabase'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://lars.institutoepigenetico.com'
-const LOGO_URL = `${BASE_URL}/img/logo-instituto-epigenetico.png`
+const LOGO_URL = `${BASE_URL}/Logo-definitivo-IE.png`
 const SAMPLE_MAP_URL = `${BASE_URL}/mapa/sample123abc`
 
-const BODY_P_STYLE = 'font-size: 14px; color: #1E1310; line-height: 1.6; margin: 0 0 16px 0;'
+const BODY_P_STYLE = 'font-size: 14px; color: #212426; line-height: 1.6; margin: 0 0 16px 0;'
 
 function buildEvolutionPreview(bodyHtml: string, buttonText: string): string {
   return `<!DOCTYPE html>
 <html lang="es">
 <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /></head>
-<body style="margin:0;padding:0;background-color:#FFFBEF;font-family:Lora,Inter,system-ui,sans-serif;color:#1E1310;">
+<body style="margin:0;padding:0;background-color:#FFFFFF;font-family:'Host Grotesk',system-ui,sans-serif;color:#212426;">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;padding:48px 24px;">
     <tr><td>
       <img src="${LOGO_URL}" alt="Instituto Epigenético" width="220" style="display:block;width:220px;height:auto;margin:0 0 32px 0;" />
       ${bodyHtml}
       <table cellpadding="0" cellspacing="0" style="margin:32px 0;">
-        <tr><td style="background:#F5F564;border-radius:100px;padding:16px 32px;">
-          <a href="${SAMPLE_MAP_URL}" style="color:#1E1310;font-size:15px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">
+        <tr><td style="background:#264233;border-radius:100px;padding:16px 32px;">
+          <a href="${SAMPLE_MAP_URL}" style="color:#FFFFFF;font-size:15px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">
             ${escapeHtml(buttonText)}
           </a>
         </td></tr>
       </table>
-      <div style="height:1px;background:#E8E2D0;margin-bottom:24px;"></div>
-      <p style="font-size:13px;color:#8A7E75;line-height:1.6;margin:0;">
+      <div style="height:1px;background:rgba(38, 66, 51, 0.10);margin-bottom:24px;"></div>
+      <p style="font-size:13px;color:#878E92;line-height:1.6;margin:0;">
         Este mapa es tuyo. Confidencial. Solo tú puedes verlo.
       </p>
-      <p style="font-size:11px;color:#8A7E75;margin:16px 0 0 0;"><a href="#" style="color:#8A7E75;text-decoration:underline;">Darme de baja</a></p>
+      <p style="font-size:11px;color:#878E92;margin:16px 0 0 0;"><a href="#" style="color:#878E92;text-decoration:underline;">Darme de baja</a></p>
     </td></tr>
   </table>
 </body>
@@ -50,31 +50,31 @@ function buildD0Preview(subject: string, ctaText: string): string {
   return `<!DOCTYPE html>
 <html lang="es">
 <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>${escapeHtml(subject)}</title></head>
-<body style="margin:0;padding:0;background-color:#FFFBEF;font-family:Lora,Inter,system-ui,sans-serif;color:#1E1310;">
+<body style="margin:0;padding:0;background-color:#FFFFFF;font-family:'Host Grotesk',system-ui,sans-serif;color:#212426;">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;padding:48px 24px;">
     <tr><td>
       <img src="${LOGO_URL}" alt="Instituto Epigenético" width="220" style="display:block;width:220px;height:auto;margin:0 0 32px 0;" />
-      <p style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#B45A32;margin:0 0 8px 0;">TU MAPA DE REGULACIÓN</p>
-      <p style="font-size:48px;font-weight:600;color:#1E1310;margin:0 0 4px 0;line-height:1;">42<span style="font-size:24px;font-weight:400;color:#4B413C;">/100</span></p>
-      <p style="font-size:14px;color:#8A7E75;margin:0 0 40px 0;">Score global de regulación</p>
-      <div style="height:1px;background:#E8E2D0;margin-bottom:32px;"></div>
-      <p style="font-size:13px;color:#8A7E75;margin:0 0 6px 0;">Tu dimensión más comprometida</p>
+      <p style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#CD796C;margin:0 0 8px 0;">TU MAPA DE REGULACIÓN</p>
+      <p style="font-size:48px;font-weight:600;color:#212426;margin:0 0 4px 0;line-height:1;">42<span style="font-size:24px;font-weight:400;color:#2D2D2D;">/100</span></p>
+      <p style="font-size:14px;color:#878E92;margin:0 0 40px 0;">Score global de regulación</p>
+      <div style="height:1px;background:rgba(38, 66, 51, 0.10);margin-bottom:32px;"></div>
+      <p style="font-size:13px;color:#878E92;margin:0 0 6px 0;">Tu dimensión más comprometida</p>
       <p style="font-size:20px;font-weight:500;color:#E87040;margin:0 0 6px 0;">Calidad de Sueño</p>
-      <p style="font-size:32px;font-weight:600;color:#E87040;margin:0 0 32px 0;line-height:1;">28<span style="font-size:16px;font-weight:400;color:#4B413C;">/100</span></p>
-      <p style="font-size:14px;color:#1E1310;line-height:1.6;margin:0 0 40px 0;padding:20px 24px;background:#F9F1DE;border-left:3px solid #B45A32;border-radius:8px;">
+      <p style="font-size:32px;font-weight:600;color:#E87040;margin:0 0 32px 0;line-height:1;">28<span style="font-size:16px;font-weight:400;color:#2D2D2D;">/100</span></p>
+      <p style="font-size:14px;color:#212426;line-height:1.6;margin:0 0 40px 0;padding:20px 24px;background:#EAF2EE;border-left:3px solid #CD796C;border-radius:8px;">
         Empieza por el sueño. No como descanso — como restauración biológica real.
       </p>
       <table cellpadding="0" cellspacing="0" style="margin-bottom:40px;">
-        <tr><td style="background:#F5F564;border-radius:100px;padding:16px 32px;">
-          <a href="${SAMPLE_MAP_URL}" style="color:#1E1310;font-size:15px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">${escapeHtml(ctaText)}</a>
+        <tr><td style="background:#264233;border-radius:100px;padding:16px 32px;">
+          <a href="${SAMPLE_MAP_URL}" style="color:#FFFFFF;font-size:15px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">${escapeHtml(ctaText)}</a>
         </td></tr>
       </table>
-      <div style="height:1px;background:#E8E2D0;margin-bottom:32px;"></div>
-      <p style="font-size:13px;color:#8A7E75;line-height:1.6;margin:0;">
+      <div style="height:1px;background:rgba(38, 66, 51, 0.10);margin-bottom:32px;"></div>
+      <p style="font-size:13px;color:#878E92;line-height:1.6;margin:0;">
         Este mapa es tuyo. Evoluciona con el tiempo — cada semana hay algo nuevo.<br>
         Confidencial. Solo tú puedes verlo.
       </p>
-      <p style="font-size:11px;color:#8A7E75;margin:16px 0 0 0;"><a href="#" style="color:#8A7E75;text-decoration:underline;">Darme de baja</a></p>
+      <p style="font-size:11px;color:#878E92;margin:16px 0 0 0;"><a href="#" style="color:#878E92;text-decoration:underline;">Darme de baja</a></p>
     </td></tr>
   </table>
 </body>
@@ -82,31 +82,31 @@ function buildD0Preview(subject: string, ctaText: string): string {
 }
 
 function buildGoodbyePreview(bodyText: string, ctaText: string): string {
-  const bodyHtml = textToHtmlParagraphs(bodyText, 'font-size: 14px; color: #4B413C; line-height: 1.8; margin: 0 0 16px 0;')
+  const bodyHtml = textToHtmlParagraphs(bodyText, 'font-size: 14px; color: #2D2D2D; line-height: 1.8; margin: 0 0 16px 0;')
 
   return `<!DOCTYPE html>
 <html lang="es">
 <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /></head>
-<body style="margin:0;padding:0;background-color:#FFFBEF;font-family:Lora,Inter,system-ui,sans-serif;color:#1E1310;">
+<body style="margin:0;padding:0;background-color:#FFFFFF;font-family:'Host Grotesk',system-ui,sans-serif;color:#212426;">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;padding:48px 24px;">
     <tr><td>
       <img src="${LOGO_URL}" alt="Instituto Epigenético" width="220" style="display:block;width:220px;height:auto;margin:0 0 32px 0;" />
       ${bodyHtml}
-      <p style="font-size:16px;font-weight:500;color:#1E1310;line-height:1.6;margin:0 0 32px 0;padding:20px 24px;background:#F9F1DE;border-left:3px solid #B45A32;border-radius:8px;">
+      <p style="font-size:16px;font-weight:500;color:#212426;line-height:1.6;margin:0 0 32px 0;padding:20px 24px;background:#EAF2EE;border-left:3px solid #CD796C;border-radius:8px;">
         Tu mapa es tuyo. Sigue aquí. Sigue vivo.
       </p>
-      <p style="font-size:14px;color:#1E1310;line-height:1.8;margin:0 0 24px 0;">
+      <p style="font-size:14px;color:#212426;line-height:1.8;margin:0 0 24px 0;">
         Si en algún momento quieres que volvamos a avisarte cuando haya algo nuevo:
       </p>
       <table cellpadding="0" cellspacing="0" style="margin:0 0 16px 0;">
-        <tr><td style="background:#F5F564;border-radius:100px;padding:16px 32px;">
-          <a href="#" style="color:#1E1310;font-size:15px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">${escapeHtml(ctaText)}</a>
+        <tr><td style="background:#264233;border-radius:100px;padding:16px 32px;">
+          <a href="#" style="color:#FFFFFF;font-size:15px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">${escapeHtml(ctaText)}</a>
         </td></tr>
       </table>
-      <p style="font-size:13px;color:#8A7E75;line-height:1.6;margin:0 0 32px 0;">Sin compromiso. Un clic.</p>
-      <div style="height:1px;background:#E8E2D0;margin-bottom:32px;"></div>
-      <p style="font-size:14px;color:#1E1310;line-height:1.6;margin:0 0 4px 0;">Javier A. Martín Ramos</p>
-      <p style="font-size:13px;color:#8A7E75;margin:0 0 24px 0;">Director · Instituto Epigenético</p>
+      <p style="font-size:13px;color:#878E92;line-height:1.6;margin:0 0 32px 0;">Sin compromiso. Un clic.</p>
+      <div style="height:1px;background:rgba(38, 66, 51, 0.10);margin-bottom:32px;"></div>
+      <p style="font-size:14px;color:#212426;line-height:1.6;margin:0 0 4px 0;">Javier A. Martín Ramos</p>
+      <p style="font-size:13px;color:#878E92;margin:0 0 24px 0;">Director · Instituto Epigenético</p>
     </td></tr>
   </table>
 </body>
@@ -117,36 +117,36 @@ function buildPostPagoPreview(bodyText: string, subject: string, ctaText: string
   return `<!DOCTYPE html>
 <html lang="es">
 <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /></head>
-<body style="margin:0;padding:0;background-color:#FFFBEF;font-family:Lora,Inter,system-ui,sans-serif;color:#1E1310;">
+<body style="margin:0;padding:0;background-color:#FFFFFF;font-family:'Host Grotesk',system-ui,sans-serif;color:#212426;">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;padding:48px 24px;">
     <tr><td>
       <img src="${LOGO_URL}" alt="Instituto Epigenético" width="220" style="display:block;width:220px;height:auto;margin:0 0 32px 0;" />
-      <p style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#B45A32;margin:0 0 8px 0;">SEMANA 1</p>
-      <p style="font-size:28px;font-weight:600;color:#1E1310;margin:0 0 8px 0;line-height:1.2;">Tu Semana 1 ha comenzado.</p>
-      <p style="font-size:14px;color:#4B413C;line-height:1.6;margin:0 0 40px 0;">${escapeHtml(bodyText)}</p>
-      <div style="height:1px;background:#E8E2D0;margin-bottom:32px;"></div>
-      <p style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E75;margin:0 0 8px 0;">TU PROTOCOLO DE SUEÑO DE EMERGENCIA</p>
+      <p style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#CD796C;margin:0 0 8px 0;">SEMANA 1</p>
+      <p style="font-size:28px;font-weight:600;color:#212426;margin:0 0 8px 0;line-height:1.2;">Tu Semana 1 ha comenzado.</p>
+      <p style="font-size:14px;color:#2D2D2D;line-height:1.6;margin:0 0 40px 0;">${escapeHtml(bodyText)}</p>
+      <div style="height:1px;background:rgba(38, 66, 51, 0.10);margin-bottom:32px;"></div>
+      <p style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#878E92;margin:0 0 8px 0;">TU PROTOCOLO DE SUEÑO DE EMERGENCIA</p>
       <table cellpadding="0" cellspacing="0" style="margin:0 0 8px 0;">
-        <tr><td style="background:#F5F564;border-radius:100px;padding:14px 28px;">
-          <a href="#" style="color:#1E1310;font-size:14px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">Descargar el Protocolo</a>
+        <tr><td style="background:#264233;border-radius:100px;padding:14px 28px;">
+          <a href="#" style="color:#FFFFFF;font-size:14px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">Descargar el Protocolo</a>
         </td></tr>
       </table>
-      <p style="font-size:13px;color:#8A7E75;line-height:1.6;margin:0 0 40px 0;">Diseñado por el Dr. Carlos Alvear López.<br>Empieza esta noche. Resultados en 72 horas.</p>
-      <div style="height:1px;background:#E8E2D0;margin-bottom:32px;"></div>
-      <p style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E75;margin:0 0 8px 0;">TU SESIÓN CON JAVIER</p>
+      <p style="font-size:13px;color:#878E92;line-height:1.6;margin:0 0 40px 0;">Diseñado por el Dr. Carlos Alvear López.<br>Empieza esta noche. Resultados en 72 horas.</p>
+      <div style="height:1px;background:rgba(38, 66, 51, 0.10);margin-bottom:32px;"></div>
+      <p style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#878E92;margin:0 0 8px 0;">TU SESIÓN CON JAVIER</p>
       <table cellpadding="0" cellspacing="0" style="margin:0 0 8px 0;">
-        <tr><td style="background:#F5F564;border-radius:100px;padding:14px 28px;">
-          <a href="#" style="color:#1E1310;font-size:14px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">${escapeHtml(ctaText)}</a>
+        <tr><td style="background:#264233;border-radius:100px;padding:14px 28px;">
+          <a href="#" style="color:#FFFFFF;font-size:14px;font-weight:500;text-decoration:none;display:block;white-space:nowrap;">${escapeHtml(ctaText)}</a>
         </td></tr>
       </table>
-      <p style="font-size:13px;color:#8A7E75;line-height:1.6;margin:0 0 40px 0;">Ya tiene tu Mapa de Regulación. No empezáis de cero.<br>20-30 minutos. Esta semana.</p>
-      <div style="height:1px;background:#E8E2D0;margin-bottom:32px;"></div>
-      <p style="font-size:14px;color:#4B413C;line-height:1.6;margin:0 0 8px 0;">Recuerda: si tu sueño no mejora en 7 días, te devolvemos los 97€. Sin preguntas.</p>
-      <p style="font-size:14px;color:#1E1310;font-weight:500;margin:0 0 40px 0;">Pero no los vas a necesitar.</p>
-      <div style="height:1px;background:#E8E2D0;margin-bottom:32px;"></div>
-      <p style="font-size:14px;color:#1E1310;margin:0 0 4px 0;">Javier A. Martín Ramos</p>
-      <p style="font-size:13px;color:#8A7E75;margin:0;">Director · Instituto Epigenético</p>
-      <p style="font-size:11px;color:#8A7E75;margin:16px 0 0 0;"><a href="#" style="color:#8A7E75;text-decoration:underline;">Darme de baja</a></p>
+      <p style="font-size:13px;color:#878E92;line-height:1.6;margin:0 0 40px 0;">Ya tiene tu Mapa de Regulación. No empezáis de cero.<br>20-30 minutos. Esta semana.</p>
+      <div style="height:1px;background:rgba(38, 66, 51, 0.10);margin-bottom:32px;"></div>
+      <p style="font-size:14px;color:#2D2D2D;line-height:1.6;margin:0 0 8px 0;">Recuerda: si tu sueño no mejora en 7 días, te devolvemos los 97€. Sin preguntas.</p>
+      <p style="font-size:14px;color:#212426;font-weight:500;margin:0 0 40px 0;">Pero no los vas a necesitar.</p>
+      <div style="height:1px;background:rgba(38, 66, 51, 0.10);margin-bottom:32px;"></div>
+      <p style="font-size:14px;color:#212426;margin:0 0 4px 0;">Javier A. Martín Ramos</p>
+      <p style="font-size:13px;color:#878E92;margin:0;">Director · Instituto Epigenético</p>
+      <p style="font-size:11px;color:#878E92;margin:16px 0 0 0;"><a href="#" style="color:#878E92;text-decoration:underline;">Darme de baja</a></p>
     </td></tr>
   </table>
 </body>

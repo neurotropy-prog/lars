@@ -120,7 +120,7 @@ export function CopyPreviewLanding({ localValues, activeSubsection }: CopyPrevie
           background: '#F5F564',
           color: '#1E1310',
           borderRadius: 9999,
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 11,
           fontWeight: 600,
           textAlign: 'center',
@@ -173,7 +173,7 @@ const subheadStyle: React.CSSProperties = {
 }
 
 const textStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 12,
   color: 'rgba(255, 251, 239, 0.85)',
   margin: 0,
@@ -181,7 +181,7 @@ const textStyle: React.CSSProperties = {
 }
 
 const captionStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 10,
   color: 'rgba(255, 251, 239, 0.6)',
   margin: 0,
@@ -189,7 +189,7 @@ const captionStyle: React.CSSProperties = {
 }
 
 const overlineStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 9,
   fontWeight: 600,
   color: '#B45A32',

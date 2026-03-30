@@ -38,7 +38,7 @@ export default function Badge({ status, children }: BadgeProps) {
         color: styles.color,
         borderRadius: "var(--radius-pill)",
         padding: "4px 12px",
-        fontFamily: "var(--font-inter)",
+        fontFamily: "var(--font-host-grotesk)",
         fontSize: "var(--text-caption)",
         fontWeight: 600,
         textTransform: "uppercase",

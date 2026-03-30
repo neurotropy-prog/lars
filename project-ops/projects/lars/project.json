@@ -1,0 +1,427 @@
+{
+  "slug": "lars",
+  "name": "L.A.R.S.©",
+  "description": "Sistema de adquisición del Programa LARS para ejecutivos con burnout",
+  "status": "active",
+  "created_at": "2026-03-21T00:00:00Z",
+  "updated_at": "2026-03-27T22:00:00Z",
+  "repo_path": "/sessions/intelligent-stoic-hypatia/mnt/lars-project",
+  "deploy_url": "https://lars.institutoepigenetico.com",
+  "tech_stack": "Next.js 15 + Supabase + TypeScript + Vercel",
+  "docs": {
+    "vision": "docs/VISION.md",
+    "design": "docs/DESIGN.md",
+    "features_dir": "docs/features/",
+    "progress": "docs/PROGRESS.md"
+  },
+  "sprints": [
+    {
+      "index": 0,
+      "name": "Google Auth — Login admin con Google",
+      "description": "Reemplazar ADMIN_SECRET por Google OAuth via Supabase Auth. Solo 2 emails autorizados: javier@institutoepigenetico.com y alex@withowners.com. Página de login, middleware, helper verifyAdmin(), logout.",
+      "status": "completed",
+      "started_at": "2026-03-21T00:00:00Z",
+      "completed_at": "2026-03-22T00:00:00Z",
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "google-auth",
+          "title": "Autenticación admin con Google OAuth via Supabase Auth",
+          "description": "Tabla admin_users (2 emails), página /admin/login con botón Google, middleware que protege /admin/*, helper verifyAdmin() reutilizable, actualizar todas las API routes, botón logout en header, eliminar ADMIN_SECRET después de verificar.",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-google-auth.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Requiere configuración manual: Google Cloud Console OAuth Client + Supabase Dashboard Provider. DEBE ser la primera sesión porque todas las demás usan el admin."
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "name": "Editor de Copy — Backend + Defaults + API",
+      "description": "Archivo centralizado de defaults de todo el copy (landing + gateway + mapa), tabla copy_overrides en Supabase, API routes para CRUD, helper de copy para componentes, y estructura base de la página /admin/copy",
+      "status": "completed",
+      "started_at": "2026-03-22T00:00:00Z",
+      "completed_at": "2026-03-23T00:00:00Z",
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "copy-editor-1",
+          "title": "Copy defaults + migración BD + API + página admin base",
+          "description": "Crear src/lib/copy-defaults.ts con TODO el copy editable (landing hero/mirror/tension/socialproof/relief + gateway P1-P8/primera verdad/micro-espejos + mapa focus/aspiracional/evoluciones). Migración para tabla copy_overrides. API /api/admin/copy (GET/POST/DELETE) + /api/copy (pública con cache). Helper src/lib/copy.ts (getCopy, useCopy, getCopyServer). Página /admin/copy con tabs Landing|Gateway|Mapa y entry en sidebar.",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-copy-editor-1-backend.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Replica el patrón de email-defaults.ts + email_templates. Sin dependencias — se puede ejecutar ya."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "name": "Editor de Copy — Frontend + Integración",
+      "description": "UX completa del editor con acordeón por sección, preview en vivo, auto-save, búsqueda, restaurar. Integración de componentes públicos (landing, gateway, mapa) para leer overrides de Supabase.",
+      "status": "completed",
+      "started_at": "2026-03-23T00:00:00Z",
+      "completed_at": "2026-03-24T00:00:00Z",
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "copy-editor-2",
+          "title": "Editor UX completo + preview en vivo + integración frontend público",
+          "description": "CopyEditor.tsx con acordeón colapsable por subsección, campos editables con label+hint, indicador de personalizado, auto-save con debounce 1.5s, búsqueda instantánea, restaurar individual y por sección. Preview en vivo al lado (desktop) con tipografía y colores reales. Modificar TODOS los componentes públicos (HeroSection, MirrorSection, TensionSection, SocialProofSection, ReliefSection, Footer, gateway-bloque1-data, gateway-bloque2-data, FocusBanner, AspiracionalTimeline, evoluciones del mapa) para leer overrides via getCopy/useCopy. Badge de personalización en sidebar.",
+          "status": "pending",
+          "dependencies": [
+            "copy-editor-1"
+          ],
+          "prompt_file": "prompts/session-copy-editor-2-frontend.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Cambios en componentes públicos son TRANSPARENTES — sin overrides todo se ve idéntico."
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "name": "AMPLIFY — Backend + BD",
+      "description": "Tabla amplify_invites, 5 API routes, lógica de insight comparativo, detección ?ref= en gateway",
+      "status": "completed",
+      "started_at": "2026-03-24T00:00:00Z",
+      "completed_at": "2026-03-25T00:00:00Z",
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "amplify-1",
+          "title": "AMPLIFY Backend: migración BD + API routes + insight engine",
+          "description": "Tabla amplify_invites, 5 API routes (invite, status, accept, decline, compare), lógica de generateComparisonInsight(), detección de ?ref= en gateway",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-amplify-1-backend.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "name": "AMPLIFY — Frontend Invitación",
+      "description": "Sección AMPLIFY en mapa, modal compartir, banner aceptación, email día 7",
+      "status": "completed",
+      "started_at": "2026-03-25T00:00:00Z",
+      "completed_at": "2026-03-26T00:00:00Z",
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "amplify-2",
+          "title": "AMPLIFY Frontend: invitación + compartir + aceptación",
+          "description": "Sección en mapa vivo (día 7+), modal de invitación con WhatsApp/email/link, banner de aceptación para invitados, bloque en email día 7",
+          "status": "pending",
+          "dependencies": [
+            "amplify-1"
+          ],
+          "prompt_file": "prompts/session-amplify-2-frontend-invite.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "name": "AMPLIFY — Vista Comparativa + Admin",
+      "description": "Página de comparación con barras paralelas, insight dinámico, CTA. Card AMPLIFY en Hub, badge en LAM, métricas en Analytics",
+      "status": "completed",
+      "started_at": "2026-03-26T00:00:00Z",
+      "completed_at": "2026-03-27T00:00:00Z",
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "amplify-3",
+          "title": "AMPLIFY Vista comparativa + integración admin",
+          "description": "Página /mapa/[hash]/comparar/[compare_hash] con barras paralelas animadas, insight dinámico, CTA. Card AMPLIFY en Hub, badge Referido en LAM, métricas en Analytics",
+          "status": "pending",
+          "dependencies": [
+            "amplify-2"
+          ],
+          "prompt_file": "prompts/session-amplify-3-compare-admin.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "name": "Emails por Perfil",
+      "description": "Personalizar toda la secuencia de nurturing (8 emails + evoluciones del mapa) según el perfil detectado en el gateway",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "emails-perfil",
+          "title": "Personalizar emails y evoluciones por perfil detectado",
+          "description": "Los 8 emails de nurturing (día 0→90) adaptan tono y contenido al perfil (PC=directo/eficiencia, FI=datos/biología, CE=permiso/normalización, CP=estructura/garantías). Las evoluciones del mapa priorizan contenido por perfil. El sistema usa profile_data ya existente en diagnosticos.profile",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-emails-perfil.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Mayor ROI inmediato — toda la señal ya está en la BD"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "name": "Inteligencia Colectiva Dinámica",
+      "description": "Los datos colectivos del gateway y mapa dejan de ser estáticos y se calculan en tiempo real desde Supabase",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "colectiva-dinamica",
+          "title": "Datos colectivos en tiempo real desde Supabase",
+          "description": "Los 'datos colectivos' del gateway (73% de ejecutivos..., 83% con tu combinación...) y del mapa se calculan en tiempo real cuando hay >100 diagnósticos. API que agrega: distribución de perfiles, dimensión más comprometida por perfil, % por combinación de respuestas. Fallback a datos estáticos cuando <100. El Controlador se vuelve loco con datos reales.",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-colectiva-dinamica.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "name": "CONVERT Path (90 segundos)",
+      "description": "Camino rápido del gateway para personas en Confidence/Readiness: P1 + P2 + P7 → bisagra → email → resultado",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "convert-path",
+          "title": "Gateway CONVERT: recorrido rápido 90 segundos",
+          "description": "Detectar UTM de Confidence/Readiness. Ofrecer 'Rápido (1min) o Completo (3min)'. Path CONVERT: P1 + P2 + P7 (sliders) → bisagra comprimida (solo comparación) → email → resultado. Mismo scoring pero menos señal. Para tráfico de conferencias de Javier, contenido avanzado, sesiones de valoración.",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-convert-path.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Diseñado en FEATURE_GATEWAY_DESIGN.md sección 'Adaptación por estado de entrada'"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "name": "Experiencia Post-Pago Semana 1",
+      "description": "Onboarding inmediato tras pagar: protocolo de sueño, agendar sesión, vídeo de bienvenida. El quick win de 72h empieza en el segundo posterior al pago.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "post-pago",
+          "title": "Experiencia web post-pago: onboarding Semana 1",
+          "description": "Rediseñar /pago/exito como experiencia de onboarding: (1) Descarga protocolo de sueño de emergencia, (2) Agendar sesión 1:1 con Javier (booking ya existe), (3) Vídeo corto de bienvenida, (4) Qué esperar en las próximas 72h. Personalizado por perfil. El río no se rompe — la persona que acaba de pagar aterriza en acción inmediata.",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-post-pago.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Requiere contenido de Javier: protocolo sueño PDF + vídeo bienvenida"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "name": "Re-engagement Inteligente",
+      "description": "Automatizaciones que actúan sobre patrones de comportamiento: visitas sin pago, emails sin abrir, mapas abandonados",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "reengagement",
+          "title": "Sistema de re-engagement basado en comportamiento",
+          "description": "Cron que detecta patrones: (1) 3+ visitas al mapa sin pago → email especial por perfil, (2) 3+ emails sin abrir → reducir frecuencia + cambiar frame, (3) Mapa no visitado en 14+ días → email de reactivación, (4) Lead caliente (heat>5) sin booking → notificar a Javier con contexto. Usa heat score + perfil + historial de visitas/emails ya existentes.",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-reengagement.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Base para el co-learning system futuro"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "name": "Co-Learning System — Backend",
+      "description": "Cola de aprobación de acciones, registro de decisiones de Javier, cálculo de confianza progresiva",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "colearning-1",
+          "title": "Co-learning backend: cola de acciones + registro de decisiones",
+          "description": "Tabla suggested_actions (acción, razonamiento, perfil, confianza, status: pending/approved/modified/rejected). API para CRUD. Cron genera acciones sugeridas basadas en patrones detectados. Javier aprueba/modifica/rechaza. Sistema registra cada decisión para calcular confianza futura.",
+          "status": "pending",
+          "dependencies": [
+            "reengagement"
+          ],
+          "prompt_file": "prompts/session-colearning-1-backend.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Patrón universal OWNERS: cola aprobación → confianza → autonomía"
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "name": "Co-Learning System — Frontend + Educación",
+      "description": "Panel de acciones pendientes en admin, educación bidireccional, % de confianza visible",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "colearning-2",
+          "title": "Co-learning frontend: panel de acciones + educación bidireccional",
+          "description": "Nueva sección en admin: acciones pendientes de aprobación con razonamiento. Javier puede aprobar/modificar/rechazar. Si modifica contra la inteligencia de perfil, el sistema sugiere alternativa con datos. % de confianza visible por tipo de acción. Resumen diario de acciones auto-ejecutadas (confianza >90%) + pendientes.",
+          "status": "pending",
+          "dependencies": [
+            "colearning-1"
+          ],
+          "prompt_file": "prompts/session-colearning-2-frontend.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Patrón universal OWNERS"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "name": "WhatsApp — Meta Cloud API",
+      "description": "Integrar Meta Cloud API para notificaciones de evolución del mapa vía WhatsApp",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "whatsapp",
+          "title": "Integración WhatsApp: opt-in + plantillas + envío",
+          "description": "Meta Cloud API (free tier: 1.000 conv/mes). Opt-in después del arquetipo (día 3) en el mapa. Plantillas de mensajes para aprobación de Meta: evolución del mapa, recordatorio de visita, resultado disponible. Tracking de delivery/read. Fallback a email si no opt-in. Panel admin: ver qué leads tienen WhatsApp activo.",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-whatsapp.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Requiere: Meta Business Suite + número dedicado + verificación negocio"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "name": "Comunidad Latente en Mapa",
+      "description": "Datos agregados anónimos de evolución colectiva visibles en el mapa individual",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "comunidad-latente",
+          "title": "Evolución colectiva anónima en el mapa vivo",
+          "description": "En la evolución día 14-21, mostrar: 'Los [perfil] que empezaron la misma semana que tú han mejorado una media de X puntos en [dimensión].' Datos agregados reales de reevaluaciones. Refuerza que actuar funciona sin testimonios. Solo visible cuando hay >20 personas con reevaluación en la misma cohorte temporal.",
+          "status": "pending",
+          "dependencies": [
+            "colectiva-dinamica"
+          ],
+          "prompt_file": "prompts/session-comunidad-latente.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Necesita volumen de reevaluaciones reales para ser útil"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "name": "Gateway Aprende — A/B Testing",
+      "description": "Variantes de micro-espejos y medición de qué textos producen mayor completion rate y conversión",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "gateway-aprende",
+          "title": "A/B testing de micro-espejos y textos del gateway",
+          "description": "Sistema simple de variantes: cada micro-espejo tiene 2-3 versiones de texto. Asignación aleatoria por sesión (guardada en localStorage + BD). Medición: completion rate por variante, conversión a email, conversión a pago. Dashboard en admin con resultados por variante. Sin librería de A/B testing — implementación ligera propia.",
+          "status": "pending",
+          "dependencies": [],
+          "prompt_file": "prompts/session-gateway-aprende.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "El gateway se vuelve más efectivo con cada persona que pasa"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "name": "Ignición — Arquitectura de Distribución",
+      "description": "Diseño del sistema de distribución de tráfico: contenido de Javier, SEO, redes, el gateway como pieza central",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "estimated_sessions": 1,
+      "tasks": [
+        {
+          "id": "ignicion",
+          "title": "Arquitectura de ignición y distribución de tráfico",
+          "description": "Diseñar y construir: (1) Landing pages por perfil (SEO: burnout ejecutivo, agotamiento directivo, etc.), (2) UTM tracking avanzado para medir origen de cada lead, (3) Open Graph optimizado para compartir (imagen dinámica con score), (4) Página de resultados SEO-friendly con datos agregados anónimos. Activar skills /ignition + /drift para diseño de estrategia de canales.",
+          "status": "pending",
+          "dependencies": [
+            "colectiva-dinamica"
+          ],
+          "prompt_file": "prompts/session-ignicion.md",
+          "started_at": null,
+          "completed_at": null,
+          "blocked_reason": null,
+          "notes": "Requiere decisiones estratégicas de Alex sobre canales prioritarios"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "notes": "17 sesiones. S0: Google Auth. S1-2: Editor de Copy. S3-16: fase de inteligencia. El gateway, mapa vivo, admin v2, emails, booking ya están en producción."
+  }
+}

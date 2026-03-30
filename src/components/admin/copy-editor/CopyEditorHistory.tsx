@@ -101,7 +101,7 @@ export default function CopyEditorHistory() {
           textAlign: 'center',
           padding: 'var(--space-12) var(--space-6)',
           color: 'var(--color-text-tertiary)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
         }}
       >
@@ -130,7 +130,7 @@ export default function CopyEditorHistory() {
       >
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-text-tertiary)',
           }}
@@ -174,7 +174,7 @@ export default function CopyEditorHistory() {
                     borderRadius: 'var(--radius-pill)',
                     background: `${actionInfo.color}15`,
                     color: actionInfo.color,
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '10px',
                     fontWeight: 600,
                     textTransform: 'uppercase',
@@ -188,7 +188,7 @@ export default function CopyEditorHistory() {
                 {/* Key label */}
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     color: 'var(--color-text-primary)',
                     fontWeight: 500,
@@ -205,7 +205,7 @@ export default function CopyEditorHistory() {
                 {/* Who + when */}
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     color: 'var(--color-text-tertiary)',
                     flexShrink: 0,
@@ -231,7 +231,7 @@ export default function CopyEditorHistory() {
                   <div>
                     <span
                       style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: 'var(--text-caption)',
                         color: 'var(--color-text-tertiary)',
                         display: 'block',
@@ -242,7 +242,7 @@ export default function CopyEditorHistory() {
                     </span>
                     <span
                       style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: 'var(--text-body-sm)',
                         color: 'var(--color-text-secondary)',
                         lineHeight: 'var(--lh-body)',
@@ -254,7 +254,7 @@ export default function CopyEditorHistory() {
                   <div>
                     <span
                       style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: 'var(--text-caption)',
                         color: 'var(--color-text-tertiary)',
                         display: 'block',
@@ -266,7 +266,7 @@ export default function CopyEditorHistory() {
                     {entry.new_value && (
                       <span
                         style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: 'var(--text-body-sm)',
                           color: 'var(--color-text-primary)',
                           lineHeight: 'var(--lh-body)',
@@ -278,7 +278,7 @@ export default function CopyEditorHistory() {
                   </div>
                   <div
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '10px',
                       color: 'var(--color-text-tertiary)',
                       marginTop: 'var(--space-1)',
@@ -309,7 +309,7 @@ export default function CopyEditorHistory() {
             <button
               onClick={() => setOffset(Math.max(0, offset - PAGE_SIZE))}
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-accent)',
                 background: 'none',
@@ -325,7 +325,7 @@ export default function CopyEditorHistory() {
             <button
               onClick={() => setOffset(offset + PAGE_SIZE)}
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-accent)',
                 background: 'none',

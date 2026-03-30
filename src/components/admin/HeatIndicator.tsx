@@ -49,7 +49,7 @@ export default function HeatIndicator({ level, score, size = 'sm' }: HeatIndicat
       />
       <span
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: isSmall ? '11px' : '13px',
           fontWeight: 500,
           color: config.color,
@@ -61,7 +61,7 @@ export default function HeatIndicator({ level, score, size = 'sm' }: HeatIndicat
       {!isSmall && (
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '11px',
             fontWeight: 400,
             color: 'var(--color-text-tertiary)',

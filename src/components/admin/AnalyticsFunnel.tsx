@@ -56,7 +56,7 @@ export default function AnalyticsFunnel({ funnel, counterKey }: AnalyticsFunnelP
     <div style={{ marginBottom: 'var(--space-6)' }}>
       {/* Section label */}
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-caption)',
         letterSpacing: '0.08em',
         textTransform: 'uppercase',
@@ -118,7 +118,7 @@ export default function AnalyticsFunnel({ funnel, counterKey }: AnalyticsFunnelP
               }}>
                 {/* Number */}
                 <div style={{
-                  fontFamily: 'var(--font-lora)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-h2)',
                   fontWeight: 700,
                   color: 'var(--color-text-primary)',
@@ -130,7 +130,7 @@ export default function AnalyticsFunnel({ funnel, counterKey }: AnalyticsFunnelP
 
                 {/* Label */}
                 <span style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-secondary)',
                   flex: 1,
@@ -141,7 +141,7 @@ export default function AnalyticsFunnel({ funnel, counterKey }: AnalyticsFunnelP
                 {/* Percentage vs previous */}
                 {i > 0 && (
                   <span style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     fontWeight: 600,
                     color: pctVsPrev >= 70 ? 'var(--color-success)' : pctVsPrev >= 40 ? 'var(--color-warning)' : 'var(--color-error)',
@@ -173,14 +173,14 @@ export default function AnalyticsFunnel({ funnel, counterKey }: AnalyticsFunnelP
           border: '1px solid rgba(61, 154, 95, 0.15)',
         }}>
           <span style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-secondary)',
           }}>
             Conversión total:{' '}
           </span>
           <span style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h3)',
             fontWeight: 700,
             color: 'var(--color-success)',

@@ -177,7 +177,7 @@ function LeadsPageInner() {
         >
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-error)',
             }}
@@ -192,7 +192,7 @@ function LeadsPageInner() {
               border: '1px solid var(--color-error)',
               background: 'transparent',
               color: 'var(--color-error)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               fontWeight: 500,
               cursor: 'pointer',

@@ -77,7 +77,7 @@ export default function ReliefSection() {
         {/* Headline — Lora Regular, --text-h2 */}
         <h2
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h2)',
             lineHeight: 1.2,
             letterSpacing: '-0.01em',
@@ -93,7 +93,7 @@ export default function ReliefSection() {
         {/* Descripción */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             lineHeight: 'var(--lh-body)',
             color: 'var(--color-text-secondary)',
@@ -138,7 +138,7 @@ export default function ReliefSection() {
               <div style={{ textAlign: 'left' }}>
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     fontWeight: 500,
                     color: 'var(--color-text-primary)',
@@ -149,7 +149,7 @@ export default function ReliefSection() {
                 </p>
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     lineHeight: 'var(--lh-body-sm)',
                     color: 'var(--color-text-secondary)',
@@ -164,7 +164,7 @@ export default function ReliefSection() {
             <div>
               <p
                 style={{
-                  fontFamily: 'var(--font-lora)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-h3)',
                   fontWeight: 700,
                   color: 'var(--color-accent)',
@@ -176,7 +176,7 @@ export default function ReliefSection() {
               </p>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   lineHeight: 'var(--lh-body-sm)',
                   color: 'var(--color-text-secondary)',
@@ -190,7 +190,7 @@ export default function ReliefSection() {
             <div>
               <p
                 style={{
-                  fontFamily: 'var(--font-lora)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-h3)',
                   fontWeight: 700,
                   color: 'var(--color-accent)',
@@ -202,7 +202,7 @@ export default function ReliefSection() {
               </p>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   lineHeight: 'var(--lh-body-sm)',
                   color: 'var(--color-text-secondary)',
@@ -217,7 +217,7 @@ export default function ReliefSection() {
         {/* Dato colectivo — counter animado */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             lineHeight: 'var(--lh-body-sm)',
             color: 'var(--color-text-tertiary)',
@@ -234,7 +234,7 @@ export default function ReliefSection() {
           onClick={handleCTA}
           aria-label="Volver al inicio para empezar el análisis"
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             lineHeight: 1,
             fontWeight: 500,
@@ -266,7 +266,7 @@ export default function ReliefSection() {
         {/* Disuelve fricción */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             lineHeight: 'var(--lh-caption)',
             color: 'var(--color-text-tertiary)',

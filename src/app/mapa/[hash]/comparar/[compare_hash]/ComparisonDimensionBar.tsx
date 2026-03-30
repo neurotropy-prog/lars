@@ -62,7 +62,7 @@ export default function ComparisonDimensionBar({
       {/* Dimension label */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           fontWeight: 600,
           color: 'var(--color-text-primary)',
@@ -85,7 +85,7 @@ export default function ComparisonDimensionBar({
         >
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               fontWeight: 500,
               color: 'var(--color-text-secondary)',
@@ -115,7 +115,7 @@ export default function ComparisonDimensionBar({
           </div>
           <span
             style={{
-              fontFamily: 'var(--font-lora)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body)',
               fontWeight: 700,
               color: myColor,
@@ -139,7 +139,7 @@ export default function ComparisonDimensionBar({
         >
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               fontWeight: 500,
               color: 'var(--color-text-secondary)',
@@ -169,7 +169,7 @@ export default function ComparisonDimensionBar({
           </div>
           <span
             style={{
-              fontFamily: 'var(--font-lora)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body)',
               fontWeight: 700,
               color: theirColor,
@@ -194,7 +194,7 @@ export default function ComparisonDimensionBar({
             borderRadius: 'var(--radius-pill)',
             background: 'rgba(180, 90, 50, 0.08)',
             color: 'var(--color-accent)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             fontWeight: 500,
             animation: 'fadeInUp 400ms cubic-bezier(0.16, 1, 0.3, 1) both',

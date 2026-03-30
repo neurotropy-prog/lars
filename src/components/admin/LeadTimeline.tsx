@@ -112,7 +112,7 @@ export default function LeadTimeline({ events }: LeadTimelineProps) {
     return (
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-tertiary)',
           textAlign: 'center',
@@ -175,7 +175,7 @@ export default function LeadTimeline({ events }: LeadTimelineProps) {
             <div style={{ flex: 1, minWidth: 0 }}>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '13px',
                   fontWeight: 400,
                   color: 'var(--color-text-secondary)',
@@ -187,7 +187,7 @@ export default function LeadTimeline({ events }: LeadTimelineProps) {
               </p>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '11px',
                   color: 'var(--color-text-tertiary)',
                   margin: '2px 0 0',

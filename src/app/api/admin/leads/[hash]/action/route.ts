@@ -141,20 +141,20 @@ export async function POST(
 <!DOCTYPE html>
 <html lang="es">
 <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /></head>
-<body style="margin: 0; padding: 0; background-color: #FFFBEF; font-family: Lora, Inter, system-ui, sans-serif; color: #1E1310;">
+<body style="margin: 0; padding: 0; background-color: #FFFFFF; font-family: 'Host Grotesk', system-ui, sans-serif; color: #212426;">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <tr><td>
-      <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
-      <p style="font-size: 14px; color: #1E1310; line-height: 1.8; margin: 0 0 32px 0; white-space: pre-line;">${body.content}</p>
+      <img src="${getBaseUrl()}/Logo-definitivo-IE.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
+      <p style="font-size: 14px; color: #212426; line-height: 1.8; margin: 0 0 32px 0; white-space: pre-line;">${body.content}</p>
       <table cellpadding="0" cellspacing="0" style="margin: 0 0 32px 0;">
-        <tr><td style="background: #F5F564; border-radius: 100px; padding: 16px 32px;">
-          <a href="${mapUrl}" style="color: #1E1310; font-size: 15px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
+        <tr><td style="background: #264233; border-radius: 100px; padding: 16px 32px;">
+          <a href="${mapUrl}" style="color: #FFFFFF; font-size: 15px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
             ${isVideo ? 'Ver mensaje de Javier' : 'Ver mi mapa'}
           </a>
         </td></tr>
       </table>
-      <div style="height: 1px; background: #E8E2D0; margin-bottom: 24px;"></div>
-      <p style="font-size: 13px; color: #8A7E75; line-height: 1.6; margin: 0;">Confidencial. Solo tú puedes verlo.</p>
+      <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 24px;"></div>
+      <p style="font-size: 13px; color: #878E92; line-height: 1.6; margin: 0;">Confidencial. Solo tú puedes verlo.</p>
     </td></tr>
   </table>
 </body>

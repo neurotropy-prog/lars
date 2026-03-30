@@ -28,7 +28,7 @@ export default function PersonalNote({ content, createdAt }: Props) {
       }}
     >
       <p style={{
-        fontFamily: 'var(--font-inter-tight)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-overline)',
         letterSpacing: 'var(--ls-overline)',
         textTransform: 'uppercase',
@@ -39,7 +39,7 @@ export default function PersonalNote({ content, createdAt }: Props) {
       </p>
 
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-body-sm)',
         lineHeight: 'var(--lh-body)',
         color: 'var(--color-text-secondary)',
@@ -50,7 +50,7 @@ export default function PersonalNote({ content, createdAt }: Props) {
       </p>
 
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-caption)',
         color: 'var(--color-text-tertiary)',
         margin: 0,

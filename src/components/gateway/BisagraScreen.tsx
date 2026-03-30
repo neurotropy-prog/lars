@@ -99,7 +99,7 @@ export default function BisagraScreen({ scores, onContinue }: BisagraScreenProps
         <p
           style={{
             ...fadeStyle(showOverline),
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             letterSpacing: 'var(--ls-overline)',
             textTransform: 'uppercase',
@@ -119,7 +119,7 @@ export default function BisagraScreen({ scores, onContinue }: BisagraScreenProps
         >
           <span
             style={{
-              fontFamily: 'var(--font-inter-tight)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-display)',
               lineHeight: 1,
               letterSpacing: 'var(--ls-display)',
@@ -137,7 +137,7 @@ export default function BisagraScreen({ scores, onContinue }: BisagraScreenProps
           </span>
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-h4)',
               lineHeight: 'var(--lh-h4)',
               color: 'var(--color-text-secondary)',
@@ -162,7 +162,7 @@ export default function BisagraScreen({ scores, onContinue }: BisagraScreenProps
         <p
           style={{
             ...fadeStyle(showComparison),
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             lineHeight: 'var(--lh-body-sm)',
             color: 'var(--color-text-secondary)',
@@ -181,7 +181,7 @@ export default function BisagraScreen({ scores, onContinue }: BisagraScreenProps
         >
           <span
             style={{
-              fontFamily: 'var(--font-inter-tight)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-display)',
               lineHeight: 1,
               letterSpacing: 'var(--ls-display)',
@@ -203,7 +203,7 @@ export default function BisagraScreen({ scores, onContinue }: BisagraScreenProps
         <p
           style={{
             ...fadeStyle(showGap),
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             lineHeight: 'var(--lh-body)',
             color: 'var(--color-accent)',
@@ -228,7 +228,7 @@ export default function BisagraScreen({ scores, onContinue }: BisagraScreenProps
         <p
           style={{
             ...fadeStyle(showCost),
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             lineHeight: 'var(--lh-body)',
             color: 'var(--color-text-primary)',
@@ -246,7 +246,7 @@ export default function BisagraScreen({ scores, onContinue }: BisagraScreenProps
         <p
           style={{
             ...fadeStyle(showSocial),
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             lineHeight: 'var(--lh-body-sm)',
             color: 'var(--color-text-secondary)',
@@ -269,7 +269,7 @@ export default function BisagraScreen({ scores, onContinue }: BisagraScreenProps
           border: '1px solid rgba(198,200,238,0.25)',
           background: 'transparent',
           color: 'var(--color-text-secondary)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           cursor: 'pointer',
           transition: 'color var(--transition-fast), border-color var(--transition-fast)',

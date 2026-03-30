@@ -50,7 +50,7 @@ export default function LeadDimensions({ scores }: LeadDimensionsProps) {
           >
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '12px',
                 fontWeight: 500,
                 color: 'var(--color-text-secondary)',
@@ -78,7 +78,7 @@ export default function LeadDimensions({ scores }: LeadDimensionsProps) {
             </div>
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '12px',
                 fontWeight: 600,
                 color: scoreColor(score),

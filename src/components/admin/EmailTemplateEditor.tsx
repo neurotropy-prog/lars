@@ -194,7 +194,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
           <div>
             <h2
               style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-h3)',
                 fontWeight: 700,
                 color: 'var(--color-text-primary)',
@@ -205,7 +205,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
             </h2>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '13px',
                 color: 'var(--color-text-tertiary)',
                 margin: 0,
@@ -232,7 +232,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
 
         {loading ? (
           <div style={{ padding: 'var(--space-8)', textAlign: 'center' }}>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: '14px', color: 'var(--color-text-tertiary)' }}>
+            <p style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '14px', color: 'var(--color-text-tertiary)' }}>
               Cargando...
             </p>
           </div>
@@ -251,7 +251,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
               >
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '13px',
                     color: 'var(--color-warning)',
                     margin: 0,
@@ -270,7 +270,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                 <label
                   style={{
                     display: 'block',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '12px',
                     fontWeight: 600,
                     color: 'var(--color-text-tertiary)',
@@ -287,7 +287,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                   onChange={(e) => setSubject(e.target.value)}
                   style={{
                     width: '100%',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     color: 'var(--color-text-primary)',
                     background: 'var(--color-bg-secondary)',
@@ -305,7 +305,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                 <label
                   style={{
                     display: 'block',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '12px',
                     fontWeight: 600,
                     color: 'var(--color-text-tertiary)',
@@ -323,7 +323,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                   rows={6}
                   style={{
                     width: '100%',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     color: bodyDisabled ? 'var(--color-text-tertiary)' : 'var(--color-text-primary)',
                     background: bodyDisabled ? 'var(--color-bg-tertiary)' : 'var(--color-bg-secondary)',
@@ -339,7 +339,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                 {!bodyDisabled && (
                   <p
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '12px',
                       color: 'var(--color-text-tertiary)',
                       margin: '4px 0 0 0',
@@ -355,7 +355,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                 <label
                   style={{
                     display: 'block',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '12px',
                     fontWeight: 600,
                     color: 'var(--color-text-tertiary)',
@@ -372,7 +372,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                   onChange={(e) => setCtaText(e.target.value)}
                   style={{
                     width: '100%',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     color: 'var(--color-text-primary)',
                     background: 'var(--color-bg-secondary)',
@@ -393,7 +393,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                 style={{
                   background: 'none',
                   border: 'none',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '13px',
                   fontWeight: 500,
                   color: 'var(--color-accent)',
@@ -425,7 +425,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                         textAlign: 'center',
                       }}
                     >
-                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: '13px', color: 'var(--color-text-tertiary)' }}>
+                      <p style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '13px', color: 'var(--color-text-tertiary)' }}>
                         Generando preview...
                       </p>
                     </div>
@@ -463,7 +463,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                   <button
                     onClick={() => setConfirmRevert(true)}
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '13px',
                       fontWeight: 500,
                       color: 'var(--color-text-tertiary)',
@@ -481,7 +481,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
                     <span
                       style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '13px',
                         color: 'var(--color-error)',
                       }}
@@ -492,7 +492,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                       onClick={handleRevert}
                       disabled={saving}
                       style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '13px',
                         fontWeight: 600,
                         color: '#fff',
@@ -509,7 +509,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                     <button
                       onClick={() => setConfirmRevert(false)}
                       style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '13px',
                         color: 'var(--color-text-tertiary)',
                         background: 'none',
@@ -529,7 +529,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                 <button
                   onClick={onClose}
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     fontWeight: 500,
                     color: 'var(--color-text-secondary)',
@@ -546,7 +546,7 @@ export default function EmailTemplateEditor({ emailKey, isOpen, onClose, onSave 
                   onClick={handleSave}
                   disabled={saving}
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     fontWeight: 600,
                     color: '#1E1310',

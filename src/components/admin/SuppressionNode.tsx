@@ -78,7 +78,7 @@ export default function SuppressionNode() {
           <span style={{ fontSize: '14px', color: 'var(--color-warning)' }}>◆</span>
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '12px',
               fontWeight: 600,
               textTransform: 'uppercase',
@@ -91,7 +91,7 @@ export default function SuppressionNode() {
         </div>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-secondary)',
             margin: 0,

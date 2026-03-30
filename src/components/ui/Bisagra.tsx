@@ -29,7 +29,7 @@ export default function Bisagra({
       {/* Score principal */}
       <p
         style={{
-          fontFamily: "var(--font-lora)",
+          fontFamily: "var(--font-host-grotesk)",
           fontSize: "var(--text-display)",
           lineHeight: "var(--lh-display)",
           color: "var(--color-text-primary)",
@@ -42,7 +42,7 @@ export default function Bisagra({
       {/* Benchmark */}
       <p
         style={{
-          fontFamily: "var(--font-inter)",
+          fontFamily: "var(--font-host-grotesk)",
           fontWeight: 600,
           fontSize: "var(--text-h3)",
           lineHeight: "var(--lh-h3)",
@@ -56,7 +56,7 @@ export default function Bisagra({
       {/* Brecha */}
       <p
         style={{
-          fontFamily: "var(--font-inter)",
+          fontFamily: "var(--font-host-grotesk)",
           fontSize: "var(--text-body)",
           color: "var(--color-accent)",
           fontWeight: 500,
@@ -70,7 +70,7 @@ export default function Bisagra({
       {socialAmplifier && (
         <p
           style={{
-            fontFamily: "var(--font-inter)",
+            fontFamily: "var(--font-host-grotesk)",
             fontSize: "var(--text-body-sm)",
             color: "var(--color-text-secondary)",
             borderTop: "1px solid rgba(30, 19, 16, 0.06)",

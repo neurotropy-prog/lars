@@ -93,7 +93,7 @@ function CompBadge({ current, previous, suffix }: { current: number; previous: n
   return (
     <span
       style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: '13px',
         fontWeight: 500,
         color: isPositive
@@ -142,7 +142,7 @@ export default function HubStatCards({ data, loading }: HubStatCardsProps) {
   }
 
   const overlineStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-inter)',
+    fontFamily: 'var(--font-host-grotesk)',
     fontSize: '12px',
     fontWeight: 500,
     textTransform: 'uppercase',
@@ -152,7 +152,7 @@ export default function HubStatCards({ data, loading }: HubStatCardsProps) {
   }
 
   const numberStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-lora)',
+    fontFamily: 'var(--font-host-grotesk)',
     fontSize: '36px',
     fontWeight: 700,
     color: 'var(--color-text-primary)',
@@ -204,7 +204,7 @@ export default function HubStatCards({ data, loading }: HubStatCardsProps) {
               <p style={{ ...numberStyle, fontSize: '28px' }}>{data.next_session.time}</p>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '13px',
                   color: 'var(--color-text-secondary)',
                   marginTop: 'var(--space-1)',
@@ -223,7 +223,7 @@ export default function HubStatCards({ data, loading }: HubStatCardsProps) {
             <>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body)',
                   color: 'var(--color-text-tertiary)',
                   marginBottom: 'var(--space-2)',
@@ -234,7 +234,7 @@ export default function HubStatCards({ data, loading }: HubStatCardsProps) {
               <Link
                 href="/admin/agenda"
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '13px',
                   fontWeight: 500,
                   color: 'var(--color-accent)',
@@ -267,7 +267,7 @@ export default function HubStatCards({ data, loading }: HubStatCardsProps) {
           <Link
             href="/admin/leads?filter=hot"
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               fontWeight: 500,
               color: 'var(--color-accent)',
@@ -279,7 +279,7 @@ export default function HubStatCards({ data, loading }: HubStatCardsProps) {
         ) : (
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               color: 'var(--color-text-tertiary)',
             }}
@@ -307,7 +307,7 @@ export default function HubStatCards({ data, loading }: HubStatCardsProps) {
         {data.conversion_7d_prev > 0 || data.conversion_7d > 0 ? (
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               fontWeight: 500,
               color:
@@ -330,7 +330,7 @@ export default function HubStatCards({ data, loading }: HubStatCardsProps) {
         ) : (
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               color: 'var(--color-text-tertiary)',
             }}

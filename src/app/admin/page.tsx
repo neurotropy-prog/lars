@@ -154,7 +154,7 @@ export default function AdminHub() {
       >
         <h1
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h2)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -165,7 +165,7 @@ export default function AdminHub() {
         </h1>
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-tertiary)',
             textTransform: 'capitalize',
@@ -188,7 +188,7 @@ export default function AdminHub() {
         >
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-error)',
               margin: 0,
@@ -200,7 +200,7 @@ export default function AdminHub() {
             onClick={fetchHub}
             style={{
               marginTop: 'var(--space-3)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               fontWeight: 500,
               color: 'var(--color-accent)',

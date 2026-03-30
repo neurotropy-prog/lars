@@ -2,7 +2,7 @@
 
 /**
  * Footer — Footer profesional oscuro con grid de columnas.
- * Background: --color-bg-dark (#1E130F).
+ * Background: --color-bg-dark (#264233).
  * Grid 3 columnas desktop, stack móvil.
  * Links placeholder (#) para dar presencia institucional.
  */
@@ -52,7 +52,7 @@ export default function Footer() {
       <div style={{ maxWidth: '960px', margin: '0 auto' }}>
         {/* Logo del Instituto */}
         <img
-          src="/img/logo-instituto-epigenetico.png"
+          src="/Logo-definitivo-IE.png"
           alt="Instituto Epigenético"
           style={{
             height: '22px',
@@ -70,7 +70,7 @@ export default function Footer() {
               {/* Heading de columna */}
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-overline)',
                   fontWeight: 500,
                   textTransform: 'uppercase',
@@ -90,10 +90,10 @@ export default function Footer() {
                     <a
                       href={link.href}
                       style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: 'var(--text-body-sm)',
                         lineHeight: 2.2,
-                        color: 'rgba(255, 251, 239, 0.85)',
+                        color: 'rgba(255, 255, 255, 0.7)',
                         textDecoration: 'none',
                         transition: 'opacity var(--transition-fast)',
                       }}
@@ -126,10 +126,10 @@ export default function Footer() {
         {/* Copyright */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             lineHeight: 'var(--lh-caption)',
-            color: 'rgba(255, 251, 239, 0.5)',
+            color: 'rgba(255, 255, 255, 0.5)',
             textAlign: 'center',
           }}
         >

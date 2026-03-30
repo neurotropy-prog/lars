@@ -124,7 +124,7 @@ export default function CopyManager() {
         marginBottom: 'var(--space-6)',
       }}>
         <h1 style={{
-          fontFamily: 'var(--font-lora)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h2)',
           fontWeight: 700,
           color: 'var(--color-text-primary)',
@@ -134,7 +134,7 @@ export default function CopyManager() {
         <button
           onClick={() => setShowHistory(!showHistory)}
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             fontWeight: 500,
             color: showHistory ? 'var(--color-accent)' : 'var(--color-text-tertiary)',
@@ -176,7 +176,7 @@ export default function CopyManager() {
               key={tab.key}
               onClick={() => { setActiveTab(tab.key); setSearchQuery(''); setActiveSubsection(undefined) }}
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 fontWeight: isActive ? 600 : 400,
                 color: isActive ? '#B45A32' : 'var(--color-text-secondary)',
@@ -216,7 +216,7 @@ export default function CopyManager() {
           flexShrink: 0,
         }}>
           <span style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-text-tertiary)',
           }}>
@@ -266,7 +266,7 @@ export default function CopyManager() {
           {!isMobile && (
             <div style={{ position: 'sticky', top: 24 }}>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 fontWeight: 600,
                 color: 'var(--color-text-tertiary)',
@@ -293,7 +293,7 @@ export default function CopyManager() {
             position: 'fixed',
             bottom: 80,
             right: 16,
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             fontWeight: 600,
             color: '#1E1310',
@@ -328,7 +328,7 @@ export default function CopyManager() {
             background: '#0B0F0E',
           }}>
             <span style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               fontWeight: 600,
               color: '#FFFBEF',
@@ -367,7 +367,7 @@ export default function CopyManager() {
 function TabBadge({ count }: { count: number }) {
   return (
     <span style={{
-      fontFamily: 'var(--font-inter)',
+      fontFamily: 'var(--font-host-grotesk)',
       fontSize: 'var(--text-caption)',
       fontWeight: 600,
       color: 'var(--color-text-inverse)',
@@ -388,7 +388,7 @@ function NoResults({ query }: { query: string }) {
       padding: 'var(--space-10)',
     }}>
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-body)',
         color: 'var(--color-text-tertiary)',
       }}>

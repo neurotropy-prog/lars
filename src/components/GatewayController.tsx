@@ -265,7 +265,7 @@ export default function GatewayController() {
           >
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-h3)',
                 fontWeight: 600,
                 color: 'var(--color-text-primary)',
@@ -276,7 +276,7 @@ export default function GatewayController() {
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-secondary)',
                 marginBottom: 'var(--space-6)',
@@ -294,7 +294,7 @@ export default function GatewayController() {
                   border: 'none',
                   background: 'var(--color-accent)',
                   color: 'var(--color-text-inverse)',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   fontWeight: 500,
                   cursor: 'pointer',
@@ -312,7 +312,7 @@ export default function GatewayController() {
                   border: 'var(--border-subtle)',
                   background: 'transparent',
                   color: 'var(--color-text-secondary)',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   cursor: 'pointer',
                   minHeight: '44px',

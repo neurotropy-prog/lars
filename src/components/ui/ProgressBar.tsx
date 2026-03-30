@@ -36,7 +36,7 @@ export default function ProgressBar({ value, label }: ProgressBarProps) {
       {label && (
         <p
           style={{
-            fontFamily: "var(--font-inter)",
+            fontFamily: "var(--font-host-grotesk)",
             fontSize: "var(--text-caption)",
             color: "var(--color-text-secondary)",
             textAlign: "right",

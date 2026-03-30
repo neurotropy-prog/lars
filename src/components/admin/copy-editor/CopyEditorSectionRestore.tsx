@@ -57,7 +57,7 @@ export function CopyEditorSectionRestore({
       {confirming ? (
         <>
           <span style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-text-secondary)',
           }}>
@@ -67,7 +67,7 @@ export function CopyEditorSectionRestore({
             onClick={handleRestore}
             disabled={restoring}
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               fontWeight: 600,
               color: 'var(--color-error)',
@@ -84,7 +84,7 @@ export function CopyEditorSectionRestore({
           <button
             onClick={() => setConfirming(false)}
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               background: 'none',
@@ -101,7 +101,7 @@ export function CopyEditorSectionRestore({
         <button
           onClick={handleRestore}
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: '#B45A32',
             background: 'none',

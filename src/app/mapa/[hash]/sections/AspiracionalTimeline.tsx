@@ -165,7 +165,7 @@ export default function AspiracionalTimeline({
       {/* Headline */}
       <h3
         style={{
-          fontFamily: 'var(--font-lora)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h3)',
           fontWeight: 700,
           color: 'var(--color-text-primary)',
@@ -178,7 +178,7 @@ export default function AspiracionalTimeline({
       </h3>
       <p
         style={{
-          fontFamily: 'var(--font-lora)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h3)',
           fontWeight: 700,
           color: 'var(--color-text-primary)',
@@ -256,7 +256,7 @@ export default function AspiracionalTimeline({
                   <span
                     style={{
                       display: 'inline-block',
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-caption)',
                       fontWeight: 600,
                       color: 'var(--color-text-inverse)',
@@ -276,7 +276,7 @@ export default function AspiracionalTimeline({
                 {isActive && (
                   <p
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-caption)',
                       fontWeight: 400,
                       color: 'var(--color-accent)',
@@ -291,7 +291,7 @@ export default function AspiracionalTimeline({
                 {/* Título de fase */}
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     fontWeight: 700,
                     color: isActive
@@ -307,7 +307,7 @@ export default function AspiracionalTimeline({
                 {/* Subtítulo */}
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     fontWeight: 400,
                     color: isActive
@@ -323,7 +323,7 @@ export default function AspiracionalTimeline({
                 {/* Descripción */}
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     fontWeight: 400,
                     color: 'var(--color-text-tertiary)',
@@ -343,7 +343,7 @@ export default function AspiracionalTimeline({
       {/* Nota de evolución del mapa */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
           color: 'var(--color-text-tertiary)',
           marginTop: 'var(--space-4)',
@@ -373,7 +373,7 @@ export default function AspiracionalTimeline({
         <div style={{ textAlign: 'center' }}>
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-text-primary)',
               lineHeight: 'var(--lh-body)',
@@ -384,7 +384,7 @@ export default function AspiracionalTimeline({
           </p>
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-text-secondary)',
               lineHeight: 'var(--lh-body)',
@@ -408,7 +408,7 @@ export default function AspiracionalTimeline({
           >
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body)',
                 color: 'var(--color-text-primary)',
                 lineHeight: 'var(--lh-body)',
@@ -423,7 +423,7 @@ export default function AspiracionalTimeline({
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-secondary)',
                 lineHeight: 'var(--lh-body)',
@@ -441,7 +441,7 @@ export default function AspiracionalTimeline({
             {/* Texto pre-CTA — voz de Javier, serif italic */}
             <p
               style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-h3)',
                 fontStyle: 'italic',
                 fontWeight: 400,
@@ -459,7 +459,7 @@ export default function AspiracionalTimeline({
             {/* Texto delta de alivio — 72 horas */}
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body)',
                 color: 'var(--color-text-primary)',
                 lineHeight: 'var(--lh-body)',
@@ -483,7 +483,7 @@ export default function AspiracionalTimeline({
                 border: 'none',
                 padding: 'var(--space-3) var(--space-5)',
                 borderRadius: '9999px',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 fontWeight: 600,
                 width: '100%',
@@ -520,7 +520,7 @@ export default function AspiracionalTimeline({
               >
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     color: 'var(--color-text-primary)',
                     marginBottom: 'var(--space-2)',
@@ -537,7 +537,7 @@ export default function AspiracionalTimeline({
                     border: 'var(--border-subtle)',
                     background: 'transparent',
                     color: 'var(--color-accent)',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     cursor: 'pointer',
                   }}
@@ -550,7 +550,7 @@ export default function AspiracionalTimeline({
             {/* Sub-copy: precio + garantía */}
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-text-tertiary)',
                 textAlign: 'center',
@@ -564,7 +564,7 @@ export default function AspiracionalTimeline({
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-text-tertiary)',
                 textAlign: 'center',
@@ -594,7 +594,7 @@ export default function AspiracionalTimeline({
                   border: 'none',
                   padding: 'var(--space-3) 0',
                   cursor: 'pointer',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   fontWeight: 500,
                   color: 'var(--color-text-secondary)',
@@ -651,7 +651,7 @@ export default function AspiracionalTimeline({
                     >
                       <p
                         style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: 'var(--text-body-sm)',
                           fontWeight: 600,
                           color: 'var(--color-text-primary)',
@@ -663,7 +663,7 @@ export default function AspiracionalTimeline({
                       </p>
                       <p
                         style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: 'var(--text-body-sm)',
                           fontWeight: 400,
                           color: 'var(--color-text-secondary)',

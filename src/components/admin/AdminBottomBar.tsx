@@ -117,7 +117,7 @@ export default function AdminBottomBar({ activePath, badges }: AdminBottomBarPro
             </span>
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '10px',
                 fontWeight: active ? 500 : 400,
                 lineHeight: 1,

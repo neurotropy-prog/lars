@@ -157,7 +157,7 @@ export default function AnalyticsDashboard() {
   if (!data) return (
     <p
       style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-body-sm)',
         color: 'var(--color-text-tertiary)',
         padding: 'var(--space-8)',
@@ -186,7 +186,7 @@ export default function AnalyticsDashboard() {
       }}>
         <div>
           <h1 style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h2)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -195,7 +195,7 @@ export default function AnalyticsDashboard() {
             Analytics
           </h1>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-tertiary)',
             marginTop: 'var(--space-1)',
@@ -215,7 +215,7 @@ export default function AnalyticsDashboard() {
                 border: period === p ? '1px solid var(--color-accent)' : 'var(--border-subtle)',
                 background: period === p ? 'var(--color-accent-subtle)' : 'transparent',
                 color: period === p ? 'var(--color-accent)' : 'var(--color-text-secondary)',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 fontWeight: 500,
                 cursor: 'pointer',
@@ -241,7 +241,7 @@ export default function AnalyticsDashboard() {
         {/* Score medio */}
         <Card>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-text-tertiary)',
             textTransform: 'uppercase',
@@ -252,7 +252,7 @@ export default function AnalyticsDashboard() {
           </p>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-2)' }}>
             <span style={{
-              fontFamily: 'var(--font-lora)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-h1)',
               fontWeight: 700,
               color: scoreColor(metrics.avg_score),
@@ -261,7 +261,7 @@ export default function AnalyticsDashboard() {
               <Counter key={`score-${counterKey}`} to={metrics.avg_score} duration={1000} autoStart />
             </span>
             <span style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-text-tertiary)',
             }}>
@@ -273,7 +273,7 @@ export default function AnalyticsDashboard() {
         {/* Sesiones agendadas */}
         <Card>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-text-tertiary)',
             textTransform: 'uppercase',
@@ -283,7 +283,7 @@ export default function AnalyticsDashboard() {
             Sesiones agendadas
           </p>
           <span style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h1)',
             fontWeight: 700,
             color: 'var(--color-accent)',
@@ -296,7 +296,7 @@ export default function AnalyticsDashboard() {
         {/* Tasa de retorno */}
         <Card>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-text-tertiary)',
             textTransform: 'uppercase',
@@ -306,7 +306,7 @@ export default function AnalyticsDashboard() {
             Vuelven al mapa
           </p>
           <span style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h1)',
             fontWeight: 700,
             color: metrics.return_rate > 30 ? 'var(--color-success)' : 'var(--color-warning)',
@@ -319,7 +319,7 @@ export default function AnalyticsDashboard() {
         {/* Dimensión peor */}
         <Card>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-text-tertiary)',
             textTransform: 'uppercase',
@@ -331,7 +331,7 @@ export default function AnalyticsDashboard() {
           {metrics.worst_dimension ? (
             <>
               <span style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-h1)',
                 fontWeight: 700,
                 color: scoreColor(metrics.worst_dimension.avg),
@@ -340,7 +340,7 @@ export default function AnalyticsDashboard() {
                 <Counter key={`worst-${counterKey}`} to={metrics.worst_dimension.avg} duration={800} autoStart />
               </span>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-text-secondary)',
                 marginTop: 'var(--space-2)',
@@ -384,7 +384,7 @@ export default function AnalyticsDashboard() {
       {/* ── Últimas Evaluaciones ── */}
       <Card style={{ padding: 'var(--space-6)', overflow: 'hidden' }}>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
@@ -396,7 +396,7 @@ export default function AnalyticsDashboard() {
 
         {recent.length === 0 ? (
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-tertiary)',
             textAlign: 'center',
@@ -409,7 +409,7 @@ export default function AnalyticsDashboard() {
             <table style={{
               width: '100%',
               borderCollapse: 'collapse',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
             }}>
               <thead>
@@ -442,7 +442,7 @@ export default function AnalyticsDashboard() {
                     </td>
                     <td style={{ padding: 'var(--space-3)' }}>
                       <span style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontWeight: 600,
                         color: scoreColor(r.score),
                       }}>

@@ -23,14 +23,14 @@ export default function MapaNotFound() {
       <div style={{ maxWidth: '400px', textAlign: 'center' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/img/logo-instituto-epigenetico.png"
+          src="/Logo-definitivo-IE.png"
           alt="Instituto Epigenético"
           width={156}
           height={28}
           style={{ display: 'block', margin: '0 auto var(--space-10)' }}
         />
         <h1 style={{
-          fontFamily: 'var(--font-lora)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h2)',
           lineHeight: 'var(--lh-h2)',
           letterSpacing: 'var(--ls-h2)',
@@ -41,7 +41,7 @@ export default function MapaNotFound() {
           No hemos podido cargar tu mapa
         </h1>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body)',
           lineHeight: 'var(--lh-body)',
           color: 'var(--color-text-secondary)',

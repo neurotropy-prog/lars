@@ -87,7 +87,7 @@ export default function AnalyticsAmplify({ data, loading }: Props) {
       {/* Header */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
           fontWeight: 500,
           textTransform: 'uppercase',
@@ -112,7 +112,7 @@ export default function AnalyticsAmplify({ data, loading }: Props) {
           <div key={m.label}>
             <p
               style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-h3)',
                 fontWeight: 700,
                 color: m.color,
@@ -124,7 +124,7 @@ export default function AnalyticsAmplify({ data, loading }: Props) {
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '12px',
                 color: 'var(--color-text-tertiary)',
               }}
@@ -139,7 +139,7 @@ export default function AnalyticsAmplify({ data, loading }: Props) {
       {data.conversions_from_amplify > 0 && (
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-success)',
             marginBottom: 'var(--space-2)',
@@ -152,7 +152,7 @@ export default function AnalyticsAmplify({ data, loading }: Props) {
       {/* Subtitle */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '12px',
           color: 'var(--color-text-tertiary)',
         }}

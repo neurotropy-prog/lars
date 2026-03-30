@@ -42,7 +42,7 @@ export default function AnalyticsTrends({ dailyCounts }: AnalyticsTrendsProps) {
     return (
       <Card style={{ marginBottom: 'var(--space-6)' }}>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
@@ -52,7 +52,7 @@ export default function AnalyticsTrends({ dailyCounts }: AnalyticsTrendsProps) {
           Tendencias
         </p>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-tertiary)',
           textAlign: 'center',
@@ -93,7 +93,7 @@ export default function AnalyticsTrends({ dailyCounts }: AnalyticsTrendsProps) {
   return (
     <Card style={{ marginBottom: 'var(--space-6)', padding: 'var(--space-6)' }}>
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-caption)',
         letterSpacing: '0.08em',
         textTransform: 'uppercase',
@@ -108,7 +108,7 @@ export default function AnalyticsTrends({ dailyCounts }: AnalyticsTrendsProps) {
         display: 'flex',
         gap: 'var(--space-5)',
         marginBottom: 'var(--space-3)',
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-caption)',
         color: 'var(--color-text-secondary)',
       }}>
@@ -263,7 +263,7 @@ export default function AnalyticsTrends({ dailyCounts }: AnalyticsTrendsProps) {
             color: 'var(--color-text-inverse)',
             padding: '6px 10px',
             borderRadius: 'var(--radius-md)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '11px',
             whiteSpace: 'nowrap',
             pointerEvents: 'none',

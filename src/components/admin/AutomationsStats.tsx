@@ -93,7 +93,7 @@ export default function AutomationsStats({ data, loading }: AutomationsStatsProp
   }
 
   const overlineStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-inter)',
+    fontFamily: 'var(--font-host-grotesk)',
     fontSize: '12px',
     fontWeight: 500,
     textTransform: 'uppercase',
@@ -103,7 +103,7 @@ export default function AutomationsStats({ data, loading }: AutomationsStatsProp
   }
 
   const numberStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-lora)',
+    fontFamily: 'var(--font-host-grotesk)',
     fontSize: '36px',
     fontWeight: 700,
     color: 'var(--color-text-primary)',
@@ -128,7 +128,7 @@ export default function AutomationsStats({ data, loading }: AutomationsStatsProp
         </div>
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             color: 'var(--color-text-tertiary)',
           }}
@@ -145,7 +145,7 @@ export default function AutomationsStats({ data, loading }: AutomationsStatsProp
         </div>
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             color: 'var(--color-text-tertiary)',
           }}
@@ -162,7 +162,7 @@ export default function AutomationsStats({ data, loading }: AutomationsStatsProp
         </div>
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             color: 'var(--color-text-tertiary)',
           }}

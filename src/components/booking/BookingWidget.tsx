@@ -114,7 +114,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
     return (
       <div style={{ padding: 'var(--space-5)', textAlign: 'center' }}>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-tertiary)',
         }}>
@@ -130,7 +130,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
     return (
       <div style={{ padding: 'var(--space-5)', textAlign: 'center' }}>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-secondary)',
           lineHeight: 'var(--lh-body-sm)',
@@ -154,7 +154,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
           marginBottom: 'var(--space-4)',
         }}>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-error)',
             margin: 0,
@@ -167,7 +167,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
       {/* ─── Paso 1: Selector de día ──────────────────────────────────────── */}
       <div style={{ marginBottom: 'var(--space-5)' }}>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-overline)',
           letterSpacing: 'var(--ls-overline)',
           color: 'var(--color-accent)',
@@ -221,7 +221,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
                 }}
               >
                 <span style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-caption)',
                   letterSpacing: '0.04em',
                   textTransform: 'uppercase',
@@ -230,7 +230,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
                   {weekday}
                 </span>
                 <span style={{
-                  fontFamily: 'var(--font-lora)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-h3)',
                   fontWeight: 600,
                   lineHeight: 1.1,
@@ -239,7 +239,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
                   {dayNum}
                 </span>
                 <span style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '10px',
                   color: isSelected ? 'var(--color-accent-muted)' : 'var(--color-text-tertiary)',
                 }}>
@@ -255,7 +255,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
       {selectedDayData && !selectedSlot && (
         <div style={{ animation: 'fadeInUp 0.3s var(--ease-out-expo) both' }}>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-overline)',
             letterSpacing: 'var(--ls-overline)',
             color: 'var(--color-accent)',
@@ -283,7 +283,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
                   border: 'var(--border-subtle)',
                   backgroundColor: 'var(--color-bg-tertiary)',
                   color: 'var(--color-text-primary)',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   fontWeight: 600,
                   cursor: 'pointer',
@@ -298,7 +298,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
 
           {userTz !== 'Europe/Madrid' && (
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               marginTop: 'var(--space-2)',
@@ -319,7 +319,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
           }}
         >
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-overline)',
             letterSpacing: 'var(--ls-overline)',
             color: 'var(--color-accent)',
@@ -330,7 +330,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
           </p>
 
           <p style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             fontWeight: 600,
             color: 'var(--color-text-primary)',
@@ -341,7 +341,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
           </p>
 
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             color: 'var(--color-text-primary)',
             marginBottom: 'var(--space-1)',
@@ -350,7 +350,7 @@ export default function BookingWidget({ mapHash, onBooked }: Props) {
           </p>
 
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-secondary)',
             marginBottom: 'var(--space-5)',

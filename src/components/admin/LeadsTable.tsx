@@ -226,7 +226,7 @@ export default function LeadsTable({
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
           <h1
             style={{
-              fontFamily: 'var(--font-lora)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-h2)',
               fontWeight: 700,
               color: 'var(--color-text-primary)',
@@ -238,7 +238,7 @@ export default function LeadsTable({
           {!loading && (
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-tertiary)',
               }}
@@ -275,7 +275,7 @@ export default function LeadsTable({
                 border: isActive ? '1px solid var(--color-accent)' : 'var(--border-medium)',
                 background: isActive ? 'rgba(180, 90, 50, 0.08)' : 'transparent',
                 color: isActive ? 'var(--color-accent)' : 'var(--color-text-secondary)',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '13px',
                 fontWeight: 500,
                 cursor: 'pointer',
@@ -298,7 +298,7 @@ export default function LeadsTable({
             border: 'var(--border-medium)',
             background: 'var(--color-bg-tertiary)',
             color: 'var(--color-text-secondary)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             cursor: 'pointer',
             marginLeft: 'auto',
@@ -321,7 +321,7 @@ export default function LeadsTable({
               border: showHeatLegend ? '1px solid var(--color-accent)' : 'var(--border-medium)',
               background: showHeatLegend ? 'rgba(180, 90, 50, 0.08)' : 'transparent',
               color: showHeatLegend ? 'var(--color-accent)' : 'var(--color-text-tertiary)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               fontWeight: 600,
               cursor: 'pointer',
@@ -355,7 +355,7 @@ export default function LeadsTable({
                   border: 'var(--border-subtle)',
                   borderRadius: 'var(--radius-md)',
                   boxShadow: '0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08)',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '12px',
                   lineHeight: 1.65,
                   color: 'var(--color-text-secondary)',
@@ -460,7 +460,7 @@ export default function LeadsTable({
             borderRadius: 'var(--radius-md)',
             border: 'var(--border-interactive)',
             background: 'var(--color-bg-tertiary)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '14px',
             color: 'var(--color-text-primary)',
             outline: 'none',
@@ -525,7 +525,7 @@ export default function LeadsTable({
             /* True empty — no leads at all in this period */
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-tertiary)',
                 padding: 'var(--space-8)',
@@ -543,7 +543,7 @@ export default function LeadsTable({
             <>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body)',
                   color: 'var(--color-text-secondary)',
                   margin: '0 0 var(--space-2)',
@@ -553,7 +553,7 @@ export default function LeadsTable({
               </p>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-tertiary)',
                   margin: 0,
@@ -571,7 +571,7 @@ export default function LeadsTable({
                     border: 'var(--border-medium)',
                     background: 'transparent',
                     color: 'var(--color-text-secondary)',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '13px',
                     fontWeight: 500,
                     cursor: 'pointer',
@@ -617,7 +617,7 @@ export default function LeadsTable({
                       borderRadius: 'var(--radius-pill)',
                       background: `${profileColor}12`,
                       color: profileColor,
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '11px',
                       fontWeight: 600,
                     }}
@@ -627,7 +627,7 @@ export default function LeadsTable({
                 </div>
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '14px',
                     fontWeight: 500,
                     color: 'var(--color-text-primary)',
@@ -640,16 +640,16 @@ export default function LeadsTable({
                   {lead.email ?? 'Sin email'}
                 </p>
                 <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                  <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: scoreColor(lead.scores?.global ?? 0) }}>
+                  <span style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '12px', color: scoreColor(lead.scores?.global ?? 0) }}>
                     Score: {lead.scores?.global ?? '—'}
                   </span>
-                  <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)' }}>
+                  <span style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '12px', color: 'var(--color-text-tertiary)' }}>
                     Día {lead.days_since}
                   </span>
-                  <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)' }}>
+                  <span style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '12px', color: 'var(--color-text-tertiary)' }}>
                     Mapa: {lead.funnel.map_visits}x
                   </span>
-                  <span style={{ fontFamily: 'var(--font-inter)', fontSize: '12px', color: 'var(--color-text-tertiary)' }}>
+                  <span style={{ fontFamily: 'var(--font-host-grotesk)', fontSize: '12px', color: 'var(--color-text-tertiary)' }}>
                     {funnelStatus(lead)}
                   </span>
                   {lead.is_referred && <AmplifyBadge />}
@@ -704,7 +704,7 @@ export default function LeadsTable({
                     onClick={col.sortable ? () => onSortChange(col.key === 'days' ? 'date' : col.key) : undefined}
                     style={{
                       padding: '12px 8px',
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '11px',
                       fontWeight: 600,
                       color: 'var(--color-text-tertiary)',
@@ -754,7 +754,7 @@ export default function LeadsTable({
                     <td
                       style={{
                         padding: '10px 8px',
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '14px',
                         fontWeight: 500,
                         color: 'var(--color-text-primary)',
@@ -769,7 +769,7 @@ export default function LeadsTable({
                     <td style={{ padding: '10px 8px' }}>
                       <span
                         style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: '14px',
                           fontWeight: 600,
                           color: scoreColor(globalScore),
@@ -786,7 +786,7 @@ export default function LeadsTable({
                           borderRadius: 'var(--radius-pill)',
                           background: `${profileColor}12`,
                           color: profileColor,
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: '11px',
                           fontWeight: 600,
                         }}
@@ -797,7 +797,7 @@ export default function LeadsTable({
                     <td
                       style={{
                         padding: '10px 8px',
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '13px',
                         color: 'var(--color-text-tertiary)',
                       }}
@@ -807,7 +807,7 @@ export default function LeadsTable({
                     <td
                       style={{
                         padding: '10px 8px',
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '13px',
                         color: 'var(--color-text-tertiary)',
                       }}
@@ -826,7 +826,7 @@ export default function LeadsTable({
                             borderRadius: 'var(--radius-pill)',
                             background: `${URGENCY_COLORS[lead.suggested_action.urgency] ?? 'var(--color-text-tertiary)'}12`,
                             color: URGENCY_COLORS[lead.suggested_action.urgency] ?? 'var(--color-text-tertiary)',
-                            fontFamily: 'var(--font-inter)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: '11px',
                             fontWeight: 600,
                             whiteSpace: 'nowrap',
@@ -842,7 +842,7 @@ export default function LeadsTable({
                     <td
                       style={{
                         padding: '10px 8px',
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '12px',
                         fontWeight: 500,
                         color: lead.funnel.converted_week1 ? 'var(--color-success)' : lead.funnel.unsubscribed ? 'var(--color-error)' : 'var(--color-text-tertiary)',
@@ -871,7 +871,7 @@ export default function LeadsTable({
         >
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               color: 'var(--color-text-tertiary)',
             }}
@@ -888,7 +888,7 @@ export default function LeadsTable({
                 border: 'var(--border-medium)',
                 background: 'transparent',
                 color: page <= 1 ? 'var(--color-text-tertiary)' : 'var(--color-text-secondary)',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '13px',
                 cursor: page <= 1 ? 'default' : 'pointer',
                 opacity: page <= 1 ? 0.5 : 1,
@@ -905,7 +905,7 @@ export default function LeadsTable({
                 border: 'var(--border-medium)',
                 background: 'transparent',
                 color: page >= totalPages ? 'var(--color-text-tertiary)' : 'var(--color-text-secondary)',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '13px',
                 cursor: page >= totalPages ? 'default' : 'pointer',
                 opacity: page >= totalPages ? 0.5 : 1,

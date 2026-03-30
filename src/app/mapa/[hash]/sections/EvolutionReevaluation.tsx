@@ -165,7 +165,7 @@ export default function EvolutionReevaluation({
           {/* Título */}
           <p
             style={{
-              fontFamily: 'var(--font-lora)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-h4)',
               fontWeight: 600,
               color: 'var(--color-text-primary)',
@@ -182,7 +182,7 @@ export default function EvolutionReevaluation({
           {lastReeval && (
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-text-tertiary)',
                 marginBottom: 'var(--space-2)',
@@ -194,7 +194,7 @@ export default function EvolutionReevaluation({
 
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               lineHeight: 'var(--lh-body)',
               color: 'var(--color-text-secondary)',
@@ -220,7 +220,7 @@ export default function EvolutionReevaluation({
                 >
                   <span
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       color: 'var(--color-text-primary)',
                     }}
@@ -229,7 +229,7 @@ export default function EvolutionReevaluation({
                   </span>
                   <span
                     style={{
-                      fontFamily: 'var(--font-lora)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       fontWeight: 600,
                       color: color,
@@ -268,7 +268,7 @@ export default function EvolutionReevaluation({
           {error && (
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-error)',
                 marginBottom: 'var(--space-3)',
@@ -319,7 +319,7 @@ function ComparisonView({
       {/* Headline */}
       <p
         style={{
-          fontFamily: 'var(--font-lora)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h3)',
           fontWeight: 700,
           color:
@@ -338,7 +338,7 @@ function ComparisonView({
       {/* Body */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           lineHeight: 'var(--lh-body)',
           color: 'var(--color-text-secondary)',
@@ -368,7 +368,7 @@ function ComparisonView({
           >
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-primary)',
               }}
@@ -384,7 +384,7 @@ function ComparisonView({
             >
               <span
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-caption)',
                   color: 'var(--color-text-tertiary)',
                 }}
@@ -393,7 +393,7 @@ function ComparisonView({
               </span>
               <span
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-caption)',
                   color: 'var(--color-text-tertiary)',
                 }}
@@ -402,7 +402,7 @@ function ComparisonView({
               </span>
               <span
                 style={{
-                  fontFamily: 'var(--font-lora)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   fontWeight: 600,
                   color: delta.color,
@@ -412,7 +412,7 @@ function ComparisonView({
               </span>
               <span
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-caption)',
                   color: delta.color,
                 }}
@@ -429,7 +429,7 @@ function ComparisonView({
         <div style={{ marginTop: 'var(--space-4)' }}>
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
             }}

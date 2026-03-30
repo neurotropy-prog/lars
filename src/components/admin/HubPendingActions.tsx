@@ -84,7 +84,7 @@ export default function HubPendingActions({ actions, loading }: HubPendingAction
       >
         <h2
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -105,7 +105,7 @@ export default function HubPendingActions({ actions, loading }: HubPendingAction
               borderRadius: 'var(--radius-pill)',
               background: 'var(--color-accent)',
               color: '#fff',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '11px',
               fontWeight: 700,
               padding: '0 6px',
@@ -145,7 +145,7 @@ export default function HubPendingActions({ actions, loading }: HubPendingAction
         >
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-text-tertiary)',
               margin: 0,
@@ -215,7 +215,7 @@ export default function HubPendingActions({ actions, loading }: HubPendingAction
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
                       <span
                         style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: '14px',
                           fontWeight: 500,
                           color: 'var(--color-text-primary)',
@@ -232,7 +232,7 @@ export default function HubPendingActions({ actions, loading }: HubPendingAction
                           borderRadius: 'var(--radius-pill)',
                           background: `${action.profileColor}14`,
                           color: action.profileColor,
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: '10px',
                           fontWeight: 600,
                           flexShrink: 0,
@@ -243,7 +243,7 @@ export default function HubPendingActions({ actions, loading }: HubPendingAction
                     </div>
                     <p
                       style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '12px',
                         color: 'var(--color-text-tertiary)',
                         margin: 0,
@@ -273,7 +273,7 @@ export default function HubPendingActions({ actions, loading }: HubPendingAction
                           borderRadius: 'var(--radius-pill)',
                           background: 'rgba(61, 154, 95, 0.08)',
                           color: 'var(--color-success)',
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: '11px',
                           fontWeight: 600,
                           whiteSpace: 'nowrap',
@@ -289,7 +289,7 @@ export default function HubPendingActions({ actions, loading }: HubPendingAction
                             borderRadius: 'var(--radius-pill)',
                             background: urgency.bg,
                             color: urgency.color,
-                            fontFamily: 'var(--font-inter)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: '11px',
                             fontWeight: 600,
                             whiteSpace: 'nowrap',
@@ -299,7 +299,7 @@ export default function HubPendingActions({ actions, loading }: HubPendingAction
                         </span>
                         <span
                           style={{
-                            fontFamily: 'var(--font-inter)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: '10px',
                             color: urgency.color,
                             fontWeight: 500,

@@ -71,7 +71,7 @@ export default function SocialProofSection() {
         {/* Headline */}
         <h2
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h2)',
             lineHeight: 1.2,
             letterSpacing: '-0.01em',
@@ -117,7 +117,7 @@ export default function SocialProofSection() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '1.25rem',
                   fontWeight: 500,
                   color: 'var(--color-text-primary)',
@@ -130,7 +130,7 @@ export default function SocialProofSection() {
               {/* Cita */}
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body)',
                   lineHeight: 'var(--lh-body)',
                   color: 'var(--color-text-primary)',
@@ -149,7 +149,7 @@ export default function SocialProofSection() {
                   color: 'var(--color-text-inverse)',
                   borderRadius: 'var(--radius-pill)',
                   padding: '6px 16px',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-caption)',
                   fontWeight: 500,
                 }}

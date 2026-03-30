@@ -16,7 +16,7 @@ export default function AmplifyBadge() {
         borderRadius: 'var(--radius-pill)',
         background: 'rgba(74, 109, 165, 0.1)',
         color: '#4A6FA5',
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: '10px',
         fontWeight: 600,
         textTransform: 'uppercase',

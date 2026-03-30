@@ -97,7 +97,7 @@ function CopyEditorFieldInner({
         flexWrap: 'wrap',
       }}>
         <label style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           fontWeight: 500,
           color: 'var(--color-text-primary)',
@@ -121,7 +121,7 @@ function CopyEditorFieldInner({
               background: 'rgba(30, 19, 16, 0.06)',
               color: 'var(--color-text-tertiary)',
               fontSize: '11px',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontWeight: 600,
               cursor: 'help',
               flexShrink: 0,
@@ -134,7 +134,7 @@ function CopyEditorFieldInner({
         {/* Editado badge */}
         {isCustomized && (
           <span style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '10px',
             fontWeight: 600,
             color: '#B45A32',
@@ -183,7 +183,7 @@ function CopyEditorFieldInner({
             onClick={handleRestore}
             onBlur={() => setConfirmRestore(false)}
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: confirmRestore ? 'var(--color-error)' : '#B45A32',
               background: 'none',
@@ -204,7 +204,7 @@ function CopyEditorFieldInner({
           <button
             onClick={() => setShowOriginal(!showOriginal)}
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               background: 'none',
@@ -217,7 +217,7 @@ function CopyEditorFieldInner({
           </button>
           {showOriginal && (
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               margin: '4px 0 0 0',
@@ -251,7 +251,7 @@ function SaveIndicator({ status }: { status: SaveStatus }) {
 
   return (
     <span style={{
-      fontFamily: 'var(--font-inter)',
+      fontFamily: 'var(--font-host-grotesk)',
       fontSize: 'var(--text-caption)',
       color: config.color,
       transition: 'opacity 150ms ease',
@@ -265,7 +265,7 @@ function SaveIndicator({ status }: { status: SaveStatus }) {
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 'var(--text-body-sm)',
   color: 'var(--color-text-primary)',
   background: 'var(--color-bg-secondary)',

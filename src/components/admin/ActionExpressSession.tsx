@@ -22,7 +22,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
       {/* Header */}
       <div>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '15px',
           fontWeight: 600,
           color: 'var(--color-text-primary)',
@@ -31,7 +31,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
           📞 Sesión express para {lead.email ?? 'este lead'}
         </p>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '13px',
           color: 'var(--color-text-tertiary)',
           margin: 0,
@@ -47,7 +47,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
         padding: 'var(--space-5)',
       }}>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '13px',
           color: 'var(--color-text-secondary)',
           margin: 0,
@@ -67,7 +67,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
           borderLeft: `3px solid ${profile.color}`,
         }}>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '12px',
             fontWeight: 600,
             color: 'var(--color-text-secondary)',
@@ -76,7 +76,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
             💡 En la sesión con {profile.shortLabel}:
           </p>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '12px',
             color: 'var(--color-text-tertiary)',
             margin: 0,
@@ -90,7 +90,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
       {/* Optional message */}
       <div>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '12px',
           fontWeight: 600,
           color: 'var(--color-text-secondary)',
@@ -105,7 +105,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
           placeholder="Mensaje que aparecerá en su mapa y email..."
           style={{
             width: '100%',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             lineHeight: 1.6,
             color: 'var(--color-text-primary)',
@@ -124,7 +124,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
         display: 'flex',
         alignItems: 'center',
         gap: 8,
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: '13px',
         color: 'var(--color-text-secondary)',
         cursor: 'pointer',
@@ -149,7 +149,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
             border: 'var(--border-subtle)',
             background: 'transparent',
             color: 'var(--color-text-secondary)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             cursor: submitting ? 'not-allowed' : 'pointer',
           }}
@@ -165,7 +165,7 @@ export default function ActionExpressSession({ lead, defaultMessage, onSubmit, o
             border: 'none',
             background: submitting ? 'var(--color-bg-tertiary)' : 'var(--color-accent)',
             color: submitting ? 'var(--color-text-tertiary)' : 'var(--color-text-inverse)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             fontWeight: 500,
             cursor: submitting ? 'not-allowed' : 'pointer',

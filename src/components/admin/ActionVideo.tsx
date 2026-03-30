@@ -66,7 +66,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
       {/* Header */}
       <div>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '15px',
           fontWeight: 600,
           color: 'var(--color-text-primary)',
@@ -75,7 +75,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
           🎬 Video para {lead.email ?? 'este lead'}
         </p>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '13px',
           color: 'var(--color-text-tertiary)',
           margin: 0,
@@ -93,7 +93,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
           borderLeft: `3px solid ${profile.color}`,
         }}>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '12px',
             fontWeight: 600,
             color: 'var(--color-text-secondary)',
@@ -102,7 +102,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
             💡 Guía para {profile.shortLabel}:
           </p>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '12px',
             color: 'var(--color-text-tertiary)',
             margin: 0,
@@ -136,7 +136,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
         {file ? (
           <div>
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '14px',
               fontWeight: 500,
               color: 'var(--color-text-primary)',
@@ -145,7 +145,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
               📹 {file.name}
             </p>
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '12px',
               color: 'var(--color-text-tertiary)',
               margin: 0,
@@ -156,7 +156,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
         ) : (
           <div>
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '14px',
               color: 'var(--color-text-secondary)',
               margin: '0 0 4px',
@@ -164,7 +164,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
               📤 Arrastra o haz clic para subir video
             </p>
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '12px',
               color: 'var(--color-text-tertiary)',
               margin: 0,
@@ -188,7 +188,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
       {/* Error */}
       {error && (
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '13px',
           color: 'var(--color-error)',
           margin: 0,
@@ -200,7 +200,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
       {/* Uploading indicator */}
       {uploading && (
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '13px',
           color: 'var(--color-accent)',
           margin: 0,
@@ -214,7 +214,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
         display: 'flex',
         alignItems: 'center',
         gap: 8,
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: '13px',
         color: 'var(--color-text-secondary)',
         cursor: 'pointer',
@@ -239,7 +239,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
             border: 'var(--border-subtle)',
             background: 'transparent',
             color: 'var(--color-text-secondary)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             cursor: busy ? 'not-allowed' : 'pointer',
           }}
@@ -255,7 +255,7 @@ export default function ActionVideo({ lead, onSubmit, onCancel, submitting }: Pr
             border: 'none',
             background: file && !busy ? 'var(--color-accent)' : 'var(--color-bg-tertiary)',
             color: file && !busy ? 'var(--color-text-inverse)' : 'var(--color-text-tertiary)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             fontWeight: 500,
             cursor: file && !busy ? 'pointer' : 'not-allowed',

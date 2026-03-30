@@ -46,7 +46,7 @@ export default function EvolutionBookExcerpt({
       {/* Referencia */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
           color: 'var(--color-text-tertiary)',
           marginBottom: 'var(--space-2)',
@@ -59,7 +59,7 @@ export default function EvolutionBookExcerpt({
       {/* Título del capítulo */}
       <h4
         style={{
-          fontFamily: 'var(--font-lora)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h4)',
           fontWeight: 600,
           color: 'var(--color-text-primary)',
@@ -73,7 +73,7 @@ export default function EvolutionBookExcerpt({
       {/* Contexto */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           lineHeight: 'var(--lh-body)',
           color: 'var(--color-text-secondary)',
@@ -95,7 +95,7 @@ export default function EvolutionBookExcerpt({
           background: 'transparent',
           border: 'none',
           borderTop: 'var(--border-subtle)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-accent)',
           cursor: 'pointer',
@@ -126,7 +126,7 @@ export default function EvolutionBookExcerpt({
         >
           <div
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               lineHeight: '1.7',
               color: 'var(--color-text-secondary)',
@@ -144,7 +144,7 @@ export default function EvolutionBookExcerpt({
               style={{
                 display: 'inline-block',
                 marginTop: 'var(--space-4)',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-accent)',
                 textDecoration: 'underline',

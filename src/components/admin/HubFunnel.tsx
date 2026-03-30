@@ -89,7 +89,7 @@ export default function HubFunnel({ data, loading }: HubFunnelProps) {
       >
         <h2
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -150,7 +150,7 @@ export default function HubFunnel({ data, loading }: HubFunnelProps) {
                 {/* Label */}
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     color: 'var(--color-text-secondary)',
                     width: '110px',
@@ -176,7 +176,7 @@ export default function HubFunnel({ data, loading }: HubFunnelProps) {
                 {/* Value */}
                 <span
                   style={{
-                    fontFamily: 'var(--font-lora)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body)',
                     fontWeight: 700,
                     color: 'var(--color-text-primary)',
@@ -187,7 +187,7 @@ export default function HubFunnel({ data, loading }: HubFunnelProps) {
                   {value}
                   <span
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '12px',
                       fontWeight: 400,
                       color: 'var(--color-text-tertiary)',

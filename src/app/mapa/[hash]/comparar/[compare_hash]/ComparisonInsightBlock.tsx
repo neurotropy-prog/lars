@@ -45,7 +45,7 @@ export default function ComparisonInsightBlock({
       >
         <p
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -57,7 +57,7 @@ export default function ComparisonInsightBlock({
         </p>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             color: 'var(--color-text-secondary)',
             lineHeight: 'var(--lh-body)',
@@ -76,7 +76,7 @@ export default function ComparisonInsightBlock({
       >
         <p
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h3)',
             fontWeight: 400,
             fontStyle: 'italic',
@@ -92,7 +92,7 @@ export default function ComparisonInsightBlock({
         </p>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             color: 'var(--color-text-secondary)',
             lineHeight: 'var(--lh-body)',
@@ -113,7 +113,7 @@ export default function ComparisonInsightBlock({
             borderRadius: 'var(--radius-pill)',
             background: 'var(--color-cta)',
             color: 'var(--color-text-primary)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             fontWeight: 600,
             textDecoration: 'none',
@@ -127,7 +127,7 @@ export default function ComparisonInsightBlock({
         <p
           style={{
             marginTop: 'var(--space-4)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-text-tertiary)',
           }}

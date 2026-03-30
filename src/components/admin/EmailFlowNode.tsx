@@ -130,7 +130,7 @@ export default function EmailFlowNode({
         >
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '11px',
               fontWeight: 600,
               color: 'var(--color-accent)',
@@ -144,7 +144,7 @@ export default function EmailFlowNode({
           </span>
           <span
             style={{
-              fontFamily: 'var(--font-lora)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body)',
               fontWeight: 700,
               color: 'var(--color-text-primary)',
@@ -155,7 +155,7 @@ export default function EmailFlowNode({
           {isCustomized && (
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '10px',
                 fontWeight: 600,
                 color: 'var(--color-success)',
@@ -178,7 +178,7 @@ export default function EmailFlowNode({
                 marginLeft: 'auto',
                 background: 'none',
                 border: 'none',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '12px',
                 fontWeight: 500,
                 color: 'var(--color-text-tertiary)',
@@ -204,7 +204,7 @@ export default function EmailFlowNode({
         {/* Row 2: Subject */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-secondary)',
             margin: '0 0 var(--space-1) 0',
@@ -216,7 +216,7 @@ export default function EmailFlowNode({
         {/* Row 3: Trigger */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             color: 'var(--color-text-tertiary)',
             margin: '0 0 var(--space-3) 0',
@@ -238,7 +238,7 @@ export default function EmailFlowNode({
           >
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '13px',
                 color: 'var(--color-text-secondary)',
               }}
@@ -248,7 +248,7 @@ export default function EmailFlowNode({
             <span style={{ color: 'var(--color-text-tertiary)', fontSize: '13px' }}>·</span>
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '13px',
                 color: 'var(--color-text-secondary)',
               }}
@@ -257,7 +257,7 @@ export default function EmailFlowNode({
             </span>
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '11px',
                 fontWeight: 600,
                 color: rateColor,
@@ -282,7 +282,7 @@ export default function EmailFlowNode({
           >
             <span
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '13px',
                 color: 'var(--color-text-tertiary)',
                 fontStyle: 'italic',
@@ -301,7 +301,7 @@ export default function EmailFlowNode({
             border: 'none',
             padding: 0,
             cursor: 'pointer',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             fontWeight: 500,
             color: 'var(--color-accent)',
@@ -337,7 +337,7 @@ export default function EmailFlowNode({
           >
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-secondary)',
                 margin: '0 0 var(--space-3) 0',
@@ -356,7 +356,7 @@ export default function EmailFlowNode({
             >
               <span
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '12px',
                   fontWeight: 500,
                   color: 'var(--color-text-tertiary)',
@@ -368,7 +368,7 @@ export default function EmailFlowNode({
               </span>
               <span
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '13px',
                   fontWeight: 600,
                   color: 'var(--color-accent)',
@@ -383,7 +383,7 @@ export default function EmailFlowNode({
             {conditions && (
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '12px',
                   color: 'var(--color-warning)',
                   margin: 0,

@@ -67,7 +67,7 @@ function CopyEditorSubsectionInner({
       >
         {/* Chevron */}
         <span style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-tertiary)',
           transition: 'transform 200ms ease',
@@ -79,7 +79,7 @@ function CopyEditorSubsectionInner({
 
         {/* Subsection name */}
         <span style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body)',
           fontWeight: 600,
           color: 'var(--color-text-primary)',
@@ -90,7 +90,7 @@ function CopyEditorSubsectionInner({
 
         {/* Stats */}
         <span style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
           color: customizedCount > 0 ? '#B45A32' : 'var(--color-text-tertiary)',
           fontWeight: customizedCount > 0 ? 500 : 400,

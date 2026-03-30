@@ -68,7 +68,7 @@ export default function MicroEspejo({
       >
         <p
           style={{
-            fontFamily: 'var(--font-cormorant)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: intensified ? '1.72rem' : 'var(--text-h3)',
             lineHeight: 'var(--lh-h3)',
             letterSpacing: 'var(--ls-h3)',
@@ -86,7 +86,7 @@ export default function MicroEspejo({
         <p
           className="mirror-stagger-data"
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             lineHeight: 'var(--lh-body-sm)',
             color: 'var(--color-text-secondary)',

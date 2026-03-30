@@ -439,7 +439,7 @@ export default function AgendaPage() {
             {/* Header */}
             <div style={{ marginBottom: 'var(--space-8)' }}>
               <h1 style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-h1)',
                 fontWeight: 700,
                 lineHeight: 'var(--lh-h1)',
@@ -450,7 +450,7 @@ export default function AgendaPage() {
                 Agenda
               </h1>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-secondary)',
                 lineHeight: 'var(--lh-body-sm)',
@@ -468,7 +468,7 @@ export default function AgendaPage() {
                 marginBottom: 'var(--space-5)',
               }}>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-error)',
                   margin: 0,
@@ -485,7 +485,7 @@ export default function AgendaPage() {
                 marginBottom: 'var(--space-5)',
               }}>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-success)',
                   margin: 0,
@@ -498,7 +498,7 @@ export default function AgendaPage() {
             {/* ═══ Sección 1: HOY ═══ */}
             <section style={{ marginBottom: 'var(--space-10)' }}>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-overline)',
                 letterSpacing: 'var(--ls-overline)',
                 color: 'var(--color-accent)',
@@ -508,7 +508,7 @@ export default function AgendaPage() {
                 Hoy
               </p>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-tertiary)',
                 marginBottom: 'var(--space-4)',
@@ -539,7 +539,7 @@ export default function AgendaPage() {
                           flexWrap: 'wrap',
                         }}>
                           <span style={{
-                            fontFamily: 'var(--font-lora)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: 'var(--text-h3)',
                             fontWeight: 700,
                             color: 'var(--color-text-primary)',
@@ -554,7 +554,7 @@ export default function AgendaPage() {
                               borderRadius: 'var(--radius-pill)',
                               background: badge.color + '18',
                               color: badge.color,
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '11px',
                               fontWeight: 600,
                             }}>
@@ -564,7 +564,7 @@ export default function AgendaPage() {
 
                           {score !== null && (
                             <span style={{
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '11px',
                               fontWeight: 600,
                               color: scoreColor(score),
@@ -575,7 +575,7 @@ export default function AgendaPage() {
 
                           {days !== null && (
                             <span style={{
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '11px',
                               color: 'var(--color-text-tertiary)',
                             }}>
@@ -586,7 +586,7 @@ export default function AgendaPage() {
 
                         {/* Email */}
                         <p style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: 'var(--text-body-sm)',
                           color: 'var(--color-text-secondary)',
                           margin: 0,
@@ -598,7 +598,7 @@ export default function AgendaPage() {
                         {/* Profile insight */}
                         {insight && (
                           <p style={{
-                            fontFamily: 'var(--font-inter)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: 'var(--text-caption)',
                             color: 'var(--color-text-tertiary)',
                             fontStyle: 'italic',
@@ -629,7 +629,7 @@ export default function AgendaPage() {
                               backgroundColor: 'rgba(180,90,50,0.06)',
                               color: 'var(--color-accent)',
                               cursor: 'pointer',
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '12px',
                               fontWeight: 500,
                               textDecoration: 'none',
@@ -650,7 +650,7 @@ export default function AgendaPage() {
                                 backgroundColor: 'rgba(74,141,183,0.06)',
                                 color: 'var(--color-info)',
                                 cursor: 'pointer',
-                                fontFamily: 'var(--font-inter)',
+                                fontFamily: 'var(--font-host-grotesk)',
                                 fontSize: '12px',
                                 fontWeight: 500,
                                 textDecoration: 'none',
@@ -667,7 +667,7 @@ export default function AgendaPage() {
                 </div>
               ) : (
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-tertiary)',
                   padding: 'var(--space-4)',
@@ -683,7 +683,7 @@ export default function AgendaPage() {
             {/* ═══ Sección 2: Mini-calendario semanal ═══ */}
             <section style={{ marginBottom: 'var(--space-10)' }}>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-overline)',
                 letterSpacing: 'var(--ls-overline)',
                 color: 'var(--color-accent)',
@@ -730,7 +730,7 @@ export default function AgendaPage() {
                       }}
                     >
                       <span style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '10px',
                         fontWeight: 500,
                         color: day.isToday ? 'var(--color-accent)' : 'var(--color-text-tertiary)',
@@ -739,7 +739,7 @@ export default function AgendaPage() {
                         {day.dayName}
                       </span>
                       <span style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: 'var(--text-body-sm)',
                         fontWeight: day.isToday ? 700 : 500,
                         color: day.isToday ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
@@ -748,7 +748,7 @@ export default function AgendaPage() {
                       </span>
                       {hasSession && (
                         <span style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: '9px',
                           fontWeight: 600,
                           color: 'var(--color-accent)',
@@ -758,7 +758,7 @@ export default function AgendaPage() {
                       )}
                       {isBlocked && !hasSession && (
                         <span style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: '9px',
                           fontWeight: 600,
                           color: 'var(--color-error)',
@@ -776,7 +776,7 @@ export default function AgendaPage() {
             {/* ═══ Sección 3: Horario semanal ═══ */}
             <section style={{ marginBottom: 'var(--space-12)' }}>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-overline)',
                 letterSpacing: 'var(--ls-overline)',
                 color: 'var(--color-accent)',
@@ -787,7 +787,7 @@ export default function AgendaPage() {
               </p>
               <Separator style={{ marginTop: 0, marginBottom: 'var(--space-3)' }} />
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-tertiary)',
                 marginBottom: 'var(--space-5)',
@@ -801,7 +801,7 @@ export default function AgendaPage() {
                   <thead>
                     <tr>
                       <th style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '11px',
                         fontWeight: 500,
                         color: 'var(--color-text-tertiary)',
@@ -811,7 +811,7 @@ export default function AgendaPage() {
                       }} />
                       {DAYS_OF_WEEK.map((day) => (
                         <th key={day.value} style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: '11px',
                           fontWeight: 600,
                           color: 'var(--color-text-secondary)',
@@ -842,7 +842,7 @@ export default function AgendaPage() {
                                 <div style={{
                                   borderTop: '1px dashed rgba(30,19,16,0.08)',
                                   fontSize: '10px',
-                                  fontFamily: 'var(--font-inter)',
+                                  fontFamily: 'var(--font-host-grotesk)',
                                   color: 'var(--color-text-tertiary)',
                                   paddingTop: 'var(--space-1)',
                                   opacity: 0.6,
@@ -854,7 +854,7 @@ export default function AgendaPage() {
                           )}
                           <tr key={block.start}>
                             <td style={{
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '11px',
                               color: 'var(--color-text-tertiary)',
                               padding: '2px 4px',
@@ -882,7 +882,7 @@ export default function AgendaPage() {
                                         : 'rgba(30,19,16,0.03)',
                                       color: active ? 'var(--color-success)' : 'rgba(30,19,16,0.15)',
                                       cursor: loading ? 'wait' : 'pointer',
-                                      fontFamily: 'var(--font-inter)',
+                                      fontFamily: 'var(--font-host-grotesk)',
                                       fontSize: '10px',
                                       fontWeight: 600,
                                       transition: 'all var(--transition-base)',
@@ -907,7 +907,7 @@ export default function AgendaPage() {
                 )
                 return activeCount > 0 ? (
                   <p style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '12px',
                     color: 'var(--color-text-tertiary)',
                     marginTop: 'var(--space-3)',
@@ -922,7 +922,7 @@ export default function AgendaPage() {
             {/* ═══ Sección 4: Bloquear fechas ═══ */}
             <section style={{ marginBottom: 'var(--space-12)' }}>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-overline)',
                 letterSpacing: 'var(--ls-overline)',
                 color: 'var(--color-accent)',
@@ -933,7 +933,7 @@ export default function AgendaPage() {
               </p>
               <Separator style={{ marginTop: 0, marginBottom: 'var(--space-3)' }} />
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-tertiary)',
                 marginBottom: 'var(--space-4)',
@@ -954,7 +954,7 @@ export default function AgendaPage() {
                     border: 'var(--border-medium)',
                     backgroundColor: 'var(--color-bg-tertiary)',
                     color: 'var(--color-text-primary)',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     outline: 'none',
                     colorScheme: 'light',
@@ -984,7 +984,7 @@ export default function AgendaPage() {
                       onClick={() => setBlockMode(mode)}
                       style={{
                         padding: 'var(--space-2) var(--space-3)',
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '12px',
                         fontWeight: 500,
                         border: 'none',
@@ -1012,7 +1012,7 @@ export default function AgendaPage() {
                         border: 'var(--border-medium)',
                         backgroundColor: 'var(--color-bg-tertiary)',
                         color: 'var(--color-text-primary)',
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '12px',
                         outline: 'none',
                         colorScheme: 'light',
@@ -1030,7 +1030,7 @@ export default function AgendaPage() {
                         border: 'var(--border-medium)',
                         backgroundColor: 'var(--color-bg-tertiary)',
                         color: 'var(--color-text-primary)',
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: '12px',
                         outline: 'none',
                         colorScheme: 'light',
@@ -1055,7 +1055,7 @@ export default function AgendaPage() {
                       }}
                     >
                       <span style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: 'var(--text-body-sm)',
                         color: 'var(--color-error)',
                       }}>
@@ -1071,7 +1071,7 @@ export default function AgendaPage() {
                           border: 'none',
                           color: 'var(--color-text-tertiary)',
                           cursor: 'pointer',
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: 'var(--text-body)',
                           padding: '0 var(--space-1)',
                         }}
@@ -1083,7 +1083,7 @@ export default function AgendaPage() {
                 </div>
               ) : (
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-tertiary)',
                 }}>
@@ -1095,7 +1095,7 @@ export default function AgendaPage() {
             {/* ═══ Sección 5: Próximas sesiones (con perfil) ═══ */}
             <section id="upcoming-sessions" style={{ marginBottom: 'var(--space-12)' }}>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-overline)',
                 letterSpacing: 'var(--ls-overline)',
                 color: 'var(--color-accent)',
@@ -1126,7 +1126,7 @@ export default function AgendaPage() {
                         }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
                             <span style={{
-                              fontFamily: 'var(--font-lora)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: 'var(--text-body)',
                               fontWeight: 600,
                               color: 'var(--color-text-primary)',
@@ -1140,7 +1140,7 @@ export default function AgendaPage() {
                                 borderRadius: 'var(--radius-pill)',
                                 background: badge.color + '18',
                                 color: badge.color,
-                                fontFamily: 'var(--font-inter)',
+                                fontFamily: 'var(--font-host-grotesk)',
                                 fontSize: '10px',
                                 fontWeight: 600,
                               }}>
@@ -1157,7 +1157,7 @@ export default function AgendaPage() {
                           alignItems: 'center',
                         }}>
                           <span style={{
-                            fontFamily: 'var(--font-inter)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: 'var(--text-body-sm)',
                             color: 'var(--color-text-secondary)',
                           }}>
@@ -1166,7 +1166,7 @@ export default function AgendaPage() {
                           <a
                             href={`/admin/leads?detail=${booking.map_hash}`}
                             style={{
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: 'var(--text-caption)',
                               color: 'var(--color-accent)',
                               textDecoration: 'none',
@@ -1179,7 +1179,7 @@ export default function AgendaPage() {
                         {/* Profile insight */}
                         {insight && (
                           <p style={{
-                            fontFamily: 'var(--font-inter)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: 'var(--text-caption)',
                             color: 'var(--color-text-tertiary)',
                             fontStyle: 'italic',
@@ -1199,7 +1199,7 @@ export default function AgendaPage() {
                             style={{
                               display: 'inline-block',
                               marginTop: 'var(--space-2)',
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: 'var(--text-caption)',
                               color: 'var(--color-info)',
                               textDecoration: 'none',
@@ -1228,7 +1228,7 @@ export default function AgendaPage() {
                                 backgroundColor: 'rgba(248,113,113,0.08)',
                                 color: '#C44040',
                                 cursor: 'pointer',
-                                fontFamily: 'var(--font-inter)',
+                                fontFamily: 'var(--font-host-grotesk)',
                                 fontSize: '12px',
                                 fontWeight: 500,
                                 transition: 'all var(--transition-base)',
@@ -1249,7 +1249,7 @@ export default function AgendaPage() {
                                   backgroundColor: 'rgba(61,154,95,0.08)',
                                   color: '#3D9A5F',
                                   cursor: 'pointer',
-                                  fontFamily: 'var(--font-inter)',
+                                  fontFamily: 'var(--font-host-grotesk)',
                                   fontSize: '12px',
                                   fontWeight: 500,
                                   transition: 'all var(--transition-base)',
@@ -1267,7 +1267,7 @@ export default function AgendaPage() {
                                   backgroundColor: 'rgba(212,160,23,0.08)',
                                   color: '#D4A017',
                                   cursor: 'pointer',
-                                  fontFamily: 'var(--font-inter)',
+                                  fontFamily: 'var(--font-host-grotesk)',
                                   fontSize: '12px',
                                   fontWeight: 500,
                                   transition: 'all var(--transition-base)',
@@ -1284,7 +1284,7 @@ export default function AgendaPage() {
                 </div>
               ) : (
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-tertiary)',
                   padding: 'var(--space-4)',
@@ -1300,7 +1300,7 @@ export default function AgendaPage() {
             {/* ═══ Sección 6: Historial de sesiones ═══ */}
             <section>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-overline)',
                 letterSpacing: 'var(--ls-overline)',
                 color: 'var(--color-accent)',
@@ -1335,7 +1335,7 @@ export default function AgendaPage() {
                         }}>
                           <div>
                             <span style={{
-                              fontFamily: 'var(--font-lora)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: 'var(--text-body-sm)',
                               fontWeight: 600,
                               color: 'var(--color-text-primary)',
@@ -1343,7 +1343,7 @@ export default function AgendaPage() {
                               {formatDateTimeSpanish(booking.slot_start)}
                             </span>
                             <span style={{
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: 'var(--text-caption)',
                               color: 'var(--color-text-secondary)',
                               marginLeft: 'var(--space-3)',
@@ -1353,7 +1353,7 @@ export default function AgendaPage() {
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
                             <span style={{
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '11px',
                               fontWeight: 600,
                               color: statusConfig.color,
@@ -1365,7 +1365,7 @@ export default function AgendaPage() {
                               target="_blank"
                               rel="noopener noreferrer"
                               style={{
-                                fontFamily: 'var(--font-inter)',
+                                fontFamily: 'var(--font-host-grotesk)',
                                 fontSize: 'var(--text-caption)',
                                 color: 'var(--color-accent)',
                                 textDecoration: 'none',
@@ -1381,7 +1381,7 @@ export default function AgendaPage() {
                 </div>
               ) : (
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-tertiary)',
                 }}>

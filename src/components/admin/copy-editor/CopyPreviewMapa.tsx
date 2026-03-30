@@ -105,7 +105,7 @@ export function CopyPreviewMapa({ localValues, activeSubsection }: CopyPreviewMa
             border: '1px solid rgba(74, 222, 128, 0.1)',
           }}>
             <span style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 9,
               fontWeight: 600,
               color: '#4ADE80',
@@ -149,7 +149,7 @@ export function CopyPreviewMapa({ localValues, activeSubsection }: CopyPreviewMa
 // ─── Styles ──────────────────────────────────────────────────────────────────
 
 const labelStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 9,
   fontWeight: 600,
   color: '#B45A32',
@@ -168,7 +168,7 @@ const titleStyle: React.CSSProperties = {
 }
 
 const bodyStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 11,
   color: 'rgba(255, 251, 239, 0.75)',
   margin: '4px 0 0',
@@ -178,7 +178,7 @@ const bodyStyle: React.CSSProperties = {
 const ctaStyle: React.CSSProperties = {
   display: 'inline-block',
   marginTop: 8,
-  fontFamily: 'var(--font-inter)',
+  fontFamily: 'var(--font-host-grotesk)',
   fontSize: 10,
   fontWeight: 600,
   color: '#1E1310',

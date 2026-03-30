@@ -115,7 +115,7 @@ export default function HubAmplifyCard({ data, loading }: Props) {
       <div>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '12px',
             fontWeight: 500,
             textTransform: 'uppercase',
@@ -128,7 +128,7 @@ export default function HubAmplifyCard({ data, loading }: Props) {
         </p>
         <p
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '36px',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -140,7 +140,7 @@ export default function HubAmplifyCard({ data, loading }: Props) {
         </p>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             color: 'var(--color-text-secondary)',
           }}
@@ -161,7 +161,7 @@ export default function HubAmplifyCard({ data, loading }: Props) {
       >
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             fontWeight: 600,
             color: kColor,
@@ -171,7 +171,7 @@ export default function HubAmplifyCard({ data, loading }: Props) {
         </span>
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '11px',
             color: 'var(--color-text-tertiary)',
           }}

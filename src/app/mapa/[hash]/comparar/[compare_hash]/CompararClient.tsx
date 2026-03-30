@@ -97,7 +97,7 @@ export default function CompararClient({
           display: 'inline-flex',
           alignItems: 'center',
           gap: 'var(--space-2)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-tertiary)',
           textDecoration: 'none',
@@ -118,7 +118,7 @@ export default function CompararClient({
       >
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             fontWeight: 500,
             textTransform: 'uppercase',
@@ -149,7 +149,7 @@ export default function CompararClient({
           >
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 fontWeight: 500,
                 color: 'var(--color-text-tertiary)',
@@ -162,7 +162,7 @@ export default function CompararClient({
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '40px',
                 fontWeight: 700,
                 color: myGlobalColor,
@@ -182,7 +182,7 @@ export default function CompararClient({
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-secondary)',
                 marginTop: 'var(--space-2)',
@@ -203,7 +203,7 @@ export default function CompararClient({
           >
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 fontWeight: 500,
                 color: 'var(--color-text-tertiary)',
@@ -216,7 +216,7 @@ export default function CompararClient({
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '40px',
                 fontWeight: 700,
                 color: theirGlobalColor,
@@ -236,7 +236,7 @@ export default function CompararClient({
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-secondary)',
                 marginTop: 'var(--space-2)',
@@ -292,7 +292,7 @@ export default function CompararClient({
       >
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-text-tertiary)',
           }}

@@ -761,7 +761,7 @@ export default function MapaClient({
             {/* Header */}
             <div className="mapa-fade-up" style={{ marginBottom: 'var(--space-10)' }}>
               <p style={{
-                fontFamily: 'var(--font-inter-tight)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-overline)',
                 letterSpacing: 'var(--ls-overline)',
                 textTransform: 'uppercase',
@@ -782,7 +782,7 @@ export default function MapaClient({
                 Tu Mapa de Regulación
               </h1>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 color: 'var(--color-text-tertiary)',
                 lineHeight: 'var(--lh-body-sm)',
@@ -808,7 +808,7 @@ export default function MapaClient({
                         {displayScore}
                       </span>
                       <span style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: 'var(--text-h3)',
                         color: 'var(--color-text-tertiary)',
                       }}>
@@ -816,7 +816,7 @@ export default function MapaClient({
                       </span>
                     </div>
                     <p style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       color: 'var(--color-text-secondary)',
                     }}>
@@ -829,7 +829,7 @@ export default function MapaClient({
                     borderRadius: 'var(--radius-pill)',
                     background: globalColor,
                     color: '#0a252c',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     fontWeight: 600,
                     whiteSpace: 'nowrap',
@@ -858,7 +858,7 @@ export default function MapaClient({
                       {originalScores.global} → {reevaluationScores.global}
                     </span>
                     <span style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       color: 'var(--color-success)',
                     }}>
@@ -869,7 +869,7 @@ export default function MapaClient({
 
                 {/* relativeTime */}
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-caption)',
                   color: 'var(--color-text-tertiary)',
                   marginTop: 'var(--space-3)',
@@ -995,7 +995,7 @@ export default function MapaClient({
             {showZona4 && (
               <div className="mapa-fade-up" style={{ marginTop: 'var(--space-8)' }}>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-secondary)',
                   marginBottom: 'var(--space-4)',
@@ -1023,7 +1023,7 @@ export default function MapaClient({
           }}>
             {lastVisitedAt && (
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-text-tertiary)',
                 marginBottom: 'var(--space-2)',
@@ -1033,7 +1033,7 @@ export default function MapaClient({
               </p>
             )}
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               lineHeight: 'var(--lh-body)',

@@ -68,7 +68,7 @@ function unsubscribeUrl(mapHash: string): string {
 
 function unsubscribeFooterHtml(mapHash: string): string {
   const url = unsubscribeUrl(mapHash)
-  return `<p style="font-size: 11px; color: #8A7E75; margin: 16px 0 0 0;"><a href="${url}" style="color: #8A7E75; text-decoration: underline;">Darme de baja</a></p>`
+  return `<p style="font-size: 11px; color: #878E92; margin: 16px 0 0 0;"><a href="${url}" style="color: #878E92; text-decoration: underline;">Darme de baja</a></p>`
 }
 
 function listUnsubscribeHeaders(mapHash: string): Record<string, string> {
@@ -138,47 +138,47 @@ export async function sendDia0Email({
 <body style="
   margin: 0;
   padding: 0;
-  background-color: #FFFBEF;
-  font-family: Lora, Inter, system-ui, sans-serif;
-  color: #1E1310;
+  background-color: #FFFFFF;
+  font-family: 'Host Grotesk', system-ui, sans-serif;
+  color: #212426;
 ">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <tr>
       <td>
 
         <!-- Header: logo -->
-        <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
+        <img src="${getBaseUrl()}/Logo-definitivo-IE.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
 
         <!-- Score global -->
         <p style="
           font-size: 13px;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: #B45A32;
+          color: #CD796C;
           margin: 0 0 8px 0;
         ">TU MAPA DE REGULACIÓN</p>
 
         <p style="
           font-size: 48px;
           font-weight: 600;
-          color: #1E1310;
+          color: #212426;
           margin: 0 0 4px 0;
           line-height: 1;
-        ">${globalScore}<span style="font-size: 24px; font-weight: 400; color: #4B413C;">/100</span></p>
+        ">${globalScore}<span style="font-size: 24px; font-weight: 400; color: #2D2D2D;">/100</span></p>
 
         <p style="
           font-size: 14px;
-          color: #8A7E75;
+          color: #878E92;
           margin: 0 0 40px 0;
         ">Score global de regulación</p>
 
         <!-- Separador -->
-        <div style="height: 1px; background: #E8E2D0; margin-bottom: 32px;"></div>
+        <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 32px;"></div>
 
         <!-- Dimensión más comprometida -->
         <p style="
           font-size: 13px;
-          color: #8A7E75;
+          color: #878E92;
           margin: 0 0 6px 0;
         ">Tu dimensión más comprometida</p>
 
@@ -195,17 +195,17 @@ export async function sendDia0Email({
           color: ${worstColor};
           margin: 0 0 32px 0;
           line-height: 1;
-        ">${worstScore}<span style="font-size: 16px; font-weight: 400; color: #4B413C;">/100</span></p>
+        ">${worstScore}<span style="font-size: 16px; font-weight: 400; color: #2D2D2D;">/100</span></p>
 
         <!-- Primer paso -->
         <p style="
           font-size: 14px;
-          color: #1E1310;
+          color: #212426;
           line-height: 1.6;
           margin: 0 0 40px 0;
           padding: 20px 24px;
-          background: #F9F1DE;
-          border-left: 3px solid #B45A32;
+          background: #EAF2EE;
+          border-left: 3px solid #CD796C;
           border-radius: 8px;
         ">${firstStep}</p>
 
@@ -213,12 +213,12 @@ export async function sendDia0Email({
         <table cellpadding="0" cellspacing="0" style="margin-bottom: 40px;">
           <tr>
             <td style="
-              background: #F5F564;
+              background: #264233;
               border-radius: 100px;
               padding: 16px 32px;
             ">
               <a href="${mapUrl}" style="
-                color: #1E1310;
+                color: #FFFFFF;
                 font-size: 15px;
                 font-weight: 500;
                 text-decoration: none;
@@ -230,12 +230,12 @@ export async function sendDia0Email({
         </table>
 
         <!-- Separador -->
-        <div style="height: 1px; background: #E8E2D0; margin-bottom: 32px;"></div>
+        <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 32px;"></div>
 
         <!-- Footer minimal -->
         <p style="
           font-size: 13px;
-          color: #8A7E75;
+          color: #878E92;
           line-height: 1.6;
           margin: 0;
         ">
@@ -284,23 +284,23 @@ function buildEvolutionEmail(params: {
 </head>
 <body style="
   margin: 0; padding: 0;
-  background-color: #FFFBEF;
-  font-family: Lora, Inter, system-ui, sans-serif;
-  color: #1E1310;
+  background-color: #FFFFFF;
+  font-family: 'Host Grotesk', system-ui, sans-serif;
+  color: #212426;
 ">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <tr><td>
-      <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
+      <img src="${getBaseUrl()}/Logo-definitivo-IE.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
       ${params.content}
       <table cellpadding="0" cellspacing="0" style="margin: 32px 0;">
-        <tr><td style="background: #F5F564; border-radius: 100px; padding: 16px 32px;">
-          <a href="${params.mapUrl}" style="color: #1E1310; font-size: 15px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
+        <tr><td style="background: #264233; border-radius: 100px; padding: 16px 32px;">
+          <a href="${params.mapUrl}" style="color: #FFFFFF; font-size: 15px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
             ${params.buttonText}
           </a>
         </td></tr>
       </table>
-      <div style="height: 1px; background: #E8E2D0; margin-bottom: 24px;"></div>
-      <p style="font-size: 13px; color: #8A7E75; line-height: 1.6; margin: 0;">
+      <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 24px;"></div>
+      <p style="font-size: 13px; color: #878E92; line-height: 1.6; margin: 0;">
         Este mapa es tuyo. Confidencial. Solo tú puedes verlo.
       </p>
       ${unsubscribeFooterHtml(params.mapHash)}
@@ -320,7 +320,7 @@ export async function sendDia3Email(to: string, mapHash: string): Promise<void> 
   const bodyText = override?.body_content ?? defaults.bodyContent
   const html = buildEvolutionEmail({
     content: `
-      <p style="font-size: 14px; color: #1E1310; line-height: 1.6; margin: 0 0 16px 0;">
+      <p style="font-size: 14px; color: #212426; line-height: 1.6; margin: 0 0 16px 0;">
         ${escapeHtml(bodyText)}
       </p>`,
     buttonText: override?.cta_text ?? defaults.ctaText,
@@ -344,18 +344,18 @@ export async function sendDia7Email(to: string, mapHash: string): Promise<void> 
   const amplifyBlock = `
       <tr>
         <td style="padding: 24px 0 0 0; border-top: 1px solid rgba(30,19,16,0.08);">
-          <p style="font-size: 13px; color: #8A7E75; line-height: 1.5; margin: 0 0 12px 0;">
+          <p style="font-size: 13px; color: #878E92; line-height: 1.5; margin: 0 0 12px 0;">
             ¿Conoces a alguien que podría necesitar ver su mapa?
             Si ambos hacéis el diagnóstico, podréis comparar vuestras dimensiones.
           </p>
-          <a href="${mapUrl}" style="font-size: 13px; color: #B45A32; text-decoration: underline;">
+          <a href="${mapUrl}" style="font-size: 13px; color: #CD796C; text-decoration: underline;">
             Invitar a alguien a comparar →
           </a>
         </td>
       </tr>`
   const html = buildEvolutionEmail({
     content: `
-      <p style="font-size: 14px; color: #1E1310; line-height: 1.6; margin: 0 0 16px 0;">
+      <p style="font-size: 14px; color: #212426; line-height: 1.6; margin: 0 0 16px 0;">
         ${escapeHtml(bodyText)}
       </p>
       ${amplifyBlock}`,
@@ -379,7 +379,7 @@ export async function sendDia10Email(to: string, mapHash: string): Promise<void>
   const bodyText = override?.body_content ?? defaults.bodyContent
   const html = buildEvolutionEmail({
     content: `
-      <p style="font-size: 14px; color: #1E1310; line-height: 1.6; margin: 0 0 16px 0;">
+      <p style="font-size: 14px; color: #212426; line-height: 1.6; margin: 0 0 16px 0;">
         ${escapeHtml(bodyText)}
       </p>`,
     buttonText: override?.cta_text ?? defaults.ctaText,
@@ -402,7 +402,7 @@ export async function sendDia14Email(to: string, mapHash: string): Promise<void>
   const bodyText = override?.body_content ?? defaults.bodyContent
   const html = buildEvolutionEmail({
     content: `
-      <p style="font-size: 14px; color: #1E1310; line-height: 1.6; margin: 0 0 16px 0;">
+      <p style="font-size: 14px; color: #212426; line-height: 1.6; margin: 0 0 16px 0;">
         ${escapeHtml(bodyText)}
       </p>`,
     buttonText: override?.cta_text ?? defaults.ctaText,
@@ -425,7 +425,7 @@ export async function sendDia21Email(to: string, mapHash: string): Promise<void>
   const bodyText = override?.body_content ?? defaults.bodyContent
   const html = buildEvolutionEmail({
     content: `
-      <p style="font-size: 14px; color: #1E1310; line-height: 1.6; margin: 0 0 16px 0;">
+      <p style="font-size: 14px; color: #212426; line-height: 1.6; margin: 0 0 16px 0;">
         ${escapeHtml(bodyText)}
       </p>`,
     buttonText: override?.cta_text ?? defaults.ctaText,
@@ -448,7 +448,7 @@ export async function sendDia30Email(to: string, mapHash: string): Promise<void>
   const bodyText = override?.body_content ?? defaults.bodyContent
   const html = buildEvolutionEmail({
     content: `
-      <p style="font-size: 14px; color: #1E1310; line-height: 1.6; margin: 0 0 16px 0;">
+      <p style="font-size: 14px; color: #212426; line-height: 1.6; margin: 0 0 16px 0;">
         ${escapeHtml(bodyText)}
       </p>`,
     buttonText: override?.cta_text ?? defaults.ctaText,
@@ -481,100 +481,100 @@ export async function sendPostPagoEmail(to: string, mapHash: string): Promise<vo
 </head>
 <body style="
   margin: 0; padding: 0;
-  background-color: #FFFBEF;
-  font-family: Lora, Inter, system-ui, sans-serif;
-  color: #1E1310;
+  background-color: #FFFFFF;
+  font-family: 'Host Grotesk', system-ui, sans-serif;
+  color: #212426;
 ">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <tr><td>
 
-      <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
+      <img src="${getBaseUrl()}/Logo-definitivo-IE.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
 
-      <p style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #B45A32; margin: 0 0 8px 0;">
+      <p style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #CD796C; margin: 0 0 8px 0;">
         SEMANA 1
       </p>
 
-      <p style="font-size: 28px; font-weight: 600; color: #1E1310; margin: 0 0 8px 0; line-height: 1.2;">
+      <p style="font-size: 28px; font-weight: 600; color: #212426; margin: 0 0 8px 0; line-height: 1.2;">
         Tu Semana 1 ha comenzado.
       </p>
 
-      <p style="font-size: 14px; color: #4B413C; line-height: 1.6; margin: 0 0 40px 0;">
+      <p style="font-size: 14px; color: #2D2D2D; line-height: 1.6; margin: 0 0 40px 0;">
         ${escapeHtml(ppBodyText)}
       </p>
 
       <!-- Separador -->
-      <div style="height: 1px; background: #E8E2D0; margin-bottom: 32px;"></div>
+      <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 32px;"></div>
 
       <!-- Protocolo -->
-      <p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A7E75; margin: 0 0 8px 0;">
+      <p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #878E92; margin: 0 0 8px 0;">
         TU PROTOCOLO DE SUEÑO DE EMERGENCIA
       </p>
 
       <table cellpadding="0" cellspacing="0" style="margin: 0 0 8px 0;">
-        <tr><td style="background: #F5F564; border-radius: 100px; padding: 14px 28px;">
-          <a href="${mapUrl}" style="color: #1E1310; font-size: 14px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
+        <tr><td style="background: #264233; border-radius: 100px; padding: 14px 28px;">
+          <a href="${mapUrl}" style="color: #FFFFFF; font-size: 14px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
             Descargar el Protocolo
           </a>
         </td></tr>
       </table>
 
-      <p style="font-size: 13px; color: #8A7E75; line-height: 1.6; margin: 0 0 40px 0;">
+      <p style="font-size: 13px; color: #878E92; line-height: 1.6; margin: 0 0 40px 0;">
         Diseñado por el Dr. Carlos Alvear López.<br>
         Empieza esta noche. Resultados en 72 horas.
       </p>
 
       <!-- Separador -->
-      <div style="height: 1px; background: #E8E2D0; margin-bottom: 32px;"></div>
+      <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 32px;"></div>
 
       <!-- Sesión -->
-      <p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A7E75; margin: 0 0 8px 0;">
+      <p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #878E92; margin: 0 0 8px 0;">
         TU SESIÓN CON JAVIER
       </p>
 
       <table cellpadding="0" cellspacing="0" style="margin: 0 0 8px 0;">
-        <tr><td style="background: #F5F564; border-radius: 100px; padding: 14px 28px;">
-          <a href="${bookingUrl}" style="color: #1E1310; font-size: 14px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
+        <tr><td style="background: #264233; border-radius: 100px; padding: 14px 28px;">
+          <a href="${bookingUrl}" style="color: #FFFFFF; font-size: 14px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
             ${escapeHtml(ppCtaText)}
           </a>
         </td></tr>
       </table>
 
-      <p style="font-size: 13px; color: #8A7E75; line-height: 1.6; margin: 0 0 40px 0;">
+      <p style="font-size: 13px; color: #878E92; line-height: 1.6; margin: 0 0 40px 0;">
         Ya tiene tu Mapa de Regulación. No empezáis de cero.<br>
         20-30 minutos. Esta semana.
       </p>
 
       <!-- Separador -->
-      <div style="height: 1px; background: #E8E2D0; margin-bottom: 32px;"></div>
+      <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 32px;"></div>
 
       <!-- MNN -->
-      <p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A7E75; margin: 0 0 8px 0;">
+      <p style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #878E92; margin: 0 0 8px 0;">
         TU MNN© (MAPA DE NIVELES DE NEUROTRANSMISORES)
       </p>
 
-      <p style="font-size: 14px; color: #4B413C; line-height: 1.6; margin: 0 0 40px 0;">
+      <p style="font-size: 14px; color: #2D2D2D; line-height: 1.6; margin: 0 0 40px 0;">
         Recibirás las instrucciones para tu primer análisis bioquímico real en las próximas 24 horas.
       </p>
 
       <!-- Separador -->
-      <div style="height: 1px; background: #E8E2D0; margin-bottom: 32px;"></div>
+      <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 32px;"></div>
 
       <!-- Garantía -->
-      <p style="font-size: 14px; color: #4B413C; line-height: 1.6; margin: 0 0 8px 0;">
+      <p style="font-size: 14px; color: #2D2D2D; line-height: 1.6; margin: 0 0 8px 0;">
         Recuerda: si tu sueño no mejora en 7 días, te devolvemos los 97€. Sin preguntas.
       </p>
-      <p style="font-size: 14px; color: #1E1310; font-weight: 500; margin: 0 0 40px 0;">
+      <p style="font-size: 14px; color: #212426; font-weight: 500; margin: 0 0 40px 0;">
         Pero no los vas a necesitar.
       </p>
 
       <!-- Separador -->
-      <div style="height: 1px; background: #E8E2D0; margin-bottom: 32px;"></div>
+      <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 32px;"></div>
 
       <!-- Firma -->
-      <p style="font-size: 14px; color: #1E1310; margin: 0 0 4px 0;">
+      <p style="font-size: 14px; color: #212426; margin: 0 0 4px 0;">
         Javier A. Martín Ramos
       </p>
-      <p style="font-size: 13px; color: #8A7E75; margin: 0;">
+      <p style="font-size: 13px; color: #878E92; margin: 0;">
         Director · Instituto Epigenético
       </p>
 
@@ -622,49 +622,49 @@ export async function sendAmplifyComparisonReadyEmail({
 </head>
 <body style="
   margin: 0; padding: 0;
-  background-color: #FFFBEF;
-  font-family: Lora, Inter, system-ui, sans-serif;
-  color: #1E1310;
+  background-color: #FFFFFF;
+  font-family: 'Host Grotesk', system-ui, sans-serif;
+  color: #212426;
 ">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <tr><td>
 
-      <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
+      <img src="${getBaseUrl()}/Logo-definitivo-IE.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
 
       <p style="
         font-size: 13px;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #B45A32;
+        color: #CD796C;
         margin: 0 0 8px 0;
       ">COMPARACIÓN DE MAPAS</p>
 
       <p style="
         font-size: 20px;
         font-weight: 600;
-        color: #1E1310;
+        color: #212426;
         margin: 0 0 24px 0;
         line-height: 1.3;
       ">${escapeHtml(inviteeInitials)} ha completado su diagnóstico.</p>
 
       <p style="
         font-size: 14px;
-        color: #4B413C;
+        color: #2D2D2D;
         line-height: 1.6;
         margin: 0 0 32px 0;
       ">Ahora podéis ver cómo se comparan vuestras dimensiones. Las brechas compartidas revelan lo que ningún mapa individual puede mostrar.</p>
 
       <table cellpadding="0" cellspacing="0" style="margin: 0 0 32px 0;">
-        <tr><td style="background: #F5F564; border-radius: 100px; padding: 16px 32px;">
-          <a href="${compareUrl}" style="color: #1E1310; font-size: 15px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
+        <tr><td style="background: #264233; border-radius: 100px; padding: 16px 32px;">
+          <a href="${compareUrl}" style="color: #FFFFFF; font-size: 15px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
             ${escapeHtml(override?.cta_text ?? defaults.ctaText)}
           </a>
         </td></tr>
       </table>
 
-      <div style="height: 1px; background: #E8E2D0; margin-bottom: 24px;"></div>
+      <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 24px;"></div>
 
-      <p style="font-size: 13px; color: #8A7E75; line-height: 1.6; margin: 0;">
+      <p style="font-size: 13px; color: #878E92; line-height: 1.6; margin: 0;">
         Confidencial. Solo vosotros dos podéis ver esto.
       </p>
 
@@ -692,7 +692,7 @@ export async function sendDia90Email(to: string, mapHash: string): Promise<void>
   const defaults = EMAIL_DEFAULTS.d90
 
   const bodyText = override?.body_content ?? defaults.bodyContent
-  const bodyStyle = 'font-size: 14px; color: #1E1310; line-height: 1.6; margin: 0 0 16px 0;'
+  const bodyStyle = 'font-size: 14px; color: #212426; line-height: 1.6; margin: 0 0 16px 0;'
   const html = buildEvolutionEmail({
     content: textToHtmlParagraphs(bodyText, bodyStyle),
     buttonText: override?.cta_text ?? defaults.ctaText,
@@ -717,7 +717,7 @@ export async function sendGoodbyeEmail(to: string, mapHash: string): Promise<voi
 
   const gbBodyText = overrideGb?.body_content ?? defaultsGb.bodyContent
   const gbCtaText = overrideGb?.cta_text ?? defaultsGb.ctaText
-  const gbBodyStyle = 'font-size: 14px; color: #4B413C; line-height: 1.8; margin: 0 0 16px 0;'
+  const gbBodyStyle = 'font-size: 14px; color: #2D2D2D; line-height: 1.8; margin: 0 0 16px 0;'
   const gbBodyHtml = textToHtmlParagraphs(gbBodyText, gbBodyStyle)
 
   const html = `
@@ -729,57 +729,57 @@ export async function sendGoodbyeEmail(to: string, mapHash: string): Promise<voi
 </head>
 <body style="
   margin: 0; padding: 0;
-  background-color: #FFFBEF;
-  font-family: Lora, Inter, system-ui, sans-serif;
-  color: #1E1310;
+  background-color: #FFFFFF;
+  font-family: 'Host Grotesk', system-ui, sans-serif;
+  color: #212426;
 ">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; margin: 0 auto; padding: 48px 24px;">
     <tr><td>
 
-      <img src="${getBaseUrl()}/img/logo-instituto-epigenetico.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
+      <img src="${getBaseUrl()}/Logo-definitivo-IE.png" alt="Instituto Epigenético" width="220" style="display: block; width: 220px; height: auto; margin: 0 0 32px 0;" />
 
       ${gbBodyHtml}
 
       <p style="
         font-size: 16px;
         font-weight: 500;
-        color: #1E1310;
+        color: #212426;
         line-height: 1.6;
         margin: 0 0 32px 0;
         padding: 20px 24px;
-        background: #F9F1DE;
-        border-left: 3px solid #B45A32;
+        background: #EAF2EE;
+        border-left: 3px solid #CD796C;
         border-radius: 8px;
       ">Tu mapa es tuyo. Sigue aquí. Sigue vivo.</p>
 
-      <p style="font-size: 14px; color: #1E1310; line-height: 1.8; margin: 0 0 24px 0;">
+      <p style="font-size: 14px; color: #212426; line-height: 1.8; margin: 0 0 24px 0;">
         Si en algún momento quieres que volvamos a avisarte cuando haya algo nuevo:
       </p>
 
       <table cellpadding="0" cellspacing="0" style="margin: 0 0 16px 0;">
-        <tr><td style="background: #F5F564; border-radius: 100px; padding: 16px 32px;">
-          <a href="${reactivateUrl}" style="color: #1E1310; font-size: 15px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
+        <tr><td style="background: #264233; border-radius: 100px; padding: 16px 32px;">
+          <a href="${reactivateUrl}" style="color: #FFFFFF; font-size: 15px; font-weight: 500; text-decoration: none; display: block; white-space: nowrap;">
             ${escapeHtml(gbCtaText)}
           </a>
         </td></tr>
       </table>
 
-      <p style="font-size: 13px; color: #8A7E75; line-height: 1.6; margin: 0 0 32px 0;">
+      <p style="font-size: 13px; color: #878E92; line-height: 1.6; margin: 0 0 32px 0;">
         Sin compromiso. Un clic.
       </p>
 
       <!-- Separador -->
-      <div style="height: 1px; background: #E8E2D0; margin-bottom: 32px;"></div>
+      <div style="height: 1px; background: rgba(38, 66, 51, 0.10); margin-bottom: 32px;"></div>
 
-      <p style="font-size: 14px; color: #1E1310; line-height: 1.6; margin: 0 0 4px 0;">
+      <p style="font-size: 14px; color: #212426; line-height: 1.6; margin: 0 0 4px 0;">
         Javier A. Martín Ramos
       </p>
-      <p style="font-size: 13px; color: #8A7E75; margin: 0 0 24px 0;">
+      <p style="font-size: 13px; color: #878E92; margin: 0 0 24px 0;">
         Director · Instituto Epigenético
       </p>
 
-      <p style="font-size: 12px; color: #8A7E75; margin: 0;">
-        <a href="${mapUrl}" style="color: #8A7E75; text-decoration: underline;">Tu mapa siempre está aquí</a>
+      <p style="font-size: 12px; color: #878E92; margin: 0;">
+        <a href="${mapUrl}" style="color: #878E92; text-decoration: underline;">Tu mapa siempre está aquí</a>
       </p>
 
       ${trackingPixelHtml(mapHash, 'goodbye')}

@@ -124,7 +124,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
       {/* Pregunta */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h4)',
           lineHeight: 'var(--lh-h4)',
           letterSpacing: 'var(--ls-h4)',
@@ -139,7 +139,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
       {/* Contexto */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           lineHeight: 'var(--lh-body-sm)',
           color: 'var(--color-text-secondary)',
@@ -187,7 +187,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
                 <label
                   htmlFor={`${baseId}-${slider.id}`}
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     lineHeight: 'var(--lh-body-sm)',
                     color: 'var(--color-text-primary)',
@@ -202,7 +202,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
                 <span
                   aria-live="polite"
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-h4)',
                     fontWeight: 600,
                     color: isTouched ? color : 'var(--color-text-tertiary)',
@@ -282,7 +282,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
               >
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     color: 'var(--color-text-tertiary)',
                   }}
@@ -291,7 +291,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
                 </span>
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     color: 'var(--color-text-tertiary)',
                   }}
@@ -308,7 +308,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
       {untouchedCount > 0 && touched.size > 0 && (
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-secondary)',
             marginBottom: 'var(--space-4)',
@@ -334,7 +334,7 @@ export default function SlidersStep({ question, sliders, onContinue }: SlidersSt
           border: 'var(--border-accent-strong)',
           background: allTouched ? 'var(--color-accent-subtle)' : 'transparent',
           color: allTouched ? 'var(--color-accent)' : 'var(--color-text-secondary)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           fontWeight: allTouched ? 500 : 400,
           cursor: allTouched ? 'pointer' : 'default',

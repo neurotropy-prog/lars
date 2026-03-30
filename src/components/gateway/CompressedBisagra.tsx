@@ -47,7 +47,7 @@ export default function CompressedBisagra({ scores, onContinue }: CompressedBisa
       {/* Overline */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
           letterSpacing: 'var(--ls-overline)',
           textTransform: 'uppercase',
@@ -71,7 +71,7 @@ export default function CompressedBisagra({ scores, onContinue }: CompressedBisa
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 'var(--space-2)' }}>
           {showScore && (
             <span style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-display)',
               fontWeight: 600,
               color: 'var(--color-text-primary)',
@@ -81,7 +81,7 @@ export default function CompressedBisagra({ scores, onContinue }: CompressedBisa
             </span>
           )}
           <span style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             fontWeight: 400,
             color: 'var(--color-text-secondary)',
@@ -101,7 +101,7 @@ export default function CompressedBisagra({ scores, onContinue }: CompressedBisa
         }}
       >
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-secondary)',
           marginBottom: 'var(--space-2)',
@@ -110,7 +110,7 @@ export default function CompressedBisagra({ scores, onContinue }: CompressedBisa
         </p>
         {gap > 0 && (
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-accent)',
           }}>
@@ -129,7 +129,7 @@ export default function CompressedBisagra({ scores, onContinue }: CompressedBisa
           border: 'none',
           background: 'var(--color-accent)',
           color: 'var(--color-text-inverse)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           fontWeight: 500,
           cursor: 'pointer',

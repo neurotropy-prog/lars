@@ -59,7 +59,7 @@ export function CopyEditorError({ message, onRetry }: CopyEditorErrorProps) {
       padding: 'var(--space-10)',
     }}>
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-body)',
         color: 'var(--color-text-secondary)',
         marginBottom: 'var(--space-4)',
@@ -69,7 +69,7 @@ export function CopyEditorError({ message, onRetry }: CopyEditorErrorProps) {
       <button
         onClick={onRetry}
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: '#B45A32',
           background: 'none',
@@ -107,7 +107,7 @@ export function CopyEditorEmpty() {
         ✓
       </div>
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-body)',
         color: 'var(--color-text-secondary)',
         margin: 0,
@@ -115,7 +115,7 @@ export function CopyEditorEmpty() {
         Todo el copy está usando los textos originales.
       </p>
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-body-sm)',
         color: 'var(--color-text-tertiary)',
         marginTop: 'var(--space-2)',

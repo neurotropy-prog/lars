@@ -28,7 +28,7 @@ export default function OfflineBanner() {
         background: 'rgba(30,19,16,0.95)',
         borderBottom: '1px solid rgba(196,64,64,0.3)',
         textAlign: 'center',
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-caption)',
         color: 'var(--color-text-inverse)',
         animation: 'slideDown 300ms ease',

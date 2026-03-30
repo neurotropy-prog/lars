@@ -19,7 +19,7 @@ function Section({
     <section style={{ marginBottom: "var(--space-16)" }}>
       <p
         style={{
-          fontFamily: "var(--font-inter)",
+          fontFamily: "var(--font-host-grotesk)",
           fontSize: "var(--text-overline)",
           letterSpacing: "var(--ls-overline)",
           color: "var(--color-accent)",
@@ -44,7 +44,7 @@ export default function ShowcasePage() {
       <div style={{ marginBottom: "var(--space-16)" }}>
         <h1
           style={{
-            fontFamily: "var(--font-lora)",
+            fontFamily: "var(--font-host-grotesk)",
             fontSize: "var(--text-h1)",
             lineHeight: "var(--lh-h1)",
             letterSpacing: "var(--ls-h1)",
@@ -56,7 +56,7 @@ export default function ShowcasePage() {
         </h1>
         <p
           style={{
-            fontFamily: "var(--font-inter)",
+            fontFamily: "var(--font-host-grotesk)",
             fontSize: "var(--text-body)",
             color: "var(--color-text-secondary)",
             marginTop: "var(--space-3)",
@@ -71,7 +71,7 @@ export default function ShowcasePage() {
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
           <p
             style={{
-              fontFamily: "var(--font-lora)",
+              fontFamily: "var(--font-host-grotesk)",
               fontSize: "var(--text-display)",
               lineHeight: "var(--lh-display)",
               letterSpacing: "var(--ls-display)",
@@ -83,7 +83,7 @@ export default function ShowcasePage() {
           </p>
           <p
             style={{
-              fontFamily: "var(--font-lora)",
+              fontFamily: "var(--font-host-grotesk)",
               fontSize: "var(--text-h1)",
               lineHeight: "var(--lh-h1)",
               letterSpacing: "var(--ls-h1)",
@@ -95,7 +95,7 @@ export default function ShowcasePage() {
           </p>
           <p
             style={{
-              fontFamily: "var(--font-lora)",
+              fontFamily: "var(--font-host-grotesk)",
               fontSize: "var(--text-h2)",
               lineHeight: "var(--lh-h2)",
               letterSpacing: "var(--ls-h2)",
@@ -107,7 +107,7 @@ export default function ShowcasePage() {
           </p>
           <p
             style={{
-              fontFamily: "var(--font-inter)",
+              fontFamily: "var(--font-host-grotesk)",
               fontSize: "var(--text-h3)",
               lineHeight: "var(--lh-h3)",
               letterSpacing: "var(--ls-h3)",
@@ -119,7 +119,7 @@ export default function ShowcasePage() {
           </p>
           <p
             style={{
-              fontFamily: "var(--font-inter)",
+              fontFamily: "var(--font-host-grotesk)",
               fontSize: "var(--text-body)",
               lineHeight: "var(--lh-body)",
               color: "var(--color-text-primary)",
@@ -129,7 +129,7 @@ export default function ShowcasePage() {
           </p>
           <p
             style={{
-              fontFamily: "var(--font-inter)",
+              fontFamily: "var(--font-host-grotesk)",
               fontSize: "var(--text-body-sm)",
               lineHeight: "var(--lh-body-sm)",
               letterSpacing: "var(--ls-body-sm)",
@@ -140,7 +140,7 @@ export default function ShowcasePage() {
           </p>
           <p
             style={{
-              fontFamily: "var(--font-inter)",
+              fontFamily: "var(--font-host-grotesk)",
               fontSize: "var(--text-caption)",
               lineHeight: "var(--lh-caption)",
               letterSpacing: "var(--ls-caption)",
@@ -180,7 +180,7 @@ export default function ShowcasePage() {
               />
               <p
                 style={{
-                  fontFamily: "var(--font-inter)",
+                  fontFamily: "var(--font-host-grotesk)",
                   fontSize: "var(--text-caption)",
                   color: "var(--color-text-tertiary)",
                   marginTop: "var(--space-2)",
@@ -210,7 +210,7 @@ export default function ShowcasePage() {
           <Card>
             <p
               style={{
-                fontFamily: "var(--font-lora)",
+                fontFamily: "var(--font-host-grotesk)",
                 fontSize: "var(--text-display)",
                 fontWeight: 700,
                 color: "var(--color-text-primary)",
@@ -220,7 +220,7 @@ export default function ShowcasePage() {
             </p>
             <p
               style={{
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-host-grotesk)",
                 fontSize: "var(--text-body-sm)",
                 color: "var(--color-text-secondary)",
                 marginTop: "var(--space-2)",
@@ -232,7 +232,7 @@ export default function ShowcasePage() {
           <Card interactive>
             <p
               style={{
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-host-grotesk)",
                 fontSize: "var(--text-h4)",
                 fontWeight: 600,
                 color: "var(--color-text-primary)",
@@ -242,7 +242,7 @@ export default function ShowcasePage() {
             </p>
             <p
               style={{
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-host-grotesk)",
                 fontSize: "var(--text-body-sm)",
                 fontStyle: "italic",
                 color: "var(--color-text-secondary)",
@@ -255,7 +255,7 @@ export default function ShowcasePage() {
           <Card>
             <p
               style={{
-                fontFamily: "var(--font-lora)",
+                fontFamily: "var(--font-host-grotesk)",
                 fontSize: "var(--text-h1)",
                 fontWeight: 700,
                 color: "var(--color-text-primary)",
@@ -265,7 +265,7 @@ export default function ShowcasePage() {
             </p>
             <p
               style={{
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-host-grotesk)",
                 fontSize: "var(--text-body-sm)",
                 color: "var(--color-text-secondary)",
                 marginTop: "var(--space-2)",
@@ -329,11 +329,11 @@ export default function ShowcasePage() {
       {/* Separador */}
       <Section title="Separador">
         <div style={{ maxWidth: 500 }}>
-          <p style={{ fontFamily: "var(--font-inter)", fontSize: "var(--text-body)", color: "var(--color-text-secondary)" }}>
+          <p style={{ fontFamily: "var(--font-host-grotesk)", fontSize: "var(--text-body)", color: "var(--color-text-secondary)" }}>
             Contenido antes del separador
           </p>
           <Separator />
-          <p style={{ fontFamily: "var(--font-inter)", fontSize: "var(--text-body)", color: "var(--color-text-secondary)" }}>
+          <p style={{ fontFamily: "var(--font-host-grotesk)", fontSize: "var(--text-body)", color: "var(--color-text-secondary)" }}>
             Contenido después del separador
           </p>
         </div>

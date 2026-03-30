@@ -227,7 +227,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
               ✓
             </p>
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '15px',
               fontWeight: 600,
               color: '#059669',
@@ -247,7 +247,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
             marginBottom: 'var(--space-4)',
           }}>
             <p style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               color: 'var(--color-error)',
               margin: 0,
@@ -275,7 +275,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                     style={{
                       background: 'none',
                       border: 'none',
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '12px',
                       color: 'var(--color-text-tertiary)',
                       cursor: 'pointer',
@@ -287,7 +287,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                   </button>
                 )}
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '16px',
                   fontWeight: 600,
                   color: 'var(--color-text-primary)',
@@ -296,7 +296,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                   {step === 'select' ? 'Tomar acción' : ACTIONS.find(a => a.type === step)?.label}
                 </p>
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '13px',
                   color: 'var(--color-text-tertiary)',
                   margin: 0,
@@ -346,7 +346,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                           <span style={{
-                            fontFamily: 'var(--font-inter)',
+                            fontFamily: 'var(--font-host-grotesk)',
                             fontSize: '14px',
                             fontWeight: 600,
                             color: 'var(--color-text-primary)',
@@ -355,7 +355,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                           </span>
                           {isRecommended && (
                             <span style={{
-                              fontFamily: 'var(--font-inter)',
+                              fontFamily: 'var(--font-host-grotesk)',
                               fontSize: '10px',
                               fontWeight: 600,
                               color: '#B45A32',
@@ -369,7 +369,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                           )}
                         </div>
                         <p style={{
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-host-grotesk)',
                           fontSize: '12px',
                           color: 'var(--color-text-tertiary)',
                           margin: '2px 0 0',
@@ -390,7 +390,7 @@ export default function ActionModal({ lead, isOpen, onClose, onActionComplete }:
                     marginTop: 'var(--space-2)',
                   }}>
                     <p style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '12px',
                       color: '#B45A32',
                       margin: 0,

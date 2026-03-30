@@ -61,7 +61,7 @@ export default function AnalyticsDimensions({ dimensions, worstDimensionDist, to
   return (
     <Card>
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-caption)',
         letterSpacing: '0.08em',
         textTransform: 'uppercase',
@@ -88,7 +88,7 @@ export default function AnalyticsDimensions({ dimensions, worstDimensionDist, to
                 marginBottom: 'var(--space-2)',
               }}>
                 <span style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-secondary)',
                   display: 'flex',
@@ -96,7 +96,7 @@ export default function AnalyticsDimensions({ dimensions, worstDimensionDist, to
                   gap: 'var(--space-2)',
                 }}>
                   <span style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '10px',
                     fontWeight: 700,
                     color: 'var(--color-text-tertiary)',
@@ -107,7 +107,7 @@ export default function AnalyticsDimensions({ dimensions, worstDimensionDist, to
                   {label}
                 </span>
                 <span style={{
-                  fontFamily: 'var(--font-lora)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body)',
                   fontWeight: 700,
                   color,
@@ -149,7 +149,7 @@ export default function AnalyticsDimensions({ dimensions, worstDimensionDist, to
         }}>
           <span style={{ fontSize: '14px' }}>💡</span>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-secondary)',
             margin: 0,

@@ -53,7 +53,7 @@ export default function SiteHeader({ variant = 'default' }: SiteHeaderProps) {
         <a href="/" className="site-header__logo-link" aria-label="Instituto Epigenético — Ir al inicio">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/img/logo-instituto-epigenetico.png"
+            src="/Logo-definitivo-IE.png"
             alt=""
             className="site-header__logo"
             width={156}

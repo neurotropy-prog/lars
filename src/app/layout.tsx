@@ -1,27 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Lora, Inter, Cormorant_Garamond } from "next/font/google";
+import { Host_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const lora = Lora({
-  subsets: ["latin"],
-  weight: ["400", "700"],
+const hostGrotesk = Host_Grotesk({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-lora",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-  variable: "--font-inter",
-});
-
-const cormorantGaramond = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-cormorant",
+  variable: "--font-host-grotesk",
 });
 
 export const metadata: Metadata = {
@@ -62,7 +47,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#FFFBEF",
+  themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({
@@ -73,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${lora.variable} ${inter.variable} ${cormorantGaramond.variable}`}
+      className={hostGrotesk.variable}
     >
       <body>
         {children}

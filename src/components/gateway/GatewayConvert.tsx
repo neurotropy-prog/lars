@@ -137,7 +137,7 @@ export default function GatewayConvert({
                   cursor: 'pointer',
                   padding: 'var(--space-1)',
                   fontSize: 'var(--text-body-sm)',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   transition: 'color var(--transition-fast)',
                 }}
               >

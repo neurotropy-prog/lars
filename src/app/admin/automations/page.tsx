@@ -121,7 +121,7 @@ export default function AutomationsPage() {
       >
         <h1
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h2)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -132,7 +132,7 @@ export default function AutomationsPage() {
         </h1>
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-tertiary)',
           }}
@@ -154,7 +154,7 @@ export default function AutomationsPage() {
         >
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-error)',
               margin: 0,
@@ -166,7 +166,7 @@ export default function AutomationsPage() {
             onClick={fetchAutomations}
             style={{
               marginTop: 'var(--space-3)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '13px',
               fontWeight: 500,
               color: 'var(--color-accent)',
@@ -185,7 +185,7 @@ export default function AutomationsPage() {
       {!loading && data && data.global_stats.total_sent === 0 && data.emails.length === 0 ? (
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-tertiary)',
             padding: 'var(--space-8)',

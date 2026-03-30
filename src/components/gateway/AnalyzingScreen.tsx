@@ -58,7 +58,7 @@ export default function AnalyzingScreen({ onComplete }: AnalyzingScreenProps) {
         delay={300}
         onComplete={handleTypingComplete}
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body)',
           lineHeight: 'var(--lh-body)',
           color: 'var(--color-text-secondary)',

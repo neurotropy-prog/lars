@@ -89,7 +89,7 @@ export default function ToolsPage() {
       <div style={{ maxWidth: '600px', opacity: mounted ? 1 : 0, transition: 'opacity 200ms ease-out' }}>
         <h1
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h2)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -100,7 +100,7 @@ export default function ToolsPage() {
         </h1>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-tertiary)',
             lineHeight: 'var(--lh-body-sm)',
@@ -116,7 +116,7 @@ export default function ToolsPage() {
           <label
             style={{
               display: 'block',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               letterSpacing: '0.02em',
@@ -149,7 +149,7 @@ export default function ToolsPage() {
         <div style={{ marginBottom: 'var(--space-8)' }}>
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               letterSpacing: '0.02em',
@@ -180,7 +180,7 @@ export default function ToolsPage() {
                     border: `1px solid ${hex}33`,
                     backgroundColor: `${hex}0A`,
                     color: preset.color,
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     fontWeight: 500,
                     cursor: loading || !hash.trim() ? 'not-allowed' : 'pointer',
@@ -213,7 +213,7 @@ export default function ToolsPage() {
               backgroundColor: 'rgba(196,64,64,0.08)',
               border: '1px solid rgba(196,64,64,0.2)',
               color: 'var(--color-error)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               marginBottom: 'var(--space-4)',
             }}
@@ -235,7 +235,7 @@ export default function ToolsPage() {
           >
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-text-tertiary)',
                 letterSpacing: '0.02em',
@@ -259,7 +259,7 @@ export default function ToolsPage() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 'var(--space-2)',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                   }}
                 >
@@ -294,7 +294,7 @@ export default function ToolsPage() {
                 borderRadius: 'var(--radius-pill)',
                 backgroundColor: 'var(--color-success)',
                 color: '#FFFFFF',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 fontWeight: 500,
                 textDecoration: 'none',
@@ -311,7 +311,7 @@ export default function ToolsPage() {
           <div>
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-text-tertiary)',
                 letterSpacing: '0.02em',
@@ -322,7 +322,7 @@ export default function ToolsPage() {
             </p>
             <div
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-text-tertiary)',
               }}

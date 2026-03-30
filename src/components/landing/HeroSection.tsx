@@ -72,7 +72,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
         <p
           className={`hero-reveal${revealStep >= 1 ? ' hero-animate-fade-in' : ''}`}
           style={{
-            fontFamily: 'var(--font-cormorant)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '1.125rem',
             fontStyle: 'italic',
             color: 'var(--color-text-secondary)',
@@ -87,7 +87,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
         <h1
           className={`hero-reveal${revealStep >= 2 ? ' hero-animate-fade-in-up-fast' : ''}`}
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-display)',
             lineHeight: 'var(--lh-display)',
             letterSpacing: 'var(--ls-display)',
@@ -104,7 +104,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
         <p
           className={`hero-reveal${revealStep >= 3 ? ' hero-animate-fade-in' : ''}`}
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             lineHeight: 'var(--lh-body)',
             color: 'var(--color-text-secondary)',
@@ -125,7 +125,7 @@ export default function HeroSection({ onP1Select }: HeroSectionProps) {
         <p
           className={`hero-reveal${revealStep >= 5 ? ' hero-animate-fade-in' : ''}`}
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             lineHeight: 'var(--lh-caption)',
             letterSpacing: 'var(--ls-caption)',

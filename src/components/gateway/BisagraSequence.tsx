@@ -175,7 +175,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
                   delay={0}
                   cursorPostDelay={1000}
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body)',
                     lineHeight: 'var(--lh-body)',
                     color: 'var(--color-text-secondary)',
@@ -194,7 +194,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
             <p
               style={{
                 ...fadeStyle(showLabel),
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 letterSpacing: 'var(--ls-overline)',
                 textTransform: 'uppercase',
@@ -217,7 +217,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
             >
               <span
                 style={{
-                  fontFamily: 'var(--font-lora)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '4rem',
                   lineHeight: 1,
                   letterSpacing: 'var(--ls-display)',
@@ -236,7 +236,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
               </span>
               <span
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-h4)',
                   lineHeight: 'var(--lh-h4)',
                   color: 'var(--color-text-secondary)',
@@ -251,7 +251,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
             <p
               style={{
                 ...fadeStyle(showSeverity),
-                fontFamily: 'var(--font-lora)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-h4)',
                 fontWeight: 700,
                 letterSpacing: 'var(--ls-overline)',
@@ -278,7 +278,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
             <p
               style={{
                 ...fadeStyle(showBenchmark),
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 lineHeight: 'var(--lh-body-sm)',
                 color: 'var(--color-text-secondary)',
@@ -299,7 +299,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
             >
               <span
                 style={{
-                  fontFamily: 'var(--font-lora)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-display)',
                   lineHeight: 1,
                   letterSpacing: 'var(--ls-display)',
@@ -322,7 +322,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
             <p
               style={{
                 ...fadeStyle(showGap),
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body)',
                 lineHeight: 'var(--lh-body)',
                 color: 'var(--color-accent)',
@@ -338,7 +338,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
             <p
               style={{
                 ...fadeStyle(showSocial),
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 lineHeight: 'var(--lh-body-sm)',
                 color: 'var(--color-text-secondary)',
@@ -365,7 +365,7 @@ export default function BisagraSequence({ scores, onContinue }: BisagraSequenceP
           border: '1px solid rgba(180,90,50,0.25)',
           background: 'transparent',
           color: 'var(--color-text-secondary)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           cursor: 'pointer',
           transition: 'color var(--transition-fast), border-color var(--transition-fast)',

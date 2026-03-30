@@ -123,7 +123,7 @@ export default function BookingConfirmed({ slotStart, meetUrl, mapHash, onCancel
         </div>
         <div>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             fontWeight: 600,
             color: 'var(--color-success)',
@@ -132,7 +132,7 @@ export default function BookingConfirmed({ slotStart, meetUrl, mapHash, onCancel
             Sesión confirmada
           </p>
           <p style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             fontWeight: 600,
             color: 'var(--color-text-primary)',
@@ -157,7 +157,7 @@ export default function BookingConfirmed({ slotStart, meetUrl, mapHash, onCancel
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-info)',
               textDecoration: 'none',
@@ -193,7 +193,7 @@ export default function BookingConfirmed({ slotStart, meetUrl, mapHash, onCancel
         ) : (
           <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center' }}>
             <span style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
             }}>
@@ -208,7 +208,7 @@ export default function BookingConfirmed({ slotStart, meetUrl, mapHash, onCancel
                 border: '1px solid rgba(248,113,113,0.3)',
                 background: 'rgba(248,113,113,0.08)',
                 color: 'var(--color-error)',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 fontWeight: 600,
                 cursor: cancelling ? 'wait' : 'pointer',
@@ -224,7 +224,7 @@ export default function BookingConfirmed({ slotStart, meetUrl, mapHash, onCancel
                 border: 'var(--border-subtle)',
                 background: 'transparent',
                 color: 'var(--color-text-tertiary)',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 cursor: 'pointer',
               }}

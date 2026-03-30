@@ -45,7 +45,7 @@ export default function Button({
   return (
     <button
       style={{
-        fontFamily: "var(--font-inter)",
+        fontFamily: "var(--font-host-grotesk)",
         fontSize: "var(--text-body-sm)",
         fontWeight: 500,
         lineHeight: 1,

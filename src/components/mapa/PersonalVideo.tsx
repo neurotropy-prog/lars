@@ -52,7 +52,7 @@ export default function PersonalVideo({ videoUrl, createdAt, autoPlay, id }: Pro
       }}
     >
       <p style={{
-        fontFamily: 'var(--font-inter-tight)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-overline)',
         letterSpacing: 'var(--ls-overline)',
         textTransform: 'uppercase',
@@ -63,7 +63,7 @@ export default function PersonalVideo({ videoUrl, createdAt, autoPlay, id }: Pro
       </p>
 
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-body)',
         fontWeight: 600,
         color: 'var(--color-text-primary)',
@@ -130,7 +130,7 @@ export default function PersonalVideo({ videoUrl, createdAt, autoPlay, id }: Pro
       </div>
 
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-caption)',
         color: 'var(--color-text-tertiary)',
         marginTop: 'var(--space-3)',

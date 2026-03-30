@@ -15,7 +15,7 @@ export default function ActionUnlock({ lead, onSubmit, onCancel, submitting }: P
       {/* Header */}
       <div>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '15px',
           fontWeight: 600,
           color: 'var(--color-text-primary)',
@@ -24,7 +24,7 @@ export default function ActionUnlock({ lead, onSubmit, onCancel, submitting }: P
           🔓 Desbloqueo anticipado para {lead.email ?? 'este lead'}
         </p>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '13px',
           color: 'var(--color-text-tertiary)',
           margin: 0,
@@ -40,7 +40,7 @@ export default function ActionUnlock({ lead, onSubmit, onCancel, submitting }: P
         padding: 'var(--space-5)',
       }}>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '13px',
           fontWeight: 600,
           color: 'var(--color-text-primary)',
@@ -57,7 +57,7 @@ export default function ActionUnlock({ lead, onSubmit, onCancel, submitting }: P
             <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ fontSize: '14px' }}>{item.icon}</span>
               <span style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: '13px',
                 color: 'var(--color-text-secondary)',
               }}>
@@ -65,7 +65,7 @@ export default function ActionUnlock({ lead, onSubmit, onCancel, submitting }: P
               </span>
               {lead.days_since < item.day && (
                 <span style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '11px',
                   color: 'var(--color-accent)',
                   background: 'rgba(180, 90, 50, 0.08)',
@@ -82,7 +82,7 @@ export default function ActionUnlock({ lead, onSubmit, onCancel, submitting }: P
 
       {/* Confirmation */}
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: '13px',
         color: 'var(--color-text-tertiary)',
         margin: 0,
@@ -103,7 +103,7 @@ export default function ActionUnlock({ lead, onSubmit, onCancel, submitting }: P
             border: 'var(--border-subtle)',
             background: 'transparent',
             color: 'var(--color-text-secondary)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             cursor: submitting ? 'not-allowed' : 'pointer',
           }}
@@ -119,7 +119,7 @@ export default function ActionUnlock({ lead, onSubmit, onCancel, submitting }: P
             border: 'none',
             background: submitting ? 'var(--color-bg-tertiary)' : 'var(--color-accent)',
             color: submitting ? 'var(--color-text-tertiary)' : 'var(--color-text-inverse)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '13px',
             fontWeight: 500,
             cursor: submitting ? 'not-allowed' : 'pointer',

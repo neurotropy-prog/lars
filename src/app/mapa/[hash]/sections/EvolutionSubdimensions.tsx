@@ -77,7 +77,7 @@ export default function EvolutionSubdimensions({
       >
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-success)',
           }}
@@ -109,7 +109,7 @@ export default function EvolutionSubdimensions({
       {/* Intro */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           lineHeight: 'var(--lh-body)',
           color: 'var(--color-text-primary)',
@@ -131,7 +131,7 @@ export default function EvolutionSubdimensions({
           <li
             key={sub.key}
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-text-secondary)',
               marginBottom: 'var(--space-1)',
@@ -144,7 +144,7 @@ export default function EvolutionSubdimensions({
 
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-tertiary)',
           marginBottom: 'var(--space-6)',
@@ -158,7 +158,7 @@ export default function EvolutionSubdimensions({
         <div key={q.id} style={{ marginBottom: 'var(--space-6)' }}>
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               fontWeight: 500,
               color: 'var(--color-text-primary)',
@@ -193,7 +193,7 @@ export default function EvolutionSubdimensions({
                     background: selected
                       ? 'rgba(180,90,50,0.08)'
                       : 'transparent',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body-sm)',
                     lineHeight: 'var(--lh-body)',
                     color: selected
@@ -216,7 +216,7 @@ export default function EvolutionSubdimensions({
       {error && (
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-error)',
             marginBottom: 'var(--space-3)',

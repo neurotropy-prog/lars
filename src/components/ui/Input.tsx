@@ -17,7 +17,7 @@ export default function Input({ error, style, ...props }: InputProps) {
           borderRadius: "var(--radius-md)",
           padding: "14px 16px",
           color: "var(--color-text-primary)",
-          fontFamily: "var(--font-inter)",
+          fontFamily: "var(--font-host-grotesk)",
           fontSize: "var(--text-body)",
           lineHeight: "var(--lh-body)",
           transition: "border var(--transition-base), box-shadow var(--transition-base)",
@@ -29,7 +29,7 @@ export default function Input({ error, style, ...props }: InputProps) {
       {error && (
         <p
           style={{
-            fontFamily: "var(--font-inter)",
+            fontFamily: "var(--font-host-grotesk)",
             fontSize: "var(--text-body-sm)",
             color: "var(--color-error)",
             marginTop: "var(--space-2)",

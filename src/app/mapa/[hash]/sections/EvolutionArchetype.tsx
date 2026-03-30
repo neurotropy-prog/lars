@@ -37,7 +37,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
         {/* Tag */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             fontWeight: 500,
             letterSpacing: '0.08em',
@@ -52,7 +52,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
         {/* Overline */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-overline)',
             letterSpacing: 'var(--ls-overline)',
             textTransform: 'uppercase' as const,
@@ -66,7 +66,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
         {/* Archetype name */}
         <h3
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h3)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -80,7 +80,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
         {/* Impact phrase (teaser) */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             fontStyle: 'italic',
             lineHeight: 1.6,
@@ -99,7 +99,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
             style={{
               background: 'transparent',
               border: 'none',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               fontWeight: 500,
               color: 'var(--color-accent)',
@@ -139,7 +139,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
       {/* Overline */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-overline)',
           letterSpacing: 'var(--ls-overline)',
           textTransform: 'uppercase',
@@ -153,7 +153,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
       {/* Nombre */}
       <h3
         style={{
-          fontFamily: 'var(--font-lora)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h2)',
           fontWeight: 700,
           color: 'var(--color-text-primary)',
@@ -167,7 +167,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
       {/* Descriptores */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-tertiary)',
           marginBottom: 'var(--space-4)',
@@ -182,7 +182,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
           <p
             key={i}
             style={{
-              fontFamily: 'var(--font-cormorant)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-h3)',
               fontStyle: 'italic',
               lineHeight: 'var(--lh-h3)',
@@ -208,7 +208,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
       >
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-overline)',
             letterSpacing: 'var(--ls-overline)',
             textTransform: 'uppercase',
@@ -220,7 +220,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
         </p>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             lineHeight: 'var(--lh-body)',
             color: 'var(--color-text-primary)',
@@ -241,7 +241,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
       >
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-overline)',
             letterSpacing: 'var(--ls-overline)',
             textTransform: 'uppercase',
@@ -253,7 +253,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
         </p>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             lineHeight: 'var(--lh-body)',
             color: 'var(--color-accent)',
@@ -275,7 +275,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
       >
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-secondary)',
             marginBottom: 'var(--space-2)',
@@ -286,7 +286,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
         </p>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-accent)',
             opacity: 0.8,
@@ -307,7 +307,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
           background: 'transparent',
           border: 'none',
           borderTop: 'var(--border-subtle)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-secondary)',
           cursor: 'pointer',
@@ -334,7 +334,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
             <p
               key={fear}
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 lineHeight: 'var(--lh-body)',
                 color: 'var(--color-text-secondary)',
@@ -359,7 +359,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
           background: 'transparent',
           border: 'none',
           borderTop: 'var(--border-subtle)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-secondary)',
           cursor: 'pointer',
@@ -386,7 +386,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
             <div key={p.name} style={{ marginBottom: 'var(--space-4)' }}>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   fontWeight: 600,
                   color: 'var(--color-text-primary)',
@@ -397,7 +397,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
               </p>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   lineHeight: 'var(--lh-body)',
                   color: 'var(--color-text-secondary)',
@@ -421,7 +421,7 @@ export default function EvolutionArchetype({ archetype, isNew, mode = 'full', on
           background: 'transparent',
           border: 'none',
           borderTop: 'var(--border-subtle)',
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-secondary)',
           cursor: 'pointer',
@@ -497,7 +497,7 @@ function NeedLayerSection({
       >
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             fontWeight: 600,
             color: 'var(--color-text-primary)',
@@ -507,7 +507,7 @@ function NeedLayerSection({
         </span>
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: accentColor,
             opacity: 0.8,
@@ -527,7 +527,7 @@ function NeedLayerSection({
           <li
             key={item}
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               lineHeight: 'var(--lh-body)',
               color: 'var(--color-text-secondary)',
@@ -540,7 +540,7 @@ function NeedLayerSection({
       </ul>
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
           lineHeight: 'var(--lh-body)',
           color: 'var(--color-text-tertiary)',

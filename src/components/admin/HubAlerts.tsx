@@ -87,7 +87,7 @@ export default function HubAlerts({ alerts, loading }: HubAlertsProps) {
       >
         <h2
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             fontWeight: 700,
             color: 'var(--color-text-primary)',
@@ -144,7 +144,7 @@ export default function HubAlerts({ alerts, loading }: HubAlertsProps) {
           </div>
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body)',
               color: 'var(--color-text-secondary)',
               textAlign: 'center',
@@ -184,7 +184,7 @@ export default function HubAlerts({ alerts, loading }: HubAlertsProps) {
                 </span>
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body)',
                     fontWeight: 600,
                     color: 'var(--color-text-primary)',
@@ -199,7 +199,7 @@ export default function HubAlerts({ alerts, loading }: HubAlertsProps) {
               {/* Body */}
               <p
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: 'var(--text-body-sm)',
                   color: 'var(--color-text-secondary)',
                   lineHeight: 1.6,
@@ -218,7 +218,7 @@ export default function HubAlerts({ alerts, loading }: HubAlertsProps) {
                     display: 'inline-block',
                     marginTop: 'var(--space-3)',
                     marginLeft: 'calc(18px + var(--space-3))',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '13px',
                     fontWeight: 500,
                     color: 'var(--color-accent)',

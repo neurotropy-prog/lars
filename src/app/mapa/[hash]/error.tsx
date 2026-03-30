@@ -67,7 +67,7 @@ export default function MapaError({
         <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-text-secondary)',
               marginBottom: 'var(--space-4)',
@@ -83,7 +83,7 @@ export default function MapaError({
               border: 'none',
               background: 'var(--color-accent)',
               color: 'var(--color-text-inverse)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               fontWeight: 500,
               cursor: 'pointer',

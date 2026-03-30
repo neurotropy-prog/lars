@@ -46,7 +46,7 @@ export default function SingleSelectStep({
       {/* Pregunta */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h3)',
           lineHeight: 'var(--lh-h3)',
           letterSpacing: 'var(--ls-h3)',
@@ -62,7 +62,7 @@ export default function SingleSelectStep({
       {context && (
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             lineHeight: 'var(--lh-body-sm)',
             fontStyle: 'italic',
@@ -78,7 +78,7 @@ export default function SingleSelectStep({
       {collectiveData && (
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             lineHeight: 'var(--lh-body-sm)',
             color: 'var(--color-text-tertiary)',
@@ -140,7 +140,7 @@ export default function SingleSelectStep({
               <div style={{ flex: 1 }}>
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: reinforced ? 'var(--text-h4)' : 'var(--text-body)',
                     lineHeight: reinforced ? 'var(--lh-h4)' : 'var(--lh-body)',
                     fontWeight: 600,
@@ -156,7 +156,7 @@ export default function SingleSelectStep({
                 {option.subtitle && (
                   <p
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       lineHeight: 'var(--lh-body-sm)',
                       fontStyle: 'italic',

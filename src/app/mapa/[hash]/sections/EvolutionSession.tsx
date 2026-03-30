@@ -58,7 +58,7 @@ export default function EvolutionSession({ isNew, booked: initialBooked, mapHash
       {/* Título */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h4)',
           fontWeight: 600,
           color: 'var(--color-text-primary)',
@@ -72,7 +72,7 @@ export default function EvolutionSession({ isNew, booked: initialBooked, mapHash
       {/* Descripción */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           lineHeight: 'var(--lh-body)',
           color: 'var(--color-text-secondary)',

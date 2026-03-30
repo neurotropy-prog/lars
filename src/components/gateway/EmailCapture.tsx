@@ -76,7 +76,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
       <div style={{ textAlign: 'center' }}>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-display)',
             lineHeight: 1,
             letterSpacing: 'var(--ls-display)',
@@ -98,7 +98,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
         </p>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             letterSpacing: 'var(--ls-overline)',
             textTransform: 'uppercase',
@@ -149,7 +149,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
                 >
                   <span
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       color: 'var(--color-text-secondary)',
                     }}
@@ -158,7 +158,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
                   </span>
                   <span
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       fontWeight: 600,
                       color,
@@ -203,7 +203,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
         >
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               color: 'var(--color-text-tertiary)',
               textAlign: 'center',
@@ -219,7 +219,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
       <div>
         <h2
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h3)',
             lineHeight: 'var(--lh-h3)',
             letterSpacing: 'var(--ls-h3)',
@@ -233,7 +233,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
         </h2>
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             lineHeight: 'var(--lh-body-sm)',
             color: 'var(--color-text-secondary)',
@@ -266,7 +266,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
                 : '1px solid rgba(30,19,16,0.12)',
               background: 'rgba(30,19,16,0.05)',
               color: 'var(--color-text-primary)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '16px', /* 16px: evita zoom en iOS */
               outline: 'none',
               transition: 'border-color 200ms ease, box-shadow 200ms ease',
@@ -291,7 +291,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
           {showError && (
             <p
               style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-error)',
                 marginBottom: 'var(--space-4)',
@@ -313,7 +313,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
               border: 'none',
               background: valid ? 'var(--color-accent)' : 'rgba(180,90,50,0.2)',
               color: valid ? 'var(--color-text-inverse)' : 'var(--color-text-tertiary)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               fontWeight: 500,
               cursor: valid ? 'pointer' : 'default',
@@ -334,7 +334,7 @@ export default function EmailCapture({ scores, onComplete }: EmailCaptureProps) 
           {/* Disuelve fricción */}
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               lineHeight: 'var(--lh-caption)',
               color: 'var(--color-text-tertiary)',

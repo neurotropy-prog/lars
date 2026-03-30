@@ -134,7 +134,7 @@ function AccordionRow({
         {/* Left: title */}
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             fontWeight: 600,
             color: 'var(--color-text-primary)',
@@ -157,7 +157,7 @@ function AccordionRow({
           {/* Summary or disabled text */}
           <span
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               whiteSpace: 'nowrap',
@@ -177,7 +177,7 @@ function AccordionRow({
                 borderRadius: 'var(--radius-pill)',
                 background: BADGE_STYLES[badge].background,
                 color: BADGE_STYLES[badge].color,
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 fontWeight: 600,
                 textTransform: 'uppercase',

@@ -42,7 +42,7 @@ export default function AnalyticsProfiles({ profiles, total }: AnalyticsProfiles
     <>
       <Card>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-caption)',
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
@@ -54,7 +54,7 @@ export default function AnalyticsProfiles({ profiles, total }: AnalyticsProfiles
 
         {entries.length === 0 ? (
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-tertiary)',
             textAlign: 'center',
@@ -95,7 +95,7 @@ export default function AnalyticsProfiles({ profiles, total }: AnalyticsProfiles
                     marginBottom: 'var(--space-2)',
                   }}>
                     <span style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       color: 'var(--color-text-secondary)',
                       display: 'flex',
@@ -120,7 +120,7 @@ export default function AnalyticsProfiles({ profiles, total }: AnalyticsProfiles
                       {config.label}
                     </span>
                     <span style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-caption)',
                       color: 'var(--color-text-tertiary)',
                       display: 'flex',
@@ -156,7 +156,7 @@ export default function AnalyticsProfiles({ profiles, total }: AnalyticsProfiles
             {/* Unknown profiles */}
             {unknownEntries.map(([name, count]) => (
               <div key={name} style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-caption)',
                 color: 'var(--color-text-tertiary)',
               }}>

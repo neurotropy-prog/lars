@@ -55,7 +55,7 @@ export default function MirrorSection() {
         {/* Headline — Lora Bold, --text-h2 */}
         <h2
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h2)',
             lineHeight: 1.2,
             letterSpacing: '-0.01em',
@@ -84,7 +84,7 @@ export default function MirrorSection() {
         {/* Frase de impacto aislada — Lora italic, --text-h4 */}
         <p
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             lineHeight: 1.35,
             fontStyle: 'italic',
@@ -99,7 +99,7 @@ export default function MirrorSection() {
         {/* Párrafo 1 — explicación concreta */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             lineHeight: 'var(--lh-body)',
             color: 'var(--color-text-secondary)',
@@ -114,7 +114,7 @@ export default function MirrorSection() {
         {/* Párrafo 2 — reframe biológico */}
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             lineHeight: 'var(--lh-body)',
             color: 'var(--color-text-secondary)',
@@ -128,7 +128,7 @@ export default function MirrorSection() {
         {/* Pull-quote — cierre emocional */}
         <p
           style={{
-            fontFamily: 'var(--font-cormorant)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             lineHeight: 1.5,
             fontStyle: 'italic',

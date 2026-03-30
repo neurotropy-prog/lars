@@ -53,7 +53,7 @@ export default function MultiSelectStep({
       {/* Pregunta */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-h3)',
           lineHeight: 'var(--lh-h3)',
           letterSpacing: 'var(--ls-h3)',
@@ -69,7 +69,7 @@ export default function MultiSelectStep({
       {context && (
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             lineHeight: 'var(--lh-body-sm)',
             fontStyle: 'italic',
@@ -85,7 +85,7 @@ export default function MultiSelectStep({
       {collectiveData && (
         <p
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             lineHeight: 'var(--lh-body-sm)',
             color: 'var(--color-text-tertiary)',
@@ -143,7 +143,7 @@ export default function MultiSelectStep({
               <div style={{ flex: 1 }}>
                 <p
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-body)',
                     lineHeight: 'var(--lh-body)',
                     fontWeight: 600,
@@ -159,7 +159,7 @@ export default function MultiSelectStep({
                 {option.subtitle && (
                   <p
                     style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       lineHeight: 'var(--lh-body-sm)',
                       fontStyle: 'italic',
@@ -233,7 +233,7 @@ export default function MultiSelectStep({
             border: '1px solid var(--color-accent)',
             background: 'var(--color-accent-subtle)',
             color: 'var(--color-accent)',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body)',
             fontWeight: 600,
             cursor: 'pointer',

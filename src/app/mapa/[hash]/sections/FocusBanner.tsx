@@ -214,7 +214,7 @@ export default function FocusBanner(props: FocusBannerProps) {
     >
       {/* Tag */}
       <p style={{
-        fontFamily: 'var(--font-inter-tight)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-overline)',
         letterSpacing: 'var(--ls-overline)',
         textTransform: 'uppercase',
@@ -239,7 +239,7 @@ export default function FocusBanner(props: FocusBannerProps) {
 
       {/* Description */}
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-body-sm)',
         lineHeight: 'var(--lh-body-sm)',
         color: 'var(--color-text-secondary)',

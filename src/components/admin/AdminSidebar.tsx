@@ -261,7 +261,7 @@ export default function AdminSidebar({
             backgroundColor: isLoggingOut ? 'rgba(249, 241, 222, 0.03)' : 'transparent',
             color: SIDEBAR_TEXT_MUTED,
             border: 'none',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '14px',
             fontWeight: 400,
             cursor: isLoggingOut ? 'not-allowed' : 'pointer',
@@ -329,7 +329,7 @@ function SidebarItem({ item, active, collapsed, badge, badgeCount }: SidebarItem
         backgroundColor: active ? ACTIVE_BG : 'transparent',
         color: active ? ACTIVE_TEXT : SIDEBAR_TEXT,
         textDecoration: 'none',
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: '14px',
         fontWeight: active ? 500 : 400,
         transition: `padding ${TRANSITION}, background-color 150ms ease, color 150ms ease`,
@@ -370,7 +370,7 @@ function SidebarItem({ item, active, collapsed, badge, badgeCount }: SidebarItem
               position: 'absolute',
               top: -4,
               right: -8,
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '9px',
               fontWeight: 700,
               color: '#FFFBEF',
@@ -389,7 +389,7 @@ function SidebarItem({ item, active, collapsed, badge, badgeCount }: SidebarItem
           {item.label}
           {badgeCount != null && badgeCount > 0 && (
             <span style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: '10px',
               fontWeight: 600,
               color: '#FFFBEF',

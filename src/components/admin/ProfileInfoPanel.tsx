@@ -46,7 +46,7 @@ function SectionHeader({ title }: { title: string }) {
     >
       <h3
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '12px',
           fontWeight: 600,
           color: 'var(--color-text-tertiary)',
@@ -145,7 +145,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                   border: 'none',
                   cursor: 'pointer',
                   color: 'var(--color-text-tertiary)',
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '13px',
                   padding: 4,
                 }}
@@ -172,7 +172,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                 <span style={{ fontSize: '28px' }}>{profile.icon}</span>
                 <div>
                   <h2 style={{
-                    fontFamily: 'var(--font-lora)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-h3)',
                     fontWeight: 700,
                     color: 'var(--color-text-primary)',
@@ -187,7 +187,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                     borderRadius: 'var(--radius-pill)',
                     background: `${profile.color}18`,
                     color: profile.color,
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '12px',
                     fontWeight: 600,
                   }}>
@@ -247,7 +247,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                     }}
                   >
                     <p style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '12px',
                       fontWeight: 600,
                       color: profile.color,
@@ -258,7 +258,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                       {BEHAVIOR_LABELS[key]}
                     </p>
                     <p style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '14px',
                       color: 'var(--color-text-secondary)',
                       margin: 0,
@@ -288,7 +288,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                       borderRadius: 'var(--radius-pill)',
                       background: i === 0 ? `${profile.color}14` : 'var(--color-bg-tertiary)',
                       color: i === 0 ? profile.color : 'var(--color-text-secondary)',
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '13px',
                       fontWeight: i === 0 ? 600 : 400,
                       border: i === 0 ? `1px solid ${profile.color}30` : 'var(--border-subtle)',
@@ -300,7 +300,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
               </div>
               {profile.suggested_actions[0] && (
                 <p style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-host-grotesk)',
                   fontSize: '12px',
                   color: 'var(--color-text-tertiary)',
                   marginTop: 'var(--space-2)',
@@ -334,7 +334,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                   >
                     <span style={{ color: 'var(--color-error)', fontSize: '13px', lineHeight: '20px', flexShrink: 0 }}>✕</span>
                     <span style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: '14px',
                       color: 'var(--color-text-secondary)',
                       lineHeight: '20px',
@@ -361,7 +361,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                   padding: 'var(--space-4)',
                 }}>
                   <p style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '12px',
                     fontWeight: 600,
                     color: 'var(--color-text-tertiary)',
@@ -372,7 +372,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                     Emails
                   </p>
                   <p style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '14px',
                     color: 'var(--color-text-secondary)',
                     margin: 0,
@@ -388,7 +388,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                   padding: 'var(--space-4)',
                 }}>
                   <p style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '12px',
                     fontWeight: 600,
                     color: 'var(--color-text-tertiary)',
@@ -399,7 +399,7 @@ export default function ProfileInfoPanel({ profileName, onClose }: ProfileInfoPa
                     Videos
                   </p>
                   <p style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: '14px',
                     color: 'var(--color-text-secondary)',
                     margin: 0,
@@ -448,7 +448,7 @@ function InfoBlock({ label, text, color, icon }: { label: string; text: string; 
       <span style={{ fontSize: '18px', flexShrink: 0, lineHeight: '24px' }}>{icon}</span>
       <div>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '12px',
           fontWeight: 600,
           color,
@@ -459,7 +459,7 @@ function InfoBlock({ label, text, color, icon }: { label: string; text: string; 
           {label}
         </p>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '14px',
           color: 'var(--color-text-secondary)',
           margin: 0,
@@ -494,7 +494,7 @@ function NoteTemplate({ label, text, color }: { label: string; text: string; col
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-2)' }}>
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: '12px',
           fontWeight: 600,
           color,
@@ -512,7 +512,7 @@ function NoteTemplate({ label, text, color }: { label: string; text: string; col
             borderRadius: 'var(--radius-sm)',
             padding: '4px 10px',
             cursor: 'pointer',
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: '11px',
             fontWeight: 500,
             color: copied ? 'var(--color-success)' : 'var(--color-text-tertiary)',
@@ -523,7 +523,7 @@ function NoteTemplate({ label, text, color }: { label: string; text: string; col
         </button>
       </div>
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: '13px',
         color: 'var(--color-text-secondary)',
         margin: 0,

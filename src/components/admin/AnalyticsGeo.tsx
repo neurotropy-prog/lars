@@ -90,7 +90,7 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
   return (
     <Card style={{ marginBottom: 'var(--space-6)' }}>
       <p style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-host-grotesk)',
         fontSize: 'var(--text-caption)',
         letterSpacing: '0.08em',
         textTransform: 'uppercase',
@@ -102,7 +102,7 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
 
       {loading && !data ? (
         <p style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           color: 'var(--color-text-tertiary)',
           textAlign: 'center',
@@ -113,7 +113,7 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
       ) : countries.length === 0 && cities.length === 0 ? (
         <div style={{ textAlign: 'center', padding: 'var(--space-6)' }}>
           <p style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-body-sm)',
             color: 'var(--color-text-tertiary)',
             marginBottom: 'var(--space-4)',
@@ -128,7 +128,7 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
               border: '1px solid var(--color-accent)',
               background: 'var(--color-accent-subtle)',
               color: 'var(--color-accent)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               fontWeight: 500,
               cursor: 'pointer',
@@ -148,7 +148,7 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
           {countries.length > 0 && (
             <div>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 fontWeight: 500,
                 color: 'var(--color-text-secondary)',
@@ -166,14 +166,14 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
                       marginBottom: 'var(--space-1)',
                     }}>
                       <span style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: 'var(--text-body-sm)',
                         color: 'var(--color-text-primary)',
                       }}>
                         {flagEmoji(c.code)} {c.name}
                       </span>
                       <span style={{
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-host-grotesk)',
                         fontSize: 'var(--text-caption)',
                         color: 'var(--color-text-tertiary)',
                       }}>
@@ -205,7 +205,7 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
           {cities.length > 0 && (
             <div>
               <p style={{
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-host-grotesk)',
                 fontSize: 'var(--text-body-sm)',
                 fontWeight: 500,
                 color: 'var(--color-text-secondary)',
@@ -223,14 +223,14 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
                     borderBottom: i < cities.length - 1 ? '1px solid rgba(30, 19, 16, 0.06)' : 'none',
                   }}>
                     <span style={{
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       color: 'var(--color-text-primary)',
                     }}>
                       {flagEmoji(c.country)} {c.city}
                     </span>
                     <span style={{
-                      fontFamily: 'var(--font-lora)',
+                      fontFamily: 'var(--font-host-grotesk)',
                       fontSize: 'var(--text-body-sm)',
                       fontWeight: 700,
                       color: 'var(--color-text-secondary)',
@@ -255,7 +255,7 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
           marginTop: 'var(--space-4)',
         }}>
           <span style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-caption)',
             color: 'var(--color-warning)',
             background: 'rgba(212, 160, 23, 0.1)',
@@ -267,7 +267,7 @@ export default function AnalyticsGeo({ period }: AnalyticsGeoProps) {
           <button
             onClick={() => setUseFake(false)}
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               color: 'var(--color-text-tertiary)',
               background: 'none',

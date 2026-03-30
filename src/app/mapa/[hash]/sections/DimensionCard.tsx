@@ -69,7 +69,7 @@ export default function DimensionCard({
               borderRadius: 'var(--radius-pill)',
               background: `${dim.color}18`,
               color: dim.color,
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               fontWeight: 500,
               letterSpacing: '0.04em',
@@ -87,7 +87,7 @@ export default function DimensionCard({
               borderRadius: 'var(--radius-pill)',
               background: 'rgba(61,154,95,0.1)',
               color: 'var(--color-success)',
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-caption)',
               fontWeight: 500,
               letterSpacing: '0.04em',
@@ -111,7 +111,7 @@ export default function DimensionCard({
       >
         <span
           style={{
-            fontFamily: 'var(--font-inter)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h4)',
             fontWeight: 600,
             color: 'var(--color-text-primary)',
@@ -122,7 +122,7 @@ export default function DimensionCard({
         </span>
         <span
           style={{
-            fontFamily: 'var(--font-lora)',
+            fontFamily: 'var(--font-host-grotesk)',
             fontSize: 'var(--text-h3)',
             fontWeight: 700,
             color: dim.color,
@@ -161,7 +161,7 @@ export default function DimensionCard({
       {/* Insight original */}
       <p
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: 'var(--font-host-grotesk)',
           fontSize: 'var(--text-body-sm)',
           lineHeight: 'var(--lh-body)',
           color: 'var(--color-text-secondary)',
@@ -183,7 +183,7 @@ export default function DimensionCard({
         >
           <p
             style={{
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-host-grotesk)',
               fontSize: 'var(--text-body-sm)',
               lineHeight: 'var(--lh-body)',
               color: 'var(--color-text-primary)',
@@ -209,7 +209,7 @@ export default function DimensionCard({
               >
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     color: 'var(--color-text-tertiary)',
                   }}
@@ -218,7 +218,7 @@ export default function DimensionCard({
                 </span>
                 <span
                   style={{
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-host-grotesk)',
                     fontSize: 'var(--text-caption)',
                     fontWeight: 500,
                     color: dim.color,
